@@ -73,7 +73,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Catalog.Designer.vb">
       <DependentUpon>Catalog.vb</DependentUpon>
     </Compile>
@@ -96,12 +95,12 @@
       <DependentUpon>Returns.vb</DependentUpon>
     </Compile>
     <Compile Include="Returns.vb">
-=======
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AttendanceForm.Designer.vb">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
     </Compile>
     <Compile Include="AttendanceForm.vb">
->>>>>>> origin/master
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RootForm.vb">
@@ -134,7 +133,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <EmbeddedResource Include="Catalog.resx">
       <DependentUpon>Catalog.vb</DependentUpon>
     </EmbeddedResource>
@@ -146,10 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Returns.resx">
       <DependentUpon>Returns.vb</DependentUpon>
-=======
+    </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
->>>>>>> origin/master
     </EmbeddedResource>
     <EmbeddedResource Include="RootForm.resx">
       <DependentUpon>RootForm.vb</DependentUpon>
