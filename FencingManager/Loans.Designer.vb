@@ -22,8 +22,15 @@ Partial Class Loans
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.SuspendLayout()
+        '
+        'Loans
+        '
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.ClientSize = New System.Drawing.Size(282, 253)
+        Me.Name = "Loans"
         Me.Text = "Loans"
+        Me.ResumeLayout(False)
+
     End Sub
 End Class

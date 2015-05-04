@@ -33,7 +33,7 @@ Partial Class GearLoaning
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 83)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1412, 721)
+        Me.Panel1.Size = New System.Drawing.Size(1256, 685)
         Me.Panel1.TabIndex = 0
         '
         'btnReturn
@@ -65,10 +65,9 @@ Partial Class GearLoaning
         '
         'GearLoaning
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1412, 804)
+        Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnReturn)

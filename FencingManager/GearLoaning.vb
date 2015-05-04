@@ -5,10 +5,10 @@
         frmReturn.toplevel = False
         Panel1.Controls.Add(frmReturn)
         Dim frmloans As New Loans()
-        frmReturn.toplevel = False
-        Panel1.Controls.Add(frmReturn)
+        frmloans.TopLevel = False
+        Panel1.Controls.Add(frmloans)
         Dim frmCatalog As New Catalog()
-        frmReturn.toplevel = False
-        Panel1.Controls.Add(frmReturn)
+        frmCatalog.TopLevel = False
+        Panel1.Controls.Add(frmCatalog)
     End Sub
 End Class

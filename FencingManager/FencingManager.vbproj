@@ -118,8 +118,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Catalog.resx">
+      <DependentUpon>Catalog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GearLoaning.resx">
       <DependentUpon>GearLoaning.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loans.resx">
+      <DependentUpon>Loans.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns.resx">
+      <DependentUpon>Returns.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RootForm.resx">
       <DependentUpon>RootForm.vb</DependentUpon>

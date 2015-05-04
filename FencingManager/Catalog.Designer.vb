@@ -22,8 +22,16 @@ Partial Class Catalog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.SuspendLayout()
+        '
+        'Catalog
+        '
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.ClientSize = New System.Drawing.Size(1238, 638)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "Catalog"
         Me.Text = "Catalog"
+        Me.ResumeLayout(False)
+
     End Sub
 End Class
