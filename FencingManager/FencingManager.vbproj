@@ -70,6 +70,30 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalog.Designer.vb">
+      <DependentUpon>Catalog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GearLoaning.Designer.vb">
+      <DependentUpon>GearLoaning.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GearLoaning.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loans.Designer.vb">
+      <DependentUpon>Loans.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Loans.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns.Designer.vb">
+      <DependentUpon>Returns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Returns.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RootForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +118,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GearLoaning.resx">
+      <DependentUpon>GearLoaning.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RootForm.resx">
       <DependentUpon>RootForm.vb</DependentUpon>
     </EmbeddedResource>
