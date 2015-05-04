@@ -73,35 +73,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Catalog.Designer.vb">
-      <DependentUpon>Catalog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Catalog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GearLoaning.Designer.vb">
-      <DependentUpon>GearLoaning.vb</DependentUpon>
-    </Compile>
-    <Compile Include="GearLoaning.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Loans.Designer.vb">
-      <DependentUpon>Loans.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Loans.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Returns.Designer.vb">
-      <DependentUpon>Returns.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Returns.vb">
-=======
     <Compile Include="AttendanceForm.Designer.vb">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
     </Compile>
     <Compile Include="AttendanceForm.vb">
->>>>>>> origin/master
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RootForm.vb">
@@ -134,22 +109,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Catalog.resx">
-      <DependentUpon>Catalog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GearLoaning.resx">
-      <DependentUpon>GearLoaning.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loans.resx">
-      <DependentUpon>Loans.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Returns.resx">
-      <DependentUpon>Returns.vb</DependentUpon>
-=======
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
->>>>>>> origin/master
     </EmbeddedResource>
     <EmbeddedResource Include="RootForm.resx">
       <DependentUpon>RootForm.vb</DependentUpon>
