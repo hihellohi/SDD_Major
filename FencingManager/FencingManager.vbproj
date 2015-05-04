@@ -45,6 +45,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -70,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Catalog.Designer.vb">
       <DependentUpon>Catalog.vb</DependentUpon>
     </Compile>
@@ -92,6 +96,12 @@
       <DependentUpon>Returns.vb</DependentUpon>
     </Compile>
     <Compile Include="Returns.vb">
+=======
+    <Compile Include="AttendanceForm.Designer.vb">
+      <DependentUpon>AttendanceForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForm.vb">
+>>>>>>> origin/master
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RootForm.vb">
@@ -116,8 +126,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="StudentProfilesForm.Designer.vb">
+      <DependentUpon>StudentProfilesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentProfilesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="Catalog.resx">
       <DependentUpon>Catalog.vb</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +146,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Returns.resx">
       <DependentUpon>Returns.vb</DependentUpon>
+=======
+    <EmbeddedResource Include="AttendanceForm.resx">
+      <DependentUpon>AttendanceForm.vb</DependentUpon>
+>>>>>>> origin/master
     </EmbeddedResource>
     <EmbeddedResource Include="RootForm.resx">
       <DependentUpon>RootForm.vb</DependentUpon>
@@ -139,8 +160,14 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="StudentProfilesForm.resx">
+      <DependentUpon>StudentProfilesForm.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
