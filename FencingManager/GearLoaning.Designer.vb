@@ -24,8 +24,8 @@ Partial Class GearLoaning
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnReturn = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnLoan = New System.Windows.Forms.Button()
+        Me.btnCatalog = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Panel1
@@ -45,31 +45,31 @@ Partial Class GearLoaning
         Me.btnReturn.Text = "Returns"
         Me.btnReturn.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnLoan
         '
-        Me.Button1.Location = New System.Drawing.Point(158, 28)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "loans"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnLoan.Location = New System.Drawing.Point(158, 28)
+        Me.btnLoan.Name = "btnLoan"
+        Me.btnLoan.Size = New System.Drawing.Size(75, 23)
+        Me.btnLoan.TabIndex = 2
+        Me.btnLoan.Text = "loans"
+        Me.btnLoan.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnCatalog
         '
-        Me.Button2.Location = New System.Drawing.Point(285, 28)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Catalog"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnCatalog.Location = New System.Drawing.Point(285, 28)
+        Me.btnCatalog.Name = "btnCatalog"
+        Me.btnCatalog.Size = New System.Drawing.Size(75, 23)
+        Me.btnCatalog.TabIndex = 3
+        Me.btnCatalog.Text = "Catalog"
+        Me.btnCatalog.UseVisualStyleBackColor = True
         '
         'GearLoaning
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1256, 768)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnCatalog)
+        Me.Controls.Add(Me.btnLoan)
         Me.Controls.Add(Me.btnReturn)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -81,6 +81,6 @@ Partial Class GearLoaning
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents btnReturn As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnLoan As System.Windows.Forms.Button
+    Friend WithEvents btnCatalog As System.Windows.Forms.Button
 End Class

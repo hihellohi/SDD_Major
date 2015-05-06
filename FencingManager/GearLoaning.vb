@@ -1,14 +1,38 @@
 ﻿Public Class GearLoaning
+    Dim frmReturn As New Returns()
+    Dim frmloans As New Loans()
+    Dim frmCatalog As New Catalog()
+    Dim topForm = frmReturn
 
     Private Sub GearLoaning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim frmReturn As New returns()
+
         frmReturn.toplevel = False
         Panel1.Controls.Add(frmReturn)
-        Dim frmloans As New Loans()
+
         frmloans.TopLevel = False
         Panel1.Controls.Add(frmloans)
-        Dim frmCatalog As New Catalog()
+
         frmCatalog.TopLevel = False
         Panel1.Controls.Add(frmCatalog)
+
+        topForm.show()
+    End Sub
+
+    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+        topForm.hide()
+        topForm = frmReturn
+        topForm.show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLoan.Click
+        topForm.hide()
+        topForm = frmloans
+        topForm.show()
+    End Sub
+
+    Private Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
+        topForm.hide()
+        topForm = frmCatalog
+        topForm.show()
     End Sub
 End Class
