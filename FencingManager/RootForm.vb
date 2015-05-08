@@ -1,11 +1,18 @@
-﻿Public Class RootForm
+﻿Imports System.Data.OleDb
+
+Public Class RootForm
 
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
     Dim topform = formStudentProfile
+    Public Shared connection As New OleDbConnection
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection = New OleDbConnection(My.Settings.FencingConnectionString)
+        connection.Open()
+
         If (Screen.PrimaryScreen.Bounds.Width > 1366 And Screen.PrimaryScreen.Bounds.Height > 768) Then
             Me.FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
         End If

@@ -79,6 +79,11 @@
     <Compile Include="Catalog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FencingDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FencingDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GearLoaning.Designer.vb">
       <DependentUpon>GearLoaning.vb</DependentUpon>
     </Compile>
@@ -162,6 +167,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FencingDataSet1.xsc">
+      <DependentUpon>FencingDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FencingDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FencingDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FencingDataSet1.xss">
+      <DependentUpon>FencingDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -175,6 +191,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fencing.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

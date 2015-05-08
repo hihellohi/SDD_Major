@@ -11,12 +11,12 @@
         adapter = New OleDb.OleDbDataAdapter()
         adapter.SelectCommand = New OleDb.OleDbCommand()
         With adapter.SelectCommand
-            '.Connection = RootForm.connection
+            .Connection = RootForm.connection
             .CommandText = "SELECT * FROM StudentProfiles"
             .CommandType = CommandType.Text
-            '.ExecuteNonQuery()
+            .ExecuteNonQuery()
         End With
-        'adapter.Fill(dataS, "StudentProfiles")
+        adapter.Fill(dataS, "StudentProfiles")
 
     End Sub
 End Class
