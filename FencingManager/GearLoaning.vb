@@ -4,9 +4,22 @@
     Dim frmCatalog As New Catalog()
     Dim topForm = frmReturn
 
+    Public Shared adapter As New OleDb.OleDbDataAdapter
+    Public Shared dataS As New DataSet()
+
     Private Sub GearLoaning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        frmReturn.toplevel = False
+        adapter = New OleDb.OleDbDataAdapter()
+        adapter.SelectCommand = New OleDb.OleDbCommand()
+        With adapter.SelectCommand
+            .Connection = RootForm.connection
+            .CommandText = "SELECT * FROM Gear"
+            .CommandType = CommandType.Text
+            .ExecuteNonQuery()
+        End With
+        adapter.Fill(dataS, "Gear")
+
+        frmReturn.TopLevel = False
         Panel1.Controls.Add(frmReturn)
 
         frmloans.TopLevel = False
