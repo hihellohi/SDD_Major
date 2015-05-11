@@ -17,6 +17,5 @@
             .ExecuteNonQuery()
         End With
         adapter.Fill(dataS, "StudentProfiles")
-
     End Sub
 End Class
