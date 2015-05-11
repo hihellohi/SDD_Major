@@ -25,6 +25,8 @@ Partial Class Returns
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.GearType = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GearID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Loaned = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'TextBox1
@@ -36,7 +38,7 @@ Partial Class Returns
         '
         'ListView1
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.GearType})
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.GearType, Me.GearID, Me.Loaned})
         Me.ListView1.Location = New System.Drawing.Point(12, 3)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(687, 623)
@@ -47,6 +49,16 @@ Partial Class Returns
         'GearType
         '
         Me.GearType.Text = "GearType"
+        Me.GearType.Width = 78
+        '
+        'GearID
+        '
+        Me.GearID.Text = "ID"
+        '
+        'Loaned
+        '
+        Me.Loaned.Text = "Loaned"
+        Me.Loaned.Width = 76
         '
         'Returns
         '
@@ -65,4 +77,6 @@ Partial Class Returns
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents GearType As System.Windows.Forms.ColumnHeader
+    Friend WithEvents GearID As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Loaned As System.Windows.Forms.ColumnHeader
 End Class
