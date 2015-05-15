@@ -8,6 +8,10 @@ Public Class RootForm
     Dim topform = formStudentProfile
     Public Shared connection As New OleDbConnection
 
+    Private Sub RootForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        connection.Close()
+    End Sub
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connection = New OleDbConnection(My.Settings.FencingConnectionString)
