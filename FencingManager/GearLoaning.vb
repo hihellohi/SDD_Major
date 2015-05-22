@@ -1,22 +1,24 @@
 ﻿Public Class GearLoaning
+    Const RETURNS = 0
+    Const LOANS = 1
+    Const CATALOG = 2
     Dim frmReturn As New Returns()
     Dim frmloans As New Loans()
     Dim frmCatalog As New Catalog()
     Dim topForm = frmReturn
-
+    Dim intform = RETURNS
     Public Shared adapter As New OleDb.OleDbDataAdapter
     Public Shared dataS As New DataSet()
 
+    Public Sub kbhook(ByVal key As System.Windows.Forms.Keys)
+        If intform = RETURNS Then
+            frmReturn.kbHook(key)
+        End If
+    End Sub
+
     Private Sub GearLoaning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        adapter = New OleDb.OleDbDataAdapter()
-        adapter.SelectCommand = New OleDb.OleDbCommand()
-        With adapter.SelectCommand
-            .Connection = RootForm.connection
-            .CommandText = "SELECT * FROM Gear"
-            .CommandType = CommandType.Text
-            .ExecuteNonQuery()
-        End With
+        adapter = New OleDb.OleDbDataAdapter("SELECT * FROM Gear", RootForm.connection)
         adapter.Fill(dataS, "Gear")
 
         frmReturn.TopLevel = False
@@ -34,18 +36,21 @@
     Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
         topForm.hide()
         topForm = frmReturn
+        intform = RETURNS
         topForm.show()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLoan.Click
         topForm.hide()
         topForm = frmloans
+        intform = LOANS
         topForm.show()
     End Sub
 
     Private Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
         topForm.hide()
         topForm = frmCatalog
+        intform = CATALOG
         topForm.show()
     End Sub
 End Class

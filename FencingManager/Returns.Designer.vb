@@ -23,10 +23,7 @@ Partial Class Returns
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.GearType = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GearID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Loaned = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -36,35 +33,20 @@ Partial Class Returns
         Me.TextBox1.Size = New System.Drawing.Size(100, 22)
         Me.TextBox1.TabIndex = 0
         '
-        'ListView1
+        'Label1
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.GearType, Me.GearID, Me.Loaned})
-        Me.ListView1.Location = New System.Drawing.Point(12, 3)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(687, 623)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
-        '
-        'GearType
-        '
-        Me.GearType.Text = "GearType"
-        Me.GearType.Width = 78
-        '
-        'GearID
-        '
-        Me.GearID.Text = "ID"
-        '
-        'Loaned
-        '
-        Me.Loaned.Text = "Loaned"
-        Me.Loaned.Width = 76
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(487, 318)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(51, 17)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Label1"
         '
         'Returns
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1238, 667)
-        Me.Controls.Add(Me.ListView1)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Returns"
@@ -79,4 +61,5 @@ Partial Class Returns
     Friend WithEvents GearType As System.Windows.Forms.ColumnHeader
     Friend WithEvents GearID As System.Windows.Forms.ColumnHeader
     Friend WithEvents Loaned As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class
