@@ -80,10 +80,22 @@
     <Compile Include="Catalog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CreateAcc.Designer.vb">
+      <DependentUpon>CreateAcc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAcc.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FencingDataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FencingDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPW.Designer.vb">
+      <DependentUpon>ForgotPW.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPW.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GearLoaning.Designer.vb">
       <DependentUpon>GearLoaning.vb</DependentUpon>
@@ -95,6 +107,18 @@
       <DependentUpon>Loans.vb</DependentUpon>
     </Compile>
     <Compile Include="Loans.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.vb">
+      <DependentUpon>Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PWChange.Designer.vb">
+      <DependentUpon>PWChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PWChange.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Returns.Designer.vb">
@@ -147,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loans.resx">
       <DependentUpon>Loans.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Returns.resx">
       <DependentUpon>Returns.vb</DependentUpon>

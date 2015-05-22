@@ -9,6 +9,7 @@ Public Class RootForm
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
+    Dim formLogin As New Login()
     Dim topform = formStudentProfile
     Dim intform = STUDENT_PROFILE
     Public Shared connection As New OleDbConnection
@@ -45,6 +46,9 @@ Public Class RootForm
         formGearLoaning.TopLevel = False
         Panel1.Controls.Add(formGearLoaning)
 
+        formLogin.TopLevel = False
+        Panel1.Controls.Add(formLogin)
+
         ' Show Student Profile on Load 
         'should totes change to login later
         formStudentProfile.Show()
@@ -69,6 +73,13 @@ Public Class RootForm
         topform.hide()
         topform = formGearLoaning
         intform = GEAR_LOANING
+        topform.show()
+    End Sub
+
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        topform.hide()
+        topform = formLogin
+        intform = STUDENT_PROFILE
         topform.show()
     End Sub
 End Class
