@@ -8,7 +8,6 @@ Public Class Returns
         If key = Keys.Enter Then
             Dim tmp As Boolean = True
             For i = 0 To GearLoaning.dataS.Tables("Gear").Rows.Count - 1
-                MsgBox(input)
                 If GearLoaning.dataS.Tables("Gear").Rows(i).Item(0).ToString = input Then
                     Label1.Text = GearLoaning.dataS.Tables("Gear").Rows(i).Item(1)
                     tmp = False
@@ -19,7 +18,7 @@ Public Class Returns
             End If
             input = ""
         Else
-            input += Mid(key.ToString(), 2)
+            input += Mid(key.ToString(), key.ToString().Length)
         End If
     End Sub
 
