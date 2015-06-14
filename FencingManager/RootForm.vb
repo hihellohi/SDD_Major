@@ -10,6 +10,7 @@ Public Class RootForm
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
     Dim formLogin As New Login()
+    Dim formCalendar As New Calendar()
     Dim topform = formStudentProfile
     Dim intform = STUDENT_PROFILE
     Public Shared connection As New OleDbConnection
@@ -49,6 +50,9 @@ Public Class RootForm
         formLogin.TopLevel = False
         Panel1.Controls.Add(formLogin)
 
+        formCalendar.TopLevel = False
+        Panel1.Controls.Add(formCalendar)
+
         ' Show Student Profile on Load 
         'should totes change to login later
         formStudentProfile.Show()
@@ -81,6 +85,13 @@ Public Class RootForm
         topform = formLogin
         intform = STUDENT_PROFILE
         topform.show()
+    End Sub
+
+    Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
+        topform.Hide()
+        topform = formCalendar
+        intform = STUDENT_PROFILE ' Seriously, someone should make constants for the other forms
+        topform.Show()
     End Sub
 End Class
 
