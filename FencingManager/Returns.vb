@@ -4,12 +4,23 @@ Public Class Returns
 
     Dim input As String
 
+
     Public Sub kbHook(ByVal key As System.Windows.Forms.Keys)
         If key = Keys.Enter Then
             Dim tmp As Boolean = True
             For i = 0 To GearLoaning.dataS.Tables("Gear").Rows.Count - 1
                 If GearLoaning.dataS.Tables("Gear").Rows(i).Item(0).ToString = input Then
-                    Label1.Text = GearLoaning.dataS.Tables("Gear").Rows(i).Item(1)
+                    If GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0 Then
+                        Label1.Text = "Item not loaned"
+                    Else
+                        Label1.Text = GearLoaning.dataS.Tables("Gear").Rows(i).Item(1)
+                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0
+                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(4) = 0
+                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(5) = 0
+                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(6) = 0
+                        GearLoaning.adapter.Update(GearLoaning.dataS, "Gear")
+
+                    End If
                     tmp = False
                 End If
             Next
