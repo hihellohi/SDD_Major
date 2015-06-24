@@ -31,17 +31,17 @@ Partial Class StudentProfilesForm
         Me.colSurname = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colYear = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.rdbCertainYear = New System.Windows.Forms.RadioButton()
+        Me.rdbSenior = New System.Windows.Forms.RadioButton()
+        Me.rdbJunior = New System.Windows.Forms.RadioButton()
+        Me.rdbAll = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkAdvanced = New System.Windows.Forms.CheckBox()
-        Me.rdbAll = New System.Windows.Forms.RadioButton()
-        Me.rdbJunior = New System.Windows.Forms.RadioButton()
-        Me.rdbSenior = New System.Windows.Forms.RadioButton()
-        Me.rdbCertainYear = New System.Windows.Forms.RadioButton()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -123,6 +123,58 @@ Partial Class StudentProfilesForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Year Group"
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
+        Me.ComboBox1.Location = New System.Drawing.Point(90, 141)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(70, 33)
+        Me.ComboBox1.TabIndex = 4
+        Me.ComboBox1.Text = "7"
+        '
+        'rdbCertainYear
+        '
+        Me.rdbCertainYear.AutoSize = True
+        Me.rdbCertainYear.Location = New System.Drawing.Point(7, 141)
+        Me.rdbCertainYear.Name = "rdbCertainYear"
+        Me.rdbCertainYear.Size = New System.Drawing.Size(77, 30)
+        Me.rdbCertainYear.TabIndex = 3
+        Me.rdbCertainYear.Text = "Year"
+        Me.rdbCertainYear.UseVisualStyleBackColor = True
+        '
+        'rdbSenior
+        '
+        Me.rdbSenior.AutoSize = True
+        Me.rdbSenior.Location = New System.Drawing.Point(7, 104)
+        Me.rdbSenior.Name = "rdbSenior"
+        Me.rdbSenior.Size = New System.Drawing.Size(93, 30)
+        Me.rdbSenior.TabIndex = 2
+        Me.rdbSenior.Text = "Senior"
+        Me.rdbSenior.UseVisualStyleBackColor = True
+        '
+        'rdbJunior
+        '
+        Me.rdbJunior.AutoSize = True
+        Me.rdbJunior.Location = New System.Drawing.Point(7, 68)
+        Me.rdbJunior.Name = "rdbJunior"
+        Me.rdbJunior.Size = New System.Drawing.Size(89, 30)
+        Me.rdbJunior.TabIndex = 1
+        Me.rdbJunior.Text = "Junior"
+        Me.rdbJunior.UseVisualStyleBackColor = True
+        '
+        'rdbAll
+        '
+        Me.rdbAll.AutoSize = True
+        Me.rdbAll.Checked = True
+        Me.rdbAll.Location = New System.Drawing.Point(7, 32)
+        Me.rdbAll.Name = "rdbAll"
+        Me.rdbAll.Size = New System.Drawing.Size(55, 30)
+        Me.rdbAll.TabIndex = 0
+        Me.rdbAll.TabStop = True
+        Me.rdbAll.Text = "All"
+        Me.rdbAll.UseVisualStyleBackColor = True
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -143,58 +195,6 @@ Partial Class StudentProfilesForm
         Me.chkAdvanced.Text = "Advanced Options"
         Me.chkAdvanced.UseVisualStyleBackColor = True
         '
-        'rdbAll
-        '
-        Me.rdbAll.AutoSize = True
-        Me.rdbAll.Checked = True
-        Me.rdbAll.Location = New System.Drawing.Point(7, 32)
-        Me.rdbAll.Name = "rdbAll"
-        Me.rdbAll.Size = New System.Drawing.Size(55, 30)
-        Me.rdbAll.TabIndex = 0
-        Me.rdbAll.TabStop = True
-        Me.rdbAll.Text = "All"
-        Me.rdbAll.UseVisualStyleBackColor = True
-        '
-        'rdbJunior
-        '
-        Me.rdbJunior.AutoSize = True
-        Me.rdbJunior.Location = New System.Drawing.Point(7, 68)
-        Me.rdbJunior.Name = "rdbJunior"
-        Me.rdbJunior.Size = New System.Drawing.Size(89, 30)
-        Me.rdbJunior.TabIndex = 1
-        Me.rdbJunior.Text = "Junior"
-        Me.rdbJunior.UseVisualStyleBackColor = True
-        '
-        'rdbSenior
-        '
-        Me.rdbSenior.AutoSize = True
-        Me.rdbSenior.Location = New System.Drawing.Point(7, 104)
-        Me.rdbSenior.Name = "rdbSenior"
-        Me.rdbSenior.Size = New System.Drawing.Size(93, 30)
-        Me.rdbSenior.TabIndex = 2
-        Me.rdbSenior.Text = "Senior"
-        Me.rdbSenior.UseVisualStyleBackColor = True
-        '
-        'rdbCertainYear
-        '
-        Me.rdbCertainYear.AutoSize = True
-        Me.rdbCertainYear.Location = New System.Drawing.Point(7, 141)
-        Me.rdbCertainYear.Name = "rdbCertainYear"
-        Me.rdbCertainYear.Size = New System.Drawing.Size(77, 30)
-        Me.rdbCertainYear.TabIndex = 3
-        Me.rdbCertainYear.Text = "Year"
-        Me.rdbCertainYear.UseVisualStyleBackColor = True
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
-        Me.ComboBox1.Location = New System.Drawing.Point(90, 141)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(70, 33)
-        Me.ComboBox1.TabIndex = 4
-        Me.ComboBox1.Text = "7"
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.CheckBox4)
@@ -207,15 +207,15 @@ Partial Class StudentProfilesForm
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "GroupBox2"
         '
-        'CheckBox2
+        'CheckBox4
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(7, 31)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(138, 30)
-        Me.CheckBox2.TabIndex = 0
-        Me.CheckBox2.Text = "First Name"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Location = New System.Drawing.Point(6, 103)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(134, 30)
+        Me.CheckBox4.TabIndex = 2
+        Me.CheckBox4.Text = "Student ID"
+        Me.CheckBox4.UseVisualStyleBackColor = True
         '
         'CheckBox3
         '
@@ -227,15 +227,15 @@ Partial Class StudentProfilesForm
         Me.CheckBox3.Text = "Surname"
         Me.CheckBox3.UseVisualStyleBackColor = True
         '
-        'CheckBox4
+        'CheckBox2
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(6, 103)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(134, 30)
-        Me.CheckBox4.TabIndex = 2
-        Me.CheckBox4.Text = "Student ID"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(7, 31)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(138, 30)
+        Me.CheckBox2.TabIndex = 0
+        Me.CheckBox2.Text = "First Name"
+        Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'StudentProfilesForm
         '

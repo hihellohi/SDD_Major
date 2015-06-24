@@ -4,7 +4,7 @@
     Public adapter As New OleDb.OleDbDataAdapter
     Public searchResults As New DataSet()
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-        'MessageBox.Show(ListView1.SelectedIndices.Item(0))
+
     End Sub
 
     Private Sub StudentProfilesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -63,7 +63,11 @@
     End Sub
 
     Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
-        If e.KeyChar. = Keys.Enter Then
+       
+    End Sub
+
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
+        If ListView1.SelectedIndices.Count = 1 Then
 
         End If
     End Sub

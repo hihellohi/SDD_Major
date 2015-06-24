@@ -173,6 +173,12 @@
     <Compile Include="StudentProfilesForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="StudentProfileView.Designer.vb">
+      <DependentUpon>StudentProfileView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentProfileView.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Calendar.resx">
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentProfilesForm.resx">
       <DependentUpon>StudentProfilesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentProfileView.resx">
+      <DependentUpon>StudentProfileView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
