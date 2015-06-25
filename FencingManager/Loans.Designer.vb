@@ -22,22 +22,66 @@ Partial Class Loans
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.colItem = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.colDesc = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.colDueDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
-        'TextBox1
+        'Button1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(313, 167)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox1.TabIndex = 0
+        Me.Button1.Location = New System.Drawing.Point(986, 80)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(106, 37)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(506, 80)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(51, 17)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Label1"
+        '
+        'ListView1
+        '
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colItem, Me.colDesc, Me.colDueDate})
+        Me.ListView1.GridLines = True
+        Me.ListView1.Location = New System.Drawing.Point(223, 208)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(362, 279)
+        Me.ListView1.TabIndex = 2
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
+        '
+        'colItem
+        '
+        Me.colItem.Text = "Loaned Item ID"
+        Me.colItem.Width = 113
+        '
+        'colDesc
+        '
+        Me.colDesc.Text = "Item Description"
+        Me.colDesc.Width = 111
+        '
+        'colDueDate
+        '
+        Me.colDueDate.Text = "Due Date"
+        Me.colDueDate.Width = 132
         '
         'Loans
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1238, 638)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.ListView1)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Loans"
         Me.Text = "Loans"
@@ -46,5 +90,10 @@ Partial Class Loans
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ListView1 As System.Windows.Forms.ListView
+    Friend WithEvents colItem As System.Windows.Forms.ColumnHeader
+    Friend WithEvents colDesc As System.Windows.Forms.ColumnHeader
+    Friend WithEvents colDueDate As System.Windows.Forms.ColumnHeader
 End Class

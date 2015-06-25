@@ -13,6 +13,8 @@
     Public Sub kbhook(ByVal key As System.Windows.Forms.Keys)
         If intform = RETURNS Then
             frmReturn.kbHook(key)
+        ElseIf intform = LOANS Then
+            frmloans.kbHook(key)
         End If
     End Sub
 

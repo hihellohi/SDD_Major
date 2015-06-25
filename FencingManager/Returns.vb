@@ -36,8 +36,7 @@ Public Class Returns
     Private Sub Returns_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         input = ""
         Dim cb As New OleDb.OleDbCommandBuilder(GearLoaning.adapter)
-        MsgBox(GearLoaning.dataS.Tables("Gear").Rows(0).Item(0))
-        GearLoaning.adapter.Update(GearLoaning.dataS, "Gear")
+        
     End Sub
 
 End Class
