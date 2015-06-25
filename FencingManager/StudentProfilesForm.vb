@@ -4,19 +4,26 @@
     Public adapter As New OleDb.OleDbDataAdapter
     Public searchResults As New DataSet()
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-        'MessageBox.Show(ListView1.SelectedIndices.Item(0))
+
     End Sub
 
     Private Sub StudentProfilesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        BasicSearchQuery()
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        If chkAdvanced.Checked = True Then
+
+        Else
+            BasicSearchQuery()
+        End If
+    End Sub
+
+    Private Sub AdvancedSearchQuery()
+        ' Todo
     End Sub
 
     Private Sub BasicSearchQuery()
-        searchResults.Clear()
         Dim command As String =
             "SELECT StudentID, FirstName, Surname, SchoolYear " +
             "FROM StudentProfiles " +
@@ -48,5 +55,20 @@
                 ListView1.Items.Add(rowItem)
             End If
         Next
+        searchResults.Clear()
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
+
+    Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
+       
+    End Sub
+
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
+        If ListView1.SelectedIndices.Count = 1 Then
+
+        End If
     End Sub
 End Class
