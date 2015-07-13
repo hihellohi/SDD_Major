@@ -93,6 +93,8 @@ Public Class RootForm
         intform = STUDENT_PROFILE ' Seriously, someone should make constants for the other forms
         topform.Show()
     End Sub
+
+
 End Class
 
 Public Class KeyboardHook

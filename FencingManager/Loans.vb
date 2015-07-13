@@ -1,5 +1,9 @@
 ﻿Public Class Loans
     Dim input As String
+    Dim mode As Integer
+    Const loggedIn = 1
+    Const loggedOut = 0
+
     Public Sub kbHook(ByVal key As System.Windows.Forms.Keys)
         If key = Keys.Enter Then
             Dim tmp As Boolean = True
@@ -22,12 +26,15 @@
             If tmp = True Then
                 Label1.Text = "item not found"
             End If
-            Input = ""
+            input = ""
         Else
-            Input += Mid(key.ToString(), key.ToString().Length)
+            input += Mid(key.ToString(), key.ToString().Length)
         End If
     End Sub
-    Private Sub Loans_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
+    Private Sub Loans_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        input = ""
+        mode = 0
     End Sub
 End Class
