@@ -17,6 +17,7 @@
             If tmp = False Then
                 student = ""
                 Label1.Text = "logged out"
+                ListView1.Clear()
             End If
         End If
     End Sub
@@ -33,6 +34,7 @@
                         ListView1.Clear()
                         Dim row As DataRow
                         For Each row In GearLoaning.dataS.Tables("Gear").Rows
+                            'listview not adding things properly
                             If row("StudentLoaned").ToString = student Then
                                 Dim rowItem = New ListViewItem(row("ID").ToString())
                                 rowItem.SubItems.Add(row("GearType"))
@@ -82,5 +84,7 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         student = ""
+        Label1.Text = "logged out"
+        ListView1.Clear()
     End Sub
 End Class
