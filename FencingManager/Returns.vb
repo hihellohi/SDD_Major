@@ -3,7 +3,7 @@
 Public Class Returns
 
     Dim input As String
-
+    
 
     Public Sub kbHook(ByVal key As System.Windows.Forms.Keys)
         If key = Keys.Enter Then

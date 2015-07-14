@@ -10,6 +10,12 @@
     Public Shared adapter As New OleDb.OleDbDataAdapter
     Public Shared dataS As New DataSet()
 
+    Public Sub reload()
+        If intform = LOANS Then
+            frmloans.reload()
+        End If
+    End Sub
+
     Public Sub kbhook(ByVal key As System.Windows.Forms.Keys)
         If intform = RETURNS Then
             frmReturn.kbHook(key)
@@ -47,6 +53,7 @@
         topForm = frmloans
         intform = LOANS
         topForm.show()
+        frmloans.reload()
     End Sub
 
     Private Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click

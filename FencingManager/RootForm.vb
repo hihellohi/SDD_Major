@@ -78,6 +78,7 @@ Public Class RootForm
         topform = formGearLoaning
         intform = GEAR_LOANING
         topform.show()
+        formGearLoaning.reload()
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
@@ -93,7 +94,6 @@ Public Class RootForm
         intform = STUDENT_PROFILE ' Seriously, someone should make constants for the other forms
         topform.Show()
     End Sub
-
 
 End Class
 
