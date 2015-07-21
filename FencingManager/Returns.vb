@@ -2,14 +2,12 @@
 
 Public Class Returns
 
-    Dim input As String
-    
-
-    Public Sub kbHook(ByVal key As System.Windows.Forms.Keys)
-        If key = Keys.Enter Then
+    Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
             Dim tmp As Boolean = True
             For i = 0 To GearLoaning.dataS.Tables("Gear").Rows.Count - 1
-                If GearLoaning.dataS.Tables("Gear").Rows(i).Item(0).ToString = input Then
+                If GearLoaning.dataS.Tables("Gear").Rows(i).Item(0).ToString = TextBox2.Text Then
                     If GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0 Then
                         Label1.Text = "Item not loaned"
                     Else
@@ -27,16 +25,15 @@ Public Class Returns
             If tmp = True Then
                 Label1.Text = "item not found"
             End If
-            input = ""
-        Else
-            input += Mid(key.ToString(), key.ToString().Length)
+            TextBox2.Text = ""
         End If
     End Sub
 
     Private Sub Returns_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        input = ""
+        TextBox2.Text = ""
         Dim cb As New OleDb.OleDbCommandBuilder(GearLoaning.adapter)
         
     End Sub
+
 
 End Class

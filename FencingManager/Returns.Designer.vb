@@ -24,6 +24,7 @@ Partial Class Returns
     Private Sub InitializeComponent()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -42,10 +43,18 @@ Partial Class Returns
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Label1"
         '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(682, 287)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.TabIndex = 2
+        '
         'Returns
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1238, 667)
+        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -62,4 +71,5 @@ Partial Class Returns
     Friend WithEvents GearID As System.Windows.Forms.ColumnHeader
     Friend WithEvents Loaned As System.Windows.Forms.ColumnHeader
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
 End Class

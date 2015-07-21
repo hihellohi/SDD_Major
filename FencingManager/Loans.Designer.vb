@@ -28,6 +28,7 @@ Partial Class Loans
         Me.colItem = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colDesc = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colDueDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Button1
@@ -74,11 +75,19 @@ Partial Class Loans
         Me.colDueDate.Text = "Due Date"
         Me.colDueDate.Width = 132
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(946, 231)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox1.TabIndex = 3
+        '
         'Loans
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1238, 638)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
@@ -96,4 +105,5 @@ Partial Class Loans
     Friend WithEvents colItem As System.Windows.Forms.ColumnHeader
     Friend WithEvents colDesc As System.Windows.Forms.ColumnHeader
     Friend WithEvents colDueDate As System.Windows.Forms.ColumnHeader
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class

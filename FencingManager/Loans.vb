@@ -1,5 +1,5 @@
 ﻿Public Class Loans
-    Dim input As String
+
     Dim student As String
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim dataS As New DataSet()
@@ -22,13 +22,14 @@
         End If
     End Sub
 
-    Public Sub kbHook(ByVal key As System.Windows.Forms.Keys)
-        If key = Keys.Enter Then
+    Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
             If student = "" Then
                 Dim tmp As Boolean = False
                 For i = 0 To dataS.Tables("StudentProfiles").Rows.Count - 1
-                    If dataS.Tables("StudentProfiles").Rows(i).Item(1).ToString = input Then
-                        student = input
+                    If dataS.Tables("StudentProfiles").Rows(i).Item(1).ToString = TextBox1.Text Then
+                        student = TextBox1.Text
                         Label1.Text = dataS.Tables("StudentProfiles").Rows(i)("FirstName") + " " + dataS.Tables("StudentProfiles").Rows(i)("Surname")
                         tmp = True
                         ListView1.Clear()
@@ -47,38 +48,18 @@
                 If tmp = False Then
                     Label1.Text = "Student not Found"
                 End If
-                input = ""
+
             Else
                 'TBC
-                Dim tmp As Boolean = True
-                For i = 0 To GearLoaning.dataS.Tables("Gear").Rows.Count - 1
-                    If GearLoaning.dataS.Tables("Gear").Rows(i).Item(0).ToString = input Then
-                        If GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0 Then
-                            Label1.Text = "Item not loaned"
-                        Else
-                            Label1.Text = GearLoaning.dataS.Tables("Gear").Rows(i).Item(1)
-                            GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0
-                            GearLoaning.dataS.Tables("Gear").Rows(i).Item(4) = 0
-                            GearLoaning.dataS.Tables("Gear").Rows(i).Item(5) = 0
-                            GearLoaning.dataS.Tables("Gear").Rows(i).Item(6) = 0
-                            GearLoaning.adapter.Update(GearLoaning.dataS, "Gear")
-                        End If
-                        tmp = False
-                    End If
-                Next
-                If tmp = True Then
-                    Label1.Text = "item not found"
-                End If
-                input = ""
+
             End If
-        Else
-            input += Mid(key.ToString(), key.ToString().Length)
+            TextBox1.Text = ""
         End If
     End Sub
 
 
     Private Sub Loans_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        input = ""
+        TextBox1.Text = ""
         student = ""
     End Sub
 

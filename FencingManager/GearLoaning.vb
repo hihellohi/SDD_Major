@@ -16,13 +16,13 @@
         End If
     End Sub
 
-    Public Sub kbhook(ByVal key As System.Windows.Forms.Keys)
-        If intform = RETURNS Then
-            frmReturn.kbHook(key)
-        ElseIf intform = LOANS Then
-            frmloans.kbHook(key)
-        End If
-    End Sub
+    'Public Sub kbhook(ByVal key As System.Windows.Forms.Keys)
+    '    If intform = RETURNS Then
+    '        frmReturn.kbHook(key)
+    '    ElseIf intform = LOANS Then
+    '        frmloans.kbHook(key)
+    '    End If
+    'End Sub
 
     Private Sub GearLoaning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
