@@ -29,6 +29,8 @@ Partial Class Loans
         Me.colDesc = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colDueDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Button1
@@ -77,16 +79,34 @@ Partial Class Loans
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(946, 231)
+        Me.TextBox1.Location = New System.Drawing.Point(839, 241)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 22)
         Me.TextBox1.TabIndex = 3
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(839, 303)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.TabIndex = 4
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Days", "Weeks", "Months", "Years"})
+        Me.ComboBox1.Location = New System.Drawing.Point(1002, 301)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
+        Me.ComboBox1.TabIndex = 5
         '
         'Loans
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1238, 638)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.Label1)
@@ -106,4 +126,6 @@ Partial Class Loans
     Friend WithEvents colDesc As System.Windows.Forms.ColumnHeader
     Friend WithEvents colDueDate As System.Windows.Forms.ColumnHeader
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
 End Class
