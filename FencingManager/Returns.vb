@@ -6,17 +6,17 @@ Public Class Returns
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             Dim tmp As Boolean = True
-            For i = 0 To GearLoaning.dataS.Tables("Gear").Rows.Count - 1
-                If GearLoaning.dataS.Tables("Gear").Rows(i).Item(0).ToString = TextBox2.Text Then
-                    If GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0 Then
+            For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
+                If RootForm.GearDataS.Tables("Gear").Rows(i).Item(0).ToString = TextBox2.Text Then
+                    If RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0 Then
                         Label1.Text = "Item not loaned"
                     Else
-                        Label1.Text = GearLoaning.dataS.Tables("Gear").Rows(i).Item(1)
-                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(3) = 0
-                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(4) = 0
-                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(5) = 0
-                        GearLoaning.dataS.Tables("Gear").Rows(i).Item(6) = 0
-                        GearLoaning.adapter.Update(GearLoaning.dataS, "Gear")
+                        Label1.Text = RootForm.GearDataS.Tables("Gear").Rows(i).Item(1)
+                        RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0
+                        RootForm.GearDataS.Tables("Gear").Rows(i).Item(4) = 0
+                        RootForm.GearDataS.Tables("Gear").Rows(i).Item(5) = 0
+                        RootForm.GearDataS.Tables("Gear").Rows(i).Item(6) = 0
+                        RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
 
                     End If
                     tmp = False
@@ -31,7 +31,7 @@ Public Class Returns
 
     Private Sub Returns_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TextBox2.Text = ""
-        Dim cb As New OleDb.OleDbCommandBuilder(GearLoaning.adapter)
+        Dim cb As New OleDb.OleDbCommandBuilder(RootForm.GearAdapter)
         
     End Sub
 

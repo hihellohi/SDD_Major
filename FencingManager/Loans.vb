@@ -32,11 +32,11 @@
                         student = TextBox1.Text
                         Label1.Text = dataS.Tables("StudentProfiles").Rows(i)("FirstName") + " " + dataS.Tables("StudentProfiles").Rows(i)("Surname")
                         tmp = True
-                        ListView1.Clear()
+                        ListView1.Items.Clear()
                         Dim row As DataRow
-                        For Each row In GearLoaning.dataS.Tables("Gear").Rows
+                        For Each row In RootForm.GearDataS.Tables("Gear").Rows
                             'listview not adding things properly
-                            If row("StudentLoaned").ToString = student Then
+                            If row("StudentLoaned").ToString = student And row.RowState <> DataRowState.Deleted Then
                                 Dim rowItem = New ListViewItem(row("ID").ToString())
                                 rowItem.SubItems.Add(row("GearType"))
                                 rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
@@ -68,4 +68,5 @@
         Label1.Text = "logged out"
         ListView1.Clear()
     End Sub
+
 End Class

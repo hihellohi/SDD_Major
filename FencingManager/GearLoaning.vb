@@ -7,8 +7,7 @@
     Dim frmCatalog As New Catalog()
     Dim topForm = frmReturn
     Dim intform = RETURNS
-    Public Shared adapter As New OleDb.OleDbDataAdapter
-    Public Shared dataS As New DataSet()
+    
 
     Public Sub reload()
         If intform = LOANS Then
@@ -25,9 +24,6 @@
     'End Sub
 
     Private Sub GearLoaning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        adapter = New OleDb.OleDbDataAdapter("SELECT * FROM Gear", RootForm.connection)
-        adapter.Fill(dataS, "Gear")
 
         frmReturn.TopLevel = False
         Panel1.Controls.Add(frmReturn)

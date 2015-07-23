@@ -6,14 +6,18 @@ Imports System.Runtime.InteropServices
 Public Class RootForm
     Const STUDENT_PROFILE = 0
     Const GEAR_LOANING = 3
+    Const EMAIL = 4
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
+    Dim formEmail As New Email()
     Dim formLogin As New Login()
     Dim formCalendar As New Calendar()
     Dim topform = formStudentProfile
     Dim intform = STUDENT_PROFILE
     Public Shared connection As New OleDbConnection
+    Public Shared GearAdapter As New OleDb.OleDbDataAdapter
+    Public Shared GearDataS As New DataSet()
 
     'Private WithEvents kbHook As New KeyboardHook
 
@@ -32,7 +36,8 @@ Public Class RootForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connection = New OleDbConnection(My.Settings.FencingConnectionString)
         connection.Open()
-
+        GearAdapter = New OleDb.OleDbDataAdapter("SELECT * FROM Gear", RootForm.connection)
+        GearAdapter.Fill(GearDataS, "Gear")
         If (Screen.PrimaryScreen.Bounds.Width > 1366 And Screen.PrimaryScreen.Bounds.Height > 768) Then
             Me.FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
         End If
@@ -53,6 +58,9 @@ Public Class RootForm
 
         formCalendar.TopLevel = False
         Panel1.Controls.Add(formCalendar)
+
+        formEmail.TopLevel = False
+        Panel1.Controls.Add(formEmail)
 
         ' Show Student Profile on Load 
         'should totes change to login later
@@ -96,6 +104,12 @@ Public Class RootForm
         topform.Show()
     End Sub
 
+    Private Sub btnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
+        topform.hide()
+        topform = formEmail
+        intform = EMAIL
+        topform.show()
+    End Sub
 End Class
 
 'Public Class KeyboardHook

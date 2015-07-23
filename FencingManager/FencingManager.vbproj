@@ -109,6 +109,12 @@
     <Compile Include="ForgotPW.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Email.Designer.vb">
+      <DependentUpon>Email.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Email.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GearLoaning.Designer.vb">
       <DependentUpon>GearLoaning.vb</DependentUpon>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateProfile.resx">
       <DependentUpon>CreateProfile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email.resx">
+      <DependentUpon>Email.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GearLoaning.resx">
       <DependentUpon>GearLoaning.vb</DependentUpon>
