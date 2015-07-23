@@ -100,7 +100,7 @@
                                 RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
                                 loadTable()
                             Else
-                                Label1.Text = "Item already loaned to " + Label1.Text = RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned")
+                                Label1.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
                             End If
                             tmp = False
                         End If

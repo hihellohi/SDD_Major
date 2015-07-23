@@ -101,6 +101,7 @@ Public Class RootForm
         topform.Hide()
         topform = formCalendar
         intform = STUDENT_PROFILE ' Seriously, someone should make constants for the other forms
+        ' why don't you do it?
         topform.Show()
     End Sub
 
@@ -108,6 +109,7 @@ Public Class RootForm
         topform.hide()
         topform = formEmail
         intform = EMAIL
+        formEmail.reload()
         topform.show()
     End Sub
 End Class
