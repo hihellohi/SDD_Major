@@ -3,6 +3,7 @@
     Dim student As String
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim dataS As New DataSet()
+    Dim sort As Integer = -1
 
     Public Sub reload()
         loadTable()
@@ -18,7 +19,7 @@
             If tmp = False Then
                 student = ""
                 Label1.Text = "logged out"
-                ListView1.Clear()
+                ListView1.Items.Clear()
             End If
         End If
     End Sub
@@ -30,8 +31,9 @@
             If row("StudentLoaned").ToString = student And row.RowState <> DataRowState.Deleted Then
                 Dim rowItem = New ListViewItem(row("ID").ToString())
                 rowItem.SubItems.Add(row("GearType"))
-                rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
+                'rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
                 Dim due As New Date(row("DueYear"), row("DueMonth"), row("DueDay"))
+                rowItem.SubItems.Add(due)
                 If due < Date.Today Then
                     rowItem.BackColor = Color.Red
                 ElseIf due = Date.Today Then
@@ -139,5 +141,22 @@
             ComboBox1.Items(3) = "Years"
         End If
     End Sub
+
+    '    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
+
+
+    '        For i = 1 To ListView1.Items.Count - 1
+    '            Dim tmp As ListViewItem = ListView1.Items(i)
+    '            For j = i - 1 To 0
+    '                If comp(ListView1.Items(j), tmp, e.Column) And j <> 0 Then
+    '                    ListView1.Items(j + 1) = ListView1.Items(j)
+    '                Else
+    '                    ListView1.Items(j + 1) = tmp
+    '                    GoTo endoffor
+    '                End If
+    '            Next
+    'endoffor:
+    '        Next
+    '    End Sub
 
 End Class
