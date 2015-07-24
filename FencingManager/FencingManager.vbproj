@@ -199,9 +199,6 @@
     <EmbeddedResource Include="Email.resx">
       <DependentUpon>Email.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForgotPW.resx">
-      <DependentUpon>ForgotPW.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GearLoaning.resx">
       <DependentUpon>GearLoaning.vb</DependentUpon>
     </EmbeddedResource>
