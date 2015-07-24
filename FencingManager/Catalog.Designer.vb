@@ -22,12 +22,22 @@ Partial Class Catalog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.ListView1 = New System.Windows.Forms.ListView()
         Me.SuspendLayout()
+        '
+        'ListView1
+        '
+        Me.ListView1.Location = New System.Drawing.Point(182, 125)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(493, 320)
+        Me.ListView1.TabIndex = 0
+        Me.ListView1.UseCompatibleStateImageBehavior = False
         '
         'Catalog
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1238, 638)
+        Me.Controls.Add(Me.ListView1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Catalog"
         Me.Text = "Catalog"
@@ -35,4 +45,5 @@ Partial Class Catalog
         Me.ResumeLayout(False)
 
     End Sub
+    Friend WithEvents ListView1 As System.Windows.Forms.ListView
 End Class
