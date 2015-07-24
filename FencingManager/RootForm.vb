@@ -109,6 +109,7 @@ Public Class RootForm
         topform = formEmail
         intform = EMAIL
         topform.show()
+        formEmail.reload()
     End Sub
 End Class
 
