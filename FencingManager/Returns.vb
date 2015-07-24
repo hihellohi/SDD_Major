@@ -7,7 +7,7 @@ Public Class Returns
             e.SuppressKeyPress = True
             Dim tmp As Boolean = True
             For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
-                If RootForm.GearDataS.Tables("Gear").Rows(i).Item(0).ToString = TextBox2.Text Then
+                If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = TextBox2.Text Then
                     If RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0 Then
                         Label1.Text = "Item not loaned"
                     Else

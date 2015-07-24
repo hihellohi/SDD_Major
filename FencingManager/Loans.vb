@@ -3,6 +3,7 @@
     Dim student As String
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim dataS As New DataSet()
+    Dim things As ArrayList
     Dim sort As Integer = -1
 
     Public Sub reload()
@@ -19,17 +20,19 @@
             If tmp = False Then
                 student = ""
                 Label1.Text = "logged out"
-                ListView1.Items.Clear()
+                'ListView1.Items.Clear()
+
             End If
         End If
     End Sub
 
     Private Sub loadTable()
         ListView1.Items.Clear()
+        things = New ArrayList()
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
             If row("StudentLoaned").ToString = student And row.RowState <> DataRowState.Deleted Then
-                Dim rowItem = New ListViewItem(row("ID").ToString())
+                Dim rowItem = New ListViewItem(row("GearID").ToString())
                 rowItem.SubItems.Add(row("GearType"))
                 'rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
                 Dim due As New Date(row("DueYear"), row("DueMonth"), row("DueDay"))
@@ -40,6 +43,7 @@
                     rowItem.BackColor = Color.Yellow
                 End If
                 ListView1.Items.Add(rowItem)
+                things.Add(row("ID"))
             End If
         Next
     End Sub
@@ -79,7 +83,7 @@
                 If valid Then
                     Dim tmp As Boolean = True
                     For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
-                        If RootForm.GearDataS.Tables("Gear").Rows(i).Item(0).ToString = TextBox1.Text Then
+                        If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = TextBox1.Text Then
                             If RootForm.GearDataS.Tables("Gear").Rows(i)("StudentLoaned") = 0 Then
                                 RootForm.GearDataS.Tables("Gear").Rows(i)("StudentLoaned") = student
                                 Dim cur As Date = Date.Today
@@ -139,6 +143,18 @@
             ComboBox1.Items(1) = "Weeks"
             ComboBox1.Items(2) = "Months"
             ComboBox1.Items(3) = "Years"
+        End If
+    End Sub
+
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseClick
+        If ListView1.SelectedIndices.Count = 1 Then
+            Dim iter As DataRow
+            For Each iter In RootForm.GearDataS.Tables("Gear").Rows
+                If iter("ID") = things(ListView1.SelectedIndices(0)) Then
+                    MsgBox(iter("ID"))
+                    'Do things
+                End If
+            Next
         End If
     End Sub
 
