@@ -54,6 +54,7 @@ Partial Class Loans
         'ListView1
         '
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colItem, Me.colDesc, Me.colDueDate})
+        Me.ListView1.FullRowSelect = True
         Me.ListView1.GridLines = True
         Me.ListView1.Location = New System.Drawing.Point(223, 208)
         Me.ListView1.Name = "ListView1"
