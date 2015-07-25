@@ -46,7 +46,7 @@ Partial Class Catalog
         '
         'colItem
         '
-        Me.colItem.Text = "Loaned Item ID "
+        Me.colItem.Text = "Loaned Item ID v"
         Me.colItem.Width = 113
         '
         'colDesc

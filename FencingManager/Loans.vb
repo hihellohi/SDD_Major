@@ -146,7 +146,7 @@
         End If
     End Sub
 
-    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseClick
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseDoubleClick
         If ListView1.SelectedIndices.Count = 1 Then
             Dim iter As DataRow
             For Each iter In RootForm.GearDataS.Tables("Gear").Rows

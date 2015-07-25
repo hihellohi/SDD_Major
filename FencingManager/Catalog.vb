@@ -1,6 +1,7 @@
 ﻿Public Class Catalog
 
     Structure item
+        Public id As Integer
         Public student As Integer
         Public due As Date
         Public gearID As Integer
@@ -8,7 +9,7 @@
     End Structure
 
     Dim things As New List(Of item)()
-    Dim sort As Integer = 0
+    Dim sort As Integer = -1
 
     Public Sub reload()
         things.Clear()
@@ -26,6 +27,7 @@
             End If
             If valid Then
                 Dim rowItem = New item
+                rowItem.id = row("ID")
                 rowItem.gearID = row("GearID")
                 rowItem.gearType = row("GearType")
                 'rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
@@ -38,9 +40,7 @@
                 things.Add(rowItem)
             End If
         Next
-        If sort Then
-            sort_things()
-        End If
+        sort_things()
         loadTable()
     End Sub
 
@@ -159,7 +159,6 @@
             reload()
         End If
         old = TextBox1.Text
-
     End Sub
 
     Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
@@ -179,4 +178,12 @@
         End If
         loadTable()
     End Sub
+
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseDoubleClick
+        If ListView1.SelectedIndices.Count = 1 Then
+            MsgBox(things(ListView1.SelectedIndices(0)).id)
+            'Do things
+        End If
+    End Sub
+
 End Class
