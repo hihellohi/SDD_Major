@@ -43,8 +43,36 @@
     End Sub
 
     Private Sub sort_things()
-     
+        'Heapsort master race
+        Dim heap(things.Count + 1) As item
+        Dim count As Integer = 1
+        Dim tmp As item
+
+        'construct heap
+        For Each tmp In things
+            heap(count) = tmp
+
+            'bubble up
+            Dim bubble As Integer = count
+            While comp(heap(bubble), heap(Math.Floor(bubble / 2))) And bubble <> 1
+                Dim temp As item = heap(Math.Floor(bubble / 2))
+                heap(Math.Floor(bubble / 2)) = heap(bubble)
+                heap(bubble) = heap(Math.Floor(bubble / 2))
+                bubble = Math.Floor(bubble / 2)
+            End While
+            count += 1
+        Next
+        things.Clear()
+
+        'construct sorted list
+        For i = 1 To count
+            things.Add(heap(1))
+        Next
     End Sub
+
+    Private Function comp(ByVal a As item, ByVal b As item)
+        Return a.due > b.due
+    End Function
 
     Private Sub loadTable()
         ListView1.Items.Clear()
