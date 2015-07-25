@@ -44,10 +44,12 @@
 
     Private Sub sort_things()
         'Heapsort master race
-        Dim heap(things.Count + 1) As item
+        Dim heap(1 + (things.Count * 2)) As item
         Dim count As Integer = 1
         Dim tmp As item
-
+        For i = 0 To (1 + (things.Count * 2))
+            heap(i).gearID = -1
+        Next
         'construct heap
         For Each tmp In things
             heap(count) = tmp
@@ -65,8 +67,19 @@
         things.Clear()
 
         'construct sorted list
-        For i = 1 To count
+        For i = 1 To count - 1
             things.Add(heap(1))
+            Dim bubble As Integer = 1
+            While heap(bubble * 2).gearID <> -1 Or heap((bubble * 2) + 1).gearID <> -1
+                If (comp(heap(bubble * 2), heap((bubble * 2) + 1)) Or heap((bubble * 2) + 1).gearID = -1) And heap(bubble * 2).gearID <> -1 Then
+                    heap(bubble) = heap(bubble * 2)
+                    bubble *= 2
+                Else
+                    heap(bubble) = heap((bubble * 2) + 1)
+                    bubble = (bubble * 2) + 1
+                End If
+            End While
+            heap(bubble).gearID = -1
         Next
     End Sub
 
