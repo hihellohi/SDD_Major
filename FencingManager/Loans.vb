@@ -3,7 +3,7 @@
     Dim student As String
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim dataS As New DataSet()
-    Dim things As ArrayList
+    Dim things As ArrayList = New ArrayList
     Dim sort As Integer = -1
 
     Public Sub reload()
@@ -28,7 +28,7 @@
 
     Private Sub loadTable()
         ListView1.Items.Clear()
-        things = New ArrayList()
+        things.Clear()
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
             If row("StudentLoaned").ToString = student And row.RowState <> DataRowState.Deleted Then

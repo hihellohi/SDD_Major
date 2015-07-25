@@ -57,5 +57,6 @@
         topForm = frmCatalog
         intform = CATALOG
         topForm.show()
+        frmCatalog.reload()
     End Sub
 End Class
