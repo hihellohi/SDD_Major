@@ -8,7 +8,7 @@
     End Structure
 
     Dim things As New List(Of item)()
-    Dim sort As Integer
+    Dim sort As Integer = 0
 
     Public Sub reload()
         things.Clear()
@@ -33,12 +33,14 @@
                 If row("StudentLoaned") <> 0 Then
                     rowItem.due = New Date(row("DueYear"), row("DueMonth"), row("DueDay"))
                 Else
-                    rowItem.due = New Date(1, 1, 1)
+                    rowItem.due = New Date(9999, 12, 31)
                 End If
                 things.Add(rowItem)
             End If
         Next
-        sort_things()
+        If sort Then
+            sort_things()
+        End If
         loadTable()
     End Sub
 
@@ -49,6 +51,7 @@
         Dim tmp As item
         For i = 0 To (1 + (things.Count * 2))
             heap(i).gearID = -1
+            heap(i).gearType = ""
         Next
         'construct heap
         For Each tmp In things
@@ -59,7 +62,7 @@
             While comp(heap(bubble), heap(Math.Floor(bubble / 2))) And bubble <> 1
                 Dim temp As item = heap(Math.Floor(bubble / 2))
                 heap(Math.Floor(bubble / 2)) = heap(bubble)
-                heap(bubble) = heap(Math.Floor(bubble / 2))
+                heap(bubble) = temp
                 bubble = Math.Floor(bubble / 2)
             End While
             count += 1
@@ -69,6 +72,8 @@
         'construct sorted list
         For i = 1 To count - 1
             things.Add(heap(1))
+
+            'bubble up
             Dim bubble As Integer = 1
             While heap(bubble * 2).gearID <> -1 Or heap((bubble * 2) + 1).gearID <> -1
                 If (comp(heap(bubble * 2), heap((bubble * 2) + 1)) Or heap((bubble * 2) + 1).gearID = -1) And heap(bubble * 2).gearID <> -1 Then
@@ -84,7 +89,25 @@
     End Sub
 
     Private Function comp(ByVal a As item, ByVal b As item)
-        Return a.due > b.due
+        Select Case sort
+            Case -4
+                Return a.due <= b.due
+            Case -3
+                Return a.student <= b.student
+            Case -2
+                Return a.gearType.ToLower().Trim(" ") <= b.gearType.ToLower().Trim(" ")
+            Case -1
+                Return a.gearID <= b.gearID
+            Case 4
+                Return a.due > b.due
+            Case 3
+                Return a.student > b.student
+            Case 2
+                Return a.gearType.ToLower().Trim(" ") > b.gearType.ToLower.Trim(" ")
+            Case Else
+                Return a.gearID > b.gearID
+        End Select
+
     End Function
 
     Private Sub loadTable()
@@ -139,4 +162,21 @@
 
     End Sub
 
+    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
+        If sort <> -(e.Column + 1) Then
+            sort = -(e.Column + 1)
+            sort_things()
+            For i = 0 To 3
+                ListView1.Columns(i).Text = ListView1.Columns(i).Text.Trim("^")
+                ListView1.Columns(i).Text = ListView1.Columns(i).Text.Trim("v")
+            Next
+            ListView1.Columns(e.Column).Text += "v"
+        Else
+            sort = (e.Column + 1)
+            things.Reverse()
+            ListView1.Columns(e.Column).Text = ListView1.Columns(e.Column).Text.Trim("v")
+            ListView1.Columns(e.Column).Text += "^"
+        End If
+        loadTable()
+    End Sub
 End Class

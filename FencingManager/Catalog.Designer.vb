@@ -39,29 +39,29 @@ Partial Class Catalog
         Me.ListView1.GridLines = True
         Me.ListView1.Location = New System.Drawing.Point(75, 211)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(479, 279)
+        Me.ListView1.Size = New System.Drawing.Size(521, 279)
         Me.ListView1.TabIndex = 3
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
         '
         'colItem
         '
-        Me.colItem.Text = "Loaned Item ID"
+        Me.colItem.Text = "Loaned Item ID "
         Me.colItem.Width = 113
         '
         'colDesc
         '
-        Me.colDesc.Text = "Item Description"
-        Me.colDesc.Width = 111
+        Me.colDesc.Text = "Item Description "
+        Me.colDesc.Width = 150
         '
         'colStudentLoaned
         '
-        Me.colStudentLoaned.Text = "Student Loaned"
+        Me.colStudentLoaned.Text = "Student Loaned "
         Me.colStudentLoaned.Width = 118
         '
         'colDueDate
         '
-        Me.colDueDate.Text = "Due Date"
+        Me.colDueDate.Text = "Due Date "
         Me.colDueDate.Width = 132
         '
         'TextBox1

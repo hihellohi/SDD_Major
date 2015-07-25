@@ -56,9 +56,9 @@ Partial Class Loans
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colItem, Me.colDesc, Me.colDueDate})
         Me.ListView1.FullRowSelect = True
         Me.ListView1.GridLines = True
-        Me.ListView1.Location = New System.Drawing.Point(223, 208)
+        Me.ListView1.Location = New System.Drawing.Point(204, 209)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(362, 279)
+        Me.ListView1.Size = New System.Drawing.Size(387, 279)
         Me.ListView1.TabIndex = 2
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
@@ -71,12 +71,12 @@ Partial Class Loans
         'colDesc
         '
         Me.colDesc.Text = "Item Description"
-        Me.colDesc.Width = 111
+        Me.colDesc.Width = 160
         '
         'colDueDate
         '
         Me.colDueDate.Text = "Due Date"
-        Me.colDueDate.Width = 132
+        Me.colDueDate.Width = 108
         '
         'TextBox1
         '
