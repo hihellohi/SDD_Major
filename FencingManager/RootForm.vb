@@ -66,6 +66,11 @@ Public Class RootForm
         ' Show Student Profile on Load 
         'should totes change to login later
         formStudentProfile.Show()
+        'I need student profile database to be loaded lol
+        topform.hide()
+        topform = formLogin
+        intform = STUDENT_PROFILE
+        topform.show()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
