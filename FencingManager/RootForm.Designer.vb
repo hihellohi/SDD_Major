@@ -139,7 +139,7 @@ Partial Class RootForm
         Me.MaximizeBox = False
         Me.Name = "RootForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "Fencing Manager"
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

@@ -7,6 +7,7 @@ Public Class RootForm
     Const STUDENT_PROFILE = 0
     Const GEAR_LOANING = 3
     Const EMAIL = 4
+    Const ATTENDANCE = 2
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
@@ -63,6 +64,9 @@ Public Class RootForm
         formEmail.TopLevel = False
         Panel1.Controls.Add(formEmail)
 
+        formAttendance.TopLevel = False
+        Panel1.Controls.Add(formAttendance)
+
         ' Show Student Profile on Load 
         'should totes change to login later
         formStudentProfile.Show()
@@ -85,7 +89,10 @@ Public Class RootForm
     End Sub
 
     Private Sub btnAttendance_Click(sender As Object, e As EventArgs) Handles btnAttendance.Click
-
+        topform.hide()
+        topform = formAttendance
+        intform = ATTENDANCE
+        topform.show()
     End Sub
 
     Private Sub btnGearLoan_Click(sender As Object, e As EventArgs) Handles btnGearLoan.Click
