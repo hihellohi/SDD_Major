@@ -193,11 +193,17 @@
     <EmbeddedResource Include="Catalog.resx">
       <DependentUpon>Catalog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateAcc.resx">
+      <DependentUpon>CreateAcc.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateProfile.resx">
       <DependentUpon>CreateProfile.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Email.resx">
       <DependentUpon>Email.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPW.resx">
+      <DependentUpon>ForgotPW.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GearLoaning.resx">
       <DependentUpon>GearLoaning.vb</DependentUpon>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PWChange.resx">
+      <DependentUpon>PWChange.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Returns.resx">
       <DependentUpon>Returns.vb</DependentUpon>

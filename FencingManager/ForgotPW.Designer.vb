@@ -78,7 +78,7 @@ Partial Class ForgotPW
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(426, 373)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(224, 30)
+        Me.Label2.Size = New System.Drawing.Size(222, 30)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Enter Your ID Number:"
         '
@@ -88,14 +88,13 @@ Partial Class ForgotPW
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(493, 172)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(240, 30)
+        Me.Label1.Size = New System.Drawing.Size(237, 30)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Forgot Your Password?"
         '
         'ForgotPW
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Button2)

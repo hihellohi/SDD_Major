@@ -97,7 +97,7 @@ Partial Class CreateAcc
         Me.Label6.ForeColor = System.Drawing.Color.Red
         Me.Label6.Location = New System.Drawing.Point(704, 455)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(178, 21)
+        Me.Label6.Size = New System.Drawing.Size(177, 21)
         Me.Label6.TabIndex = 41
         Me.Label6.Text = "Passwords don't match"
         Me.Label6.Visible = False
@@ -161,7 +161,7 @@ Partial Class CreateAcc
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(370, 359)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 30)
+        Me.Label3.Size = New System.Drawing.Size(99, 30)
         Me.Label3.TabIndex = 38
         Me.Label3.Text = "Password"
         '
@@ -207,8 +207,7 @@ Partial Class CreateAcc
         '
         'CreateAcc
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.TextBox4)

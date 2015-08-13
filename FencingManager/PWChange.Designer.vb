@@ -55,7 +55,7 @@ Partial Class PWChange
         Me.Label6.ForeColor = System.Drawing.Color.Red
         Me.Label6.Location = New System.Drawing.Point(840, 304)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(186, 21)
+        Me.Label6.Size = New System.Drawing.Size(185, 21)
         Me.Label6.TabIndex = 23
         Me.Label6.Text = "Passwords don't match"
         Me.Label6.Visible = False
@@ -107,7 +107,7 @@ Partial Class PWChange
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(312, 297)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(228, 30)
+        Me.Label4.Size = New System.Drawing.Size(227, 30)
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Confirm New Password"
         '
@@ -117,7 +117,7 @@ Partial Class PWChange
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(312, 224)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(148, 30)
+        Me.Label3.Size = New System.Drawing.Size(147, 30)
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "New Password"
         '
@@ -127,7 +127,7 @@ Partial Class PWChange
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(312, 149)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(139, 30)
+        Me.Label2.Size = New System.Drawing.Size(138, 30)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Old Password"
         '
@@ -146,7 +146,7 @@ Partial Class PWChange
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(563, 58)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(271, 45)
+        Me.Label1.Size = New System.Drawing.Size(270, 45)
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Change Password"
         '
@@ -163,8 +163,7 @@ Partial Class PWChange
         '
         'PWChange
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label7)

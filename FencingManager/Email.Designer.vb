@@ -30,49 +30,53 @@ Partial Class Email
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(150, 144)
+        Me.Button1.Location = New System.Drawing.Point(112, 117)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(108, 23)
+        Me.Button1.Size = New System.Drawing.Size(81, 19)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Send Overdue"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(150, 200)
+        Me.Button2.Location = New System.Drawing.Point(112, 162)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(108, 23)
+        Me.Button2.Size = New System.Drawing.Size(81, 19)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "Send general"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(150, 253)
+        Me.Button3.Location = New System.Drawing.Point(112, 206)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(108, 23)
+        Me.Button3.Size = New System.Drawing.Size(81, 19)
         Me.Button3.TabIndex = 2
         Me.Button3.Text = "Send Both"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(583, 144)
+        Me.TextBox1.Location = New System.Drawing.Point(437, 117)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(381, 132)
+        Me.TextBox1.Size = New System.Drawing.Size(287, 108)
         Me.TextBox1.TabIndex = 3
         '
         'Email
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1238, 721)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.ClientSize = New System.Drawing.Size(928, 586)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Email"
         Me.Text = "Form1"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
