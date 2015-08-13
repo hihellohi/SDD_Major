@@ -160,6 +160,7 @@ Partial Class StudentProfilesCreate
         '
         'btnSave
         '
+        Me.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.btnSave.Location = New System.Drawing.Point(358, 413)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(131, 42)
@@ -169,6 +170,7 @@ Partial Class StudentProfilesCreate
         '
         'btnCancel
         '
+        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancel.Location = New System.Drawing.Point(505, 413)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(131, 42)

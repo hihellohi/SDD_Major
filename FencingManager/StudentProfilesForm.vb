@@ -102,7 +102,15 @@
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-        Dim formNew As New StudentProfilesCreate()
+        Dim newRow As FencingDataSet.StudentProfilesRow
+        newRow = studentDataSet.NewStudentProfilesRow()
+        Dim formNew As New StudentProfilesCreate(newRow)
         formNew.ShowDialog()
+        If formNew.DialogResult = Windows.Forms.DialogResult.OK Then
+            studentDataSet.AddStudentProfilesRow(formNew.newRow)
+            adapter1.Update(studentDataSet)
+        Else
+            'MessageBox.Show("Cancelled")
+        End If
     End Sub
 End Class
