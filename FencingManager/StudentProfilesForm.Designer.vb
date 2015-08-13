@@ -42,6 +42,7 @@ Partial Class StudentProfilesForm
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.btnNew = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -50,6 +51,7 @@ Partial Class StudentProfilesForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Panel1.Controls.Add(Me.btnNew)
         Me.Panel1.Controls.Add(Me.btnSearch)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -237,6 +239,15 @@ Partial Class StudentProfilesForm
         Me.CheckBox2.Text = "First Name"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
+        'btnNew
+        '
+        Me.btnNew.Location = New System.Drawing.Point(928, 28)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(88, 47)
+        Me.btnNew.TabIndex = 4
+        Me.btnNew.Text = "New.."
+        Me.btnNew.UseVisualStyleBackColor = True
+        '
         'StudentProfilesForm
         '
         Me.AcceptButton = Me.btnSearch
@@ -282,4 +293,5 @@ Partial Class StudentProfilesForm
     Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents btnNew As System.Windows.Forms.Button
 End Class

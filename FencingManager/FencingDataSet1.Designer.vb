@@ -1785,8 +1785,6 @@ Partial Public Class FencingDataSet
 
         Private columnFirstName As Global.System.Data.DataColumn
 
-        Private columnYearGroup As Global.System.Data.DataColumn
-
         Private columnSchoolYear As Global.System.Data.DataColumn
 
         Private columntotalAbsences As Global.System.Data.DataColumn
@@ -1810,6 +1808,8 @@ Partial Public Class FencingDataSet
         Private columnDeaths As Global.System.Data.DataColumn
 
         Private columnYearJoined As Global.System.Data.DataColumn
+
+        Private columnYearGroup As Global.System.Data.DataColumn
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
@@ -1875,14 +1875,6 @@ Partial Public Class FencingDataSet
         Public ReadOnly Property FirstNameColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnFirstName
-            End Get
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property YearGroupColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnYearGroup
             End Get
         End Property
 
@@ -1983,6 +1975,14 @@ Partial Public Class FencingDataSet
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property YearGroupColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYearGroup
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
          Global.System.ComponentModel.Browsable(False)> _
         Public ReadOnly Property Count() As Integer
@@ -2023,7 +2023,6 @@ Partial Public Class FencingDataSet
                     ByVal StudentID As Integer, _
                     ByVal Surname As String, _
                     ByVal FirstName As String, _
-                    ByVal YearGroup As Short, _
                     ByVal SchoolYear As Short, _
                     ByVal totalAbsences As Short, _
                     ByVal unexplainedAbsences As Short, _
@@ -2035,9 +2034,10 @@ Partial Public Class FencingDataSet
                     ByVal Losses As Short, _
                     ByVal Kills As Short, _
                     ByVal Deaths As Short, _
-                    ByVal YearJoined As Short) As StudentProfilesRow
+                    ByVal YearJoined As Short, _
+                    ByVal YearGroup As Short) As StudentProfilesRow
             Dim rowStudentProfilesRow As StudentProfilesRow = CType(Me.NewRow, StudentProfilesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, StudentID, Surname, FirstName, YearGroup, SchoolYear, totalAbsences, unexplainedAbsences, totalPresences, PhoneNum, Email, Weapon, Wins, Losses, Kills, Deaths, YearJoined}
+            Dim columnValuesArray() As Object = New Object() {Nothing, StudentID, Surname, FirstName, SchoolYear, totalAbsences, unexplainedAbsences, totalPresences, PhoneNum, Email, Weapon, Wins, Losses, Kills, Deaths, YearJoined, YearGroup}
             rowStudentProfilesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowStudentProfilesRow)
             Return rowStudentProfilesRow
@@ -2070,7 +2070,6 @@ Partial Public Class FencingDataSet
             Me.columnStudentID = MyBase.Columns("StudentID")
             Me.columnSurname = MyBase.Columns("Surname")
             Me.columnFirstName = MyBase.Columns("FirstName")
-            Me.columnYearGroup = MyBase.Columns("YearGroup")
             Me.columnSchoolYear = MyBase.Columns("SchoolYear")
             Me.columntotalAbsences = MyBase.Columns("totalAbsences")
             Me.columnunexplainedAbsences = MyBase.Columns("unexplainedAbsences")
@@ -2083,6 +2082,7 @@ Partial Public Class FencingDataSet
             Me.columnKills = MyBase.Columns("Kills")
             Me.columnDeaths = MyBase.Columns("Deaths")
             Me.columnYearJoined = MyBase.Columns("YearJoined")
+            Me.columnYearGroup = MyBase.Columns("YearGroup")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -2096,8 +2096,6 @@ Partial Public Class FencingDataSet
             MyBase.Columns.Add(Me.columnSurname)
             Me.columnFirstName = New Global.System.Data.DataColumn("FirstName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFirstName)
-            Me.columnYearGroup = New Global.System.Data.DataColumn("YearGroup", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnYearGroup)
             Me.columnSchoolYear = New Global.System.Data.DataColumn("SchoolYear", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSchoolYear)
             Me.columntotalAbsences = New Global.System.Data.DataColumn("totalAbsences", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
@@ -2122,6 +2120,8 @@ Partial Public Class FencingDataSet
             MyBase.Columns.Add(Me.columnDeaths)
             Me.columnYearJoined = New Global.System.Data.DataColumn("YearJoined", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnYearJoined)
+            Me.columnYearGroup = New Global.System.Data.DataColumn("YearGroup", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYearGroup)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnStudentID}, True))
             Me.columnID.AutoIncrement = True
             Me.columnID.AutoIncrementSeed = -1
@@ -3031,21 +3031,6 @@ Partial Public Class FencingDataSet
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property YearGroup() As Short
-            Get
-                Try
-                    Return CType(Me(Me.tableStudentProfiles.YearGroupColumn), Short)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'YearGroup' in table 'StudentProfiles' is DBNull.", e)
-                End Try
-            End Get
-            Set(value As Short)
-                Me(Me.tableStudentProfiles.YearGroupColumn) = value
-            End Set
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Property SchoolYear() As Short
             Get
                 Try
@@ -3226,6 +3211,21 @@ Partial Public Class FencingDataSet
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property YearGroup() As Short
+            Get
+                Try
+                    Return CType(Me(Me.tableStudentProfiles.YearGroupColumn), Short)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'YearGroup' in table 'StudentProfiles' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Short)
+                Me(Me.tableStudentProfiles.YearGroupColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Function IsIDNull() As Boolean
             Return Me.IsNull(Me.tableStudentProfiles.IDColumn)
         End Function
@@ -3258,18 +3258,6 @@ Partial Public Class FencingDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub SetFirstNameNull()
             Me(Me.tableStudentProfiles.FirstNameColumn) = Global.System.Convert.DBNull
-        End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsYearGroupNull() As Boolean
-            Return Me.IsNull(Me.tableStudentProfiles.YearGroupColumn)
-        End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetYearGroupNull()
-            Me(Me.tableStudentProfiles.YearGroupColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -3414,6 +3402,18 @@ Partial Public Class FencingDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub SetYearJoinedNull()
             Me(Me.tableStudentProfiles.YearJoinedColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsYearGroupNull() As Boolean
+            Return Me.IsNull(Me.tableStudentProfiles.YearGroupColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetYearGroupNull()
+            Me(Me.tableStudentProfiles.YearGroupColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -5529,7 +5529,6 @@ Namespace FencingDataSetTableAdapters
             tableMapping.ColumnMappings.Add("StudentID", "StudentID")
             tableMapping.ColumnMappings.Add("Surname", "Surname")
             tableMapping.ColumnMappings.Add("FirstName", "FirstName")
-            tableMapping.ColumnMappings.Add("Group", "YearGroup")
             tableMapping.ColumnMappings.Add("SchoolYear", "SchoolYear")
             tableMapping.ColumnMappings.Add("totalAbsences", "totalAbsences")
             tableMapping.ColumnMappings.Add("unexplainedAbsences", "unexplainedAbsences")
@@ -5542,22 +5541,23 @@ Namespace FencingDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Kills", "Kills")
             tableMapping.ColumnMappings.Add("Deaths", "Deaths")
             tableMapping.ColumnMappings.Add("YearJoined", "YearJoined")
+            tableMapping.ColumnMappings.Add("YearGroup", "YearGroup")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `StudentProfiles` WHERE (((? = 1 AND `ID` IS NULL) OR (`ID` = ?)) AND" & _
                 " (`StudentID` = ?) AND ((? = 1 AND `Surname` IS NULL) OR (`Surname` = ?)) AND ((" & _
-                "? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND ((? = 1 AND `Group` IS " & _
-                "NULL) OR (`Group` = ?)) AND ((? = 1 AND `SchoolYear` IS NULL) OR (`SchoolYear` =" & _
-                " ?)) AND ((? = 1 AND `totalAbsences` IS NULL) OR (`totalAbsences` = ?)) AND ((? " & _
-                "= 1 AND `unexplainedAbsences` IS NULL) OR (`unexplainedAbsences` = ?)) AND ((? =" & _
-                " 1 AND `totalPresences` IS NULL) OR (`totalPresences` = ?)) AND ((? = 1 AND `Pho" & _
-                "neNum` IS NULL) OR (`PhoneNum` = ?)) AND ((? = 1 AND `Email` IS NULL) OR (`Email" & _
-                "` = ?)) AND ((? = 1 AND `Weapon` IS NULL) OR (`Weapon` = ?)) AND ((? = 1 AND `Wi" & _
-                "ns` IS NULL) OR (`Wins` = ?)) AND ((? = 1 AND `Losses` IS NULL) OR (`Losses` = ?" & _
-                ")) AND ((? = 1 AND `Kills` IS NULL) OR (`Kills` = ?)) AND ((? = 1 AND `Deaths` I" & _
-                "S NULL) OR (`Deaths` = ?)) AND ((? = 1 AND `YearJoined` IS NULL) OR (`YearJoined" & _
-                "` = ?)))"
+                "? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND ((? = 1 AND `YearGroup`" & _
+                " IS NULL) OR (`YearGroup` = ?)) AND ((? = 1 AND `SchoolYear` IS NULL) OR (`Schoo" & _
+                "lYear` = ?)) AND ((? = 1 AND `totalAbsences` IS NULL) OR (`totalAbsences` = ?)) " & _
+                "AND ((? = 1 AND `unexplainedAbsences` IS NULL) OR (`unexplainedAbsences` = ?)) A" & _
+                "ND ((? = 1 AND `totalPresences` IS NULL) OR (`totalPresences` = ?)) AND ((? = 1 " & _
+                "AND `PhoneNum` IS NULL) OR (`PhoneNum` = ?)) AND ((? = 1 AND `Email` IS NULL) OR" & _
+                " (`Email` = ?)) AND ((? = 1 AND `Weapon` IS NULL) OR (`Weapon` = ?)) AND ((? = 1" & _
+                " AND `Wins` IS NULL) OR (`Wins` = ?)) AND ((? = 1 AND `Losses` IS NULL) OR (`Los" & _
+                "ses` = ?)) AND ((? = 1 AND `Kills` IS NULL) OR (`Kills` = ?)) AND ((? = 1 AND `D" & _
+                "eaths` IS NULL) OR (`Deaths` = ?)) AND ((? = 1 AND `YearJoined` IS NULL) OR (`Ye" & _
+                "arJoined` = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, True, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
@@ -5566,8 +5566,8 @@ Namespace FencingDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Surname", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Surname", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_FirstName", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "FirstName", Global.System.Data.DataRowVersion.Original, True, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FirstName", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "FirstName", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Group", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Group", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Group", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Group", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_YearGroup", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearGroup", Global.System.Data.DataRowVersion.Original, True, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_YearGroup", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearGroup", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_SchoolYear", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "SchoolYear", Global.System.Data.DataRowVersion.Original, True, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_SchoolYear", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "SchoolYear", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_totalAbsences", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "totalAbsences", Global.System.Data.DataRowVersion.Original, True, Nothing))
@@ -5594,15 +5594,15 @@ Namespace FencingDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_YearJoined", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearJoined", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `StudentProfiles` (`StudentID`, `Surname`, `FirstName`, `Group`, `Sch" & _
-                "oolYear`, `totalAbsences`, `unexplainedAbsences`, `totalPresences`, `PhoneNum`, " & _
-                "`Email`, `Weapon`, `Wins`, `Losses`, `Kills`, `Deaths`, `YearJoined`) VALUES (?," & _
-                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `StudentProfiles` (`StudentID`, `Surname`, `FirstName`, `YearGroup`, " & _
+                "`SchoolYear`, `totalAbsences`, `unexplainedAbsences`, `totalPresences`, `PhoneNu" & _
+                "m`, `Email`, `Weapon`, `Wins`, `Losses`, `Kills`, `Deaths`, `YearJoined`) VALUES" & _
+                " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("StudentID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "StudentID", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Surname", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Surname", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FirstName", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "FirstName", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Group", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Group", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("YearGroup", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearGroup", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SchoolYear", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "SchoolYear", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("totalAbsences", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "totalAbsences", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("unexplainedAbsences", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "unexplainedAbsences", Global.System.Data.DataRowVersion.Current, False, Nothing))
@@ -5617,27 +5617,27 @@ Namespace FencingDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("YearJoined", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearJoined", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `StudentProfiles` SET `StudentID` = ?, `Surname` = ?, `FirstName` = ?, `Gr" & _
-                "oup` = ?, `SchoolYear` = ?, `totalAbsences` = ?, `unexplainedAbsences` = ?, `tot" & _
-                "alPresences` = ?, `PhoneNum` = ?, `Email` = ?, `Weapon` = ?, `Wins` = ?, `Losses" & _
-                "` = ?, `Kills` = ?, `Deaths` = ?, `YearJoined` = ? WHERE (((? = 1 AND `ID` IS NU" & _
-                "LL) OR (`ID` = ?)) AND (`StudentID` = ?) AND ((? = 1 AND `Surname` IS NULL) OR (" & _
-                "`Surname` = ?)) AND ((? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND (" & _
-                "(? = 1 AND `Group` IS NULL) OR (`Group` = ?)) AND ((? = 1 AND `SchoolYear` IS NU" & _
-                "LL) OR (`SchoolYear` = ?)) AND ((? = 1 AND `totalAbsences` IS NULL) OR (`totalAb" & _
-                "sences` = ?)) AND ((? = 1 AND `unexplainedAbsences` IS NULL) OR (`unexplainedAbs" & _
-                "ences` = ?)) AND ((? = 1 AND `totalPresences` IS NULL) OR (`totalPresences` = ?)" & _
-                ") AND ((? = 1 AND `PhoneNum` IS NULL) OR (`PhoneNum` = ?)) AND ((? = 1 AND `Emai" & _
-                "l` IS NULL) OR (`Email` = ?)) AND ((? = 1 AND `Weapon` IS NULL) OR (`Weapon` = ?" & _
-                ")) AND ((? = 1 AND `Wins` IS NULL) OR (`Wins` = ?)) AND ((? = 1 AND `Losses` IS " & _
-                "NULL) OR (`Losses` = ?)) AND ((? = 1 AND `Kills` IS NULL) OR (`Kills` = ?)) AND " & _
-                "((? = 1 AND `Deaths` IS NULL) OR (`Deaths` = ?)) AND ((? = 1 AND `YearJoined` IS" & _
-                " NULL) OR (`YearJoined` = ?)))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `StudentProfiles` SET `StudentID` = ?, `Surname` = ?, `FirstName` = ?, `Ye" & _
+                "arGroup` = ?, `SchoolYear` = ?, `totalAbsences` = ?, `unexplainedAbsences` = ?, " & _
+                "`totalPresences` = ?, `PhoneNum` = ?, `Email` = ?, `Weapon` = ?, `Wins` = ?, `Lo" & _
+                "sses` = ?, `Kills` = ?, `Deaths` = ?, `YearJoined` = ? WHERE (((? = 1 AND `ID` I" & _
+                "S NULL) OR (`ID` = ?)) AND (`StudentID` = ?) AND ((? = 1 AND `Surname` IS NULL) " & _
+                "OR (`Surname` = ?)) AND ((? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) A" & _
+                "ND ((? = 1 AND `YearGroup` IS NULL) OR (`YearGroup` = ?)) AND ((? = 1 AND `Schoo" & _
+                "lYear` IS NULL) OR (`SchoolYear` = ?)) AND ((? = 1 AND `totalAbsences` IS NULL) " & _
+                "OR (`totalAbsences` = ?)) AND ((? = 1 AND `unexplainedAbsences` IS NULL) OR (`un" & _
+                "explainedAbsences` = ?)) AND ((? = 1 AND `totalPresences` IS NULL) OR (`totalPre" & _
+                "sences` = ?)) AND ((? = 1 AND `PhoneNum` IS NULL) OR (`PhoneNum` = ?)) AND ((? =" & _
+                " 1 AND `Email` IS NULL) OR (`Email` = ?)) AND ((? = 1 AND `Weapon` IS NULL) OR (" & _
+                "`Weapon` = ?)) AND ((? = 1 AND `Wins` IS NULL) OR (`Wins` = ?)) AND ((? = 1 AND " & _
+                "`Losses` IS NULL) OR (`Losses` = ?)) AND ((? = 1 AND `Kills` IS NULL) OR (`Kills" & _
+                "` = ?)) AND ((? = 1 AND `Deaths` IS NULL) OR (`Deaths` = ?)) AND ((? = 1 AND `Ye" & _
+                "arJoined` IS NULL) OR (`YearJoined` = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("StudentID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "StudentID", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Surname", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Surname", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FirstName", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "FirstName", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Group", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Group", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("YearGroup", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearGroup", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SchoolYear", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "SchoolYear", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("totalAbsences", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "totalAbsences", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("unexplainedAbsences", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "unexplainedAbsences", Global.System.Data.DataRowVersion.Current, False, Nothing))
@@ -5657,8 +5657,8 @@ Namespace FencingDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Surname", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Surname", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_FirstName", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "FirstName", Global.System.Data.DataRowVersion.Original, True, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FirstName", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "FirstName", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Group", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Group", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Group", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Group", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_YearGroup", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearGroup", Global.System.Data.DataRowVersion.Original, True, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_YearGroup", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "YearGroup", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_SchoolYear", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "SchoolYear", Global.System.Data.DataRowVersion.Original, True, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_SchoolYear", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "SchoolYear", Global.System.Data.DataRowVersion.Original, False, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_totalAbsences", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "totalAbsences", Global.System.Data.DataRowVersion.Original, True, Nothing))
@@ -5698,9 +5698,9 @@ Namespace FencingDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, StudentID, Surname, FirstName, [Group], SchoolYear, totalAbsences, une" & _
-                "xplainedAbsences, totalPresences, PhoneNum, Email, Weapon, Wins, Losses, Kills, " & _
-                "Deaths, YearJoined FROM StudentProfiles"
+            Me._commandCollection(0).CommandText = "SELECT        ID, StudentID, Surname, FirstName, YearGroup, SchoolYear, totalAbse" & _
+                "nces, unexplainedAbsences, totalPresences, PhoneNum, Email, Weapon, Wins, Losses" & _
+                ", Kills, Deaths, YearJoined" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            StudentProfiles"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
 
@@ -5765,7 +5765,7 @@ Namespace FencingDataSetTableAdapters
                     ByVal Original_StudentID As Integer, _
                     ByVal Original_Surname As String, _
                     ByVal Original_FirstName As String, _
-                    ByVal Original_Group As Global.System.Nullable(Of Short), _
+                    ByVal Original_YearGroup As Global.System.Nullable(Of Short), _
                     ByVal Original_SchoolYear As Global.System.Nullable(Of Short), _
                     ByVal Original_totalAbsences As Global.System.Nullable(Of Short), _
                     ByVal Original_unexplainedAbsences As Global.System.Nullable(Of Short), _
@@ -5795,9 +5795,9 @@ Namespace FencingDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0, Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_FirstName, String)
             End If
-            If (Original_Group.HasValue = True) Then
+            If (Original_YearGroup.HasValue = True) Then
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Group.Value, Short)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_YearGroup.Value, Short)
             Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1, Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
@@ -5909,7 +5909,7 @@ Namespace FencingDataSetTableAdapters
                     ByVal StudentID As Integer, _
                     ByVal Surname As String, _
                     ByVal FirstName As String, _
-                    ByVal Group As Global.System.Nullable(Of Short), _
+                    ByVal YearGroup As Global.System.Nullable(Of Short), _
                     ByVal SchoolYear As Global.System.Nullable(Of Short), _
                     ByVal totalAbsences As Global.System.Nullable(Of Short), _
                     ByVal unexplainedAbsences As Global.System.Nullable(Of Short), _
@@ -5933,8 +5933,8 @@ Namespace FencingDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(FirstName, String)
             End If
-            If (Group.HasValue = True) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Group.Value, Short)
+            If (YearGroup.HasValue = True) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(YearGroup.Value, Short)
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
@@ -6021,7 +6021,7 @@ Namespace FencingDataSetTableAdapters
                     ByVal StudentID As Integer, _
                     ByVal Surname As String, _
                     ByVal FirstName As String, _
-                    ByVal Group As Global.System.Nullable(Of Short), _
+                    ByVal YearGroup As Global.System.Nullable(Of Short), _
                     ByVal SchoolYear As Global.System.Nullable(Of Short), _
                     ByVal totalAbsences As Global.System.Nullable(Of Short), _
                     ByVal unexplainedAbsences As Global.System.Nullable(Of Short), _
@@ -6038,7 +6038,7 @@ Namespace FencingDataSetTableAdapters
                     ByVal Original_StudentID As Integer, _
                     ByVal Original_Surname As String, _
                     ByVal Original_FirstName As String, _
-                    ByVal Original_Group As Global.System.Nullable(Of Short), _
+                    ByVal Original_YearGroup As Global.System.Nullable(Of Short), _
                     ByVal Original_SchoolYear As Global.System.Nullable(Of Short), _
                     ByVal Original_totalAbsences As Global.System.Nullable(Of Short), _
                     ByVal Original_unexplainedAbsences As Global.System.Nullable(Of Short), _
@@ -6062,8 +6062,8 @@ Namespace FencingDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(FirstName, String)
             End If
-            If (Group.HasValue = True) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Group.Value, Short)
+            If (YearGroup.HasValue = True) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(YearGroup.Value, Short)
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
@@ -6144,9 +6144,9 @@ Namespace FencingDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0, Object)
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_FirstName, String)
             End If
-            If (Original_Group.HasValue = True) Then
+            If (Original_YearGroup.HasValue = True) Then
                 Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Group.Value, Short)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_YearGroup.Value, Short)
             Else
                 Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1, Object)
                 Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
@@ -6257,7 +6257,7 @@ Namespace FencingDataSetTableAdapters
         Public Overridable Overloads Function Update( _
                     ByVal Surname As String, _
                     ByVal FirstName As String, _
-                    ByVal Group As Global.System.Nullable(Of Short), _
+                    ByVal YearGroup As Global.System.Nullable(Of Short), _
                     ByVal SchoolYear As Global.System.Nullable(Of Short), _
                     ByVal totalAbsences As Global.System.Nullable(Of Short), _
                     ByVal unexplainedAbsences As Global.System.Nullable(Of Short), _
@@ -6274,7 +6274,7 @@ Namespace FencingDataSetTableAdapters
                     ByVal Original_StudentID As Integer, _
                     ByVal Original_Surname As String, _
                     ByVal Original_FirstName As String, _
-                    ByVal Original_Group As Global.System.Nullable(Of Short), _
+                    ByVal Original_YearGroup As Global.System.Nullable(Of Short), _
                     ByVal Original_SchoolYear As Global.System.Nullable(Of Short), _
                     ByVal Original_totalAbsences As Global.System.Nullable(Of Short), _
                     ByVal Original_unexplainedAbsences As Global.System.Nullable(Of Short), _
@@ -6287,7 +6287,7 @@ Namespace FencingDataSetTableAdapters
                     ByVal Original_Kills As Global.System.Nullable(Of Short), _
                     ByVal Original_Deaths As Global.System.Nullable(Of Short), _
                     ByVal Original_YearJoined As Global.System.Nullable(Of Short)) As Integer
-            Return Me.Update(Original_StudentID, Surname, FirstName, Group, SchoolYear, totalAbsences, unexplainedAbsences, totalPresences, PhoneNum, Email, Weapon, Wins, Losses, Kills, Deaths, YearJoined, Original_ID, Original_StudentID, Original_Surname, Original_FirstName, Original_Group, Original_SchoolYear, Original_totalAbsences, Original_unexplainedAbsences, Original_totalPresences, Original_PhoneNum, Original_Email, Original_Weapon, Original_Wins, Original_Losses, Original_Kills, Original_Deaths, Original_YearJoined)
+            Return Me.Update(Original_StudentID, Surname, FirstName, YearGroup, SchoolYear, totalAbsences, unexplainedAbsences, totalPresences, PhoneNum, Email, Weapon, Wins, Losses, Kills, Deaths, YearJoined, Original_ID, Original_StudentID, Original_Surname, Original_FirstName, Original_YearGroup, Original_SchoolYear, Original_totalAbsences, Original_unexplainedAbsences, Original_totalPresences, Original_PhoneNum, Original_Email, Original_Weapon, Original_Wins, Original_Losses, Original_Kills, Original_Deaths, Original_YearJoined)
         End Function
     End Class
 
@@ -6325,7 +6325,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._updateOrder
             End Get
             Set(value As UpdateOrderOption)
-                Me._updateOrder = Value
+                Me._updateOrder = value
             End Set
         End Property
 
@@ -6339,7 +6339,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._absencesTableAdapter
             End Get
             Set(value As AbsencesTableAdapter)
-                Me._absencesTableAdapter = Value
+                Me._absencesTableAdapter = value
             End Set
         End Property
 
@@ -6353,7 +6353,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._calendarTableAdapter
             End Get
             Set(value As CalendarTableAdapter)
-                Me._calendarTableAdapter = Value
+                Me._calendarTableAdapter = value
             End Set
         End Property
 
@@ -6367,7 +6367,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._gearTableAdapter
             End Get
             Set(value As GearTableAdapter)
-                Me._gearTableAdapter = Value
+                Me._gearTableAdapter = value
             End Set
         End Property
 
@@ -6381,7 +6381,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._loginsTableAdapter
             End Get
             Set(value As LoginsTableAdapter)
-                Me._loginsTableAdapter = Value
+                Me._loginsTableAdapter = value
             End Set
         End Property
 
@@ -6395,7 +6395,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._studentProfilesTableAdapter
             End Get
             Set(value As StudentProfilesTableAdapter)
-                Me._studentProfilesTableAdapter = Value
+                Me._studentProfilesTableAdapter = value
             End Set
         End Property
 
@@ -6406,7 +6406,7 @@ Namespace FencingDataSetTableAdapters
                 Return Me._backupDataSetBeforeUpdate
             End Get
             Set(value As Boolean)
-                Me._backupDataSetBeforeUpdate = Value
+                Me._backupDataSetBeforeUpdate = value
             End Set
         End Property
 
@@ -6441,7 +6441,7 @@ Namespace FencingDataSetTableAdapters
                 Return Nothing
             End Get
             Set(value As Global.System.Data.IDbConnection)
-                Me._connection = Value
+                Me._connection = value
             End Set
         End Property
 

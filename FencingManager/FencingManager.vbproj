@@ -92,10 +92,10 @@
     <Compile Include="CreateAcc.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateProfile.Designer.vb">
-      <DependentUpon>CreateProfile.vb</DependentUpon>
+    <Compile Include="StudentProfilesCreate.Designer.vb">
+      <DependentUpon>StudentProfilesCreate.vb</DependentUpon>
     </Compile>
-    <Compile Include="CreateProfile.vb">
+    <Compile Include="StudentProfilesCreate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FencingDataSet1.Designer.vb">
@@ -196,8 +196,8 @@
     <EmbeddedResource Include="CreateAcc.resx">
       <DependentUpon>CreateAcc.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateProfile.resx">
-      <DependentUpon>CreateProfile.vb</DependentUpon>
+    <EmbeddedResource Include="StudentProfilesCreate.resx">
+      <DependentUpon>StudentProfilesCreate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Email.resx">
       <DependentUpon>Email.vb</DependentUpon>

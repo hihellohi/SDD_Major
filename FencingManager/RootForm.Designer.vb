@@ -39,6 +39,7 @@ Partial Class RootForm
         Me.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.Location = New System.Drawing.Point(110, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1256, 768)
@@ -46,11 +47,11 @@ Partial Class RootForm
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(1094, 12)
+        Me.Button1.Location = New System.Drawing.Point(1191, 31)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(150, 72)
+        Me.Button1.Size = New System.Drawing.Size(53, 49)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "↓"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'btnStudentProf

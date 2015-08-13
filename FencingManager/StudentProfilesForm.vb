@@ -3,12 +3,28 @@
     'Dim connection As OleDb.OleDbConnection
     Public adapter As New OleDb.OleDbDataAdapter
     Public searchResults As New DataSet()
+
+    Private adapter1 As FencingDataSetTableAdapters.StudentProfilesTableAdapter
+    Private studentDataSet As New FencingDataSet.StudentProfilesDataTable()
+
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
 
     End Sub
 
     Private Sub StudentProfilesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
 
+    End Sub
+
+    Private Sub StudentProfilesForm_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible Then
+            RefreshTables()
+        End If
+    End Sub
+
+    Private Sub RefreshTables()
+        adapter1 = New FencingDataSetTableAdapters.StudentProfilesTableAdapter()
+        adapter1.ClearBeforeFill = True
+        adapter1.Fill(studentDataSet)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -44,18 +60,31 @@
         adapter.Fill(searchResults, "StudentProfiles")
 
         'Populate Results Table
+        'ListView1.Items.Clear()
+        'Dim row As DataRow
+        'For Each row In searchResults.Tables("StudentProfiles").Rows
+        '    If row.RowState <> DataRowState.Deleted Then
+        '        Dim rowItem = New ListViewItem(row("StudentID").ToString())
+        '        rowItem.SubItems.Add(row("FirstName").ToString())
+        '        rowItem.SubItems.Add(row("Surname").ToString())
+        '        rowItem.SubItems.Add(row("SchoolYear").ToString())
+        '        ListView1.Items.Add(rowItem)
+        '    End If
+        'Next
+        'searchResults.Clear()
         ListView1.Items.Clear()
-        Dim row As DataRow
-        For Each row In searchResults.Tables("StudentProfiles").Rows
+
+        Dim filter = "FirstName LIKE '{0}' + '%' OR Surname LIKE '{1}' + '%'"
+        filter = String.Format(filter, TextBox1.Text, TextBox1.Text)
+        For Each row As FencingDataSet.StudentProfilesRow In studentDataSet.Select(filter, "Surname, FirstName")
             If row.RowState <> DataRowState.Deleted Then
-                Dim rowItem = New ListViewItem(row("StudentID").ToString())
-                rowItem.SubItems.Add(row("FirstName").ToString())
-                rowItem.SubItems.Add(row("Surname").ToString())
-                rowItem.SubItems.Add(row("SchoolYear").ToString())
+                Dim rowItem = New ListViewItem(row.StudentID.ToString())
+                rowItem.SubItems.Add(row.FirstName.ToString())
+                rowItem.SubItems.Add(row.Surname.ToString())
+                rowItem.SubItems.Add(row.SchoolYear.ToString())
                 ListView1.Items.Add(rowItem)
             End If
         Next
-        searchResults.Clear()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -63,12 +92,17 @@
     End Sub
 
     Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
-       
+
     End Sub
 
     Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
         If ListView1.SelectedIndices.Count = 1 Then
 
         End If
+    End Sub
+
+    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+        Dim formNew As New StudentProfilesCreate()
+        formNew.ShowDialog()
     End Sub
 End Class

@@ -71,6 +71,7 @@ Public Class RootForm
         'should totes change to login later
         formStudentProfile.Show()
         'I need student profile database to be loaded lol
+
         topform.hide()
         topform = formLogin
         intform = STUDENT_PROFILE
