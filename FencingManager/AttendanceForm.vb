@@ -38,4 +38,5 @@
         adapter.Fill(rollDataTable)
         MessageBox.Show(rollDataTable.Count)
     End Sub
+
 End Class

@@ -31,7 +31,7 @@ Partial Class Returns
         '
         Me.TextBox1.Location = New System.Drawing.Point(-100, -100)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 0
         '
         'Label1
@@ -39,7 +39,7 @@ Partial Class Returns
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(487, 318)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 17)
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Label1"
         '
@@ -47,13 +47,13 @@ Partial Class Returns
         '
         Me.TextBox2.Location = New System.Drawing.Point(682, 287)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
         Me.TextBox2.TabIndex = 2
         '
         'Returns
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1238, 667)
+        Me.ClientSize = New System.Drawing.Size(1258, 658)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)

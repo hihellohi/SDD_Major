@@ -1,4 +1,6 @@
-﻿Public Class Catalog
+﻿Imports System.Runtime.InteropServices
+
+Public Class Catalog
 
     Structure item
         Public id As Integer
@@ -10,6 +12,8 @@
 
     Dim things As New List(Of item)()
     Dim sort As Integer = -1
+    Dim selected As Integer = 0
+    Dim check As Boolean = False
 
     Public Sub reload()
         things.Clear()
@@ -42,6 +46,7 @@
         Next
         sort_things()
         loadTable()
+
     End Sub
 
     Private Sub sort_things()
@@ -111,9 +116,11 @@
     End Function
 
     Private Sub loadTable()
+        Dim count As Integer = 0
         ListView1.Items.Clear()
         Dim row As item
         For Each row In things
+            count += 1
             Dim rowItem = New ListViewItem(row.gearID)
             rowItem.SubItems.Add(row.gearType)
             'rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
@@ -132,6 +139,7 @@
             End If
             ListView1.Items.Add(rowItem)
         Next
+        Label10.Text = count
     End Sub
 
     Private Sub quickReload()
@@ -166,24 +174,195 @@
             sort = -(e.Column + 1)
             sort_things()
             For i = 0 To 3
-                ListView1.Columns(i).Text = ListView1.Columns(i).Text.Trim("^")
-                ListView1.Columns(i).Text = ListView1.Columns(i).Text.Trim("v")
+                ListView1.Columns(i).Text = ListView1.Columns(i).Text.Trim(ChrW(&H25B2))
+                ListView1.Columns(i).Text = ListView1.Columns(i).Text.Trim(ChrW(&H25BC))
             Next
-            ListView1.Columns(e.Column).Text += "v"
+            ListView1.Columns(e.Column).Text += ChrW(&H25BC)
         Else
             sort = (e.Column + 1)
             things.Reverse()
-            ListView1.Columns(e.Column).Text = ListView1.Columns(e.Column).Text.Trim("v")
-            ListView1.Columns(e.Column).Text += "^"
+            ListView1.Columns(e.Column).Text = ListView1.Columns(e.Column).Text.Trim(ChrW(&H25BC))
+            ListView1.Columns(e.Column).Text += ChrW(&H25B2)
         End If
         loadTable()
     End Sub
 
     Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseDoubleClick
         If ListView1.SelectedIndices.Count = 1 Then
-            MsgBox(things(ListView1.SelectedIndices(0)).id)
-            'Do things
+            'MsgBox(things(ListView1.SelectedIndices(0)).id)
+            selected = things(ListView1.SelectedIndices(0)).id - 1
+            'Dim row As DataRow
+            'For Each row In RootForm.GearDataS.Tables("Gear").Rows
+            '    If things(ListView1.SelectedIndices(0)).id = row("ID") Then
+            txtAN.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString
+            txtSelDesc.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType")
+            '        txtSelIItemID.Text = row("GearID")
+            Label13.Visible = False
+            If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
+                txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
+                txtDD.Text = things(ListView1.SelectedIndices(0)).due
+
+            Else
+                txtSL.Text = ""
+                txtDD.Text = ""
+            End If
+            txtSelIItemID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
         End If
     End Sub
 
+    Private Sub Catalog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ListView1.Columns(0).Text += ChrW(&H25BC)
+        SetCueText(TextBox1, "Filter")
+        Label13.Top = 27
+        Label13.Left = 10
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim valid As Boolean = True
+        If txtItemID.Text = "" Then
+            txtItemID.BackColor = Color.Red
+            valid = False
+            Label5.Text = "Fields marked red must be filled"
+        Else
+            txtItemID.BackColor = Color.White
+        End If
+        If txtDescription.Text = "" Then
+            txtDescription.BackColor = Color.Red
+            valid = False
+            Label5.Text = "Fields marked red must be filled"
+        Else
+            txtDescription.BackColor = Color.White
+        End If
+        Dim row As DataRow
+        For Each row In RootForm.GearDataS.Tables("Gear").Rows
+            If row("GearType").ToString = txtDescription.Text And row("GearID").ToString = txtItemID.Text Then
+                valid = False
+                txtItemID.BackColor = Color.Red
+                txtDescription.BackColor = Color.Red
+                Label5.Text = "Gear Type/ID combination already exists"
+            End If
+        Next
+        If valid Then
+            Label5.Visible = False
+            Dim x As DataRow = RootForm.GearDataS.Tables("Gear").NewRow()
+            x("GearID") = txtItemID.Text
+            x("GearType") = txtDescription.Text
+            x("Notes") = TextBox2.Text
+            x("ID") = RootForm.GearDataS.Tables("Gear").Rows.Count
+            x("StudentLoaned") = 0
+            x("DueYear") = 0
+            x("DueMonth") = 0
+            x("DueDay") = 0
+            RootForm.GearDataS.Tables("Gear").Rows.Add(x)
+            RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+            reload()
+            txtDescription.Text = ""
+            txtItemID.Text = ""
+            TextBox2.Text = ""
+        Else
+            Label5.Visible = True
+        End If
+    End Sub
+
+    Private Sub txtitemid_TextChanged(sender As Object, e As EventArgs) Handles txtItemID.TextChanged
+        txtItemID.Text = System.Text.RegularExpressions.Regex.Replace(txtItemID.Text, "[^0-9]", "")
+        txtItemID.Select(txtItemID.Text.Length, 0)
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        txtAN.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString
+        txtSelDesc.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType")
+        '        txtSelIItemID.Text = row("GearID")
+        Label13.Visible = False
+        If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
+            txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
+            txtDD.Text = things(ListView1.SelectedIndices(0)).due
+
+        Else
+            txtSL.Text = ""
+            txtDD.Text = ""
+        End If
+        txtSelIItemID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        RootForm.GearDataS.Tables("Gear").Rows.RemoveAt(selected)
+        For count = 1 To RootForm.GearDataS.Tables("Gear").Rows.Count
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = count
+        Next
+        RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+        reload()
+        Label13.Visible = True
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'tbc do save stuff
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        check = True
+        Timer1.Enabled = True
+    End Sub
+
+    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
+        check = True
+        'Button3.Text = "Are you sure?"
+    End Sub
+
+    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.MouseLeave
+            check = False
+
+            Timer1.Enabled = True
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If check = True Then
+            Button5.Left = Math.Max(Button5.Left - 10, 191)
+            Button3.Left = Math.Max(Button3.Left - 5, 235)
+            Button3.Width = Math.Min(Button3.Width + 5, 110)
+            If Button3.Left = 235 Then
+                Button3.Text = "Are you sure?"
+                Timer1.Enabled = False
+            End If
+        Else
+            Button5.Left = Math.Min(Button5.Left + 10, 271)
+            Button3.Left = Math.Min(Button3.Left + 5, 271)
+            Button3.Width = Math.Max(Button3.Width - 5, 74)
+            If Button3.Left = 271 Then
+                Timer1.Enabled = False
+                Button3.Text = "Delete"
+            End If
+        End If
+    End Sub
+
+    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles Button5.MouseEnter
+        check = True
+    End Sub
+
+    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles Button5.MouseLeave
+        check = False
+
+        Timer1.Enabled = True
+    End Sub
 End Class
+
+Public Module CueBannerText
+    <DllImport("user32.dll", CharSet:=CharSet.Auto)> _
+    Private Function SendMessage(ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
+    End Function
+    Private Declare Function FindWindowEx Lib "user32" Alias "FindWindowExA" (ByVal hWnd1 As IntPtr, ByVal hWnd2 As IntPtr, ByVal lpsz1 As String, ByVal lpsz2 As String) As IntPtr
+    Private Const EM_SETCUEBANNER As Integer = &H1501
+
+
+    Public Sub SetCueText(cntrl As Control, text As String)
+        If TypeOf cntrl Is ComboBox Then
+            Dim Edit_hWnd As IntPtr = FindWindowEx(cntrl.Handle, IntPtr.Zero, "Edit", Nothing)
+            If Not Edit_hWnd = IntPtr.Zero Then
+                SendMessage(Edit_hWnd, EM_SETCUEBANNER, 0, text)
+            End If
+        ElseIf TypeOf cntrl Is TextBox Then
+            SendMessage(cntrl.Handle, EM_SETCUEBANNER, 0, text)
+        End If
+    End Sub
+End Module

@@ -35,6 +35,7 @@
         Panel1.Controls.Add(frmCatalog)
 
         topForm.show()
+        btnReturn.BackColor = Color.Gold
     End Sub
 
     Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
@@ -42,6 +43,9 @@
         topForm = frmReturn
         intform = RETURNS
         topForm.show()
+        btnReturn.BackColor = Color.Gold
+        btnLoan.BackColor = Color.White
+        btnCatalog.BackColor = Color.White
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLoan.Click
@@ -50,6 +54,9 @@
         intform = LOANS
         topForm.show()
         frmloans.reload()
+        btnReturn.BackColor = Color.White
+        btnLoan.BackColor = Color.Gold
+        btnCatalog.BackColor = Color.White
     End Sub
 
     Private Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
@@ -58,5 +65,8 @@
         intform = CATALOG
         topForm.show()
         frmCatalog.reload()
+        btnReturn.BackColor = Color.White
+        btnLoan.BackColor = Color.White
+        btnCatalog.BackColor = Color.Gold
     End Sub
 End Class
