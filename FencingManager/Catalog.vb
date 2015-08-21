@@ -12,7 +12,7 @@ Public Class Catalog
 
     Dim things As New List(Of item)()
     Dim sort As Integer = -1
-    Dim selected As Integer = -1
+    Public selected As Integer = -1
     Dim check As Boolean = False
 
     Public Sub reload()
@@ -24,8 +24,12 @@ Public Class Catalog
                 If row("GearType").ToString.ToLower.StartsWith(TextBox1.Text.ToLower) Then
                     valid = True
                 End If
-            Else
+            ElseIf rdbStudent.Checked Then
                 If row("StudentLoaned").ToString.ToLower.StartsWith(TextBox1.Text.ToLower) Then
+                    valid = True
+                End If
+            Else
+                If row("GearID").ToString.ToLower.StartsWith(TextBox1.Text.ToLower) Then
                     valid = True
                 End If
             End If
@@ -148,8 +152,10 @@ Public Class Catalog
             Dim comp As String
             If rdbType.Checked Then
                 comp = things(i).gearType.ToLower
-            Else
+            ElseIf rdbStudent.Checked Then
                 comp = things(i).student.ToString.ToLower
+            Else
+                comp = things(i).gearID.ToLower
             End If
             If comp.StartsWith(TextBox1.Text.ToLower) Then
                 tmp.Add(things(i))
@@ -364,12 +370,18 @@ Public Class Catalog
         Else
             txtSelDesc.BackColor = Color.White
         End If
-        If Not datevalid() Then
+        If txtYear.Text = "" And txtSL.Text <> "" Then
+            txtYear.BackColor = Color.Red
+            valid = False
+            Label14.Text = "Fields marked red must be filled"
+            Label15.Visible = False
 
+        ElseIf Not datevalid() Then
+            txtYear.BackColor = Color.White
             Label15.Visible = True
             Label15.Text = "Enter a valid date between 1000 and 9999 CE"
         Else
-
+            txtYear.BackColor = Color.White
             Label15.Visible = False
         End If
         Dim row As DataRow

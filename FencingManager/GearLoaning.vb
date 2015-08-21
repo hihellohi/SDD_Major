@@ -4,7 +4,7 @@
     Const CATALOG = 2
     Dim frmReturn As New Returns()
     Dim frmloans As New Loans()
-    Dim frmCatalog As New Catalog()
+    Public frmCatalog As New Catalog()
     Dim topForm = frmReturn
     Dim intform = RETURNS
     
@@ -59,7 +59,7 @@
         btnCatalog.BackColor = Color.Green
     End Sub
 
-    Private Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
+    Public Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
         topForm.hide()
         topForm = frmCatalog
         intform = CATALOG
