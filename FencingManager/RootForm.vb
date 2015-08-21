@@ -8,12 +8,14 @@ Public Class RootForm
     Const GEAR_LOANING = 3
     Const EMAIL = 4
     Const ATTENDANCE = 2
+    Const ADMIN = 5
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
     Dim formEmail As New Email()
     Dim formLogin As New Login()
     Dim formCalendar As New Calendar()
+    Dim formAdmin As New Admin()
     Dim topform = formStudentProfile
     Dim intform = STUDENT_PROFILE
     Public Shared connection As New OleDbConnection
@@ -66,6 +68,9 @@ Public Class RootForm
 
         formAttendance.TopLevel = False
         Panel1.Controls.Add(formAttendance)
+
+        formAdmin.TopLevel = False
+        Panel1.Controls.Add(formAdmin)
 
         ' Show Student Profile on Load 
         'should totes change to login later
@@ -124,6 +129,13 @@ Public Class RootForm
         intform = EMAIL
         topform.show()
         formEmail.reload()
+    End Sub
+
+    Private Sub btnAdmin_Click(sender As Object, e As EventArgs) Handles btnAdmin.Click
+        topform.hide()
+        topform = formAdmin
+        intform = ADMIN
+        topform.show()
     End Sub
 End Class
 
