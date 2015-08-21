@@ -26,36 +26,36 @@ Partial Class AttendanceForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.btnRoll = New System.Windows.Forms.Button()
-        Me.btnBarcode = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.rdbAllWeapons = New System.Windows.Forms.RadioButton()
+        Me.rdbFoil = New System.Windows.Forms.RadioButton()
+        Me.rdbSabre = New System.Windows.Forms.RadioButton()
+        Me.rdbEpee = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.rdbAllYears = New System.Windows.Forms.RadioButton()
         Me.rdbJunior = New System.Windows.Forms.RadioButton()
         Me.rdbSenior = New System.Windows.Forms.RadioButton()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.rdbEpee = New System.Windows.Forms.RadioButton()
-        Me.rdbSabre = New System.Windows.Forms.RadioButton()
-        Me.rdbFoil = New System.Windows.Forms.RadioButton()
-        Me.rdbAllWeapons = New System.Windows.Forms.RadioButton()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblAbsent = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.lblPresent = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblSave = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnBarcode = New System.Windows.Forms.Button()
+        Me.btnRoll = New System.Windows.Forms.Button()
         Me.roll = New System.Windows.Forms.CheckedListBox()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.lblSave = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblPresent = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblAbsent = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -125,24 +125,76 @@ Partial Class AttendanceForm
         Me.SplitContainer1.SplitterDistance = 418
         Me.SplitContainer1.TabIndex = 2
         '
-        'btnRoll
+        'GroupBox1
         '
-        Me.btnRoll.Location = New System.Drawing.Point(53, 592)
-        Me.btnRoll.Name = "btnRoll"
-        Me.btnRoll.Size = New System.Drawing.Size(308, 47)
-        Me.btnRoll.TabIndex = 5
-        Me.btnRoll.Text = "Use Manual Roll"
-        Me.btnRoll.UseVisualStyleBackColor = True
+        Me.GroupBox1.Controls.Add(Me.rdbEpee)
+        Me.GroupBox1.Controls.Add(Me.rdbSabre)
+        Me.GroupBox1.Controls.Add(Me.rdbFoil)
+        Me.GroupBox1.Controls.Add(Me.rdbAllWeapons)
+        Me.GroupBox1.Location = New System.Drawing.Point(21, 167)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(365, 186)
+        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Mark For Weapon"
         '
-        'btnBarcode
+        'Label2
         '
-        Me.btnBarcode.Enabled = False
-        Me.btnBarcode.Location = New System.Drawing.Point(53, 533)
-        Me.btnBarcode.Name = "btnBarcode"
-        Me.btnBarcode.Size = New System.Drawing.Size(308, 47)
-        Me.btnBarcode.TabIndex = 4
-        Me.btnBarcode.Text = "Use Barcode Scanner"
-        Me.btnBarcode.UseVisualStyleBackColor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(16, 52)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(174, 26)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Attendance Date"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(21, 93)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(365, 32)
+        Me.DateTimePicker1.TabIndex = 0
+        '
+        'rdbAllWeapons
+        '
+        Me.rdbAllWeapons.AutoSize = True
+        Me.rdbAllWeapons.Checked = True
+        Me.rdbAllWeapons.Location = New System.Drawing.Point(32, 40)
+        Me.rdbAllWeapons.Name = "rdbAllWeapons"
+        Me.rdbAllWeapons.Size = New System.Drawing.Size(55, 30)
+        Me.rdbAllWeapons.TabIndex = 0
+        Me.rdbAllWeapons.TabStop = True
+        Me.rdbAllWeapons.Text = "All"
+        Me.rdbAllWeapons.UseVisualStyleBackColor = True
+        '
+        'rdbFoil
+        '
+        Me.rdbFoil.AutoSize = True
+        Me.rdbFoil.Location = New System.Drawing.Point(32, 76)
+        Me.rdbFoil.Name = "rdbFoil"
+        Me.rdbFoil.Size = New System.Drawing.Size(65, 30)
+        Me.rdbFoil.TabIndex = 1
+        Me.rdbFoil.Text = "Foil"
+        Me.rdbFoil.UseVisualStyleBackColor = True
+        '
+        'rdbSabre
+        '
+        Me.rdbSabre.AutoSize = True
+        Me.rdbSabre.Location = New System.Drawing.Point(32, 112)
+        Me.rdbSabre.Name = "rdbSabre"
+        Me.rdbSabre.Size = New System.Drawing.Size(88, 30)
+        Me.rdbSabre.TabIndex = 2
+        Me.rdbSabre.Text = "Sabre"
+        Me.rdbSabre.UseVisualStyleBackColor = True
+        '
+        'rdbEpee
+        '
+        Me.rdbEpee.AutoSize = True
+        Me.rdbEpee.Location = New System.Drawing.Point(32, 148)
+        Me.rdbEpee.Name = "rdbEpee"
+        Me.rdbEpee.Size = New System.Drawing.Size(81, 30)
+        Me.rdbEpee.TabIndex = 3
+        Me.rdbEpee.Text = "Epee"
+        Me.rdbEpee.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -188,123 +240,59 @@ Partial Class AttendanceForm
         Me.rdbSenior.Text = "Senior"
         Me.rdbSenior.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'btnBarcode
         '
-        Me.GroupBox1.Controls.Add(Me.rdbEpee)
-        Me.GroupBox1.Controls.Add(Me.rdbSabre)
-        Me.GroupBox1.Controls.Add(Me.rdbFoil)
-        Me.GroupBox1.Controls.Add(Me.rdbAllWeapons)
-        Me.GroupBox1.Location = New System.Drawing.Point(21, 167)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(365, 186)
-        Me.GroupBox1.TabIndex = 2
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Mark For Weapon"
+        Me.btnBarcode.Enabled = False
+        Me.btnBarcode.Location = New System.Drawing.Point(53, 533)
+        Me.btnBarcode.Name = "btnBarcode"
+        Me.btnBarcode.Size = New System.Drawing.Size(308, 47)
+        Me.btnBarcode.TabIndex = 4
+        Me.btnBarcode.Text = "Use Barcode Scanner"
+        Me.btnBarcode.UseVisualStyleBackColor = True
         '
-        'rdbEpee
+        'btnRoll
         '
-        Me.rdbEpee.AutoSize = True
-        Me.rdbEpee.Location = New System.Drawing.Point(32, 148)
-        Me.rdbEpee.Name = "rdbEpee"
-        Me.rdbEpee.Size = New System.Drawing.Size(81, 30)
-        Me.rdbEpee.TabIndex = 3
-        Me.rdbEpee.Text = "Epee"
-        Me.rdbEpee.UseVisualStyleBackColor = True
+        Me.btnRoll.Location = New System.Drawing.Point(53, 592)
+        Me.btnRoll.Name = "btnRoll"
+        Me.btnRoll.Size = New System.Drawing.Size(308, 47)
+        Me.btnRoll.TabIndex = 5
+        Me.btnRoll.Text = "Use Manual Roll"
+        Me.btnRoll.UseVisualStyleBackColor = True
         '
-        'rdbSabre
+        'roll
         '
-        Me.rdbSabre.AutoSize = True
-        Me.rdbSabre.Location = New System.Drawing.Point(32, 112)
-        Me.rdbSabre.Name = "rdbSabre"
-        Me.rdbSabre.Size = New System.Drawing.Size(88, 30)
-        Me.rdbSabre.TabIndex = 2
-        Me.rdbSabre.Text = "Sabre"
-        Me.rdbSabre.UseVisualStyleBackColor = True
+        Me.roll.FormattingEnabled = True
+        Me.roll.Location = New System.Drawing.Point(19, 49)
+        Me.roll.Name = "roll"
+        Me.roll.Size = New System.Drawing.Size(597, 544)
+        Me.roll.TabIndex = 0
         '
-        'rdbFoil
+        'btnCancel
         '
-        Me.rdbFoil.AutoSize = True
-        Me.rdbFoil.Location = New System.Drawing.Point(32, 76)
-        Me.rdbFoil.Name = "rdbFoil"
-        Me.rdbFoil.Size = New System.Drawing.Size(65, 30)
-        Me.rdbFoil.TabIndex = 1
-        Me.rdbFoil.Text = "Foil"
-        Me.rdbFoil.UseVisualStyleBackColor = True
+        Me.btnCancel.Location = New System.Drawing.Point(28, 604)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(175, 42)
+        Me.btnCancel.TabIndex = 1
+        Me.btnCancel.Text = "Back"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
-        'rdbAllWeapons
+        'lblSave
         '
-        Me.rdbAllWeapons.AutoSize = True
-        Me.rdbAllWeapons.Checked = True
-        Me.rdbAllWeapons.Location = New System.Drawing.Point(32, 40)
-        Me.rdbAllWeapons.Name = "rdbAllWeapons"
-        Me.rdbAllWeapons.Size = New System.Drawing.Size(55, 30)
-        Me.rdbAllWeapons.TabIndex = 0
-        Me.rdbAllWeapons.TabStop = True
-        Me.rdbAllWeapons.Text = "All"
-        Me.rdbAllWeapons.UseVisualStyleBackColor = True
+        Me.lblSave.Location = New System.Drawing.Point(647, 604)
+        Me.lblSave.Name = "lblSave"
+        Me.lblSave.Size = New System.Drawing.Size(175, 42)
+        Me.lblSave.TabIndex = 2
+        Me.lblSave.Text = "Save"
+        Me.lblSave.UseVisualStyleBackColor = True
         '
-        'Label2
+        'Label3
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 52)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(174, 26)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Attendance Date"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(21, 93)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(365, 32)
-        Me.DateTimePicker1.TabIndex = 0
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(23, 15)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(166, 26)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Attendance Roll"
-        '
-        'lblAbsent
-        '
-        Me.lblAbsent.AutoSize = True
-        Me.lblAbsent.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAbsent.Location = New System.Drawing.Point(693, 343)
-        Me.lblAbsent.Name = "lblAbsent"
-        Me.lblAbsent.Size = New System.Drawing.Size(0, 39)
-        Me.lblAbsent.TabIndex = 8
-        Me.lblAbsent.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(631, 301)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(172, 26)
-        Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Students Absent"
-        '
-        'lblPresent
-        '
-        Me.lblPresent.AutoSize = True
-        Me.lblPresent.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPresent.Location = New System.Drawing.Point(693, 220)
-        Me.lblPresent.Name = "lblPresent"
-        Me.lblPresent.Size = New System.Drawing.Size(0, 39)
-        Me.lblPresent.TabIndex = 6
-        Me.lblPresent.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(631, 182)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(179, 26)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Students Present"
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(642, 67)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(151, 26)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Total Students"
         '
         'lblTotal
         '
@@ -316,40 +304,52 @@ Partial Class AttendanceForm
         Me.lblTotal.TabIndex = 4
         Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Label3
+        'Label4
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(642, 67)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(151, 26)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Total Students"
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(631, 182)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(179, 26)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Students Present"
         '
-        'lblSave
+        'lblPresent
         '
-        Me.lblSave.Location = New System.Drawing.Point(647, 604)
-        Me.lblSave.Name = "lblSave"
-        Me.lblSave.Size = New System.Drawing.Size(175, 42)
-        Me.lblSave.TabIndex = 2
-        Me.lblSave.Text = "Save"
-        Me.lblSave.UseVisualStyleBackColor = True
+        Me.lblPresent.AutoSize = True
+        Me.lblPresent.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPresent.Location = New System.Drawing.Point(693, 220)
+        Me.lblPresent.Name = "lblPresent"
+        Me.lblPresent.Size = New System.Drawing.Size(0, 39)
+        Me.lblPresent.TabIndex = 6
+        Me.lblPresent.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'btnCancel
+        'Label6
         '
-        Me.btnCancel.Location = New System.Drawing.Point(28, 604)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(175, 42)
-        Me.btnCancel.TabIndex = 1
-        Me.btnCancel.Text = "Back"
-        Me.btnCancel.UseVisualStyleBackColor = True
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(631, 301)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(172, 26)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Students Absent"
         '
-        'roll
+        'lblAbsent
         '
-        Me.roll.FormattingEnabled = True
-        Me.roll.Location = New System.Drawing.Point(19, 49)
-        Me.roll.Name = "roll"
-        Me.roll.Size = New System.Drawing.Size(597, 544)
-        Me.roll.TabIndex = 0
+        Me.lblAbsent.AutoSize = True
+        Me.lblAbsent.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAbsent.Location = New System.Drawing.Point(693, 343)
+        Me.lblAbsent.Name = "lblAbsent"
+        Me.lblAbsent.Size = New System.Drawing.Size(0, 39)
+        Me.lblAbsent.TabIndex = 8
+        Me.lblAbsent.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(23, 15)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(166, 26)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Attendance Roll"
         '
         'AttendanceForm
         '
@@ -372,10 +372,10 @@ Partial Class AttendanceForm
         Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

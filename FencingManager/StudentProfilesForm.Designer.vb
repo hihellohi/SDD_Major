@@ -22,13 +22,15 @@ Partial Class StudentProfilesForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StudentProfilesForm))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnNew = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.colID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colFName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colSurname = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.colFName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colYear = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -42,7 +44,6 @@ Partial Class StudentProfilesForm
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -60,13 +61,30 @@ Partial Class StudentProfilesForm
         Me.Panel1.Size = New System.Drawing.Size(1256, 110)
         Me.Panel1.TabIndex = 0
         '
+        'btnNew
+        '
+        Me.btnNew.BackgroundImage = CType(resources.GetObject("btnNew.BackgroundImage"), System.Drawing.Image)
+        Me.btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnNew.FlatAppearance.BorderSize = 0
+        Me.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNew.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.btnNew.Location = New System.Drawing.Point(953, 28)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(50, 50)
+        Me.btnNew.TabIndex = 4
+        Me.btnNew.UseVisualStyleBackColor = True
+        '
         'btnSearch
         '
+        Me.btnSearch.BackgroundImage = CType(resources.GetObject("btnSearch.BackgroundImage"), System.Drawing.Image)
+        Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnSearch.FlatAppearance.BorderSize = 0
+        Me.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSearch.ForeColor = System.Drawing.Color.DodgerBlue
         Me.btnSearch.Location = New System.Drawing.Point(849, 28)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(51, 47)
+        Me.btnSearch.Size = New System.Drawing.Size(50, 50)
         Me.btnSearch.TabIndex = 3
-        Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
         'TextBox1
@@ -78,7 +96,7 @@ Partial Class StudentProfilesForm
         '
         'ListView1
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colID, Me.colFName, Me.colSurname, Me.colYear})
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colID, Me.colSurname, Me.colFName, Me.colYear})
         Me.ListView1.GridLines = True
         Me.ListView1.Location = New System.Drawing.Point(68, 145)
         Me.ListView1.Name = "ListView1"
@@ -89,21 +107,18 @@ Partial Class StudentProfilesForm
         '
         'colID
         '
-        Me.colID.DisplayIndex = 2
         Me.colID.Text = "Student ID"
-        Me.colID.Width = 174
-        '
-        'colFName
-        '
-        Me.colFName.DisplayIndex = 0
-        Me.colFName.Text = "First Name"
-        Me.colFName.Width = 122
+        Me.colID.Width = 166
         '
         'colSurname
         '
-        Me.colSurname.DisplayIndex = 1
         Me.colSurname.Text = "Surname"
         Me.colSurname.Width = 106
+        '
+        'colFName
+        '
+        Me.colFName.Text = "First Name"
+        Me.colFName.Width = 122
         '
         'colYear
         '
@@ -238,15 +253,6 @@ Partial Class StudentProfilesForm
         Me.CheckBox2.TabIndex = 0
         Me.CheckBox2.Text = "First Name"
         Me.CheckBox2.UseVisualStyleBackColor = True
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(928, 28)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(88, 47)
-        Me.btnNew.TabIndex = 4
-        Me.btnNew.Text = "New.."
-        Me.btnNew.UseVisualStyleBackColor = True
         '
         'StudentProfilesForm
         '

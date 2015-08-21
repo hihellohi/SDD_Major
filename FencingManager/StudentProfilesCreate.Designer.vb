@@ -29,15 +29,17 @@ Partial Class StudentProfilesCreate
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.txtFirstName = New System.Windows.Forms.TextBox()
+        Me.txtSurname = New System.Windows.Forms.TextBox()
+        Me.txtID = New System.Windows.Forms.TextBox()
+        Me.cbbYear = New System.Windows.Forms.ComboBox()
+        Me.cbbWeapon = New System.Windows.Forms.ComboBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -103,64 +105,63 @@ Partial Class StudentProfilesCreate
         Me.Label8.TabIndex = 8
         Me.Label8.Text = "Phone No."
         '
-        'TextBox1
+        'txtFirstName
         '
-        Me.TextBox1.Location = New System.Drawing.Point(241, 38)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(291, 32)
-        Me.TextBox1.TabIndex = 9
+        Me.txtFirstName.Location = New System.Drawing.Point(241, 38)
+        Me.txtFirstName.Name = "txtFirstName"
+        Me.txtFirstName.Size = New System.Drawing.Size(291, 32)
+        Me.txtFirstName.TabIndex = 9
         '
-        'TextBox2
+        'txtSurname
         '
-        Me.TextBox2.Location = New System.Drawing.Point(241, 88)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(291, 32)
-        Me.TextBox2.TabIndex = 10
+        Me.txtSurname.Location = New System.Drawing.Point(241, 88)
+        Me.txtSurname.Name = "txtSurname"
+        Me.txtSurname.Size = New System.Drawing.Size(291, 32)
+        Me.txtSurname.TabIndex = 10
         '
-        'TextBox3
+        'txtID
         '
-        Me.TextBox3.Location = New System.Drawing.Point(241, 138)
-        Me.TextBox3.MaxLength = 9
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(291, 32)
-        Me.TextBox3.TabIndex = 11
+        Me.txtID.Location = New System.Drawing.Point(241, 138)
+        Me.txtID.MaxLength = 9
+        Me.txtID.Name = "txtID"
+        Me.txtID.Size = New System.Drawing.Size(291, 32)
+        Me.txtID.TabIndex = 11
         '
-        'ComboBox1
+        'cbbYear
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
-        Me.ComboBox1.Location = New System.Drawing.Point(241, 188)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(76, 33)
-        Me.ComboBox1.TabIndex = 12
+        Me.cbbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbYear.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
+        Me.cbbYear.Location = New System.Drawing.Point(241, 188)
+        Me.cbbYear.Name = "cbbYear"
+        Me.cbbYear.Size = New System.Drawing.Size(76, 33)
+        Me.cbbYear.TabIndex = 12
         '
-        'ComboBox2
+        'cbbWeapon
         '
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"Foil", "Sabre", "Epee"})
-        Me.ComboBox2.Location = New System.Drawing.Point(241, 238)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(172, 33)
-        Me.ComboBox2.TabIndex = 13
+        Me.cbbWeapon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbWeapon.FormattingEnabled = True
+        Me.cbbWeapon.Items.AddRange(New Object() {"Foil", "Sabre", "Epee"})
+        Me.cbbWeapon.Location = New System.Drawing.Point(241, 238)
+        Me.cbbWeapon.Name = "cbbWeapon"
+        Me.cbbWeapon.Size = New System.Drawing.Size(172, 33)
+        Me.cbbWeapon.TabIndex = 13
         '
-        'TextBox4
+        'txtEmail
         '
-        Me.TextBox4.Location = New System.Drawing.Point(241, 288)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(291, 32)
-        Me.TextBox4.TabIndex = 14
+        Me.txtEmail.Location = New System.Drawing.Point(241, 288)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(291, 32)
+        Me.txtEmail.TabIndex = 14
         '
-        'TextBox5
+        'txtPhone
         '
-        Me.TextBox5.Location = New System.Drawing.Point(241, 338)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(291, 32)
-        Me.TextBox5.TabIndex = 15
+        Me.txtPhone.Location = New System.Drawing.Point(241, 338)
+        Me.txtPhone.Name = "txtPhone"
+        Me.txtPhone.Size = New System.Drawing.Size(291, 32)
+        Me.txtPhone.TabIndex = 15
         '
         'btnSave
         '
-        Me.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.btnSave.Location = New System.Drawing.Point(358, 413)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(131, 42)
@@ -170,7 +171,6 @@ Partial Class StudentProfilesCreate
         '
         'btnCancel
         '
-        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancel.Location = New System.Drawing.Point(505, 413)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(131, 42)
@@ -178,20 +178,30 @@ Partial Class StudentProfilesCreate
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(556, 38)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(34, 32)
+        Me.PictureBox1.TabIndex = 18
+        Me.PictureBox1.TabStop = False
+        '
         'StudentProfilesCreate
         '
         Me.AcceptButton = Me.btnSave
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(661, 467)
+        Me.ClientSize = New System.Drawing.Size(649, 469)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.ComboBox2)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtPhone)
+        Me.Controls.Add(Me.txtEmail)
+        Me.Controls.Add(Me.cbbWeapon)
+        Me.Controls.Add(Me.cbbYear)
+        Me.Controls.Add(Me.txtID)
+        Me.Controls.Add(Me.txtSurname)
+        Me.Controls.Add(Me.txtFirstName)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -206,7 +216,9 @@ Partial Class StudentProfilesCreate
         Me.Name = "StudentProfilesCreate"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Create New Profile"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -218,13 +230,14 @@ Partial Class StudentProfilesCreate
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtFirstName As System.Windows.Forms.TextBox
+    Friend WithEvents txtSurname As System.Windows.Forms.TextBox
+    Friend WithEvents txtID As System.Windows.Forms.TextBox
+    Friend WithEvents cbbYear As System.Windows.Forms.ComboBox
+    Friend WithEvents cbbWeapon As System.Windows.Forms.ComboBox
+    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
+    Friend WithEvents txtPhone As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class
