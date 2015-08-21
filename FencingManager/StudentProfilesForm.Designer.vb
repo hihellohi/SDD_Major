@@ -33,17 +33,17 @@ Partial Class StudentProfilesForm
         Me.colFName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colYear = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.rdbCertainYear = New System.Windows.Forms.RadioButton()
+        Me.cbbYear = New System.Windows.Forms.ComboBox()
+        Me.rdbSelectYear = New System.Windows.Forms.RadioButton()
         Me.rdbSenior = New System.Windows.Forms.RadioButton()
         Me.rdbJunior = New System.Windows.Forms.RadioButton()
         Me.rdbAll = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.chkAdvanced = New System.Windows.Forms.CheckBox()
+        Me.chkFilter = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -127,38 +127,38 @@ Partial Class StudentProfilesForm
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
-        Me.GroupBox1.Controls.Add(Me.rdbCertainYear)
+        Me.GroupBox1.Controls.Add(Me.cbbYear)
+        Me.GroupBox1.Controls.Add(Me.rdbSelectYear)
         Me.GroupBox1.Controls.Add(Me.rdbSenior)
         Me.GroupBox1.Controls.Add(Me.rdbJunior)
         Me.GroupBox1.Controls.Add(Me.rdbAll)
         Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Location = New System.Drawing.Point(746, 408)
+        Me.GroupBox1.Location = New System.Drawing.Point(953, 194)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(198, 190)
+        Me.GroupBox1.Size = New System.Drawing.Size(213, 179)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Year Group"
         '
-        'ComboBox1
+        'cbbYear
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
-        Me.ComboBox1.Location = New System.Drawing.Point(90, 141)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(70, 33)
-        Me.ComboBox1.TabIndex = 4
-        Me.ComboBox1.Text = "7"
+        Me.cbbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbYear.FormattingEnabled = True
+        Me.cbbYear.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
+        Me.cbbYear.Location = New System.Drawing.Point(90, 141)
+        Me.cbbYear.Name = "cbbYear"
+        Me.cbbYear.Size = New System.Drawing.Size(70, 33)
+        Me.cbbYear.TabIndex = 4
         '
-        'rdbCertainYear
+        'rdbSelectYear
         '
-        Me.rdbCertainYear.AutoSize = True
-        Me.rdbCertainYear.Location = New System.Drawing.Point(7, 141)
-        Me.rdbCertainYear.Name = "rdbCertainYear"
-        Me.rdbCertainYear.Size = New System.Drawing.Size(77, 30)
-        Me.rdbCertainYear.TabIndex = 3
-        Me.rdbCertainYear.Text = "Year"
-        Me.rdbCertainYear.UseVisualStyleBackColor = True
+        Me.rdbSelectYear.AutoSize = True
+        Me.rdbSelectYear.Location = New System.Drawing.Point(7, 141)
+        Me.rdbSelectYear.Name = "rdbSelectYear"
+        Me.rdbSelectYear.Size = New System.Drawing.Size(77, 30)
+        Me.rdbSelectYear.TabIndex = 3
+        Me.rdbSelectYear.Text = "Year"
+        Me.rdbSelectYear.UseVisualStyleBackColor = True
         '
         'rdbSenior
         '
@@ -196,63 +196,67 @@ Partial Class StudentProfilesForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(734, 145)
+        Me.Label1.Location = New System.Drawing.Point(651, 135)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(220, 36)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Search Options"
         '
-        'chkAdvanced
+        'chkFilter
         '
-        Me.chkAdvanced.AutoSize = True
-        Me.chkAdvanced.Location = New System.Drawing.Point(740, 193)
-        Me.chkAdvanced.Name = "chkAdvanced"
-        Me.chkAdvanced.Size = New System.Drawing.Size(209, 30)
-        Me.chkAdvanced.TabIndex = 4
-        Me.chkAdvanced.Text = "Advanced Options"
-        Me.chkAdvanced.UseVisualStyleBackColor = True
+        Me.chkFilter.AutoSize = True
+        Me.chkFilter.Location = New System.Drawing.Point(21, 31)
+        Me.chkFilter.Name = "chkFilter"
+        Me.chkFilter.Size = New System.Drawing.Size(114, 30)
+        Me.chkFilter.TabIndex = 4
+        Me.chkFilter.Text = "Filter by:"
+        Me.chkFilter.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.CheckBox4)
-        Me.GroupBox2.Controls.Add(Me.CheckBox3)
-        Me.GroupBox2.Controls.Add(Me.CheckBox2)
-        Me.GroupBox2.Location = New System.Drawing.Point(740, 243)
+        Me.GroupBox2.Controls.Add(Me.RadioButton3)
+        Me.GroupBox2.Controls.Add(Me.RadioButton2)
+        Me.GroupBox2.Controls.Add(Me.RadioButton1)
+        Me.GroupBox2.Controls.Add(Me.chkFilter)
+        Me.GroupBox2.Location = New System.Drawing.Point(647, 194)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(335, 142)
+        Me.GroupBox2.Size = New System.Drawing.Size(232, 179)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "GroupBox2"
+        Me.GroupBox2.Text = "Filters"
         '
-        'CheckBox4
+        'RadioButton1
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(6, 103)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(134, 30)
-        Me.CheckBox4.TabIndex = 2
-        Me.CheckBox4.Text = "Student ID"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(21, 67)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(137, 30)
+        Me.RadioButton1.TabIndex = 5
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "First Name"
+        Me.RadioButton1.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'RadioButton2
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(6, 67)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(120, 30)
-        Me.CheckBox3.TabIndex = 1
-        Me.CheckBox3.Text = "Surname"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(21, 103)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(119, 30)
+        Me.RadioButton2.TabIndex = 6
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "Surname"
+        Me.RadioButton2.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'RadioButton3
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(7, 31)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(138, 30)
-        Me.CheckBox2.TabIndex = 0
-        Me.CheckBox2.Text = "First Name"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.RadioButton3.AutoSize = True
+        Me.RadioButton3.Location = New System.Drawing.Point(21, 139)
+        Me.RadioButton3.Name = "RadioButton3"
+        Me.RadioButton3.Size = New System.Drawing.Size(133, 30)
+        Me.RadioButton3.TabIndex = 7
+        Me.RadioButton3.TabStop = True
+        Me.RadioButton3.Text = "Student ID"
+        Me.RadioButton3.UseVisualStyleBackColor = True
         '
         'StudentProfilesForm
         '
@@ -260,7 +264,6 @@ Partial Class StudentProfilesForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.chkAdvanced)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ListView1)
@@ -288,16 +291,16 @@ Partial Class StudentProfilesForm
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents rdbCertainYear As System.Windows.Forms.RadioButton
+    Friend WithEvents cbbYear As System.Windows.Forms.ComboBox
+    Friend WithEvents rdbSelectYear As System.Windows.Forms.RadioButton
     Friend WithEvents rdbSenior As System.Windows.Forms.RadioButton
     Friend WithEvents rdbJunior As System.Windows.Forms.RadioButton
     Friend WithEvents rdbAll As System.Windows.Forms.RadioButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents chkAdvanced As System.Windows.Forms.CheckBox
+    Friend WithEvents chkFilter As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
     Friend WithEvents btnNew As System.Windows.Forms.Button
+    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
 End Class

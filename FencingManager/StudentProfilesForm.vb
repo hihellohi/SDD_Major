@@ -30,7 +30,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        If chkAdvanced.Checked = True Then
+        If chkFilter.Checked = True Then
 
         Else
             BasicSearchQuery()
@@ -111,5 +111,9 @@
             sortOrder = "ASC"
 
         End If
+    End Sub
+
+    Private Sub Filters_Changed(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged, RadioButton2.CheckedChanged, RadioButton3.CheckedChanged
+
     End Sub
 End Class

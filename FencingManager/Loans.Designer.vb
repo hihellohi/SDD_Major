@@ -96,13 +96,13 @@ Partial Class Loans
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Days", "Weeks", "Months", "Years"})
         Me.ComboBox1.Location = New System.Drawing.Point(322, 299)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 5
-        Me.ComboBox1.Text = "Select a unit of time"
         '
         'GroupBox1
         '
