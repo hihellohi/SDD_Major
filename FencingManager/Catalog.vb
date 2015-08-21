@@ -6,13 +6,13 @@ Public Class Catalog
         Public id As Integer
         Public student As Integer
         Public due As Date
-        Public gearID As Integer
+        Public gearID As String
         Public gearType As String
     End Structure
 
     Dim things As New List(Of item)()
     Dim sort As Integer = -1
-    Dim selected As Integer = 0
+    Dim selected As Integer = -1
     Dim check As Boolean = False
 
     Public Sub reload()
@@ -46,7 +46,7 @@ Public Class Catalog
         Next
         sort_things()
         loadTable()
-
+        Button4_Click()
     End Sub
 
     Private Sub sort_things()
@@ -187,7 +187,7 @@ Public Class Catalog
         loadTable()
     End Sub
 
-    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseDoubleClick
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.ItemSelectionChanged
         If ListView1.SelectedIndices.Count = 1 Then
             'MsgBox(things(ListView1.SelectedIndices(0)).id)
             selected = things(ListView1.SelectedIndices(0)).id - 1
@@ -200,11 +200,20 @@ Public Class Catalog
             Label13.Visible = False
             If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
                 txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
-                txtDD.Text = things(ListView1.SelectedIndices(0)).due
-
+                txtYear.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueYear").ToString
+                cmbMonth.SelectedIndex = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueMonth") - 1
+                cmbDay.SelectedIndex = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueDay") - 1
+                txtYear.Enabled = True
+                cmbMonth.Enabled = True
+                cmbDay.Enabled = True
             Else
                 txtSL.Text = ""
-                txtDD.Text = ""
+                txtYear.Text = ""
+                cmbMonth.SelectedIndex = -1
+                cmbDay.SelectedIndex = -1
+                txtYear.Enabled = False
+                cmbMonth.Enabled = False
+                cmbDay.Enabled = False
             End If
             txtSelIItemID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
         End If
@@ -235,11 +244,10 @@ Public Class Catalog
         End If
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
-            If row("GearType").ToString = txtDescription.Text And row("GearID").ToString = txtItemID.Text Then
+            If row("GearID").ToString = txtItemID.Text Then
                 valid = False
                 txtItemID.BackColor = Color.Red
-                txtDescription.BackColor = Color.Red
-                Label5.Text = "Gear Type/ID combination already exists"
+                Label5.Text = "ID number already exists"
             End If
         Next
         If valid Then
@@ -248,7 +256,7 @@ Public Class Catalog
             x("GearID") = txtItemID.Text
             x("GearType") = txtDescription.Text
             x("Notes") = TextBox2.Text
-            x("ID") = RootForm.GearDataS.Tables("Gear").Rows.Count
+            x("ID") = RootForm.GearDataS.Tables("Gear").Rows.Count + 1
             x("StudentLoaned") = 0
             x("DueYear") = 0
             x("DueMonth") = 0
@@ -269,20 +277,36 @@ Public Class Catalog
         txtItemID.Select(txtItemID.Text.Length, 0)
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        txtAN.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString
-        txtSelDesc.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType")
-        '        txtSelIItemID.Text = row("GearID")
-        Label13.Visible = False
-        If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
-            txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
-            txtDD.Text = things(ListView1.SelectedIndices(0)).due
+    Private Sub txtseliitemid_TextChanged(sender As Object, e As EventArgs) Handles txtSelIItemID.TextChanged
+        txtSelIItemID.Text = System.Text.RegularExpressions.Regex.Replace(txtSelIItemID.Text, "[^0-9]", "")
+        txtSelIItemID.Select(txtSelIItemID.Text.Length, 0)
+    End Sub
 
-        Else
-            txtSL.Text = ""
-            txtDD.Text = ""
+    Private Sub Button4_Click() Handles Button4.Click
+        If selected <> -1 Then
+            txtAN.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString
+            txtSelDesc.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType").ToString
+            '        txtSelIItemID.Text = row("GearID")
+            Label13.Visible = False
+            If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
+                txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
+                txtYear.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueYear").ToString
+                cmbMonth.SelectedIndex = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueMonth") - 1
+                cmbDay.SelectedIndex = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueDay") - 1
+                txtYear.Enabled = True
+                cmbMonth.Enabled = True
+                cmbDay.Enabled = True
+            Else
+                txtSL.Text = ""
+                txtYear.Text = ""
+                cmbMonth.SelectedIndex = -1
+                cmbDay.SelectedIndex = -1
+                txtYear.Enabled = False
+                cmbMonth.Enabled = False
+                cmbDay.Enabled = False
+            End If
+            txtSelIItemID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
         End If
-        txtSelIItemID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -291,12 +315,102 @@ Public Class Catalog
             RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = count
         Next
         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+        selected = -1
         reload()
         Label13.Visible = True
+
     End Sub
+
+    Private Function datevalid()
+        If txtSL.Text = "" Then
+            Return True
+        End If
+        If cmbDay.SelectedIndex = -1 Or cmbMonth.SelectedIndex = -1 Or txtYear.Text < 1000 Or txtYear.Text > 9999 Then
+            Return False
+        End If
+        If cmbDay.SelectedIndex > 30 Then
+            Return False
+        End If
+        Dim thirty() = {3, 5, 8, 10}
+        For i = 0 To 3
+            If cmbMonth.SelectedIndex = thirty(i) And cmbDay.SelectedIndex = 30 Then
+                Return False
+            End If
+        Next
+        If cmbMonth.SelectedIndex = 1 Then
+            If (txtYear.Text Mod 400 = 0 Or (txtYear.Text Mod 4 = 0 And (Not txtYear.Text Mod 100))) And cmbDay.SelectedIndex = 29 Then
+                Return False
+            ElseIf cmbDay.SelectedIndex > 27 Then
+                Return False
+            End If
+        End If
+        Return True
+    End Function
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         'tbc do save stuff
+        Dim valid As Boolean = True
+        If txtSelIItemID.Text = "" Then
+            txtSelIItemID.BackColor = Color.Red
+            valid = False
+            Label14.Text = "Fields marked red must be filled"
+        Else
+            txtSelIItemID.BackColor = Color.White
+        End If
+        If txtSelDesc.Text = "" Then
+            txtSelDesc.BackColor = Color.Red
+            valid = False
+            Label14.Text = "Fields marked red must be filled"
+        Else
+            txtSelDesc.BackColor = Color.White
+        End If
+        If Not datevalid() Then
+
+            Label15.Visible = True
+            Label15.Text = "Enter a valid date between 1000 and 9999 CE"
+        Else
+
+            Label15.Visible = False
+        End If
+        Dim row As DataRow
+        For Each row In RootForm.GearDataS.Tables("Gear").Rows
+            If row("GearID").ToString = txtSelIItemID.Text And Not row("ID") = selected + 1 Then
+                valid = False
+                txtSelIItemID.BackColor = Color.Red
+                Label14.Text = "ID number already exists"
+            End If
+        Next
+        If valid Then
+            Label14.Visible = False
+        Else
+            Label14.Visible = True
+        End If
+
+        If valid And Label15.Visible = False Then
+            Dim changes = False
+            If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString <> txtAN.Text Or
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType") <> txtSelDesc.Text Or
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID") <> txtSelIItemID.Text Then
+                changes = True
+            End If
+            RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes") = txtAN.Text
+            RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType") = txtSelDesc.Text
+            RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID") = txtSelIItemID.Text
+            If txtSL.Text <> "" Then
+                If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueDay") <> cmbDay.SelectedIndex + 1 Or
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueMonth") <> cmbMonth.SelectedIndex + 1 Or
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueYear") <> txtYear.Text Then
+                    changes = True
+                End If
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueDay") = cmbDay.SelectedIndex + 1
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueMonth") = cmbMonth.SelectedIndex + 1
+                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueYear") = txtYear.Text
+            End If
+            If changes = True Then
+                RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+                reload()
+            End If
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -310,9 +424,9 @@ Public Class Catalog
     End Sub
 
     Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.MouseLeave
-            check = False
+        check = False
 
-            Timer1.Enabled = True
+        Timer1.Enabled = True
 
     End Sub
 
@@ -345,6 +459,13 @@ Public Class Catalog
 
         Timer1.Enabled = True
     End Sub
+
+    Private Sub txtDD_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
+        txtYear.Text = System.Text.RegularExpressions.Regex.Replace(txtYear.Text, "[^0-9]", "")
+        txtYear.Select(txtYear.Text.Length, 0)
+    End Sub
+
+
 End Class
 
 Public Module CueBannerText

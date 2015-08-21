@@ -52,7 +52,7 @@ Partial Class GearLoaning
         '
         'btnLoan
         '
-        Me.btnLoan.BackColor = System.Drawing.Color.White
+        Me.btnLoan.BackColor = System.Drawing.Color.Green
         Me.btnLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLoan.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLoan.Location = New System.Drawing.Point(862, 37)
@@ -64,7 +64,7 @@ Partial Class GearLoaning
         '
         'btnCatalog
         '
-        Me.btnCatalog.BackColor = System.Drawing.Color.White
+        Me.btnCatalog.BackColor = System.Drawing.Color.Green
         Me.btnCatalog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCatalog.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCatalog.Location = New System.Drawing.Point(975, 37)
