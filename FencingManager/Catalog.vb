@@ -269,6 +269,7 @@ Public Class Catalog
             x("DueDay") = 0
             RootForm.GearDataS.Tables("Gear").Rows.Add(x)
             RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
             reload()
             txtDescription.Text = ""
             txtItemID.Text = ""
@@ -317,25 +318,28 @@ Public Class Catalog
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
-        For count = selected + 1 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
-            'RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID")
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearID")
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("Notes") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("Notes").ToString
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearType") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearType")
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("StudentLoaned") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("StudentLoaned")
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueDay") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueDay")
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueMonth") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueMonth")
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueYear") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueYear")
-        Next
-
-        RootForm.GearDataS.Tables("Gear").Rows(RootForm.GearDataS.Tables("Gear").Rows.Count - 1).Delete()
+        RootForm.GearDataS.Tables("Gear").Rows(selected).Delete()
         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
-        For count = selected To RootForm.GearDataS.Tables("Gear").Rows.Count - 2
+
+
+        'For count = selected + 1 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
+        '    'RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID")
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearID")
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("Notes") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("Notes").ToString
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearType") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearType")
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("StudentLoaned") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("StudentLoaned")
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueDay") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueDay")
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueMonth") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueMonth")
+        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueYear") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueYear")
+        'Next
+
+       
+        For count = selected To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
             RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID") -= 1
-            RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
         Next
-        RootForm.GearDataS.Clear()
-        RootForm.GearAdapter.Fill(RootForm.GearDataS, "Gear")
+        RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
         selected = -1
         reload()
         Label13.Visible = True
@@ -435,6 +439,7 @@ Public Class Catalog
             End If
             If changes = True Then
                 RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
                 reload()
             End If
         End If

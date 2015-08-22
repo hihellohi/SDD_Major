@@ -18,6 +18,7 @@ Public Class Returns
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(6) = 0
                         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
 
+
                     End If
                     tmp = False
                 End If

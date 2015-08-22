@@ -105,6 +105,7 @@
                                 RootForm.GearDataS.Tables("Gear").Rows(i)("DueMonth") = cur.Month
                                 RootForm.GearDataS.Tables("Gear").Rows(i)("DueYear") = cur.Year
                                 RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
                                 loadTable()
                             Else
                                 Label1.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
