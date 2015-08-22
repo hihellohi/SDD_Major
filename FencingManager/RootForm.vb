@@ -37,7 +37,6 @@ Public Class RootForm
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         connection = New OleDbConnection(My.Settings.FencingConnectionString)
         connection.Open()
         GearAdapter = New OleDb.OleDbDataAdapter("SELECT * FROM Gear", RootForm.connection)
