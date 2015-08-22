@@ -23,6 +23,7 @@ Partial Class CalendarTableView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CalendarTableView))
         Me.FencingDataSet = New FencingManager.FencingDataSet()
         Me.CalendarBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CalendarTableAdapter = New FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter()
@@ -46,23 +47,23 @@ Partial Class CalendarTableView
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ButDisableSearch = New System.Windows.Forms.Button()
+        Me.ButEnableSearch = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.EventNameToolStrip = New System.Windows.Forms.ToolStrip()
         Me.EventNameToolStripLabel = New System.Windows.Forms.ToolStripLabel()
         Me.EventNameToolStripTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.EventNameToolStripButton = New System.Windows.Forms.ToolStripButton()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ButEnableSearch = New System.Windows.Forms.Button()
-        Me.ButDisableSearch = New System.Windows.Forms.Button()
         CType(Me.FencingDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CalendarBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CalendarBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CalendarBindingNavigator.SuspendLayout()
         CType(Me.CalendarDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.EventNameToolStrip.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.EventNameToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'FencingDataSet
@@ -97,14 +98,14 @@ Partial Class CalendarTableView
         Me.CalendarBindingNavigator.DeleteItem = Nothing
         Me.CalendarBindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.CalendarBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2})
-        Me.CalendarBindingNavigator.Location = New System.Drawing.Point(0, 477)
+        Me.CalendarBindingNavigator.Location = New System.Drawing.Point(0, 478)
         Me.CalendarBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.CalendarBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
         Me.CalendarBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
         Me.CalendarBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CalendarBindingNavigator.Name = "CalendarBindingNavigator"
         Me.CalendarBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CalendarBindingNavigator.Size = New System.Drawing.Size(844, 25)
+        Me.CalendarBindingNavigator.Size = New System.Drawing.Size(842, 25)
         Me.CalendarBindingNavigator.TabIndex = 0
         Me.CalendarBindingNavigator.Text = "BindingNavigator1"
         '
@@ -118,6 +119,7 @@ Partial Class CalendarTableView
         'BindingNavigatorMoveFirstItem
         '
         Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
         Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
@@ -126,6 +128,7 @@ Partial Class CalendarTableView
         'BindingNavigatorMovePreviousItem
         '
         Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
         Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
@@ -153,6 +156,7 @@ Partial Class CalendarTableView
         'BindingNavigatorMoveNextItem
         '
         Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
         Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
@@ -161,6 +165,7 @@ Partial Class CalendarTableView
         'BindingNavigatorMoveLastItem
         '
         Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
         Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
@@ -177,10 +182,9 @@ Partial Class CalendarTableView
         Me.CalendarDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.CalendarDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
         Me.CalendarDataGridView.DataSource = Me.CalendarBindingSource
-        Me.CalendarDataGridView.Enabled = False
         Me.CalendarDataGridView.Location = New System.Drawing.Point(0, 28)
         Me.CalendarDataGridView.Name = "CalendarDataGridView"
-        Me.CalendarDataGridView.Size = New System.Drawing.Size(843, 450)
+        Me.CalendarDataGridView.Size = New System.Drawing.Size(844, 450)
         Me.CalendarDataGridView.TabIndex = 1
         '
         'DataGridViewTextBoxColumn1
@@ -231,14 +235,68 @@ Partial Class CalendarTableView
         Me.DataGridViewTextBoxColumn8.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
+        'ButDisableSearch
+        '
+        Me.ButDisableSearch.BackColor = System.Drawing.Color.White
+        Me.ButDisableSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButDisableSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButDisableSearch.Location = New System.Drawing.Point(330, 477)
+        Me.ButDisableSearch.Name = "ButDisableSearch"
+        Me.ButDisableSearch.Size = New System.Drawing.Size(150, 26)
+        Me.ButDisableSearch.TabIndex = 108
+        Me.ButDisableSearch.Text = "Disable Search Function"
+        Me.ButDisableSearch.UseVisualStyleBackColor = False
+        Me.ButDisableSearch.Visible = False
+        '
+        'ButEnableSearch
+        '
+        Me.ButEnableSearch.BackColor = System.Drawing.Color.White
+        Me.ButEnableSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButEnableSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButEnableSearch.Location = New System.Drawing.Point(330, 477)
+        Me.ButEnableSearch.Name = "ButEnableSearch"
+        Me.ButEnableSearch.Size = New System.Drawing.Size(150, 26)
+        Me.ButEnableSearch.TabIndex = 107
+        Me.ButEnableSearch.Text = "Enable Search Function"
+        Me.ButEnableSearch.UseVisualStyleBackColor = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
+        Me.PictureBox1.Location = New System.Drawing.Point(373, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(60, 13)
+        Me.PictureBox1.TabIndex = 106
+        Me.PictureBox1.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(645, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(32, 13)
+        Me.Label1.TabIndex = 105
+        Me.Label1.Text = "*note"
+        Me.Label1.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.White
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button1.Location = New System.Drawing.Point(768, 477)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 26)
+        Me.Button1.TabIndex = 104
+        Me.Button1.Text = "Close"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'EventNameToolStrip
         '
-        Me.EventNameToolStrip.AutoSize = False
         Me.EventNameToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EventNameToolStripLabel, Me.EventNameToolStripTextBox, Me.EventNameToolStripButton})
         Me.EventNameToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.EventNameToolStrip.Name = "EventNameToolStrip"
-        Me.EventNameToolStrip.Size = New System.Drawing.Size(844, 25)
-        Me.EventNameToolStrip.TabIndex = 2
+        Me.EventNameToolStrip.Size = New System.Drawing.Size(842, 25)
+        Me.EventNameToolStrip.TabIndex = 109
         Me.EventNameToolStrip.Text = "EventNameToolStrip"
         '
         'EventNameToolStripLabel
@@ -256,97 +314,41 @@ Partial Class CalendarTableView
         '
         'EventNameToolStripButton
         '
-        Me.EventNameToolStripButton.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.EventNameToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.EventNameToolStripButton.Name = "EventNameToolStripButton"
         Me.EventNameToolStripButton.Size = New System.Drawing.Size(46, 22)
         Me.EventNameToolStripButton.Text = "Search"
         Me.EventNameToolStripButton.Visible = False
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button1.Location = New System.Drawing.Point(769, 477)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 26)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Close"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(646, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(32, 13)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "*note"
-        Me.Label1.Visible = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
-        Me.PictureBox1.Location = New System.Drawing.Point(374, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(60, 13)
-        Me.PictureBox1.TabIndex = 7
-        Me.PictureBox1.TabStop = False
-        '
         'Timer1
         '
         Me.Timer1.Interval = 10
-        '
-        'ButEnableSearch
-        '
-        Me.ButEnableSearch.BackColor = System.Drawing.Color.White
-        Me.ButEnableSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButEnableSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButEnableSearch.Location = New System.Drawing.Point(331, 477)
-        Me.ButEnableSearch.Name = "ButEnableSearch"
-        Me.ButEnableSearch.Size = New System.Drawing.Size(150, 26)
-        Me.ButEnableSearch.TabIndex = 97
-        Me.ButEnableSearch.Text = "Enable Search Function"
-        Me.ButEnableSearch.UseVisualStyleBackColor = False
-        '
-        'ButDisableSearch
-        '
-        Me.ButDisableSearch.BackColor = System.Drawing.Color.White
-        Me.ButDisableSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButDisableSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButDisableSearch.Location = New System.Drawing.Point(331, 477)
-        Me.ButDisableSearch.Name = "ButDisableSearch"
-        Me.ButDisableSearch.Size = New System.Drawing.Size(150, 26)
-        Me.ButDisableSearch.TabIndex = 98
-        Me.ButDisableSearch.Text = "Disable Search Function"
-        Me.ButDisableSearch.UseVisualStyleBackColor = False
-        Me.ButDisableSearch.Visible = False
         '
         'CalendarTableView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(844, 502)
+        Me.ClientSize = New System.Drawing.Size(842, 503)
         Me.Controls.Add(Me.ButDisableSearch)
         Me.Controls.Add(Me.ButEnableSearch)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.EventNameToolStrip)
         Me.Controls.Add(Me.CalendarDataGridView)
         Me.Controls.Add(Me.CalendarBindingNavigator)
+        Me.Controls.Add(Me.EventNameToolStrip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "CalendarTableView"
-        Me.Text = "Calendar Database View"
+        Me.Text = "Calendar Table View"
         CType(Me.FencingDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CalendarBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CalendarBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CalendarBindingNavigator.ResumeLayout(False)
         Me.CalendarBindingNavigator.PerformLayout()
         CType(Me.CalendarDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.EventNameToolStrip.ResumeLayout(False)
         Me.EventNameToolStrip.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -374,14 +376,14 @@ Partial Class CalendarTableView
     Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ButDisableSearch As System.Windows.Forms.Button
+    Friend WithEvents ButEnableSearch As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents EventNameToolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents EventNameToolStripLabel As System.Windows.Forms.ToolStripLabel
     Friend WithEvents EventNameToolStripTextBox As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents EventNameToolStripButton As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
-    Friend WithEvents ButEnableSearch As System.Windows.Forms.Button
-    Friend WithEvents ButDisableSearch As System.Windows.Forms.Button
 End Class

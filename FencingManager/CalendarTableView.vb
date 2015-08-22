@@ -10,33 +10,27 @@
     Private Sub CalendarTableView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'FencingDataSet.Calendar' table. You can move, or remove it, as needed.
         Me.CalendarTableAdapter.Fill(Me.FencingDataSet.Calendar)
+
     End Sub
 
     Private Sub EventNameToolStripButton_Click(sender As Object, e As EventArgs) Handles EventNameToolStripButton.Click
         If EventNameToolStripTextBox.Text = "" Then
-            CalendarDataGridView.Visible = False
-            Label1.Visible = False
-            MsgBox("Enter a word to search for")
+            MsgBox("Please enter a word to search")
         Else
             Try
-                'Me.CalendarTableAdapter.EventName(Me.FencingDataSet.Calendar, EventNameToolStripTextBox.Text)
-                'FUCK YUO
-                CalendarDataGridView.Visible = True
-                Label1.Visible = True
+                Me.CalendarTableAdapter.EventName(Me.FencingDataSet.Calendar, EventNameToolStripTextBox.Text)
             Catch ex As System.Exception
                 System.Windows.Forms.MessageBox.Show(ex.Message)
             End Try
-        End If
-        
-    End Sub
 
+        End If
+    End Sub
 
 
     'closes 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Close()
     End Sub
-
 
     'simple msgbox label
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
@@ -81,4 +75,6 @@
         ButEnableSearch.Visible = False
         ButDisableSearch.Visible = True
     End Sub
+
+    
 End Class
