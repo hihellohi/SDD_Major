@@ -1455,7 +1455,7 @@
             dataset.Tables("Calendar").Rows.Add(datasetNewRow)
 
 
-            My.Computer.Audio.Play("ding.wav")
+            'My.Computer.Audio.Play("ding.wav")
             Update_to_Database("New event added for the date: " & CStr(DatabaseDate))
 
 
