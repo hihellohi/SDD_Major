@@ -1,7 +1,7 @@
 ﻿Imports System.Data.OleDb
 
 Public Class Returns
-
+    Dim old As String
     Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
@@ -39,6 +39,8 @@ Public Class Returns
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         TextBox2.Focus()
+        old = TextBox1.Text
+        TextBox1.Text = ""
         Button2.BackColor = Color.Green
         Button2.Text = "Scanning..."
     End Sub
@@ -50,6 +52,9 @@ Public Class Returns
     End Sub
 
     Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles TextBox2.LostFocus
+        If Button3.Visible Then
+            TextBox1.Text = old
+        End If
         Button3.Visible = True
         Button2.BackColor = Button3.BackColor
         Button2.Text = "Use Barcode Scanner"

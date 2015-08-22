@@ -5,6 +5,7 @@
     Dim dataS As New DataSet()
     Dim things As ArrayList = New ArrayList
     Dim sort As Integer = -1
+    Dim old As String = ""
 
     Public Sub reload()
         loadTable()
@@ -205,6 +206,8 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         TextBox1.Focus()
+        old = TextBox1.Text
+        TextBox1.Text = ""
         Button2.BackColor = Color.Green
         Button2.Text = "Scanning..."
     End Sub
@@ -216,6 +219,9 @@
     End Sub
 
     Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles TextBox1.LostFocus
+        If Button3.Visible Then
+            TextBox1.Text = old
+        End If
         Button3.Visible = True
         Button2.BackColor = Button3.BackColor
         Button2.Text = "Use Barcode Scanner"

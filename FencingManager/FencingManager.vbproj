@@ -86,6 +86,12 @@
     <Compile Include="Calendar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CalendarTableView.Designer.vb">
+      <DependentUpon>CalendarTableView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarTableView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Catalog.Designer.vb">
       <DependentUpon>Catalog.vb</DependentUpon>
     </Compile>
@@ -199,6 +205,9 @@
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CalendarTableView.resx">
+      <DependentUpon>CalendarTableView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Catalog.resx">
       <DependentUpon>Catalog.vb</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +287,10 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Foil symbol.png" />
+    <None Include="Resources\curly-brackets-md1.png" />
+    <None Include="Resources\curly-brackets-md.png" />
+    <None Include="Resources\curly-bracket.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

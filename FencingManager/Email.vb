@@ -12,7 +12,7 @@ Public Class Email
     End Sub
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click() Handles Button4.Click
         Dim hashtable As New Hashtable()
         Dim count As Integer = 0
         Dim things(RootForm.GearDataS.Tables("Gear").Rows.Count) As Integer
@@ -27,6 +27,7 @@ Public Class Email
                     Else
                         hashtable.Add(tmp("StudentLoaned"), count)
                         count += 1
+                        things(hashtable(tmp("StudentLoaned"))) = 1
                     End If
                 End If
             End If
@@ -42,23 +43,19 @@ Public Class Email
                         Dim Smtp_Server As New SmtpClient
                         Dim email As New MailMessage()
                         Smtp_Server.UseDefaultCredentials = False
-                        Smtp_Server.Credentials = New Net.NetworkCredential("shithy15@gmail.com", "a123b765")
+                        Smtp_Server.Credentials = New Net.NetworkCredential("engardefencingmanager@gmail.com", "password?")
                         Smtp_Server.Port = 587
                         Smtp_Server.EnableSsl = True
                         Smtp_Server.Host = "smtp.gmail.com"
 
                         email = New MailMessage()
-                        email.From = New MailAddress("shithy15@gmail.com")
+                        email.From = New MailAddress("engardefencingmanager@gmail.com")
                         email.To.Add(tmpb("Email"))
                         email.Subject = "Overdue Notice"
                         email.IsBodyHtml = True
-                        email.Body = "<html>You have " + things(hashtable(tmpa)).ToString() + " Items overdue. Please return immediately</html>"
+                        email.Body = "<html>You have loaned " + things(hashtable(tmpa)).ToString() + " items from your fencing organisation that are overdue. Please return immediately</html>"
 
                         Smtp_Server.Send(email)
-                        TextBox1.Visible = False
-                        Button1.Text = ("OK")
-                        Button1.Enabled = True
-                        Button2.Enabled = True
                     Catch error_t As Exception
                         MsgBox(error_t.ToString)
                         MsgBox("Email failed.")
@@ -68,7 +65,4 @@ Public Class Email
         Next
     End Sub
 
-    Private Sub Email_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

@@ -41,7 +41,7 @@ Public Class ForgotPW
                     Label2.Text = ("An email has been sent with your password.")
                 Catch error_t As Exception
                     MsgBox(error_t.ToString)
-                    Me.Close()
+                    'Me.Close()
                     MsgBox("Email failed.")
                 End Try
             Else : Label4.Visible = True
