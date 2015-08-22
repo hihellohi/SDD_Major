@@ -42,6 +42,7 @@ Partial Class Admin
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.btRefresh = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -216,11 +217,22 @@ Partial Class Admin
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Administration"
         '
+        'btRefresh
+        '
+        Me.btRefresh.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btRefresh.Location = New System.Drawing.Point(581, 493)
+        Me.btRefresh.Name = "btRefresh"
+        Me.btRefresh.Size = New System.Drawing.Size(29, 32)
+        Me.btRefresh.TabIndex = 38
+        Me.btRefresh.Text = "R"
+        Me.btRefresh.UseVisualStyleBackColor = True
+        '
         'Admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.btRefresh)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -261,4 +273,5 @@ Partial Class Admin
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents btRefresh As System.Windows.Forms.Button
 End Class
