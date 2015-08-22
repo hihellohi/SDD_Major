@@ -38,12 +38,12 @@ Partial Class StudentProfilesForm
         Me.rdbSenior = New System.Windows.Forms.RadioButton()
         Me.rdbJunior = New System.Windows.Forms.RadioButton()
         Me.rdbAll = New System.Windows.Forms.RadioButton()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.chkFilter = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.chkUnexplainedAb = New System.Windows.Forms.CheckBox()
+        Me.rdbID = New System.Windows.Forms.RadioButton()
+        Me.rdbSurname = New System.Windows.Forms.RadioButton()
+        Me.rdbFirstName = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -98,9 +98,9 @@ Partial Class StudentProfilesForm
         '
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colID, Me.colSurname, Me.colFName, Me.colYear})
         Me.ListView1.GridLines = True
-        Me.ListView1.Location = New System.Drawing.Point(68, 145)
+        Me.ListView1.Location = New System.Drawing.Point(28, 138)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(573, 590)
+        Me.ListView1.Size = New System.Drawing.Size(574, 604)
         Me.ListView1.TabIndex = 1
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
@@ -113,12 +113,12 @@ Partial Class StudentProfilesForm
         'colSurname
         '
         Me.colSurname.Text = "Surname"
-        Me.colSurname.Width = 106
+        Me.colSurname.Width = 130
         '
         'colFName
         '
         Me.colFName.Text = "First Name"
-        Me.colFName.Width = 122
+        Me.colFName.Width = 146
         '
         'colYear
         '
@@ -132,8 +132,7 @@ Partial Class StudentProfilesForm
         Me.GroupBox1.Controls.Add(Me.rdbSenior)
         Me.GroupBox1.Controls.Add(Me.rdbJunior)
         Me.GroupBox1.Controls.Add(Me.rdbAll)
-        Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Location = New System.Drawing.Point(953, 194)
+        Me.GroupBox1.Location = New System.Drawing.Point(974, 138)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(213, 179)
         Me.GroupBox1.TabIndex = 2
@@ -142,7 +141,9 @@ Partial Class StudentProfilesForm
         '
         'cbbYear
         '
+        Me.cbbYear.BackColor = System.Drawing.SystemColors.Window
         Me.cbbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbYear.Enabled = False
         Me.cbbYear.FormattingEnabled = True
         Me.cbbYear.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
         Me.cbbYear.Location = New System.Drawing.Point(90, 141)
@@ -192,16 +193,6 @@ Partial Class StudentProfilesForm
         Me.rdbAll.Text = "All"
         Me.rdbAll.UseVisualStyleBackColor = True
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(651, 135)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(220, 36)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Search Options"
-        '
         'chkFilter
         '
         Me.chkFilter.AutoSize = True
@@ -214,49 +205,63 @@ Partial Class StudentProfilesForm
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.RadioButton3)
-        Me.GroupBox2.Controls.Add(Me.RadioButton2)
-        Me.GroupBox2.Controls.Add(Me.RadioButton1)
+        Me.GroupBox2.Controls.Add(Me.chkUnexplainedAb)
+        Me.GroupBox2.Controls.Add(Me.rdbID)
+        Me.GroupBox2.Controls.Add(Me.rdbSurname)
+        Me.GroupBox2.Controls.Add(Me.rdbFirstName)
         Me.GroupBox2.Controls.Add(Me.chkFilter)
-        Me.GroupBox2.Location = New System.Drawing.Point(647, 194)
+        Me.GroupBox2.Location = New System.Drawing.Point(647, 138)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(232, 179)
+        Me.GroupBox2.Size = New System.Drawing.Size(287, 215)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Filters"
         '
-        'RadioButton1
+        'chkUnexplainedAb
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(21, 67)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(137, 30)
-        Me.RadioButton1.TabIndex = 5
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "First Name"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.chkUnexplainedAb.AutoSize = True
+        Me.chkUnexplainedAb.Location = New System.Drawing.Point(21, 175)
+        Me.chkUnexplainedAb.Name = "chkUnexplainedAb"
+        Me.chkUnexplainedAb.Size = New System.Drawing.Size(254, 30)
+        Me.chkUnexplainedAb.TabIndex = 8
+        Me.chkUnexplainedAb.Text = "Unexplained Absences"
+        Me.chkUnexplainedAb.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'rdbID
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(21, 103)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(119, 30)
-        Me.RadioButton2.TabIndex = 6
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Surname"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.rdbID.AutoSize = True
+        Me.rdbID.Enabled = False
+        Me.rdbID.Location = New System.Drawing.Point(21, 139)
+        Me.rdbID.Name = "rdbID"
+        Me.rdbID.Size = New System.Drawing.Size(133, 30)
+        Me.rdbID.TabIndex = 7
+        Me.rdbID.TabStop = True
+        Me.rdbID.Text = "Student ID"
+        Me.rdbID.UseVisualStyleBackColor = True
         '
-        'RadioButton3
+        'rdbSurname
         '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(21, 139)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(133, 30)
-        Me.RadioButton3.TabIndex = 7
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Student ID"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.rdbSurname.AutoSize = True
+        Me.rdbSurname.Enabled = False
+        Me.rdbSurname.Location = New System.Drawing.Point(21, 103)
+        Me.rdbSurname.Name = "rdbSurname"
+        Me.rdbSurname.Size = New System.Drawing.Size(119, 30)
+        Me.rdbSurname.TabIndex = 6
+        Me.rdbSurname.TabStop = True
+        Me.rdbSurname.Text = "Surname"
+        Me.rdbSurname.UseVisualStyleBackColor = True
+        '
+        'rdbFirstName
+        '
+        Me.rdbFirstName.AutoSize = True
+        Me.rdbFirstName.Enabled = False
+        Me.rdbFirstName.Location = New System.Drawing.Point(21, 67)
+        Me.rdbFirstName.Name = "rdbFirstName"
+        Me.rdbFirstName.Size = New System.Drawing.Size(137, 30)
+        Me.rdbFirstName.TabIndex = 5
+        Me.rdbFirstName.TabStop = True
+        Me.rdbFirstName.Text = "First Name"
+        Me.rdbFirstName.UseVisualStyleBackColor = True
         '
         'StudentProfilesForm
         '
@@ -264,7 +269,6 @@ Partial Class StudentProfilesForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.Panel1)
@@ -279,7 +283,6 @@ Partial Class StudentProfilesForm
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
@@ -296,11 +299,11 @@ Partial Class StudentProfilesForm
     Friend WithEvents rdbSenior As System.Windows.Forms.RadioButton
     Friend WithEvents rdbJunior As System.Windows.Forms.RadioButton
     Friend WithEvents rdbAll As System.Windows.Forms.RadioButton
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents chkFilter As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnNew As System.Windows.Forms.Button
-    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbID As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbSurname As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbFirstName As System.Windows.Forms.RadioButton
+    Friend WithEvents chkUnexplainedAb As System.Windows.Forms.CheckBox
 End Class

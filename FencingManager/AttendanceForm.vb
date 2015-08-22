@@ -14,11 +14,11 @@
         Dim commandWeapon As String = ""
         Dim commandGroup As String = ""
         If rdbFoil.Checked Then
-            commandWeapon = "WHERE Weapon = '1'"
+            commandWeapon = "WHERE Weapon = 1"
         ElseIf rdbSabre.Checked Then
-            commandWeapon = "WHERE Weapon = '2'"
+            commandWeapon = "WHERE Weapon = 2"
         ElseIf rdbEpee.Checked Then
-            commandWeapon = "WHERE Weapon = '3'"
+            commandWeapon = "WHERE Weapon = 3"
         End If
 
         If rdbJunior.Checked Then
