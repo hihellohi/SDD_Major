@@ -37,10 +37,15 @@ Partial Class Loans
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.cmbDay = New System.Windows.Forms.ComboBox()
+        Me.cmbMonth = New System.Windows.Forms.ComboBox()
+        Me.txtYear = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -51,7 +56,7 @@ Partial Class Loans
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(57, 147)
+        Me.Label1.Location = New System.Drawing.Point(57, 145)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 1
@@ -99,6 +104,7 @@ Partial Class Loans
         '
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(105, 48)
+        Me.TextBox2.MaxLength = 3
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(126, 26)
         Me.TextBox2.TabIndex = 4
@@ -107,8 +113,9 @@ Partial Class Loans
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.ForeColor = System.Drawing.SystemColors.WindowText
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Select unit of time", "Days", "Weeks", "Months", "Years"})
+        Me.ComboBox1.Items.AddRange(New Object() {"Select Unit of Time", "Days", "Weeks", "Months", "Years"})
         Me.ComboBox1.Location = New System.Drawing.Point(242, 48)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(156, 26)
@@ -184,6 +191,11 @@ Partial Class Loans
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.txtYear)
+        Me.GroupBox2.Controls.Add(Me.cmbMonth)
+        Me.GroupBox2.Controls.Add(Me.cmbDay)
+        Me.GroupBox2.Controls.Add(Me.RadioButton2)
         Me.GroupBox2.Controls.Add(Me.RadioButton1)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.TextBox2)
@@ -195,6 +207,30 @@ Partial Class Loans
         Me.GroupBox2.TabIndex = 17
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Loan Duration"
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Checked = True
+        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton1.Location = New System.Drawing.Point(27, 51)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton1.TabIndex = 7
+        Me.RadioButton1.Text = "Loan for"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(102, 77)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(96, 13)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "Complete the fields"
+        Me.Label3.Visible = False
         '
         'GroupBox3
         '
@@ -220,29 +256,62 @@ Partial Class Loans
         Me.Label2.TabIndex = 19
         Me.Label2.Text = "Scan or input student ID to log in"
         '
-        'Label3
+        'RadioButton2
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(102, 76)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(96, 13)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Complete the fields"
-        Me.Label3.Visible = False
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton2.Location = New System.Drawing.Point(27, 178)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(82, 20)
+        Me.RadioButton2.TabIndex = 8
+        Me.RadioButton2.Text = "Loan until"
+        Me.RadioButton2.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'cmbDay
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(27, 51)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(74, 20)
-        Me.RadioButton1.TabIndex = 7
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Loan for"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.cmbDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDay.Enabled = False
+        Me.cmbDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDay.FormattingEnabled = True
+        Me.cmbDay.Items.AddRange(New Object() {"Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"})
+        Me.cmbDay.Location = New System.Drawing.Point(115, 175)
+        Me.cmbDay.Name = "cmbDay"
+        Me.cmbDay.Size = New System.Drawing.Size(56, 26)
+        Me.cmbDay.TabIndex = 28
+        '
+        'cmbMonth
+        '
+        Me.cmbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbMonth.Enabled = False
+        Me.cmbMonth.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMonth.FormattingEnabled = True
+        Me.cmbMonth.Items.AddRange(New Object() {"Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"})
+        Me.cmbMonth.Location = New System.Drawing.Point(193, 175)
+        Me.cmbMonth.Name = "cmbMonth"
+        Me.cmbMonth.Size = New System.Drawing.Size(72, 26)
+        Me.cmbMonth.TabIndex = 29
+        '
+        'txtYear
+        '
+        Me.txtYear.Enabled = False
+        Me.txtYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtYear.Location = New System.Drawing.Point(298, 175)
+        Me.txtYear.MaxLength = 4
+        Me.txtYear.Name = "txtYear"
+        Me.txtYear.Size = New System.Drawing.Size(100, 26)
+        Me.txtYear.TabIndex = 30
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(112, 204)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(226, 13)
+        Me.Label4.TabIndex = 31
+        Me.Label4.Text = "Enter a valid date between 1000 and 9999 CE"
+        Me.Label4.Visible = False
         '
         'Loans
         '
@@ -286,4 +355,9 @@ Partial Class Loans
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents cmbDay As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbMonth As System.Windows.Forms.ComboBox
+    Friend WithEvents txtYear As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

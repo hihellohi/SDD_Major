@@ -304,7 +304,7 @@ Partial Class Catalog
         'Label13
         '
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(-4, -5)
+        Me.Label13.Location = New System.Drawing.Point(26, 121)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(515, 260)
         Me.Label13.TabIndex = 23

@@ -363,8 +363,10 @@ Public Class Catalog
             End If
         Next
         If cmbMonth.SelectedIndex = 1 Then
-            If (txtYear.Text Mod 400 = 0 Or (txtYear.Text Mod 4 = 0 And (Not txtYear.Text Mod 100))) And cmbDay.SelectedIndex = 29 Then
-                Return False
+            If (txtYear.Text Mod 400 = 0 Or (txtYear.Text Mod 4 = 0 And (Not txtYear.Text Mod 100 = 0))) Then
+                If cmbDay.SelectedIndex = 29 Then
+                    Return False
+                End If
             ElseIf cmbDay.SelectedIndex > 27 Then
                 Return False
             End If
