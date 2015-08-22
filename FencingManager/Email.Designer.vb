@@ -31,7 +31,7 @@ Partial Class Email
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(112, 117)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(81, 19)
         Me.Button1.TabIndex = 0
@@ -41,7 +41,7 @@ Partial Class Email
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(112, 162)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(81, 19)
         Me.Button2.TabIndex = 1
@@ -51,7 +51,7 @@ Partial Class Email
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(112, 206)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(81, 19)
         Me.Button3.TabIndex = 2
@@ -61,7 +61,7 @@ Partial Class Email
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(437, 117)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(287, 108)
@@ -76,7 +76,7 @@ Partial Class Email
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Email"
         Me.Text = "Form1"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

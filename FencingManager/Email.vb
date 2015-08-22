@@ -43,7 +43,7 @@ Public Class Email
                         Dim email As New MailMessage()
                         Smtp_Server.UseDefaultCredentials = False
                         Smtp_Server.Credentials = New Net.NetworkCredential("shithy15@gmail.com", "a123b765")
-                        Smtp_Server.Port = 465
+                        Smtp_Server.Port = 587
                         Smtp_Server.EnableSsl = True
                         Smtp_Server.Host = "smtp.gmail.com"
 
@@ -68,4 +68,7 @@ Public Class Email
         Next
     End Sub
 
+    Private Sub Email_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

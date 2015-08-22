@@ -31,6 +31,7 @@ Partial Class GearLoaning
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 110)
         Me.Panel1.Name = "Panel1"

@@ -9,6 +9,10 @@ Public Class RootForm
     Const EMAIL = 4
     Const ATTENDANCE = 2
     Const ADMIN = 5
+    Const LOGGED_OUT = 0
+    Const WEAP = 1
+    Const CAP = 2
+    Const MIC = 3
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
@@ -21,6 +25,8 @@ Public Class RootForm
     Public Shared connection As New OleDbConnection
     Public Shared GearAdapter As New OleDb.OleDbDataAdapter
     Public Shared GearDataS As New DataSet()
+    Public Shared access_level As Integer = 0
+
 
     'Private WithEvents kbHook As New KeyboardHook
 

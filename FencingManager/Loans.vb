@@ -217,7 +217,7 @@
 
     Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles TextBox1.LostFocus
         Button3.Visible = True
-        Button2.BackColor = Color.White
+        Button2.BackColor = Button3.BackColor
         Button2.Text = "Use Barcode Scanner"
     End Sub
 

@@ -37,4 +37,23 @@ Public Class Returns
     End Sub
 
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        TextBox2.Focus()
+        Button2.BackColor = Color.Green
+        Button2.Text = "Scanning..."
+    End Sub
+
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Button3.Visible = False
+        TextBox2.Focus()
+    End Sub
+
+    Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles TextBox2.LostFocus
+        Button3.Visible = True
+        Button2.BackColor = Button3.BackColor
+        Button2.Text = "Use Barcode Scanner"
+    End Sub
+
+
 End Class

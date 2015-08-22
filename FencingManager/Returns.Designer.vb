@@ -39,7 +39,7 @@ Partial Class Returns
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(117, 210)
+        Me.TextBox2.Location = New System.Drawing.Point(100, 312)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(327, 31)
         Me.TextBox2.TabIndex = 2
@@ -48,7 +48,7 @@ Partial Class Returns
         '
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(117, 130)
+        Me.Button2.Location = New System.Drawing.Point(831, 312)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(327, 31)
         Me.Button2.TabIndex = 16
@@ -59,7 +59,7 @@ Partial Class Returns
         '
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(117, 210)
+        Me.Button3.Location = New System.Drawing.Point(100, 312)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(327, 31)
         Me.Button3.TabIndex = 17
@@ -68,23 +68,23 @@ Partial Class Returns
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(467, 317)
+        Me.Label1.Location = New System.Drawing.Point(0, 154)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(132, 25)
+        Me.Label1.Size = New System.Drawing.Size(1258, 25)
         Me.Label1.TabIndex = 20
-        Me.Label1.Text = "Sample Text"
+        Me.Label1.Text = "Scan or input gear ID to return"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Returns
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1258, 658)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.TextBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Returns"
         Me.Tag = "returns"

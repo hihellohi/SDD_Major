@@ -52,7 +52,7 @@ Partial Class Login
         Me.CheckBox2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckBox2.Location = New System.Drawing.Point(649, 445)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(168, 34)
+        Me.CheckBox2.Size = New System.Drawing.Size(169, 34)
         Me.CheckBox2.TabIndex = 18
         Me.CheckBox2.Text = "Remember Me"
         Me.CheckBox2.UseVisualStyleBackColor = True
@@ -118,7 +118,7 @@ Partial Class Login
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(555, 325)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(99, 30)
+        Me.Label2.Size = New System.Drawing.Size(100, 30)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Password"
         '
