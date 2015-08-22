@@ -316,11 +316,26 @@ Public Class Catalog
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        RootForm.GearDataS.Tables("Gear").Rows.RemoveAt(selected)
-        For count = 1 To RootForm.GearDataS.Tables("Gear").Rows.Count
-            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = count
+
+        For count = selected + 1 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
+            'RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID")
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearID")
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("Notes") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("Notes").ToString
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearType") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearType")
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("StudentLoaned") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("StudentLoaned")
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueDay") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueDay")
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueMonth") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueMonth")
+            RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueYear") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueYear")
         Next
+
+        RootForm.GearDataS.Tables("Gear").Rows(RootForm.GearDataS.Tables("Gear").Rows.Count - 1).Delete()
         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+        For count = selected To RootForm.GearDataS.Tables("Gear").Rows.Count - 2
+            RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID") -= 1
+            RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+        Next
+        RootForm.GearDataS.Clear()
+        RootForm.GearAdapter.Fill(RootForm.GearDataS, "Gear")
         selected = -1
         reload()
         Label13.Visible = True
