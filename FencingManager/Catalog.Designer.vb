@@ -65,6 +65,7 @@ Partial Class Catalog
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -138,6 +139,7 @@ Partial Class Catalog
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.RadioButton1)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.rdbStudent)
         Me.GroupBox1.Controls.Add(Me.TextBox1)
@@ -506,6 +508,18 @@ Partial Class Catalog
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 10
         '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton1.Location = New System.Drawing.Point(347, 71)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(68, 22)
+        Me.RadioButton1.TabIndex = 8
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "ItemID"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
         'Catalog
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -572,4 +586,5 @@ Partial Class Catalog
     Friend WithEvents cmbMonth As System.Windows.Forms.ComboBox
     Friend WithEvents cmbDay As System.Windows.Forms.ComboBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
 End Class
