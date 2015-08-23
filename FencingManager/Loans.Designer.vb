@@ -31,9 +31,11 @@ Partial Class Loans
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -46,8 +48,6 @@ Partial Class Loans
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -139,6 +139,30 @@ Partial Class Loans
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Logged out"
         '
+        'Button5
+        '
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Location = New System.Drawing.Point(376, 522)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(108, 31)
+        Me.Button5.TabIndex = 18
+        Me.Button5.Text = "Preview"
+        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
+        '
+        'Button4
+        '
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Location = New System.Drawing.Point(262, 522)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(108, 31)
+        Me.Button4.TabIndex = 17
+        Me.Button4.Text = "Print"
+        Me.Button4.UseVisualStyleBackColor = True
+        Me.Button4.Visible = False
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -148,16 +172,6 @@ Partial Class Loans
         Me.Label10.Size = New System.Drawing.Size(16, 18)
         Me.Label10.TabIndex = 16
         Me.Label10.Text = "0"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(12, 492)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(113, 24)
-        Me.Label6.TabIndex = 15
-        Me.Label6.Text = "Items Listed:"
         '
         'Button1
         '
@@ -170,6 +184,16 @@ Partial Class Loans
         Me.Button1.Text = "Logout"
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(12, 492)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(113, 24)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "Items Listed:"
         '
         'Button2
         '
@@ -317,30 +341,6 @@ Partial Class Loans
         Me.Label2.Size = New System.Drawing.Size(324, 25)
         Me.Label2.TabIndex = 19
         Me.Label2.Text = "Scan or input student ID to log in"
-        '
-        'Button4
-        '
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(262, 522)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(108, 31)
-        Me.Button4.TabIndex = 17
-        Me.Button4.Text = "Print"
-        Me.Button4.UseVisualStyleBackColor = True
-        Me.Button4.Visible = False
-        '
-        'Button5
-        '
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(376, 522)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(108, 31)
-        Me.Button5.TabIndex = 18
-        Me.Button5.Text = "Preview"
-        Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
         '
         'Loans
         '

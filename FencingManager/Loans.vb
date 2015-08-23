@@ -23,7 +23,8 @@
                 GroupBox1.Text = "logged out"
                 Label2.Text = "Scan or input student ID to log in"
                 Button1.Visible = False
-                button4.visible = False
+                Button4.Visible = False
+                Button5.Visible = False
                 'ListView1.Items.Clear()
 
             End If
@@ -67,7 +68,8 @@
                         Label2.Text = "Scan or input gear ID to loan"
                         tmp = True
                         Button1.Visible = True
-                        button4.visible = True
+                        Button4.Visible = True
+                        Button5.Visible = True
                         loadTable()
 
                     End If
@@ -157,7 +159,8 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         student = ""
         Button1.Visible = False
-        button4.visible = False
+        Button4.Visible = False
+        Button5.Visible = True
         GroupBox1.Text = "logged out"
         Label2.Text = "Scan or input student ID to log in"
         Label10.Text = 0
@@ -277,15 +280,40 @@
     End Sub
 
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim tmp As New WebBrowser
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
-            tmp.Document.Write("<html><b>hello <i><u>world</u><i></b></html>")
+
+            Dim i As ListViewItem
+            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
+            For Each i In ListView1.Items
+                out += "<tr><td>" + i.SubItems(0).Text.ToString + "</td><td>" + i.SubItems(1).Text.ToString + "</td><td>" + i.SubItems(2).Text.ToString + "</td></tr>"
+            Next
+            out += "</table></p></body></html>"
+            tmp.Document.Write(out)
+
             tmp.ShowPrintPreviewDialog()
         End If
 
 
 
+    End Sub
+
+    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim tmp As New WebBrowser
+        tmp.Navigate("about:blank")
+        If (tmp.Document <> Nothing) Then
+
+            Dim i As ListViewItem
+            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
+            For Each i In ListView1.Items
+                out += "<tr><td>" + i.SubItems(0).Text.ToString + "</td><td>" + i.SubItems(1).Text.ToString + "</td><td>" + i.SubItems(2).Text.ToString + "</td></tr>"
+            Next
+            out += "</table></p></body></html>"
+            tmp.Document.Write(out)
+
+            tmp.Print()
+        End If
     End Sub
 End Class
