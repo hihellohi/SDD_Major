@@ -30,7 +30,7 @@
             TexAdditionalInfo.Visible = True
         End If
 
-        PrintForm1.Print(Me, PowerPacks.Printing.PrintForm.PrintOption.Scrollable)
+        'PrintForm1.Print(Me, PowerPacks.Printing.PrintForm.PrintOption.Scrollable)
 
         Me.Close()
     End Sub
