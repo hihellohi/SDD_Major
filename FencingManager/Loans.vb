@@ -8,7 +8,7 @@
     Dim old As String = ""
 
     Public Sub reload()
-        loadTable()
+
         adapter = New OleDb.OleDbDataAdapter("SELECT * FROM StudentProfiles", RootForm.connection)
         adapter.Fill(dataS, "StudentProfiles")
         If student <> "" Then
@@ -22,10 +22,13 @@
                 student = ""
                 GroupBox1.Text = "logged out"
                 Label2.Text = "Scan or input student ID to log in"
+                Button1.Visible = False
+                button4.visible = False
                 'ListView1.Items.Clear()
 
             End If
         End If
+        loadTable()
     End Sub
 
     Private Sub loadTable()
@@ -63,8 +66,10 @@
                         GroupBox1.Text = dataS.Tables("StudentProfiles").Rows(i)("FirstName") + " " + dataS.Tables("StudentProfiles").Rows(i)("Surname") + "'s Inventory"
                         Label2.Text = "Scan or input gear ID to loan"
                         tmp = True
-                        loadTable()
                         Button1.Visible = True
+                        button4.visible = True
+                        loadTable()
+
                     End If
                 Next
                 If tmp = False Then
@@ -122,8 +127,8 @@
                                 Label1.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
                                 show = True
                             End If
-                                tmp = False
-                            End If
+                            tmp = False
+                        End If
                     Next
                     If tmp = True Then
                         Label1.Text = "item not found"
@@ -152,6 +157,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         student = ""
         Button1.Visible = False
+        button4.visible = False
         GroupBox1.Text = "logged out"
         Label2.Text = "Scan or input student ID to log in"
         Label10.Text = 0
@@ -271,4 +277,15 @@
     End Sub
 
 
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim tmp As New WebBrowser
+        tmp.Navigate("about:blank")
+        If (tmp.Document <> Nothing) Then
+            tmp.Document.Write("<html><b>hello <i><u>world</u><i></b></html>")
+            tmp.ShowPrintPreviewDialog()
+        End If
+
+
+
+    End Sub
 End Class

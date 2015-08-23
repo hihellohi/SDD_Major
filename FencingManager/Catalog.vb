@@ -420,30 +420,20 @@ Public Class Catalog
         End If
 
         If valid And Label15.Visible = False Then
-            Dim changes = False
-            If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString <> txtAN.Text Or
-                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType") <> txtSelDesc.Text Or
-                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID") <> txtSelIItemID.Text Then
-                changes = True
-            End If
+
             RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes") = txtAN.Text
             RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType") = txtSelDesc.Text
             RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID") = txtSelIItemID.Text
             If txtSL.Text <> "" Then
-                If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueDay") <> cmbDay.SelectedIndex + 1 Or
-                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueMonth") <> cmbMonth.SelectedIndex + 1 Or
-                RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueYear") <> txtYear.Text Then
-                    changes = True
-                End If
+
                 RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueDay") = cmbDay.SelectedIndex + 1
                 RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueMonth") = cmbMonth.SelectedIndex + 1
                 RootForm.GearDataS.Tables("Gear").Rows(selected).Item("dueYear") = txtYear.Text
             End If
-            If changes = True Then
-                RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
 
-                reload()
-            End If
+            RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
+            reload()
         End If
     End Sub
 

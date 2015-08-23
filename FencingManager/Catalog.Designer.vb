@@ -87,12 +87,12 @@ Partial Class Catalog
         'colItem
         '
         Me.colItem.Text = "Loaned Item ID "
-        Me.colItem.Width = 160
+        Me.colItem.Width = 146
         '
         'colDesc
         '
         Me.colDesc.Text = "Item Description "
-        Me.colDesc.Width = 200
+        Me.colDesc.Width = 189
         '
         'colStudentLoaned
         '
@@ -102,7 +102,7 @@ Partial Class Catalog
         'colDueDate
         '
         Me.colDueDate.Text = "Due Date "
-        Me.colDueDate.Width = 154
+        Me.colDueDate.Width = 149
         '
         'TextBox1
         '
