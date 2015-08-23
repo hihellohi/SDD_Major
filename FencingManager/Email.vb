@@ -559,4 +559,16 @@ Public Class Email
             Timer1.Enabled = True
         End If
     End Sub
+
+    Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
+        btnHelp.BackColor = Color.White
+        btnReturn.BackColor = Color.DarkOrange
+        PictureBox1.Visible = True
+    End Sub
+
+    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+        btnHelp.BackColor = Color.DarkOrange
+        btnReturn.BackColor = Color.White
+        PictureBox1.Visible = False
+    End Sub
 End Class

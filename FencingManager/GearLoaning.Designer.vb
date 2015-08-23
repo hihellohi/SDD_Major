@@ -27,6 +27,7 @@ Partial Class GearLoaning
         Me.btnLoan = New System.Windows.Forms.Button()
         Me.btnCatalog = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnHelp = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Panel1
@@ -86,11 +87,24 @@ Partial Class GearLoaning
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Gear Loaning"
         '
+        'btnHelp
+        '
+        Me.btnHelp.BackColor = System.Drawing.Color.Green
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHelp.Location = New System.Drawing.Point(1182, 37)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(39, 39)
+        Me.btnHelp.TabIndex = 5
+        Me.btnHelp.Text = "?"
+        Me.btnHelp.UseVisualStyleBackColor = False
+        '
         'GearLoaning
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnCatalog)
         Me.Controls.Add(Me.btnLoan)
@@ -109,4 +123,5 @@ Partial Class GearLoaning
     Friend WithEvents btnLoan As System.Windows.Forms.Button
     Friend WithEvents btnCatalog As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnHelp As System.Windows.Forms.Button
 End Class

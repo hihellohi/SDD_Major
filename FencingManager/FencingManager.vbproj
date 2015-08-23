@@ -99,16 +99,34 @@
     <Compile Include="Catalog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cataloghelp.Designer.vb">
+      <DependentUpon>cataloghelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cataloghelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CreateAcc.Designer.vb">
       <DependentUpon>CreateAcc.vb</DependentUpon>
     </Compile>
     <Compile Include="CreateAcc.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="loanshelp.Designer.vb">
+      <DependentUpon>loanshelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="loanshelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PrintForm.Designer.vb">
       <DependentUpon>PrintForm.vb</DependentUpon>
     </Compile>
     <Compile Include="PrintForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="returnhelp.Designer.vb">
+      <DependentUpon>returnhelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="returnhelp.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StudentProfilesCreate.Designer.vb">
@@ -224,6 +242,9 @@
     <EmbeddedResource Include="PrintForm.resx">
       <DependentUpon>PrintForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="returnhelp.resx">
+      <DependentUpon>returnhelp.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentProfilesCreate.resx">
       <DependentUpon>StudentProfilesCreate.vb</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +318,10 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\returns.PNG" />
+    <None Include="Resources\loans.PNG" />
+    <None Include="Resources\email.PNG" />
+    <None Include="Resources\catalog.PNG" />
     <None Include="Resources\printer-64-000000.png" />
     <None Include="Resources\Sydneyboyscrest %281%29.jpg" />
     <None Include="Resources\Sydneyboyscrest.jpg" />

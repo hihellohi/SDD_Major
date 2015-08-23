@@ -45,8 +45,12 @@ Partial Class Email
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.btnReturn = New System.Windows.Forms.Button()
+        Me.btnHelp = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -61,6 +65,8 @@ Partial Class Email
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Orange
+        Me.Panel1.Controls.Add(Me.btnHelp)
+        Me.Panel1.Controls.Add(Me.btnReturn)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -296,12 +302,49 @@ Partial Class Email
         '
         Me.Timer2.Interval = 1000
         '
+        'btnReturn
+        '
+        Me.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
+        Me.btnReturn.BackColor = System.Drawing.Color.White
+        Me.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReturn.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReturn.Location = New System.Drawing.Point(1070, 37)
+        Me.btnReturn.Name = "btnReturn"
+        Me.btnReturn.Size = New System.Drawing.Size(80, 39)
+        Me.btnReturn.TabIndex = 2
+        Me.btnReturn.Text = "Main"
+        Me.btnReturn.UseVisualStyleBackColor = False
+        '
+        'btnHelp
+        '
+        Me.btnHelp.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHelp.Location = New System.Drawing.Point(1182, 37)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(39, 39)
+        Me.btnHelp.TabIndex = 6
+        Me.btnHelp.Text = "?"
+        Me.btnHelp.UseVisualStyleBackColor = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = Global.FencingManager.My.Resources.Resources.email
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 110)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1255, 657)
+        Me.PictureBox1.TabIndex = 23
+        Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
+        '
         'Email
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
-        Me.Controls.Add(Me.btnboth)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.btnboth)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button4)
@@ -315,6 +358,7 @@ Partial Class Email
         Me.Panel1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -340,4 +384,7 @@ Partial Class Email
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents btnReturn As System.Windows.Forms.Button
+    Friend WithEvents btnHelp As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class
