@@ -12,7 +12,52 @@
     Dim searchInitiated As Boolean = False
 
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+        If ListView1.SelectedItems.Count = 1 Then
+            LoadSimpleProfile(ListView1.SelectedItems(0).Text)
+        End If
+    End Sub
 
+    Private Sub ResetSimpleProfile()
+        lblName.Text = "Name: "
+        lblSchoolYear.Text = "Year "
+        lblWeapon.Text = "Weapon: "
+        lblWinPercent.Text = "Wins Percentage: "
+        lblKDR.Text = "Kill/Death Ratio: "
+    End Sub
+
+    Private Function WeaponText(num As Integer) As String
+        Select Case num
+            Case 1
+                Return "Foil"
+            Case 2
+                Return "Sabre"
+            Case 3
+                Return "Epee"
+            Case Else
+                Return "?"
+        End Select
+    End Function
+
+    Private Sub LoadSimpleProfile(studentID As Integer)
+        Dim row As FencingDataSet.StudentProfilesRow
+        row = studentDataTable.FindByStudentID(studentID)
+        lblName.Text = "Name: " + row.FirstName + " " + row.Surname.ToUpper()
+        lblSchoolYear.Text = "Year " + row.SchoolYear.ToString()
+        lblWeapon.Text = "Weapon: " + WeaponText(row.Weapon)
+        If row.Wins + row.Losses > 0 Then
+            Dim winPercent = row.Wins / (row.Wins + row.Losses) * 100
+            lblWinPercent.Text = "Wins Percentage: " + Math.Round(winPercent, 2).ToString() + "%"
+            Dim ratio As Double
+            If row.Deaths > 0 Then
+                ratio = row.Kills / row.Deaths
+            Else
+                ratio = row.Kills / 1.0
+            End If
+            lblKDR.Text = "Kill/Death Ratio: " + Math.Round(ratio, 3).ToString()
+        Else
+            lblWinPercent.Text = "Wins Percentage: N/A"
+            lblKDR.Text = "Kill/Death Ratio: N/A"
+        End If
     End Sub
 
     Private Sub StudentProfilesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -39,6 +84,8 @@
 
     Private Sub SearchQuery()
         ListView1.Items.Clear()
+        ResetSimpleProfile()
+
         Dim filter = ""
         If chkFilter.Checked = False Or TextBox1.Text = "" Then
             filter = "(FirstName LIKE '{0}' + '%' OR Surname LIKE '{1}' + '%' OR FirstName + ' ' + Surname LIKE '{0}' + '%')"
@@ -154,5 +201,9 @@
             rdbID.Enabled = False
             rdbAll.Checked = False
         End If
+    End Sub
+
+    Private Sub btnMore_Click(sender As Object, e As EventArgs) Handles btnMore.Click
+
     End Sub
 End Class
