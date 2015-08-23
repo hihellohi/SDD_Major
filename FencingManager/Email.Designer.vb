@@ -42,6 +42,9 @@ Partial Class Email
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -142,7 +145,6 @@ Partial Class Email
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.TextBox1)
-        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.txtYear)
         Me.GroupBox2.Controls.Add(Me.cmbMonth)
         Me.GroupBox2.Controls.Add(Me.cmbDay)
@@ -151,6 +153,8 @@ Partial Class Email
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.TextBox2)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
+        Me.GroupBox2.Controls.Add(Me.Button5)
+        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(567, 213)
         Me.GroupBox2.Name = "GroupBox2"
@@ -262,6 +266,36 @@ Partial Class Email
         Me.ComboBox1.Size = New System.Drawing.Size(156, 26)
         Me.ComboBox1.TabIndex = 5
         '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.DarkOrange
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Location = New System.Drawing.Point(516, 345)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(90, 31)
+        Me.Button5.TabIndex = 23
+        Me.Button5.Text = "Yes"
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.DarkOrange
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(231, 525)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(90, 31)
+        Me.Button2.TabIndex = 22
+        Me.Button2.Text = "Yes"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 1000
+        '
         'Email
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -271,6 +305,7 @@ Partial Class Email
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Email"
@@ -302,4 +337,7 @@ Partial Class Email
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Timer2 As System.Windows.Forms.Timer
 End Class

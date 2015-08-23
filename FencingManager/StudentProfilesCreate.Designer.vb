@@ -190,7 +190,7 @@ Partial Class StudentProfilesCreate
         '
         Me.AcceptButton = Me.btnSave
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(649, 469)
+        Me.ClientSize = New System.Drawing.Size(645, 465)
         Me.ControlBox = False
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnCancel)
