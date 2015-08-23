@@ -202,13 +202,8 @@ Partial Class Calendar
         Me.PicViewDetailsShow = New System.Windows.Forms.PictureBox()
         Me.SearchGroupBox = New System.Windows.Forms.GroupBox()
         Me.ButAdvancedSearch = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ButCloseAdvancedSearch = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.CheckBoxGroup = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxVenue = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxWeapon = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxEventName = New System.Windows.Forms.CheckBox()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.ColumnEventName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnEventDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -240,6 +235,11 @@ Partial Class Calendar
         Me.CalendarTableAdapter = New FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.RadAdvSearchEventName = New System.Windows.Forms.RadioButton()
+        Me.CheckBoxAll = New System.Windows.Forms.CheckBox()
+        Me.RadAdvSearchVenue = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchWeapon = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchGroup = New System.Windows.Forms.RadioButton()
         Me.Panel.SuspendLayout()
         Me.PanelHelp.SuspendLayout()
         Me.CalendarGroupBox.SuspendLayout()
@@ -290,7 +290,6 @@ Partial Class Calendar
         CType(Me.PicSearchShow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicViewDetailsShow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SearchGroupBox.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ViewDetailsGroupBox.SuspendLayout()
         CType(Me.PicViewDetailsSlider, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -302,6 +301,7 @@ Partial Class Calendar
         'Panel
         '
         Me.Panel.BackColor = System.Drawing.Color.CadetBlue
+        Me.Panel.Controls.Add(Me.SearchGroupBox)
         Me.Panel.Controls.Add(Me.Label14)
         Me.Panel.Controls.Add(Me.PictureBox2)
         Me.Panel.Controls.Add(Me.CalendarGroupBox)
@@ -313,7 +313,6 @@ Partial Class Calendar
         Me.Panel.Controls.Add(Me.Label9)
         Me.Panel.Controls.Add(Me.Label8)
         Me.Panel.Controls.Add(Me.PicViewDetailsShow)
-        Me.Panel.Controls.Add(Me.SearchGroupBox)
         Me.Panel.Controls.Add(Me.ViewDetailsGroupBox)
         Me.Panel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Panel.Location = New System.Drawing.Point(0, 0)
@@ -2354,14 +2353,14 @@ Partial Class Calendar
         'SearchGroupBox
         '
         Me.SearchGroupBox.BackColor = System.Drawing.Color.SteelBlue
+        Me.SearchGroupBox.Controls.Add(Me.RadAdvSearchGroup)
+        Me.SearchGroupBox.Controls.Add(Me.RadAdvSearchWeapon)
+        Me.SearchGroupBox.Controls.Add(Me.RadAdvSearchVenue)
+        Me.SearchGroupBox.Controls.Add(Me.CheckBoxAll)
+        Me.SearchGroupBox.Controls.Add(Me.RadAdvSearchEventName)
         Me.SearchGroupBox.Controls.Add(Me.ButAdvancedSearch)
-        Me.SearchGroupBox.Controls.Add(Me.PictureBox1)
         Me.SearchGroupBox.Controls.Add(Me.ButCloseAdvancedSearch)
         Me.SearchGroupBox.Controls.Add(Me.Label12)
-        Me.SearchGroupBox.Controls.Add(Me.CheckBoxGroup)
-        Me.SearchGroupBox.Controls.Add(Me.CheckBoxVenue)
-        Me.SearchGroupBox.Controls.Add(Me.CheckBoxWeapon)
-        Me.SearchGroupBox.Controls.Add(Me.CheckBoxEventName)
         Me.SearchGroupBox.Controls.Add(Me.ListView1)
         Me.SearchGroupBox.Controls.Add(Me.CheckBoxAdvancedSearch)
         Me.SearchGroupBox.Controls.Add(Me.ButSearchHide)
@@ -2377,7 +2376,7 @@ Partial Class Calendar
         Me.SearchGroupBox.ForeColor = System.Drawing.Color.Blue
         Me.SearchGroupBox.Location = New System.Drawing.Point(14, 161)
         Me.SearchGroupBox.Name = "SearchGroupBox"
-        Me.SearchGroupBox.Size = New System.Drawing.Size(369, 190)
+        Me.SearchGroupBox.Size = New System.Drawing.Size(796, 510)
         Me.SearchGroupBox.TabIndex = 79
         Me.SearchGroupBox.TabStop = False
         Me.SearchGroupBox.Text = "Search"
@@ -2395,22 +2394,12 @@ Partial Class Calendar
         Me.ButAdvancedSearch.UseVisualStyleBackColor = False
         Me.ButAdvancedSearch.Visible = False
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.BackgroundImage = Global.FencingManager.My.Resources.Resources.curly_bracket
-        Me.PictureBox1.Location = New System.Drawing.Point(535, 28)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(20, 140)
-        Me.PictureBox1.TabIndex = 95
-        Me.PictureBox1.TabStop = False
-        '
         'ButCloseAdvancedSearch
         '
         Me.ButCloseAdvancedSearch.BackColor = System.Drawing.Color.White
         Me.ButCloseAdvancedSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButCloseAdvancedSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButCloseAdvancedSearch.Location = New System.Drawing.Point(745, 85)
+        Me.ButCloseAdvancedSearch.Location = New System.Drawing.Point(745, 64)
         Me.ButCloseAdvancedSearch.Name = "ButCloseAdvancedSearch"
         Me.ButCloseAdvancedSearch.Size = New System.Drawing.Size(94, 78)
         Me.ButCloseAdvancedSearch.TabIndex = 94
@@ -2426,52 +2415,6 @@ Partial Class Calendar
         Me.Label12.Size = New System.Drawing.Size(159, 20)
         Me.Label12.TabIndex = 93
         Me.Label12.Text = "In the selected fields:"
-        '
-        'CheckBoxGroup
-        '
-        Me.CheckBoxGroup.AutoSize = True
-        Me.CheckBoxGroup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBoxGroup.Location = New System.Drawing.Point(562, 144)
-        Me.CheckBoxGroup.Name = "CheckBoxGroup"
-        Me.CheckBoxGroup.Size = New System.Drawing.Size(73, 24)
-        Me.CheckBoxGroup.TabIndex = 92
-        Me.CheckBoxGroup.Text = "Group"
-        Me.CheckBoxGroup.UseVisualStyleBackColor = True
-        '
-        'CheckBoxVenue
-        '
-        Me.CheckBoxVenue.AutoSize = True
-        Me.CheckBoxVenue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBoxVenue.Location = New System.Drawing.Point(562, 88)
-        Me.CheckBoxVenue.Name = "CheckBoxVenue"
-        Me.CheckBoxVenue.Size = New System.Drawing.Size(75, 24)
-        Me.CheckBoxVenue.TabIndex = 90
-        Me.CheckBoxVenue.Text = "Venue"
-        Me.CheckBoxVenue.UseVisualStyleBackColor = True
-        '
-        'CheckBoxWeapon
-        '
-        Me.CheckBoxWeapon.AutoSize = True
-        Me.CheckBoxWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBoxWeapon.Location = New System.Drawing.Point(562, 118)
-        Me.CheckBoxWeapon.Name = "CheckBoxWeapon"
-        Me.CheckBoxWeapon.Size = New System.Drawing.Size(88, 24)
-        Me.CheckBoxWeapon.TabIndex = 89
-        Me.CheckBoxWeapon.Text = "Weapon"
-        Me.CheckBoxWeapon.UseVisualStyleBackColor = True
-        '
-        'CheckBoxEventName
-        '
-        Me.CheckBoxEventName.AutoSize = True
-        Me.CheckBoxEventName.Checked = True
-        Me.CheckBoxEventName.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxEventName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBoxEventName.Location = New System.Drawing.Point(562, 28)
-        Me.CheckBoxEventName.Name = "CheckBoxEventName"
-        Me.CheckBoxEventName.Size = New System.Drawing.Size(115, 24)
-        Me.CheckBoxEventName.TabIndex = 88
-        Me.CheckBoxEventName.Text = "Event Name"
-        Me.CheckBoxEventName.UseVisualStyleBackColor = True
         '
         'ListView1
         '
@@ -2577,20 +2520,17 @@ Partial Class Calendar
         Me.RadDate.Name = "RadDate"
         Me.RadDate.Size = New System.Drawing.Size(62, 24)
         Me.RadDate.TabIndex = 6
-        Me.RadDate.TabStop = True
         Me.RadDate.Text = "Date"
         Me.RadDate.UseVisualStyleBackColor = True
         '
         'RadEventName
         '
         Me.RadEventName.AutoSize = True
-        Me.RadEventName.Checked = True
         Me.RadEventName.ForeColor = System.Drawing.SystemColors.ControlText
         Me.RadEventName.Location = New System.Drawing.Point(126, 43)
         Me.RadEventName.Name = "RadEventName"
         Me.RadEventName.Size = New System.Drawing.Size(114, 24)
         Me.RadEventName.TabIndex = 5
-        Me.RadEventName.TabStop = True
         Me.RadEventName.Text = "Event Name"
         Me.RadEventName.UseVisualStyleBackColor = True
         '
@@ -2749,6 +2689,63 @@ Partial Class Calendar
         Me.Label14.TabIndex = 86
         Me.Label14.Text = "Calendar"
         '
+        'RadAdvSearchEventName
+        '
+        Me.RadAdvSearchEventName.AutoSize = True
+        Me.RadAdvSearchEventName.Checked = True
+        Me.RadAdvSearchEventName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchEventName.Location = New System.Drawing.Point(556, 57)
+        Me.RadAdvSearchEventName.Name = "RadAdvSearchEventName"
+        Me.RadAdvSearchEventName.Size = New System.Drawing.Size(114, 24)
+        Me.RadAdvSearchEventName.TabIndex = 97
+        Me.RadAdvSearchEventName.TabStop = True
+        Me.RadAdvSearchEventName.Text = "Event Name"
+        Me.RadAdvSearchEventName.UseVisualStyleBackColor = True
+        '
+        'CheckBoxAll
+        '
+        Me.CheckBoxAll.AutoSize = True
+        Me.CheckBoxAll.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.CheckBoxAll.Location = New System.Drawing.Point(556, 30)
+        Me.CheckBoxAll.Name = "CheckBoxAll"
+        Me.CheckBoxAll.Size = New System.Drawing.Size(45, 24)
+        Me.CheckBoxAll.TabIndex = 98
+        Me.CheckBoxAll.Text = "All"
+        Me.CheckBoxAll.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchVenue
+        '
+        Me.RadAdvSearchVenue.AutoSize = True
+        Me.RadAdvSearchVenue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchVenue.Location = New System.Drawing.Point(556, 85)
+        Me.RadAdvSearchVenue.Name = "RadAdvSearchVenue"
+        Me.RadAdvSearchVenue.Size = New System.Drawing.Size(74, 24)
+        Me.RadAdvSearchVenue.TabIndex = 99
+        Me.RadAdvSearchVenue.Text = "Venue"
+        Me.RadAdvSearchVenue.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchWeapon
+        '
+        Me.RadAdvSearchWeapon.AutoSize = True
+        Me.RadAdvSearchWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchWeapon.Location = New System.Drawing.Point(556, 114)
+        Me.RadAdvSearchWeapon.Name = "RadAdvSearchWeapon"
+        Me.RadAdvSearchWeapon.Size = New System.Drawing.Size(87, 24)
+        Me.RadAdvSearchWeapon.TabIndex = 100
+        Me.RadAdvSearchWeapon.Text = "Weapon"
+        Me.RadAdvSearchWeapon.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchGroup
+        '
+        Me.RadAdvSearchGroup.AutoSize = True
+        Me.RadAdvSearchGroup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchGroup.Location = New System.Drawing.Point(556, 144)
+        Me.RadAdvSearchGroup.Name = "RadAdvSearchGroup"
+        Me.RadAdvSearchGroup.Size = New System.Drawing.Size(72, 24)
+        Me.RadAdvSearchGroup.TabIndex = 101
+        Me.RadAdvSearchGroup.Text = "Group"
+        Me.RadAdvSearchGroup.UseVisualStyleBackColor = True
+        '
         'Calendar
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -2853,7 +2850,6 @@ Partial Class Calendar
         CType(Me.PicViewDetailsShow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SearchGroupBox.ResumeLayout(False)
         Me.SearchGroupBox.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ViewDetailsGroupBox.ResumeLayout(False)
         Me.ViewDetailsGroupBox.PerformLayout()
@@ -3068,17 +3064,17 @@ Partial Class Calendar
     Friend WithEvents ColumnWeapon As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnGroup As System.Windows.Forms.ColumnHeader
     Friend WithEvents CalendarPanelTimer As System.Windows.Forms.Timer
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents ButCloseAdvancedSearch As System.Windows.Forms.Button
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxGroup As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxVenue As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxWeapon As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxEventName As System.Windows.Forms.CheckBox
     Friend WithEvents ButAdvancedSearch As System.Windows.Forms.Button
     Friend WithEvents ButViewDatabase As System.Windows.Forms.Button
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents RadAdvSearchGroup As System.Windows.Forms.RadioButton
+    Friend WithEvents RadAdvSearchWeapon As System.Windows.Forms.RadioButton
+    Friend WithEvents RadAdvSearchVenue As System.Windows.Forms.RadioButton
+    Friend WithEvents CheckBoxAll As System.Windows.Forms.CheckBox
+    Friend WithEvents RadAdvSearchEventName As System.Windows.Forms.RadioButton
 
 End Class

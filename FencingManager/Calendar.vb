@@ -2787,4 +2787,11 @@
 
    
 
+    Private Sub CheckBoxAll_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxAll.CheckedChanged
+        RadAdvSearchEventName.Checked = False
+        RadAdvSearchGroup.Checked = False
+        RadAdvSearchVenue.Checked = False
+        RadAdvSearchWeapon.Checked = False
+
+    End Sub
 End Class
