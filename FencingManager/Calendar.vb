@@ -597,7 +597,10 @@
         'In this calendar module, one may (essentially) view and update the database
         'One solution for difference in admin levels is to simply hide the update controls
 
-
+        RadAdvSearchEventName.Checked = True
+        RadEventName.Checked = True
+        SearchGroupBox.Height = 190
+        SearchGroupBox.Width = 369
 
         Key(0) = dataset.Tables("Calendar").Columns("EventDate")
         dataset.Tables("Calendar").PrimaryKey = Key
@@ -2065,6 +2068,7 @@
                 SearchGroupBox.Width = 860
                 SearchGroupBox.Height = 510
                 CheckBoxAdvancedSearch.Enabled = False
+                RadAdvSearchEventName.Checked = True
 
                 Advanced_Search()
             End If
@@ -2248,57 +2252,155 @@
     Dim SearchString As String
     Dim C As Integer = 0
     Dim searchResults As New DataSet()
+    Dim command As String
+    Dim Mode_String As String
     'ByVal SearchEventName As Boolean, SearchTime As Boolean, SearchVenue As Boolean, SearchWeapon As Boolean, SearchGroup As Boolean
-    Private Sub Advanced_Search()
-        Dim SearchString1 As String = "EventName LIKE @Search1 + '%' OR Venue LIKE @Search2 + '%' OR Weapon LIKE @Search3 + '%' OR Group LIKE @Search4 + '%' "
+    Public Function Command_Builder() As String
+        If CheckBoxAdvancedSearch.Checked = True Then
 
-        If CheckBoxEventName.Checked = False And CheckBoxGroup.Checked = False And CheckBoxVenue.Checked = False And CheckBoxWeapon.Checked = False Then
-            MsgBox("Please select at least one field")
-        Else
-            Dim command As String =
+            command =
             "SELECT EventName, EventDate, Time, Venue, Weapon, Group " +
             "FROM Calendar " +
             "WHERE EventName LIKE @Search1 + '%' OR Venue LIKE @Search2 + '%' OR [Group] LIKE @Search3 + '%' OR Weapon LIKE @Search4 + '%' " +
-            "ORDER BY EventName, Venue"
+            "ORDER BY EventName, Group, Weapon, Venue"
+            Mode_String = "All"
+            Return command
+        Else
+            If RadAdvSearchEventName.Checked = True Then
+                command = "SELECT EventName, EventDate, Time, Venue, Weapon, Group " +
+            "FROM Calendar " + "WHERE EventName LIKE @Search1 + '%'"
+                Mode_String = "EventName"
+                Return command
+            ElseIf RadAdvSearchGroup.Checked = True Then
+                command = "SELECT EventName, EventDate, Time, Venue, Weapon, Group " +
+            "FROM Calendar " + "WHERE Group LIKE @Search1 + '%'"
+                Mode_String = "Group"
+                Return command
+            ElseIf RadAdvSearchVenue.Checked = True Then
+                command = "SELECT EventName, EventDate, Time, Venue, Weapon, Group " +
+            "FROM Calendar " + "WHERE Venue LIKE @Search1 + '%'"
+                Mode_String = "Venue"
+                Return command
+            ElseIf RadAdvSearchWeapon.Checked = True Then
+                command = "SELECT EventName, EventDate, Time, Venue, Weapon, Group " +
+            "FROM Calendar " + "WHERE Weapon LIKE @Search1 + '%'"
+                Mode_String = "Weapon"
+                Return command
+            End If
+        End If
+
+    End Function
+    Public Function One_Criteria_Search()
+        data_adapter = New OleDb.OleDbDataAdapter
+        data_adapter.SelectCommand = New OleDb.OleDbCommand()
+        With data_adapter.SelectCommand
+            .Connection = RootForm.connection
+            .CommandText = command
+            ' SECURITY: PREVENTS SQL INJECTIONS
+            .Parameters.AddWithValue("@Search1", TexSearch.Text)
+            .CommandType = CommandType.Text
+            .ExecuteNonQuery()
+        End With
+        data_adapter.Fill(searchResults, "Calendar")
+
+        'Populate Results Table
+        ListView1.Items.Clear()
+        Dim row As DataRow
+        For Each row In searchResults.Tables("Calendar").Rows
+            If row.RowState <> DataRowState.Deleted Then
+                Dim rowItem = New ListViewItem(row("EventName").ToString())
+                rowItem.SubItems.Add(row("EventDate").ToString())
+                rowItem.SubItems.Add(row("Time").ToString())
+                rowItem.SubItems.Add(row("Venue").ToString())
+                rowItem.SubItems.Add(row("Weapon").ToString())
+                rowItem.SubItems.Add(row("Group").ToString())
+                ListView1.Items.Add(rowItem)
+            End If
+        Next
+        searchResults.Clear()
+    End Function
+    Private Sub Advanced_Search()
+        
+        If RadAdvSearchEventName.Checked = False And RadAdvSearchGroup.Checked = False And RadAdvSearchVenue.Checked = False And RadAdvSearchWeapon.Checked = False And CheckBoxAdvancedSearch.Checked = False Then
+            MsgBox("Please select at least one field")
+        Else
+            command = Command_Builder()
+
+            If Mode_String = "All" Then
+                data_adapter = New OleDb.OleDbDataAdapter
+                data_adapter.SelectCommand = New OleDb.OleDbCommand()
+                With data_adapter.SelectCommand
+                    .Connection = RootForm.connection
+                    .CommandText = command
+                    ' SECURITY: PREVENTS SQL INJECTIONS
+                    .Parameters.AddWithValue("@Search1", TexSearch.Text)
+                    .Parameters.AddWithValue("@Search2", TexSearch.Text)
+                    .Parameters.AddWithValue("@Search3", TexSearch.Text)
+                    .Parameters.AddWithValue("@Search4", TexSearch.Text)
+                    .CommandType = CommandType.Text
+                    .ExecuteNonQuery()
+                End With
+                data_adapter.Fill(searchResults, "Calendar")
+
+                'Populate Results Table
+                ListView1.Items.Clear()
+                Dim row As DataRow
+                For Each row In searchResults.Tables("Calendar").Rows
+                    If row.RowState <> DataRowState.Deleted Then
+                        Dim rowItem = New ListViewItem(row("EventName").ToString())
+                        rowItem.SubItems.Add(row("EventDate").ToString())
+                        rowItem.SubItems.Add(row("Time").ToString())
+                        rowItem.SubItems.Add(row("Venue").ToString())
+                        rowItem.SubItems.Add(row("Weapon").ToString())
+                        rowItem.SubItems.Add(row("Group").ToString())
+                        ListView1.Items.Add(rowItem)
+                    End If
+                Next
+                searchResults.Clear()
+            Else
+                One_Criteria_Search()
+                'Select Case Mode_String
+                '    Case "EventName"
+                '        One_Criteria_Search()
+                '    Case "Group"
+                '        One_Criteria_Search()
+                '    Case "Venue"
+                '        One_Criteria_Search()
+                '    Case "Weapon"
+                'End Select
+            End If
 
 
-
-            data_adapter = New OleDb.OleDbDataAdapter
-            data_adapter.SelectCommand = New OleDb.OleDbCommand()
-            With data_adapter.SelectCommand
-                .Connection = RootForm.connection
-                .CommandText = command
-                ' SECURITY: PREVENTS SQL INJECTIONS
-                .Parameters.AddWithValue("@Search1", TexSearch.Text)
-                .Parameters.AddWithValue("@Search2", TexSearch.Text)
-                .Parameters.AddWithValue("@Search3", TexSearch.Text)
-                .Parameters.AddWithValue("@Search4", TexSearch.Text)
-                .CommandType = CommandType.Text
-                .ExecuteNonQuery()
-            End With
-            data_adapter.Fill(searchResults, "Calendar")
-
-            'Populate Results Table
-            ListView1.Items.Clear()
-            Dim row As DataRow
-            For Each row In searchResults.Tables("Calendar").Rows
-                If row.RowState <> DataRowState.Deleted Then
-                    Dim rowItem = New ListViewItem(row("EventName").ToString())
-                    rowItem.SubItems.Add(row("EventDate").ToString())
-                    rowItem.SubItems.Add(row("Time").ToString())
-                    rowItem.SubItems.Add(row("Venue").ToString())
-                    rowItem.SubItems.Add(row("Weapon").ToString())
-                    rowItem.SubItems.Add(row("Group").ToString())
-                    ListView1.Items.Add(rowItem)
-                End If
-            Next
-            searchResults.Clear()
         End If
     End Sub
 
 
 
+    Private Sub CheckBoxAll_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxAll.CheckedChanged
+        If CheckBoxAdvancedSearch.Checked = True Then
+            RadAdvSearchEventName.Checked = False
+            RadAdvSearchGroup.Checked = False
+            RadAdvSearchVenue.Checked = False
+            RadAdvSearchWeapon.Checked = False
 
+            RadAdvSearchEventName.Enabled = False
+            RadAdvSearchGroup.Enabled = False
+            RadAdvSearchWeapon.Enabled = False
+            RadAdvSearchVenue.Enabled = False
+        Else
+            RadAdvSearchEventName.Checked = True
+            RadAdvSearchGroup.Checked = False
+            RadAdvSearchVenue.Checked = False
+            RadAdvSearchWeapon.Checked = False
+
+            RadAdvSearchEventName.Enabled = True
+            RadAdvSearchGroup.Enabled = True
+            RadAdvSearchWeapon.Enabled = True
+            RadAdvSearchVenue.Enabled = True
+        End If
+        
+
+    End Sub
 
 
 
@@ -2787,11 +2889,5 @@
 
    
 
-    Private Sub CheckBoxAll_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxAll.CheckedChanged
-        RadAdvSearchEventName.Checked = False
-        RadAdvSearchGroup.Checked = False
-        RadAdvSearchVenue.Checked = False
-        RadAdvSearchWeapon.Checked = False
-
-    End Sub
+    
 End Class
