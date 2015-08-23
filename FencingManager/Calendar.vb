@@ -583,7 +583,7 @@
 
         LabelDetails.Text = "Viewing " & CStr(MonthName(Now.Month)) & " of " & CStr(Now.Year)
 
-        CalendarGroupBox.Text = Format(Now, "MMMM") & " " & Now.Year
+        'CalendarGroupbox.text = Format(Now, "MMMM") & " " & Now.Year
 
         'con.ConnectionString = dbProvider & dbSource
         'con.Open()
@@ -629,7 +629,7 @@
 
         Clear_The_Slate()
 
-        CalendarGroupBox.Text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
 
         tu4.Visible = False                 'just a little bug
 
@@ -646,7 +646,7 @@
 
         Clear_The_Slate()
 
-        CalendarGroupBox.Text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
 
         tu4.Visible = False
 
@@ -677,6 +677,7 @@
         ButUpdate.Visible = False
         ButClear.Visible = False
         ButDelete.Visible = False
+        ButPrint.Visible = False
         ButEdit.Visible = False
 
         LabNoEventScheduled.Visible = False
@@ -1107,142 +1108,6 @@
         End Select
     End Function
 
-    'Caters to time for program to database
-    'Public Function Choose_Time(ByVal DatabaseTime As Integer)
-    '    Dim TimeisAM As Boolean = True        'true is am, false is pm
-    '    Dim TempTime As Integer = DatabaseTime
-    '    If DatabaseTime > 12 Then
-    '        TimeisAM = False
-    '        TempTime = TempTime - 12
-    '        RadioButtonPM.Checked = True
-    '        Select Case TempTime
-    '            Case 1
-    '                ComboBoxTime.SelectedIndex = 1
-    '            Case 2
-    '                ComboBoxTime.SelectedIndex = 2
-    '            Case 3
-    '                ComboBoxTime.SelectedIndex = 3
-    '            Case 4
-    '                ComboBoxTime.SelectedIndex = 4
-    '            Case 5
-    '                ComboBoxTime.SelectedIndex = 5
-    '            Case 6
-    '                ComboBoxTime.SelectedIndex = 6
-    '            Case 7
-    '                ComboBoxTime.SelectedIndex = 7
-    '            Case 8
-    '                ComboBoxTime.SelectedIndex = 8
-    '            Case 9
-    '                ComboBoxTime.SelectedIndex = 9
-    '            Case 10
-    '                ComboBoxTime.SelectedIndex = 10
-    '            Case 11
-    '                ComboBoxTime.SelectedIndex = 11
-    '            Case 12
-    '                ComboBoxTime.SelectedIndex = 12
-    '        End Select
-    '    ElseIf DatabaseTime = -7 Then       'sentinel value
-    '        ComboBoxTime.SelectedIndex = 0
-    '    Else
-    '        TimeisAM = True
-    '        RadioButtonAM.Checked = True
-    '        Select Case TempTime
-    '            Case 1
-    '                ComboBoxTime.SelectedIndex = 1
-    '            Case 2
-    '                ComboBoxTime.SelectedIndex = 2
-    '            Case 3
-    '                ComboBoxTime.SelectedIndex = 3
-    '            Case 4
-    '                ComboBoxTime.SelectedIndex = 4
-    '            Case 5
-    '                ComboBoxTime.SelectedIndex = 5
-    '            Case 6
-    '                ComboBoxTime.SelectedIndex = 6
-    '            Case 7
-    '                ComboBoxTime.SelectedIndex = 7
-    '            Case 8
-    '                ComboBoxTime.SelectedIndex = 8
-    '            Case 9
-    '                ComboBoxTime.SelectedIndex = 9
-    '            Case 10
-    '                ComboBoxTime.SelectedIndex = 10
-    '            Case 11
-    '                ComboBoxTime.SelectedIndex = 11
-    '            Case 12
-    '                ComboBoxTime.SelectedIndex = 12
-    '        End Select
-    '    End If
-    'End Function
-    ''Caters to time for database to program
-    'Public Function Get_Time()
-    '    Dim TimeisAM As Boolean = True
-    '    If RadioButtonAM.Checked = True Then
-    '        Select Case ComboBoxTime.SelectedItem
-    '            Case "N/A"
-    '                Return -7
-    '            Case 1
-    '                Return 1
-    '            Case 2
-    '                Return 2
-    '            Case 3
-    '                Return 3
-    '            Case 4
-    '                Return 4
-    '            Case 5
-    '                Return 5
-    '            Case 6
-    '                Return 6
-    '            Case 7
-    '                Return 7
-    '            Case 8
-    '                Return 8
-    '            Case 9
-    '                Return 9
-    '            Case 10
-    '                Return 10
-    '            Case 11
-    '                Return 11
-    '            Case 12
-    '                Return 12
-    '        End Select
-    '    Else : RadioButtonAM.Checked = False
-    '        Select Case ComboBoxTime.SelectedItem
-    '            Case "N/A"
-    '                Return -7
-    '            Case 1
-    '                Return 13
-    '            Case 2
-    '                Return 14
-    '            Case 3
-    '                Return 15
-    '            Case 4
-    '                Return 16
-    '            Case 5
-    '                Return 17
-    '            Case 6
-    '                Return 18
-    '            Case 7
-    '                Return 19
-    '            Case 8
-    '                Return 20
-    '            Case 9
-    '                Return 21
-    '            Case 10
-    '                Return 22
-    '            Case 11
-    '                Return 23
-    '            Case 12
-    '                Return 24
-    '        End Select
-    '    End If
-
-
-    'End Function
-
-
-
-    ' sub fills in the details of the textboxes on the panel
 
     'Caters to time from database to program
     Public Function Time_Database_To_Program(ByVal DatabaseTime As String)
@@ -1330,6 +1195,7 @@
 
         End Select
     End Function
+    'Caters to time from program to database
     Public Function Time_Program_To_Database()
         If ComboBoxTime.SelectedItem = "N/A" Then
             Return "N/A"
@@ -1353,6 +1219,11 @@
 
         End If
     End Sub
+
+
+
+    'This sub gets details from the database and then displays the info onto the panel only
+    'For displaying of info onto virtual calendar, refer to Populate_Table
     Dim Row As DataRow
     Public Function Fill_In_Information_Tables(ByVal DatabaseDate As Date)          'Fills in the details for the panel
 
@@ -1379,16 +1250,111 @@
 
     End Function
 
-    'Below four subs are hardcode that perform some basic hiding/clearing/showing actions
 
+
+
+    'This sub gets details from the database and then displays the information using the sub fill_in_info
+    Public Sub Get_Database_Details_For_Specified_Date(ByVal DatabaseDate As Date)
+
+        LabClickToBegin.Visible = False
+
+        If BlankDate = True Then        'Completely Blank Box
+
+            labeldetails.text = "No Date"
+
+            PanInput.Visible = False
+
+            Hide_Buttons(False, False, False, False, False, False, False, False)
+
+            LabNoEventScheduled.Visible = False
+
+            BlankDate = False
+
+        Else : BlankDate = False        'Box with a date, but not necessarily an entry in the database
+
+            Try                         'Box with a date, and has an entry in the database
+                Fill_In_Information_Tables(DatabaseDate)
+
+                LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
+
+                PanInput.Visible = True
+
+                Hide_Buttons(False, False, False, False, False, True, True, True)
+
+                LabNoEventScheduled.Visible = False
+
+            Catch ex As Exception       'Box with a date, but has no entry in the database
+
+                LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
+
+                PanInput.Visible = False
+
+                Hide_Buttons(True, False, False, False, False, False, False, False)
+
+                LabNoEventScheduled.Visible = True
+
+            End Try
+
+        End If
+
+    End Sub
+
+
+
+
+
+
+
+
+    'Most of the buttons and important update function
+    Dim updating As Boolean = False
+    Dim adding As Boolean = False
+    'EXTREMELY IMPORTANT SUB FOR UPDATING TO DATABASE which has fallen into disuse
+    'For some reason, the update function is no longer needed for this program
+    Private Function Update_to_Database()
+
+        'data_adapter.Fill(dataset, "Calendar")
+
+        Dim cb As New OleDb.OleDbCommandBuilder(data_adapter)
+        cb.QuotePrefix = "["
+        cb.QuoteSuffix = "]"
+
+        'Try
+        '    Me.data_adapter.Update(dataset, "Calendar")
+        '    MsgBox("Update Successful")
+        'Catch ex As Exception
+        '    Dim response As Windows.Forms.DialogResult
+
+        '    response = MessageBox.Show("Update To Database?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.No
+
+        '    ProcessDialogResult(response)
+
+
+        'End Try
+
+        Try
+            data_adapter.Update(dataset, "Calendar")
+            'My.Computer.audio.Play("ding.wav")
+            MsgBox("Change successfully saved")
+        Catch ex As Exception
+            MsgBox("Change failed to save")
+        End Try
+
+    End Function
+
+
+
+
+    'Below four subs are hardcode that perform some basic hiding/clearing/showing actions
     'Hides buttons
-    Public Function Hide_Buttons(ByVal addnew As Boolean, commit As Boolean, cancel As Boolean, update As Boolean, clear As Boolean, delete As Boolean, edit As Boolean)
+    Public Function Hide_Buttons(ByVal addnew As Boolean, commit As Boolean, cancel As Boolean, update As Boolean, clear As Boolean, delete As Boolean, print As Boolean, edit As Boolean)
         ButAddNew.Visible = addnew
         ButCommit.Visible = commit
         ButCancel.Visible = cancel
         ButUpdate.Visible = update
         ButClear.Visible = clear
         ButDelete.Visible = delete
+        ButPrint.Visible = print
         ButEdit.Visible = edit
     End Function
     'Disables textboxes
@@ -1432,89 +1398,7 @@
     End Function
 
 
-    'This sub gets details from the database and then displays the information using the sub fill_in_info
-    Public Sub Get_Database_Details_For_Specified_Date(ByVal DatabaseDate As Date)
 
-        LabClickToBegin.Visible = False
-
-        If BlankDate = True Then        'Completely Blank Box
-
-            labeldetails.text = "No Date"
-
-            PanInput.Visible = False
-
-            Hide_Buttons(False, False, False, False, False, False, False)
-
-            LabNoEventScheduled.Visible = False
-
-            BlankDate = False
-
-        Else : BlankDate = False        'Box with a date, but not necessarily an entry in the database
-
-            Try                         'Box with a date, and has an entry in the database
-                Fill_In_Information_Tables(DatabaseDate)
-
-                labeldetails.text = "Viewing details for " & CStr(DatabaseDate)
-
-                PanInput.Visible = True
-
-                Hide_Buttons(False, False, False, False, False, True, True)
-
-                LabNoEventScheduled.Visible = False
-
-            Catch ex As Exception       'Box with a date, but has no entry in the database
-
-                labeldetails.text = "Viewing details for " & CStr(DatabaseDate)
-
-                PanInput.Visible = False
-
-                Hide_Buttons(True, False, False, False, False, False, False)
-
-                LabNoEventScheduled.Visible = True
-
-            End Try
-
-        End If
-
-    End Sub
-
-
-
-    'Most of the buttons and important update function
-    Dim updating As Boolean = False
-    Dim adding As Boolean = False
-    'EXTREMELY IMPORTANT SUB FOR UPDATING TO DATABASE which has fallen into disuse
-    'For some reason, the update function is no longer needed for this program
-    Private Function Update_to_Database()
-
-        'data_adapter.Fill(dataset, "Calendar")
-
-        Dim cb As New OleDb.OleDbCommandBuilder(data_adapter)
-        cb.QuotePrefix = "["
-        cb.QuoteSuffix = "]"
-
-        'Try
-        '    Me.data_adapter.Update(dataset, "Calendar")
-        '    MsgBox("Update Successful")
-        'Catch ex As Exception
-        '    Dim response As Windows.Forms.DialogResult
-
-        '    response = MessageBox.Show("Update To Database?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.No
-
-        '    ProcessDialogResult(response)
-
-
-        'End Try
-
-        Try
-            data_adapter.Update(dataset, "Calendar")
-            'My.Computer.audio.Play("ding.wav")
-            MsgBox("Change successfully saved")
-        Catch ex As Exception
-            MsgBox("Change failed to save")
-        End Try
-
-    End Function
 
 
     'Most of the buttons
@@ -1522,11 +1406,11 @@
         updating = True
         adding = False
 
-        labeldetails.text = "Editing event on " & CStr(DatabaseDate)
+        LabelDetails.Text = "Editing event on " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
 
         PanInput.Visible = True
 
-        Hide_Buttons(False, False, True, True, True, False, False)
+        Hide_Buttons(False, False, True, True, True, False, False, False)
 
         LabNoEventScheduled.Visible = False
 
@@ -1555,7 +1439,6 @@
         Label9.Text = adding
 
     End Sub
-
     Private Sub ButUpdate_Click(sender As Object, e As EventArgs) Handles ButUpdate.Click           'For editing existing dates
         If ComboBoxTime.SelectedItem = Nothing Or TexEventName.Text = "" Or TexVenue.Text = "" Or ComboWeapon.SelectedItem = Nothing Or TexGroup.Text = "" Then
 
@@ -1618,9 +1501,9 @@
             updating = False
 
 
-            labeldetails.text = "Viewing details for " & CStr(DatabaseDate)
+            LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
             PanInput.Visible = True
-            Hide_Buttons(False, False, False, False, False, True, True)
+            Hide_Buttons(False, False, False, False, False, True, True, True)
             LabNoEventScheduled.Visible = False
             Disabling_Textboxes(True)
 
@@ -1638,15 +1521,14 @@
         Label9.Text = adding
 
     End Sub
-
     Private Sub ButAddNew_Click(sender As Object, e As EventArgs) Handles ButAddNew.Click
         adding = True
         updating = False
-        labeldetails.text = "Adding new event for " & CStr(DatabaseDate)
+        LabelDetails.Text = "Adding new event for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
 
         PanInput.Visible = True
         Hide_Warnings()
-        Hide_Buttons(False, True, True, False, True, False, False)
+        Hide_Buttons(False, True, True, False, True, False, False, False)
         LabNoEventScheduled.Visible = False
         Disabling_Textboxes(False)
         Clear_Text()
@@ -1655,7 +1537,6 @@
         Label9.Text = adding
 
     End Sub
-
     Private Sub ButCommit_Click(sender As Object, e As EventArgs) Handles ButCommit.Click           'For adding new dates
         If ComboBoxTime.SelectedItem = Nothing Or TexEventName.Text = "" Or TexVenue.Text = "" Or ComboWeapon.SelectedItem = Nothing Or TexGroup.Text = "" Then
 
@@ -1724,9 +1605,9 @@
             adding = False
 
 
-            labeldetails.text = "Viewing details for " & CStr(DatabaseDate)
+            LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
             PanInput.Visible = True
-            Hide_Buttons(False, False, False, False, False, True, True)
+            Hide_Buttons(False, False, False, False, False, True, True, True)
             LabNoEventScheduled.Visible = False
             Disabling_Textboxes(True)
 
@@ -1745,29 +1626,27 @@
         Label9.Text = adding
 
     End Sub
-
     Private Sub ButClear_Click(sender As Object, e As EventArgs) Handles ButClear.Click
         Clear_Text()
 
         Label8.Text = updating
         Label9.Text = adding
     End Sub
-
     Private Sub ButCancel_Click(sender As Object, e As EventArgs) Handles ButCancel.Click
         Hide_Warnings()
         If updating = True Then
-            labeldetails.text = "Viewing details for " & CStr(DatabaseDate)
+            LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
 
             PanInput.Visible = True
-            Hide_Buttons(False, False, False, False, False, True, True)
+            Hide_Buttons(False, False, False, False, False, True, True, True)
             LabNoEventScheduled.Visible = False
             Disabling_Textboxes(True)
             updating = False
         ElseIf adding = True Then
-            labeldetails.text = "Viewing details for " & CStr(DatabaseDate)
+            LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
 
             PanInput.Visible = False
-            Hide_Buttons(True, False, False, False, False, False, False)
+            Hide_Buttons(True, False, False, False, False, False, False, False)
             LabNoEventScheduled.Visible = True
             Disabling_Textboxes(True)
             adding = False
@@ -1776,7 +1655,6 @@
         Label8.Text = updating
         Label9.Text = adding
     End Sub
-
     Private Sub ButDelete_Click(sender As Object, e As EventArgs) Handles ButDelete.Click
 
         'Get_Database_Details_For_Specified_Date(DatabaseDate)
@@ -1797,7 +1675,7 @@
 
         PanInput.Visible = False
 
-        Hide_Buttons(True, False, False, False, False, False, False)
+        Hide_Buttons(True, False, False, False, False, False, False, False)
 
         LabNoEventScheduled.Visible = True
 
@@ -1810,6 +1688,29 @@
 
         Label8.Text = updating
         Label9.Text = adding
+    End Sub
+
+
+
+
+    Private Sub ButPrint_Click(sender As Object, e As EventArgs) Handles ButPrint.Click
+        PrintEventName = TexEventName.Text
+        PrintDate = CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & "/" & CStr(DatabaseDate.Month) & " " & CStr(DatabaseDate.Year)
+        PrintVenue = TexVenue.Text
+        PrintGroup = TexGroup.Text
+        If ComboWeapon.SelectedIndex = 0 Then
+            PrintWeapon = "No Weapon"
+        ElseIf ComboWeapon.SelectedIndex = 1 Then
+            PrintWeapon = "Foil"
+        ElseIf ComboWeapon.SelectedIndex = 2 Then
+            PrintWeapon = "Sabre"
+        ElseIf ComboWeapon.SelectedIndex = 3 Then
+            PrintWeapon = "Epee"
+        Else
+            PrintWeapon = "No Weapon"
+        End If
+        PrintTime = ComboBoxTime.SelectedItem
+        PrintForm.Show()
     End Sub
 
 
@@ -1829,10 +1730,8 @@
     'allows moving of position and hide/show functions
     Dim MouseX = Cursor.Position.X
     Dim MouseY = Cursor.Position.Y
-
     Dim ViewDetailsHeld As Boolean = False
     Dim SearchHeld As Boolean = False
-
     Private Sub PicViewDetailsSlider_MouseDown(sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PicViewDetailsSlider.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then
             ViewDetailsHeld = True
@@ -1876,7 +1775,6 @@
             SearchHeld = False
         End If
     End Sub
-
 
 
     Private Sub ButSearchHide_Click(sender As Object, e As EventArgs) Handles ButSearchHide.Click
@@ -1936,7 +1834,6 @@
     End Sub
 
 
-
     Dim ScreenPos As Point
     Private Sub SlideTimer_Tick(sender As Object, e As EventArgs) Handles SlideTimer.Tick
         MouseX = Cursor.Position.X
@@ -1975,7 +1872,6 @@
 
 
     End Sub
-
 
     'Brings a panel to the front if clicked on
     Private Sub SearchGroupBox_Click(sender As Object, e As EventArgs) Handles SearchGroupBox.Click
@@ -2043,6 +1939,8 @@
 
     'End Function
 
+    'Pressing the search button
+    'If advanced search is checked, it will hide said search button and display a new one
     Private Sub ButSearch_Click(sender As Object, e As EventArgs) Handles ButSearch.Click
         Dim DatabaseSearchDate As Date = DateTimePickerSearch.Value.Date
         Dim SearchString As String = TexSearch.Text
@@ -2133,7 +2031,7 @@
 
                         currentmonth = TempDate
                         ReloadCal(currentmonth, currentmonth.Day)
-                        CalendarGroupBox.Text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+                        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
                         tu4.Visible = False
                         Populate_Table(currentmonth)
                         tu4.Visible = True
@@ -2147,7 +2045,7 @@
 
                         PanInput.Visible = False
 
-                        Hide_Buttons(False, False, False, False, False, False, False)
+                        Hide_Buttons(False, False, False, False, False, False, False, False)
 
                         LabNoEventScheduled.Visible = True
                     End Try
@@ -2155,7 +2053,7 @@
             ElseIf DateChecked = True Then
                 currentmonth = DatabaseSearchDate
                 ReloadCal(currentmonth, currentmonth.Day)
-                CalendarGroupBox.Text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+                'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
                 tu4.Visible = False
                 Populate_Table(currentmonth)
                 tu4.Visible = True
@@ -2190,6 +2088,7 @@
         End While
         i = 0
         CheckBoxAdvancedSearch.Enabled = True
+        CheckBoxAdvancedSearch.Checked = False
     End Sub
 
     'Searching whilst in the advanced search panel
@@ -2294,6 +2193,8 @@
     Dim searchResults As New DataSet()
     Dim Mode_String As String
     'ByVal SearchEventName As Boolean, SearchTime As Boolean, SearchVenue As Boolean, SearchWeapon As Boolean, SearchGroup As Boolean
+
+    'Buidls the command depending on what options are chosen
     Public Function Command_Builder() As String
         Dim command As String
         If CheckBoxAll.Checked = True Then
@@ -2336,24 +2237,22 @@
 
 
     End Function
-    Public Function One_Criteria_Search()
-        
-    End Function
+    'Function that searches in database and then populates the table
     Private Sub Advanced_Search()
 
         Dim tempcommand = Command_Builder()
 
         If RadAdvSearchEventName.Checked = False And RadAdvSearchGroup.Checked = False And RadAdvSearchVenue.Checked = False And RadAdvSearchWeapon.Checked = False And CheckBoxAdvancedSearch.Checked = False Then
             MsgBox("Please select at least one field")
-        Else
+        Else            'one search field selected
+            data_adapter = New OleDb.OleDbDataAdapter
+            data_adapter.SelectCommand = New OleDb.OleDbCommand()
 
-            If Mode_String = "All" Then
-                data_adapter = New OleDb.OleDbDataAdapter
-                data_adapter.SelectCommand = New OleDb.OleDbCommand()
+            If Mode_String = "All" Then             'Searching in all fields
+
                 With data_adapter.SelectCommand
                     .Connection = RootForm.connection
                     .CommandText = tempcommand
-                    ' SECURITY: PREVENTS SQL INJECTIONS
                     .Parameters.AddWithValue("@Search1", TexSearch.Text)
                     .Parameters.AddWithValue("@Search2", TexSearch.Text)
                     .Parameters.AddWithValue("@Search3", TexSearch.Text)
@@ -2363,7 +2262,7 @@
                 End With
                 data_adapter.Fill(searchResults, "Calendar")
 
-                'Populate Results Table
+                'Populates the table with found items
                 ListView1.Items.Clear()
                 Dim row As DataRow
                 For Each row In searchResults.Tables("Calendar").Rows
@@ -2378,22 +2277,42 @@
                     End If
                 Next
                 searchResults.Clear()
+            Else                                    'Only one field to search from
+                Dim TempSearchString As String
+                If RadAdvSearchWeapon.Checked = True Then           'Special case for weapon (4 choices provided only as there are only 3 weapons and no weapon)
+                    If RadChoiceNoWeapon.Checked = True Then
+                        TempSearchString = "No Weapon"
+                    ElseIf RadChoiceFoil.Checked = True Then
+                        TempSearchString = "Foil"
+                    ElseIf RadChoiceSabre.Checked = True Then
+                        TempSearchString = "Sabre"
+                    ElseIf RadChoiceEpee.Checked = True Then
+                        TempSearchString = "Epee"
+                    Else
+                        TempSearchString = "No Weapon"
+                    End If
 
-                Label8.Text = tempcommand
-            Else
-                data_adapter = New OleDb.OleDbDataAdapter
-                data_adapter.SelectCommand = New OleDb.OleDbCommand()
-                With data_adapter.SelectCommand
-                    .Connection = RootForm.connection
-                    .CommandText = tempcommand
-                    ' SECURITY: PREVENTS SQL INJECTIONS
-                    .Parameters.AddWithValue("@Search1", TexSearch.Text)
-                    .CommandType = CommandType.Text
-                    .ExecuteNonQuery()
-                End With
-                data_adapter.Fill(searchResults, "Calendar")
+                    With data_adapter.SelectCommand
+                        .Connection = RootForm.connection
+                        .CommandText = tempcommand
+                        .Parameters.AddWithValue("@Search1", TempSearchString)
+                        .CommandType = CommandType.Text
+                        .ExecuteNonQuery()
+                    End With
+                    data_adapter.Fill(searchResults, "Calendar")
+                Else                                                'Not a special case, ie one of eventname, group or venue
+                    With data_adapter.SelectCommand
+                        .Connection = RootForm.connection
+                        .CommandText = tempcommand
+                        .Parameters.AddWithValue("@Search1", TexSearch.Text)
+                        .CommandType = CommandType.Text
+                        .ExecuteNonQuery()
+                    End With
+                    data_adapter.Fill(searchResults, "Calendar")
 
-                'Populate Results Table
+                End If
+
+                'Populates the table with found items
                 ListView1.Items.Clear()
                 Dim row As DataRow
                 For Each row In searchResults.Tables("Calendar").Rows
@@ -2408,16 +2327,12 @@
                     End If
                 Next
                 searchResults.Clear()
-
-                Label8.Text = tempcommand
             End If
-
-
         End If
     End Sub
 
 
-
+    'Mostly monitors graphics and disables choices when the "All" check box is selected
     Private Sub CheckBoxAll_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxAll.CheckedChanged
         If CheckBoxAll.Checked = True Then
             RadAdvSearchEventName.Checked = False
@@ -2446,7 +2361,7 @@
 
 
 
-
+    'Only four choices for weapon, so there is a special function for it
     Private Sub RadAdvSearchWeapon_CheckedChanged(sender As Object, e As EventArgs) Handles RadAdvSearchWeapon.CheckedChanged
         If RadAdvSearchWeapon.Checked = True Then
             PanelWeaponChoices.Visible = True
@@ -2456,13 +2371,14 @@
     End Sub
 
 
+
     'The two additional functions
     Private Sub MonthCalendar1_DateSelected(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar1.DateSelected
         Dim DatabaseSearchDate As Date = MonthCalendar1.SelectionRange.Start.ToString()
 
         currentmonth = DatabaseSearchDate
         ReloadCal(currentmonth, currentmonth.Day)
-        CalendarGroupBox.Text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
         tu4.Visible = False
         Populate_Table(currentmonth)
         tu4.Visible = True
@@ -2474,22 +2390,6 @@
     Private Sub ButViewDatabase_Click(sender As Object, e As EventArgs) Handles ButViewDatabase.Click
         CalendarTableView.Show()
     End Sub
-
-
-
-
-
-
-
-
-    'Not entirely useful sub
-    Private Sub CalendarBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.CalendarBindingSource.EndEdit()
-        Me.TableAdapterManager1.UpdateAll(Me.FencingDataSet)
-    End Sub
-
-
 
 
 
@@ -2938,5 +2838,12 @@
     End Sub
 
 
-
 End Class
+Public Module GlobalVariablesModule
+    Public PrintEventName As String
+    Public PrintGroup As String
+    Public PrintDate As String
+    Public PrintVenue As String
+    Public PrintWeapon As String
+    Public PrintTime As String
+End Module

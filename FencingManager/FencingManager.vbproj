@@ -50,6 +50,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -102,6 +103,12 @@
       <DependentUpon>CreateAcc.vb</DependentUpon>
     </Compile>
     <Compile Include="CreateAcc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintForm.Designer.vb">
+      <DependentUpon>PrintForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PrintForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StudentProfilesCreate.Designer.vb">
@@ -214,6 +221,9 @@
     <EmbeddedResource Include="CreateAcc.resx">
       <DependentUpon>CreateAcc.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintForm.resx">
+      <DependentUpon>PrintForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentProfilesCreate.resx">
       <DependentUpon>StudentProfilesCreate.vb</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +297,9 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\printer-64-000000.png" />
+    <None Include="Resources\Sydneyboyscrest %281%29.jpg" />
+    <None Include="Resources\Sydneyboyscrest.jpg" />
     <None Include="Resources\spinner.gif" />
     <None Include="Resources\Foil symbol.png" />
     <None Include="Resources\curly-brackets-md1.png" />
