@@ -116,7 +116,7 @@ Public Class Email
 
     End Sub
 
-    
+
 
     Private Function sendGeneral()
         Dim weapons() = {"foil", "sabre", "epee"}
