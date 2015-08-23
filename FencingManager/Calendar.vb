@@ -1505,10 +1505,10 @@
 
         Try
             data_adapter.Update(dataset, "Calendar")
-            My.Computer.Audio.Play("ding.wav")
-            MsgBox("succeeded in updating dataset to actual table")
+            'My.Computer.audio.Play("ding.wav")
+            MsgBox("Change successfully saved")
         Catch ex As Exception
-            MsgBox("failed to update dataset to actual table")
+            MsgBox("Change failed to save")
         End Try
 
     End Function
@@ -1608,7 +1608,7 @@
 
             Row.Item(7) = TexGroup.Text
 
-            My.Computer.Audio.Play("ding.wav")
+            'My.Computer.audio.Play("ding.wav")
             MsgBox("Information Updated")
 
 
@@ -1714,7 +1714,7 @@
 
 
             dataset.Tables("Calendar").Rows.Add(datasetNewRow)
-            My.Computer.Audio.Play("ding.wav")
+            'My.Computer.audio.Play("ding.wav")
             MsgBox("New event added for the date: " & CStr(DatabaseDate))
 
 
