@@ -2252,7 +2252,7 @@
     Private Sub Advanced_Search()
         Dim SearchString1 As String = "EventName LIKE @Search1 + '%' OR Venue LIKE @Search2 + '%' OR Weapon LIKE @Search3 + '%' OR Group LIKE @Search4 + '%' "
 
-        If CheckBoxEventName.Checked = False And CheckBoxGroup.Checked = False And CheckBoxVenue.Checked = False And CheckBoxWeapon.Checked = False Then
+        If False Then 'CheckBoxEventName.Checked = False And CheckBoxGroup.Checked = False And CheckBoxVenue.Checked = False And CheckBoxWeapon.Checked = False Then
             MsgBox("Please select at least one field")
         Else
             Dim command As String =
