@@ -51,8 +51,9 @@ Public Class Email
         count = 0
         For Each tmpa In hashtable.Keys
             If Not all Then
-                Button4.Text = ((count * 100) / hashtable.Count).ToString + "%"
-                mode = 1
+                Button4.Text = Math.Round(((count * 100) / hashtable.Count)).ToString + "%"
+            Else
+                Button2.Text = Math.Round(((count * 50) / hashtable.Count)).ToString + "%"
             End If
 
             count += 1
@@ -241,10 +242,25 @@ Public Class Email
                 ejunior(row("Weapon") - 1).Add(row("email"))
             End If
         Next
+        Dim count = 0
         For i = 0 To 2
+            If Not all Then
+                Button5.Text = Math.Round(((count * 100) / 6)).ToString + "%"
+            Else
+                Button2.Text = Math.Round(((count * 50) / 6) + 50).ToString + "%"
+            End If
+            count += 1
+            System.Windows.Forms.Application.DoEvents()
             If send_email(esenior(i), senior(i)) Then
                 Return True
             End If
+            If Not all Then
+                Button5.Text = Math.Round(((count * 100) / 6)).ToString + "%"
+            Else
+                Button2.Text = Math.Round(((count * 50) / 6) + 50).ToString + "%"
+            End If
+            count += 1
+            System.Windows.Forms.Application.DoEvents()
             If send_email(ejunior(i), junior(i)) Then
                 Return True
             End If
@@ -393,5 +409,43 @@ Public Class Email
         ComboBox1.Enabled = RadioButton1.Checked
         Label3.Visible = RadioButton1.Checked And Label3.Visible
         Label4.Visible = RadioButton2.Checked And Label4.Visible
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim valid = True
+        If RadioButton1.Checked Then
+            If TextBox2.Text = "" Then
+                valid = False
+            End If
+            If ComboBox1.SelectedIndex = 0 Then
+                valid = False
+            End If
+
+            Label3.Visible = Not valid
+
+        ElseIf Not datevalid() Then
+            valid = False
+            Label4.Visible = True
+        Else
+            Label4.Visible = False
+        End If
+        If valid Then
+            Button2.BackgroundImage = My.Resources.spinner
+            Button2.Enabled = False
+            all = True
+            mode = -3
+            Dim fail = sendOverdue()
+            If Not fail Then
+                fail = sendGeneral()
+            End If
+            If fail Then
+                Button2.Text = "Failure!"
+            Else
+                Button2.Text = "Success!"
+            End If
+            Button2.BackgroundImage = Nothing
+            Button2.Enabled = True
+            'Timer2.Enabled = True
+        End If
     End Sub
 End Class

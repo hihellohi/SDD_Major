@@ -301,11 +301,11 @@ Partial Class Email
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.btnboth)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnboth)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Email"
