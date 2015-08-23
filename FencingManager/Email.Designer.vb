@@ -22,6 +22,7 @@ Partial Class Email
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -30,6 +31,8 @@ Partial Class Email
         Me.btnboth = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -69,11 +72,11 @@ Partial Class Email
         '
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(82, 213)
+        Me.Button4.Location = New System.Drawing.Point(247, 213)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(239, 31)
+        Me.Button4.Size = New System.Drawing.Size(74, 31)
         Me.Button4.TabIndex = 16
-        Me.Button4.Text = "Send Overdue Notices"
+        Me.Button4.Text = "Yes"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button1
@@ -118,10 +121,22 @@ Partial Class Email
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "Label2"
         '
+        'Button3
+        '
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(82, 213)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(239, 31)
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = "Send Overdue Notices"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Email
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnboth)
         Me.Controls.Add(Me.Button4)
@@ -146,4 +161,6 @@ Partial Class Email
     Friend WithEvents btnboth As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class
