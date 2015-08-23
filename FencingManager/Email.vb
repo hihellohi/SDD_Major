@@ -97,7 +97,7 @@ Public Class Email
         Return False
     End Function
 
-    Private Sub Button1_Click() Handles Button4.Click
+    Private Sub Button4_Click() Handles Button4.Click
         Timer1.Enabled = False
         Button4.BackgroundImage = My.Resources.spinner
         Button4.Enabled = False
@@ -116,49 +116,7 @@ Public Class Email
 
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If mode = 1 Then
-            Button4.Left = Math.Min(Button4.Left + 10, 321)
-            If Button4.Left = 321 Then
-                Button3.Text = "Are you sure?"
-                Timer1.Enabled = False
-            End If
-        ElseIf mode = 0 Then
-            Button4.Left = Math.Max(Button4.Left - 10, 231)
-            If Button4.Left = 231 Then
-                Timer1.Enabled = False
-                Button3.Text = "Send Overdue Notices"
-                Button4.Text = "Yes"
-            End If
-        End If
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        mode = 1
-        Timer1.Enabled = True
-    End Sub
-
-    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
-        mode = 1
-        'Button3.Text = "Are you sure?"
-    End Sub
-
-    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.MouseLeave
-        mode = 0
-
-        Timer1.Enabled = True
-
-    End Sub
-
-    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles Button4.MouseEnter
-        mode = 1
-    End Sub
-
-    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles Button4.MouseLeave
-        mode = 0
-
-        Timer1.Enabled = True
-    End Sub
+    
 
     Private Function sendGeneral()
         Dim weapons() = {"foil", "sabre", "epee"}
@@ -357,15 +315,11 @@ Public Class Email
             End If
             Button5.BackgroundImage = Nothing
             Button5.Enabled = True
-            'Timer2.Enabled = True
+            Timer2.Enabled = True
         End If
     End Sub
 
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-        mode = 0
-        Timer2.Enabled = False
-        Timer1.Enabled = True
-    End Sub
+
 
     Private Function datevalid()
         If txtYear.Text = "" Then
@@ -445,7 +399,164 @@ Public Class Email
             End If
             Button2.BackgroundImage = Nothing
             Button2.Enabled = True
-            'Timer2.Enabled = True
+            Timer2.Enabled = True
+        End If
+    End Sub
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If mode = 1 Then
+            Button4.Left = Math.Min(Button4.Left + 10, 321)
+            If Button4.Left = 321 Then
+                Button3.Text = "Are you sure?"
+                Timer1.Enabled = False
+            End If
+        ElseIf mode = 2 Then
+            Button5.Left = Math.Max(Button5.Left - 10, 278)
+            If Button5.Left = 278 Then
+                Button1.Text = "Are you sure?"
+                Timer1.Enabled = False
+            End If
+        ElseIf mode = 3 Then
+            Button2.Left = Math.Min(Button2.Left + 10, 321)
+            If Button2.Left = 321 Then
+                btnboth.Text = "Are you sure?"
+                Timer1.Enabled = False
+            End If
+        ElseIf mode = 0 Then
+            Button4.Left = Math.Max(Button4.Left - 10, 231)
+            Button2.Left = Math.Max(Button2.Left - 10, 231)
+            Button5.Left = Math.Min(367, Button5.Left + 10)
+            Dim all = True
+            If Button4.Left = 231 Then
+
+                Button3.Text = "Send Overdue Notices"
+                Button4.Text = "Yes"
+            Else
+                all = False
+            End If
+            If Button2.Left = 231 Then
+                Button2.Text = "Yes"
+                btnboth.Text = "Send Both"
+            Else
+                all = False
+            End If
+            If Button5.Left = 367 Then
+                Button5.Text = "Yes"
+                Button1.Text = "Send General Emails"
+            Else
+                all = False
+            End If
+            If all Then
+                Timer1.Enabled = False
+            End If
+        End If
+    End Sub
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        mode = 0
+        Timer2.Enabled = False
+        Timer1.Enabled = True
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If mode >= 0 Then
+            mode = 1
+            Timer1.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
+        If mode >= 0 Then
+            mode = 1
+        End If
+        'Button3.Text = "Are you sure?"
+    End Sub
+
+    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.MouseLeave
+        If mode > 0 Then
+            mode = 0
+
+            Timer1.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Button4_MouseEnter(sender As Object, e As EventArgs) Handles Button4.MouseEnter
+        If mode >= 0 Then
+            mode = 1
+        End If
+    End Sub
+
+    Private Sub Button4_MouseLeave(sender As Object, e As EventArgs) Handles Button4.MouseLeave
+        If mode > 0 Then
+            mode = 0
+
+            Timer1.Enabled = True
+        End If
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If mode >= 0 Then
+            mode = 2
+            Timer1.Enabled = True
+        End If
+    End Sub
+    Private Sub button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
+        If mode >= 0 Then
+            mode = 2
+        End If
+        'button1.Text = "Are you sure?"
+    End Sub
+
+    Private Sub button1_LostFocus(sender As Object, e As EventArgs) Handles Button1.MouseLeave
+        If mode > 0 Then
+            mode = 0
+
+            Timer1.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles Button5.MouseEnter
+        If mode >= 0 Then
+            mode = 2
+        End If
+    End Sub
+
+    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles Button5.MouseLeave
+        If mode > 0 Then
+            mode = 0
+
+            Timer1.Enabled = True
+        End If
+    End Sub
+    Private Sub btnboth_Click(sender As Object, e As EventArgs) Handles btnboth.Click
+        If mode >= 0 Then
+            mode = 3
+            Timer1.Enabled = True
+        End If
+    End Sub
+    Private Sub btnboth_MouseEnter(sender As Object, e As EventArgs) Handles btnboth.MouseEnter
+        If mode >= 0 Then
+            mode = 3
+        End If
+        'btnboth.Text = "Are you sure?"
+    End Sub
+
+    Private Sub btnboth_LostFocus(sender As Object, e As EventArgs) Handles btnboth.MouseLeave
+        If mode > 0 Then
+            mode = 0
+
+            Timer1.Enabled = True
+        End If
+    End Sub
+
+    Private Sub button2_MouseEnter(sender As Object, e As EventArgs) Handles Button2.MouseEnter
+        If mode >= 0 Then
+            mode = 3
+        End If
+    End Sub
+
+    Private Sub button2_MouseLeave(sender As Object, e As EventArgs) Handles Button2.MouseLeave
+        If mode > 0 Then
+            mode = 0
+
+            Timer1.Enabled = True
         End If
     End Sub
 End Class

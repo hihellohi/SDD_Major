@@ -142,6 +142,7 @@ Partial Class Email
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.TextBox1)
@@ -154,7 +155,6 @@ Partial Class Email
         Me.GroupBox2.Controls.Add(Me.TextBox2)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Controls.Add(Me.Button5)
-        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(567, 213)
         Me.GroupBox2.Name = "GroupBox2"
@@ -272,7 +272,7 @@ Partial Class Email
         Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(516, 345)
+        Me.Button5.Location = New System.Drawing.Point(367, 345)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(90, 31)
         Me.Button5.TabIndex = 23
@@ -300,12 +300,12 @@ Partial Class Email
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.btnboth)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.btnboth)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Email"

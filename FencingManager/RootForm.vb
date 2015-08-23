@@ -25,7 +25,7 @@ Public Class RootForm
     Public Shared connection As New OleDbConnection
     Public Shared GearAdapter As New OleDb.OleDbDataAdapter
     Public Shared GearDataS As New DataSet()
-    Public Shared access_level As Integer = 0
+    Public Shared access_level As Integer = 3
 
 
     'Private WithEvents kbHook As New KeyboardHook
