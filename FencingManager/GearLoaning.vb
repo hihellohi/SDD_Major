@@ -29,22 +29,22 @@
 
     Private Sub GearLoaning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         frmlhelp.TopLevel = False
-        Panel1.Controls.Add(frmlhelp)
+        formPanel.Controls.Add(frmlhelp)
 
         frmchelp.TopLevel = False
-        Panel1.Controls.Add(frmchelp)
+        formPanel.Controls.Add(frmchelp)
 
         frmrhelp.TopLevel = False
-        Panel1.Controls.Add(frmrhelp)
+        formPanel.Controls.Add(frmrhelp)
 
         frmReturn.TopLevel = False
-        Panel1.Controls.Add(frmReturn)
+        formPanel.Controls.Add(frmReturn)
 
         frmloans.TopLevel = False
-        Panel1.Controls.Add(frmloans)
+        formPanel.Controls.Add(frmloans)
 
         frmCatalog.TopLevel = False
-        Panel1.Controls.Add(frmCatalog)
+        formPanel.Controls.Add(frmCatalog)
 
         topForm.show()
 

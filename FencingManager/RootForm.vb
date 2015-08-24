@@ -100,7 +100,7 @@ Public Class RootForm
         topform.show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnminimize.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 

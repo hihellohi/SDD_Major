@@ -2,16 +2,16 @@
 
 Public Class Returns
     Dim old As String
-    Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+    Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles txtInput.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             Dim tmp As Boolean = True
             For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
-                If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = TextBox2.Text Then
+                If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = txtInput.Text Then
                     If RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0 Then
-                        Label1.Text = "Item not loaned"
+                        lblOutput.Text = "Item not loaned"
                     Else
-                        Label1.Text = RootForm.GearDataS.Tables("Gear").Rows(i).Item(1)
+                        lblOutput.Text = RootForm.GearDataS.Tables("Gear").Rows(i).Item(1)
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(4) = 0
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(5) = 0
@@ -24,40 +24,40 @@ Public Class Returns
                 End If
             Next
             If tmp = True Then
-                Label1.Text = "item not found"
+                lblOutput.Text = "item not found"
             End If
-            TextBox2.Text = ""
+            txtInput.Text = ""
         End If
     End Sub
 
     Private Sub Returns_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TextBox2.Text = ""
+        txtInput.Text = ""
         Dim cb As New OleDb.OleDbCommandBuilder(RootForm.GearAdapter)
-        
+
     End Sub
 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        TextBox2.Focus()
-        old = TextBox1.Text
-        TextBox1.Text = ""
-        Button2.BackColor = Color.Green
-        Button2.Text = "Scanning..."
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+        txtInput.Focus()
+        old = txtInput.Text
+        txtInput.Text = ""
+        btnBarcode.BackColor = Color.Green
+        btnBarcode.Text = "Scanning..."
     End Sub
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Button3.Visible = False
-        TextBox2.Focus()
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnManual.Click
+        btnManual.Visible = False
+        txtInput.Focus()
     End Sub
 
-    Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles TextBox2.LostFocus
-        If Button3.Visible Then
-            TextBox1.Text = old
+    Private Sub txtInput_LostFocus(sender As Object, e As EventArgs) Handles txtInput.LostFocus
+        If btnManual.Visible Then
+            txtInput.Text = old
         End If
-        Button3.Visible = True
-        Button2.BackColor = Button3.BackColor
-        Button2.Text = "Use Barcode Scanner"
+        btnManual.Visible = True
+        btnBarcode.BackColor = btnManual.BackColor
+        btnBarcode.Text = "Use Barcode Scanner"
     End Sub
 
 

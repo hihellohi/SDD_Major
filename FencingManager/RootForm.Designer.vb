@@ -23,7 +23,7 @@ Partial Class RootForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnminimize = New System.Windows.Forms.Button()
         Me.btnStudentProf = New System.Windows.Forms.Button()
         Me.btnCalendar = New System.Windows.Forms.Button()
         Me.btnAttendance = New System.Windows.Forms.Button()
@@ -37,21 +37,21 @@ Partial Class RootForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btnminimize)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel1.Location = New System.Drawing.Point(110, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1256, 768)
         Me.Panel1.TabIndex = 0
         '
-        'Button1
+        'btnminimize
         '
-        Me.Button1.Location = New System.Drawing.Point(1191, 31)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(53, 49)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "↓"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnminimize.Location = New System.Drawing.Point(1191, 31)
+        Me.btnminimize.Name = "btnminimize"
+        Me.btnminimize.Size = New System.Drawing.Size(53, 49)
+        Me.btnminimize.TabIndex = 1
+        Me.btnminimize.Text = "↓"
+        Me.btnminimize.UseVisualStyleBackColor = True
         '
         'btnStudentProf
         '
@@ -145,7 +145,7 @@ Partial Class RootForm
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnminimize As System.Windows.Forms.Button
     Friend WithEvents btnStudentProf As System.Windows.Forms.Button
     Friend WithEvents btnCalendar As System.Windows.Forms.Button
     Friend WithEvents btnAttendance As System.Windows.Forms.Button

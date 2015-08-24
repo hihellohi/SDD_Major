@@ -51,9 +51,9 @@ Public Class Email
         count = 0
         For Each tmpa In hashtable.Keys
             If Not all Then
-                Button4.Text = Math.Round(((count * 100) / hashtable.Count)).ToString + "%"
+                btnODYes.Text = Math.Round(((count * 100) / hashtable.Count)).ToString + "%"
             Else
-                Button2.Text = Math.Round(((count * 50) / hashtable.Count)).ToString + "%"
+                btnBothYes.Text = Math.Round(((count * 50) / hashtable.Count)).ToString + "%"
             End If
 
             count += 1
@@ -97,21 +97,21 @@ Public Class Email
         Return False
     End Function
 
-    Private Sub Button4_Click() Handles Button4.Click
+    Private Sub Button4_Click() Handles btnODYes.Click
         Timer1.Enabled = False
-        Button4.BackgroundImage = My.Resources.spinner
-        Button4.Enabled = False
+        btnODYes.BackgroundImage = My.Resources.spinner
+        btnODYes.Enabled = False
         all = False
         mode = -1
 
         Dim fail As Boolean = sendOverdue()
         If fail Then
-            Button4.Text = "Failure!"
+            btnODYes.Text = "Failure!"
         Else
-            Button4.Text = "Success!"
+            btnODYes.Text = "Success!"
         End If
-        Button4.BackgroundImage = Nothing
-        Button4.Enabled = True
+        btnODYes.BackgroundImage = Nothing
+        btnODYes.Enabled = True
         Timer2.Enabled = True
 
     End Sub
@@ -136,17 +136,17 @@ Public Class Email
                 Continue For
             End If
             Dim cur As Date
-            If RadioButton1.Checked Then
+            If rdbNext.Checked Then
                 cur = Date.Today
-                Select Case ComboBox1.SelectedIndex
+                Select Case cmbNext.SelectedIndex
                     Case 1
-                        cur = cur.AddDays(TextBox2.Text)
+                        cur = cur.AddDays(txtNext.Text)
                     Case 2
-                        cur = cur.AddDays(TextBox2.Text * 7)
+                        cur = cur.AddDays(txtNext.Text * 7)
                     Case 3
-                        cur = cur.AddMonths(TextBox2.Text)
+                        cur = cur.AddMonths(txtNext.Text)
                     Case 4
-                        cur = cur.AddYears(TextBox2.Text)
+                        cur = cur.AddYears(txtNext.Text)
                 End Select
             Else
                 cur = New Date(txtYear.Text, cmbMonth.SelectedIndex, cmbDay.SelectedIndex)
@@ -203,9 +203,9 @@ Public Class Email
         Dim count = 0
         For i = 0 To 2
             If Not all Then
-                Button5.Text = Math.Round(((count * 100) / 6)).ToString + "%"
+                btnGEYes.Text = Math.Round(((count * 100) / 6)).ToString + "%"
             Else
-                Button2.Text = Math.Round(((count * 50) / 6) + 50).ToString + "%"
+                btnBothYes.Text = Math.Round(((count * 50) / 6) + 50).ToString + "%"
             End If
             count += 1
             System.Windows.Forms.Application.DoEvents()
@@ -213,9 +213,9 @@ Public Class Email
                 Return True
             End If
             If Not all Then
-                Button5.Text = Math.Round(((count * 100) / 6)).ToString + "%"
+                btnGEYes.Text = Math.Round(((count * 100) / 6)).ToString + "%"
             Else
-                Button2.Text = Math.Round(((count * 50) / 6) + 50).ToString + "%"
+                btnBothYes.Text = Math.Round(((count * 50) / 6) + 50).ToString + "%"
             End If
             count += 1
             System.Windows.Forms.Application.DoEvents()
@@ -248,7 +248,7 @@ Public Class Email
             Next
             email.Subject = "Message From Fencing"
             email.IsBodyHtml = True
-            email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p>" + TextBox1.Text.Replace(vbNewLine, "<br>").ToString
+            email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p>" + txtMessage.Text.Replace(vbNewLine, "<br>").ToString
             If events.Count <> 0 Then
                 email.Body += "</p><p>upcoming events<table><tr><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Venue</th><th>Weapon</th><th>Age Group</th></tr>"
                 Dim iter As item
@@ -268,53 +268,53 @@ Public Class Email
         Return False
     End Function
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-        TextBox2.Text = System.Text.RegularExpressions.Regex.Replace(TextBox2.Text, "[^0-9]", "")
-        TextBox2.Select(TextBox2.Text.Length, 0)
-        If TextBox2.Text = "1" Then
-            ComboBox1.Items(1) = "Day"
-            ComboBox1.Items(2) = "Week"
-            ComboBox1.Items(3) = "Month"
-            ComboBox1.Items(4) = "Year"
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtNext.TextChanged
+        txtNext.Text = System.Text.RegularExpressions.Regex.Replace(txtNext.Text, "[^0-9]", "")
+        txtNext.Select(txtNext.Text.Length, 0)
+        If txtNext.Text = "1" Then
+            cmbNext.Items(1) = "Day"
+            cmbNext.Items(2) = "Week"
+            cmbNext.Items(3) = "Month"
+            cmbNext.Items(4) = "Year"
         Else
-            ComboBox1.Items(1) = "Days"
-            ComboBox1.Items(2) = "Weeks"
-            ComboBox1.Items(3) = "Months"
-            ComboBox1.Items(4) = "Years"
+            cmbNext.Items(1) = "Days"
+            cmbNext.Items(2) = "Weeks"
+            cmbNext.Items(3) = "Months"
+            cmbNext.Items(4) = "Years"
         End If
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnGEYes.Click
         Dim valid = True
-        If RadioButton1.Checked Then
-            If TextBox2.Text = "" Then
+        If rdbNext.Checked Then
+            If txtNext.Text = "" Then
                 valid = False
             End If
-            If ComboBox1.SelectedIndex = 0 Then
+            If cmbNext.SelectedIndex = 0 Then
                 valid = False
             End If
 
-            Label3.Visible = Not valid
+            lblNextError.Visible = Not valid
 
         ElseIf Not datevalid() Then
             valid = False
-            Label4.Visible = True
+            lblUntilError.Visible = True
         Else
-            Label4.Visible = False
+            lblUntilError.Visible = False
         End If
         If valid Then
-            Button5.BackgroundImage = My.Resources.spinner
-            Button5.Enabled = False
+            btnGEYes.BackgroundImage = My.Resources.spinner
+            btnGEYes.Enabled = False
             all = False
             mode = -2
             Dim fail = sendGeneral()
             If fail Then
-                Button5.Text = "Failure!"
+                btnGEYes.Text = "Failure!"
             Else
-                Button5.Text = "Success!"
+                btnGEYes.Text = "Success!"
             End If
-            Button5.BackgroundImage = Nothing
-            Button5.Enabled = True
+            btnGEYes.BackgroundImage = Nothing
+            btnGEYes.Enabled = True
             Timer2.Enabled = True
         End If
     End Sub
@@ -351,41 +351,41 @@ Public Class Email
 
     Private Sub Email_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetCueText(txtYear, "Year")
-        ComboBox1.SelectedIndex = 0
+        cmbNext.SelectedIndex = 0
         cmbDay.SelectedIndex = 0
         cmbMonth.SelectedIndex = 0
     End Sub
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-        cmbDay.Enabled = RadioButton2.Checked
-        cmbMonth.Enabled = RadioButton2.Checked
-        txtYear.Enabled = RadioButton2.Checked
-        TextBox2.Enabled = RadioButton1.Checked
-        ComboBox1.Enabled = RadioButton1.Checked
-        Label3.Visible = RadioButton1.Checked And Label3.Visible
-        Label4.Visible = RadioButton2.Checked And Label4.Visible
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles rdbUntil.CheckedChanged
+        cmbDay.Enabled = rdbUntil.Checked
+        cmbMonth.Enabled = rdbUntil.Checked
+        txtYear.Enabled = rdbUntil.Checked
+        txtNext.Enabled = rdbNext.Checked
+        cmbNext.Enabled = rdbNext.Checked
+        lblNextError.Visible = rdbNext.Checked And lblNextError.Visible
+        lblUntilError.Visible = rdbUntil.Checked And lblUntilError.Visible
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnBothYes.Click
         Dim valid = True
-        If RadioButton1.Checked Then
-            If TextBox2.Text = "" Then
+        If rdbNext.Checked Then
+            If txtNext.Text = "" Then
                 valid = False
             End If
-            If ComboBox1.SelectedIndex = 0 Then
+            If cmbNext.SelectedIndex = 0 Then
                 valid = False
             End If
 
-            Label3.Visible = Not valid
+            lblNextError.Visible = Not valid
 
         ElseIf Not datevalid() Then
             valid = False
-            Label4.Visible = True
+            lblUntilError.Visible = True
         Else
-            Label4.Visible = False
+            lblUntilError.Visible = False
         End If
         If valid Then
-            Button2.BackgroundImage = My.Resources.spinner
-            Button2.Enabled = False
+            btnBothYes.BackgroundImage = My.Resources.spinner
+            btnBothYes.Enabled = False
             all = True
             mode = -3
             Dim fail = sendOverdue()
@@ -393,55 +393,55 @@ Public Class Email
                 fail = sendGeneral()
             End If
             If fail Then
-                Button2.Text = "Failure!"
+                btnBothYes.Text = "Failure!"
             Else
-                Button2.Text = "Success!"
+                btnBothYes.Text = "Success!"
             End If
-            Button2.BackgroundImage = Nothing
-            Button2.Enabled = True
+            btnBothYes.BackgroundImage = Nothing
+            btnBothYes.Enabled = True
             Timer2.Enabled = True
         End If
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If mode = 1 Then
-            Button4.Left = Math.Min(Button4.Left + 10, 321)
-            If Button4.Left = 321 Then
-                Button3.Text = "Are you sure?"
+            btnODYes.Left = Math.Min(btnODYes.Left + 10, 321)
+            If btnODYes.Left = 321 Then
+                btnOverdue.Text = "Are you sure?"
                 Timer1.Enabled = False
             End If
         ElseIf mode = 2 Then
-            Button5.Left = Math.Max(Button5.Left - 10, 278)
-            If Button5.Left = 278 Then
-                Button1.Text = "Are you sure?"
+            btnGEYes.Left = Math.Max(btnGEYes.Left - 10, 278)
+            If btnGEYes.Left = 278 Then
+                btnGeneral.Text = "Are you sure?"
                 Timer1.Enabled = False
             End If
         ElseIf mode = 3 Then
-            Button2.Left = Math.Min(Button2.Left + 10, 321)
-            If Button2.Left = 321 Then
+            btnBothYes.Left = Math.Min(btnBothYes.Left + 10, 321)
+            If btnBothYes.Left = 321 Then
                 btnboth.Text = "Are you sure?"
                 Timer1.Enabled = False
             End If
         ElseIf mode = 0 Then
-            Button4.Left = Math.Max(Button4.Left - 10, 231)
-            Button2.Left = Math.Max(Button2.Left - 10, 231)
-            Button5.Left = Math.Min(367, Button5.Left + 10)
+            btnODYes.Left = Math.Max(btnODYes.Left - 10, 231)
+            btnBothYes.Left = Math.Max(btnBothYes.Left - 10, 231)
+            btnGEYes.Left = Math.Min(367, btnGEYes.Left + 10)
             Dim all = True
-            If Button4.Left = 231 Then
+            If btnODYes.Left = 231 Then
 
-                Button3.Text = "Send Overdue Notices"
-                Button4.Text = "Yes"
+                btnOverdue.Text = "Send Overdue Notices"
+                btnODYes.Text = "Yes"
             Else
                 all = False
             End If
-            If Button2.Left = 231 Then
-                Button2.Text = "Yes"
+            If btnBothYes.Left = 231 Then
+                btnBothYes.Text = "Yes"
                 btnboth.Text = "Send Both"
             Else
                 all = False
             End If
-            If Button5.Left = 367 Then
-                Button5.Text = "Yes"
-                Button1.Text = "Send General Emails"
+            If btnGEYes.Left = 367 Then
+                btnGEYes.Text = "Yes"
+                btnGeneral.Text = "Send General Emails"
             Else
                 all = False
             End If
@@ -456,21 +456,21 @@ Public Class Email
         Timer1.Enabled = True
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnOverdue.Click
         If mode >= 0 Then
             mode = 1
             Timer1.Enabled = True
         End If
     End Sub
 
-    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
+    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles btnOverdue.MouseEnter
         If mode >= 0 Then
             mode = 1
         End If
         'Button3.Text = "Are you sure?"
     End Sub
 
-    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.MouseLeave
+    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles btnOverdue.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -478,33 +478,33 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub Button4_MouseEnter(sender As Object, e As EventArgs) Handles Button4.MouseEnter
+    Private Sub Button4_MouseEnter(sender As Object, e As EventArgs) Handles btnODYes.MouseEnter
         If mode >= 0 Then
             mode = 1
         End If
     End Sub
 
-    Private Sub Button4_MouseLeave(sender As Object, e As EventArgs) Handles Button4.MouseLeave
+    Private Sub Button4_MouseLeave(sender As Object, e As EventArgs) Handles btnODYes.MouseLeave
         If mode > 0 Then
             mode = 0
 
             Timer1.Enabled = True
         End If
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnGeneral.Click
         If mode >= 0 Then
             mode = 2
             Timer1.Enabled = True
         End If
     End Sub
-    Private Sub button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
+    Private Sub button1_MouseEnter(sender As Object, e As EventArgs) Handles btnGeneral.MouseEnter
         If mode >= 0 Then
             mode = 2
         End If
         'button1.Text = "Are you sure?"
     End Sub
 
-    Private Sub button1_LostFocus(sender As Object, e As EventArgs) Handles Button1.MouseLeave
+    Private Sub button1_LostFocus(sender As Object, e As EventArgs) Handles btnGeneral.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -512,13 +512,13 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles Button5.MouseEnter
+    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles btnGEYes.MouseEnter
         If mode >= 0 Then
             mode = 2
         End If
     End Sub
 
-    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles Button5.MouseLeave
+    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles btnGEYes.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -546,13 +546,13 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub button2_MouseEnter(sender As Object, e As EventArgs) Handles Button2.MouseEnter
+    Private Sub button2_MouseEnter(sender As Object, e As EventArgs) Handles btnBothYes.MouseEnter
         If mode >= 0 Then
             mode = 3
         End If
     End Sub
 
-    Private Sub button2_MouseLeave(sender As Object, e As EventArgs) Handles Button2.MouseLeave
+    Private Sub button2_MouseLeave(sender As Object, e As EventArgs) Handles btnBothYes.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -562,13 +562,13 @@ Public Class Email
 
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
         btnHelp.BackColor = Color.White
-        btnReturn.BackColor = Color.DarkOrange
-        PictureBox1.Visible = True
+        btnMain.BackColor = Color.DarkOrange
+        ptbHelp.Visible = True
     End Sub
 
-    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnMain.Click
         btnHelp.BackColor = Color.DarkOrange
-        btnReturn.BackColor = Color.White
-        PictureBox1.Visible = False
+        btnMain.BackColor = Color.White
+        ptbHelp.Visible = False
     End Sub
 End Class

@@ -22,62 +22,62 @@ Partial Class Loans
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.lblInputError = New System.Windows.Forms.Label()
+        Me.tableList = New System.Windows.Forms.ListView()
         Me.colItem = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colDesc = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colDueDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtInput = New System.Windows.Forms.TextBox()
+        Me.txtFor = New System.Windows.Forms.TextBox()
+        Me.cmbFor = New System.Windows.Forms.ComboBox()
+        Me.grbInventory = New System.Windows.Forms.GroupBox()
+        Me.btnPreview = New System.Windows.Forms.Button()
+        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.lblTableCount = New System.Windows.Forms.Label()
+        Me.btnLogout = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnBarcode = New System.Windows.Forms.Button()
+        Me.btnManual = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblUntilError = New System.Windows.Forms.Label()
         Me.txtYear = New System.Windows.Forms.TextBox()
         Me.cmbMonth = New System.Windows.Forms.ComboBox()
         Me.cmbDay = New System.Windows.Forms.ComboBox()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.rdbUntil = New System.Windows.Forms.RadioButton()
+        Me.rdbFor = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
+        Me.lblOutput = New System.Windows.Forms.Label()
+        Me.grbInventory.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Label1
+        'lblInputError
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(57, 145)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Label1"
-        Me.Label1.Visible = False
+        Me.lblInputError.AutoSize = True
+        Me.lblInputError.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInputError.ForeColor = System.Drawing.Color.Red
+        Me.lblInputError.Location = New System.Drawing.Point(57, 145)
+        Me.lblInputError.Name = "lblInputError"
+        Me.lblInputError.Size = New System.Drawing.Size(39, 13)
+        Me.lblInputError.TabIndex = 1
+        Me.lblInputError.Text = "Label1"
+        Me.lblInputError.Visible = False
         '
-        'ListView1
+        'tableList
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colItem, Me.colDesc, Me.colDueDate})
-        Me.ListView1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListView1.FullRowSelect = True
-        Me.ListView1.GridLines = True
-        Me.ListView1.Location = New System.Drawing.Point(16, 30)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(468, 459)
-        Me.ListView1.Sorting = System.Windows.Forms.SortOrder.Ascending
-        Me.ListView1.TabIndex = 2
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.tableList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colItem, Me.colDesc, Me.colDueDate})
+        Me.tableList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tableList.FullRowSelect = True
+        Me.tableList.GridLines = True
+        Me.tableList.Location = New System.Drawing.Point(16, 30)
+        Me.tableList.Name = "tableList"
+        Me.tableList.Size = New System.Drawing.Size(468, 459)
+        Me.tableList.Sorting = System.Windows.Forms.SortOrder.Ascending
+        Me.tableList.TabIndex = 2
+        Me.tableList.UseCompatibleStateImageBehavior = False
+        Me.tableList.View = System.Windows.Forms.View.Details
         '
         'colItem
         '
@@ -94,96 +94,96 @@ Partial Class Loans
         Me.colDueDate.Text = "Due Date"
         Me.colDueDate.Width = 125
         '
-        'TextBox1
+        'txtInput
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(60, 100)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(327, 31)
-        Me.TextBox1.TabIndex = 3
+        Me.txtInput.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtInput.Location = New System.Drawing.Point(60, 100)
+        Me.txtInput.Name = "txtInput"
+        Me.txtInput.Size = New System.Drawing.Size(327, 31)
+        Me.txtInput.TabIndex = 3
         '
-        'TextBox2
+        'txtFor
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(105, 48)
-        Me.TextBox2.MaxLength = 3
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(126, 26)
-        Me.TextBox2.TabIndex = 4
+        Me.txtFor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFor.Location = New System.Drawing.Point(105, 48)
+        Me.txtFor.MaxLength = 3
+        Me.txtFor.Name = "txtFor"
+        Me.txtFor.Size = New System.Drawing.Size(126, 26)
+        Me.txtFor.TabIndex = 4
         '
-        'ComboBox1
+        'cmbFor
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Select Unit of Time", "Days", "Weeks", "Months", "Years"})
-        Me.ComboBox1.Location = New System.Drawing.Point(242, 48)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(156, 26)
-        Me.ComboBox1.TabIndex = 5
+        Me.cmbFor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbFor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbFor.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbFor.FormattingEnabled = True
+        Me.cmbFor.Items.AddRange(New Object() {"Select Unit of Time", "Days", "Weeks", "Months", "Years"})
+        Me.cmbFor.Location = New System.Drawing.Point(242, 48)
+        Me.cmbFor.Name = "cmbFor"
+        Me.cmbFor.Size = New System.Drawing.Size(156, 26)
+        Me.cmbFor.TabIndex = 5
         '
-        'GroupBox1
+        'grbInventory
         '
-        Me.GroupBox1.Controls.Add(Me.Button5)
-        Me.GroupBox1.Controls.Add(Me.Button4)
-        Me.GroupBox1.Controls.Add(Me.Label10)
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.ListView1)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(644, 35)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(522, 568)
-        Me.GroupBox1.TabIndex = 6
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Logged out"
+        Me.grbInventory.Controls.Add(Me.btnPreview)
+        Me.grbInventory.Controls.Add(Me.btnPrint)
+        Me.grbInventory.Controls.Add(Me.lblTableCount)
+        Me.grbInventory.Controls.Add(Me.btnLogout)
+        Me.grbInventory.Controls.Add(Me.tableList)
+        Me.grbInventory.Controls.Add(Me.Label6)
+        Me.grbInventory.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grbInventory.Location = New System.Drawing.Point(644, 35)
+        Me.grbInventory.Name = "grbInventory"
+        Me.grbInventory.Size = New System.Drawing.Size(505, 568)
+        Me.grbInventory.TabIndex = 6
+        Me.grbInventory.TabStop = False
+        Me.grbInventory.Text = "Logged out"
         '
-        'Button5
+        'btnPreview
         '
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(376, 522)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(108, 31)
-        Me.Button5.TabIndex = 18
-        Me.Button5.Text = "Preview"
-        Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
+        Me.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPreview.Location = New System.Drawing.Point(376, 522)
+        Me.btnPreview.Name = "btnPreview"
+        Me.btnPreview.Size = New System.Drawing.Size(108, 31)
+        Me.btnPreview.TabIndex = 18
+        Me.btnPreview.Text = "Preview"
+        Me.btnPreview.UseVisualStyleBackColor = True
+        Me.btnPreview.Visible = False
         '
-        'Button4
+        'btnPrint
         '
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(262, 522)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(108, 31)
-        Me.Button4.TabIndex = 17
-        Me.Button4.Text = "Print"
-        Me.Button4.UseVisualStyleBackColor = True
-        Me.Button4.Visible = False
+        Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrint.Location = New System.Drawing.Point(262, 522)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(108, 31)
+        Me.btnPrint.TabIndex = 17
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.UseVisualStyleBackColor = True
+        Me.btnPrint.Visible = False
         '
-        'Label10
+        'lblTableCount
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(131, 496)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(16, 18)
-        Me.Label10.TabIndex = 16
-        Me.Label10.Text = "0"
+        Me.lblTableCount.AutoSize = True
+        Me.lblTableCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTableCount.Location = New System.Drawing.Point(131, 496)
+        Me.lblTableCount.Name = "lblTableCount"
+        Me.lblTableCount.Size = New System.Drawing.Size(16, 18)
+        Me.lblTableCount.TabIndex = 16
+        Me.lblTableCount.Text = "0"
         '
-        'Button1
+        'btnLogout
         '
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(16, 522)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(108, 31)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "Logout"
-        Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
+        Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogout.Location = New System.Drawing.Point(16, 522)
+        Me.btnLogout.Name = "btnLogout"
+        Me.btnLogout.Size = New System.Drawing.Size(108, 31)
+        Me.btnLogout.TabIndex = 14
+        Me.btnLogout.Text = "Logout"
+        Me.btnLogout.UseVisualStyleBackColor = True
+        Me.btnLogout.Visible = False
         '
         'Label6
         '
@@ -195,39 +195,39 @@ Partial Class Loans
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Items Listed:"
         '
-        'Button2
+        'btnBarcode
         '
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(60, 46)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(327, 31)
-        Me.Button2.TabIndex = 15
-        Me.Button2.Text = "Use Barcode Scanner"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBarcode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBarcode.Location = New System.Drawing.Point(60, 46)
+        Me.btnBarcode.Name = "btnBarcode"
+        Me.btnBarcode.Size = New System.Drawing.Size(327, 31)
+        Me.btnBarcode.TabIndex = 15
+        Me.btnBarcode.Text = "Use Barcode Scanner"
+        Me.btnBarcode.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnManual
         '
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(60, 100)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(327, 31)
-        Me.Button3.TabIndex = 16
-        Me.Button3.Text = "Use Manual Input"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnManual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManual.Location = New System.Drawing.Point(60, 100)
+        Me.btnManual.Name = "btnManual"
+        Me.btnManual.Size = New System.Drawing.Size(327, 31)
+        Me.btnManual.TabIndex = 16
+        Me.btnManual.Text = "Use Manual Input"
+        Me.btnManual.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.lblUntilError)
         Me.GroupBox2.Controls.Add(Me.txtYear)
         Me.GroupBox2.Controls.Add(Me.cmbMonth)
         Me.GroupBox2.Controls.Add(Me.cmbDay)
-        Me.GroupBox2.Controls.Add(Me.RadioButton2)
-        Me.GroupBox2.Controls.Add(Me.RadioButton1)
+        Me.GroupBox2.Controls.Add(Me.rdbUntil)
+        Me.GroupBox2.Controls.Add(Me.rdbFor)
         Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
-        Me.GroupBox2.Controls.Add(Me.ComboBox1)
+        Me.GroupBox2.Controls.Add(Me.txtFor)
+        Me.GroupBox2.Controls.Add(Me.cmbFor)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(104, 334)
         Me.GroupBox2.Name = "GroupBox2"
@@ -236,17 +236,17 @@ Partial Class Loans
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Loan Duration"
         '
-        'Label4
+        'lblUntilError
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(112, 204)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(226, 13)
-        Me.Label4.TabIndex = 31
-        Me.Label4.Text = "Enter a valid date between 1000 and 9999 CE"
-        Me.Label4.Visible = False
+        Me.lblUntilError.AutoSize = True
+        Me.lblUntilError.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUntilError.ForeColor = System.Drawing.Color.Red
+        Me.lblUntilError.Location = New System.Drawing.Point(112, 204)
+        Me.lblUntilError.Name = "lblUntilError"
+        Me.lblUntilError.Size = New System.Drawing.Size(226, 13)
+        Me.lblUntilError.TabIndex = 31
+        Me.lblUntilError.Text = "Enter a valid date between 1000 and 9999 CE"
+        Me.lblUntilError.Visible = False
         '
         'txtYear
         '
@@ -282,29 +282,29 @@ Partial Class Loans
         Me.cmbDay.Size = New System.Drawing.Size(56, 26)
         Me.cmbDay.TabIndex = 28
         '
-        'RadioButton2
+        'rdbUntil
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton2.Location = New System.Drawing.Point(18, 177)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(89, 22)
-        Me.RadioButton2.TabIndex = 8
-        Me.RadioButton2.Text = "Loan until"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.rdbUntil.AutoSize = True
+        Me.rdbUntil.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdbUntil.Location = New System.Drawing.Point(18, 177)
+        Me.rdbUntil.Name = "rdbUntil"
+        Me.rdbUntil.Size = New System.Drawing.Size(89, 22)
+        Me.rdbUntil.TabIndex = 8
+        Me.rdbUntil.Text = "Loan until"
+        Me.rdbUntil.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'rdbFor
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Checked = True
-        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(18, 50)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(81, 22)
-        Me.RadioButton1.TabIndex = 7
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Loan for"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.rdbFor.AutoSize = True
+        Me.rdbFor.Checked = True
+        Me.rdbFor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdbFor.Location = New System.Drawing.Point(18, 50)
+        Me.rdbFor.Name = "rdbFor"
+        Me.rdbFor.Size = New System.Drawing.Size(81, 22)
+        Me.rdbFor.TabIndex = 7
+        Me.rdbFor.TabStop = True
+        Me.rdbFor.Text = "Loan for"
+        Me.rdbFor.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -320,10 +320,10 @@ Partial Class Loans
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Button2)
-        Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Controls.Add(Me.Button3)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
+        Me.GroupBox3.Controls.Add(Me.btnBarcode)
+        Me.GroupBox3.Controls.Add(Me.lblInputError)
+        Me.GroupBox3.Controls.Add(Me.btnManual)
+        Me.GroupBox3.Controls.Add(Me.txtInput)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(104, 90)
         Me.GroupBox3.Name = "GroupBox3"
@@ -332,31 +332,31 @@ Partial Class Loans
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Input"
         '
-        'Label2
+        'lblOutput
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(99, 35)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(324, 25)
-        Me.Label2.TabIndex = 19
-        Me.Label2.Text = "Scan or input student ID to log in"
+        Me.lblOutput.AutoSize = True
+        Me.lblOutput.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOutput.Location = New System.Drawing.Point(99, 35)
+        Me.lblOutput.Name = "lblOutput"
+        Me.lblOutput.Size = New System.Drawing.Size(324, 25)
+        Me.lblOutput.TabIndex = 19
+        Me.lblOutput.Text = "Scan or input student ID to log in"
         '
         'Loans
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1238, 658)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lblOutput)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.grbInventory)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Loans"
         Me.Text = "Loans"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.grbInventory.ResumeLayout(False)
+        Me.grbInventory.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -365,30 +365,30 @@ Partial Class Loans
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ListView1 As System.Windows.Forms.ListView
+    Friend WithEvents lblInputError As System.Windows.Forms.Label
+    Friend WithEvents tableList As System.Windows.Forms.ListView
     Friend WithEvents colItem As System.Windows.Forms.ColumnHeader
     Friend WithEvents colDesc As System.Windows.Forms.ColumnHeader
     Friend WithEvents colDueDate As System.Windows.Forms.ColumnHeader
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents txtInput As System.Windows.Forms.TextBox
+    Friend WithEvents txtFor As System.Windows.Forms.TextBox
+    Friend WithEvents cmbFor As System.Windows.Forms.ComboBox
+    Friend WithEvents grbInventory As System.Windows.Forms.GroupBox
+    Friend WithEvents btnLogout As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents lblTableCount As System.Windows.Forms.Label
+    Friend WithEvents btnBarcode As System.Windows.Forms.Button
+    Friend WithEvents btnManual As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents lblOutput As System.Windows.Forms.Label
+    Friend WithEvents rdbFor As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbUntil As System.Windows.Forms.RadioButton
     Friend WithEvents cmbDay As System.Windows.Forms.ComboBox
     Friend WithEvents cmbMonth As System.Windows.Forms.ComboBox
     Friend WithEvents txtYear As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents lblUntilError As System.Windows.Forms.Label
+    Friend WithEvents btnPrint As System.Windows.Forms.Button
+    Friend WithEvents btnPreview As System.Windows.Forms.Button
 End Class

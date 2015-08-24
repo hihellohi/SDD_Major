@@ -22,7 +22,7 @@ Partial Class GearLoaning
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.formPanel = New System.Windows.Forms.Panel()
         Me.btnReturn = New System.Windows.Forms.Button()
         Me.btnLoan = New System.Windows.Forms.Button()
         Me.btnCatalog = New System.Windows.Forms.Button()
@@ -30,14 +30,14 @@ Partial Class GearLoaning
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Panel1
+        'formPanel
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 110)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1256, 658)
-        Me.Panel1.TabIndex = 0
+        Me.formPanel.BackColor = System.Drawing.SystemColors.Control
+        Me.formPanel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.formPanel.Location = New System.Drawing.Point(0, 110)
+        Me.formPanel.Name = "formPanel"
+        Me.formPanel.Size = New System.Drawing.Size(1256, 658)
+        Me.formPanel.TabIndex = 0
         '
         'btnReturn
         '
@@ -109,7 +109,7 @@ Partial Class GearLoaning
         Me.Controls.Add(Me.btnCatalog)
         Me.Controls.Add(Me.btnLoan)
         Me.Controls.Add(Me.btnReturn)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.formPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "GearLoaning"
         Me.Text = "frmgear"
@@ -118,7 +118,7 @@ Partial Class GearLoaning
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents formPanel As System.Windows.Forms.Panel
     Friend WithEvents btnReturn As System.Windows.Forms.Button
     Friend WithEvents btnLoan As System.Windows.Forms.Button
     Friend WithEvents btnCatalog As System.Windows.Forms.Button

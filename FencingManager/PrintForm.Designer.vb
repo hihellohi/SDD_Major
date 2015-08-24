@@ -46,7 +46,7 @@ Partial Class PrintForm
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TexAdditionalInfo = New System.Windows.Forms.TextBox()
         Me.LabNoAdditionalInfo = New System.Windows.Forms.Label()
-        Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
+        'Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TexFencers = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -274,11 +274,11 @@ Partial Class PrintForm
         '
         'PrintForm1
         '
-        Me.PrintForm1.DocumentName = "document"
-        Me.PrintForm1.Form = Me
-        Me.PrintForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview
-        Me.PrintForm1.PrinterSettings = CType(resources.GetObject("PrintForm1.PrinterSettings"), System.Drawing.Printing.PrinterSettings)
-        Me.PrintForm1.PrintFileName = Nothing
+        'Me.PrintForm1.DocumentName = "document"
+        'Me.PrintForm1.Form = Me
+        'Me.PrintForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview
+        'Me.PrintForm1.PrinterSettings = CType(resources.GetObject("PrintForm1.PrinterSettings"), System.Drawing.Printing.PrinterSettings)
+        'Me.PrintForm1.PrintFileName = Nothing
         '
         'Label11
         '
@@ -373,7 +373,7 @@ Partial Class PrintForm
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents TexAdditionalInfo As System.Windows.Forms.TextBox
     Friend WithEvents LabNoAdditionalInfo As System.Windows.Forms.Label
-    Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
+    'Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents TexFencers As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label

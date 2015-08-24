@@ -20,11 +20,11 @@
             Next
             If tmp = False Then
                 student = ""
-                GroupBox1.Text = "logged out"
-                Label2.Text = "Scan or input student ID to log in"
-                Button1.Visible = False
-                Button4.Visible = False
-                Button5.Visible = False
+                grbInventory.Text = "logged out"
+                lblOutput.Text = "Scan or input student ID to log in"
+                btnLogout.Visible = False
+                btnPrint.Visible = False
+                btnPreview.Visible = False
                 'ListView1.Items.Clear()
 
             End If
@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub loadTable()
-        ListView1.Items.Clear()
+        tableList.Items.Clear()
         things.Clear()
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
@@ -48,44 +48,44 @@
                 ElseIf due = Date.Today Then
                     rowItem.BackColor = Color.Yellow
                 End If
-                ListView1.Items.Add(rowItem)
+                tableList.Items.Add(rowItem)
                 things.Add(row("ID"))
-                Label10.Text += 1
+                lblTableCount.Text += 1
             End If
         Next
     End Sub
 
-    Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+    Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles txtInput.KeyDown
         If e.KeyCode = Keys.Enter Then
             Dim show = False
             e.SuppressKeyPress = True
             If student = "" Then
                 Dim tmp As Boolean = False
                 For i = 0 To dataS.Tables("StudentProfiles").Rows.Count - 1
-                    If dataS.Tables("StudentProfiles").Rows(i).Item(1).ToString = TextBox1.Text Then
-                        student = TextBox1.Text
-                        GroupBox1.Text = dataS.Tables("StudentProfiles").Rows(i)("FirstName") + " " + dataS.Tables("StudentProfiles").Rows(i)("Surname") + "'s Inventory"
-                        Label2.Text = "Scan or input gear ID to loan"
+                    If dataS.Tables("StudentProfiles").Rows(i).Item(1).ToString = txtInput.Text Then
+                        student = txtInput.Text
+                        grbInventory.Text = dataS.Tables("StudentProfiles").Rows(i)("FirstName") + " " + dataS.Tables("StudentProfiles").Rows(i)("Surname") + "'s Inventory"
+                        lblOutput.Text = "Scan or input gear ID to loan"
                         tmp = True
-                        Button1.Visible = True
-                        Button4.Visible = True
-                        Button5.Visible = True
+                        btnLogout.Visible = True
+                        btnPrint.Visible = True
+                        btnPreview.Visible = True
                         loadTable()
 
                     End If
                 Next
                 If tmp = False Then
-                    Label1.Text = "Student not Found"
+                    lblInputError.Text = "Student not Found"
                     show = True
                 End If
 
             Else
                 Dim valid = True
-                If RadioButton1.Checked Then
-                    If TextBox2.Text = "" Then
+                If rdbFor.Checked Then
+                    If txtFor.Text = "" Then
                         valid = False
                     End If
-                    If ComboBox1.SelectedIndex = 0 Then
+                    If cmbFor.SelectedIndex = 0 Then
                         valid = False
                     End If
 
@@ -93,27 +93,27 @@
 
                 ElseIf Not datevalid() Then
                     valid = False
-                    Label4.Visible = True
+                    lblUntilError.Visible = True
                 Else
-                    Label4.Visible = False
+                    lblUntilError.Visible = False
                 End If
                 If valid Then
                     Dim tmp As Boolean = True
                     For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
-                        If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = TextBox1.Text Then
+                        If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = txtInput.Text Then
                             If RootForm.GearDataS.Tables("Gear").Rows(i)("StudentLoaned") = 0 Then
                                 RootForm.GearDataS.Tables("Gear").Rows(i)("StudentLoaned") = student
-                                If RadioButton1.Checked Then
+                                If rdbFor.Checked Then
                                     Dim cur As Date = Date.Today
-                                    Select Case ComboBox1.SelectedIndex
+                                    Select Case cmbFor.SelectedIndex
                                         Case 1
-                                            cur = cur.AddDays(TextBox2.Text)
+                                            cur = cur.AddDays(txtFor.Text)
                                         Case 2
-                                            cur = cur.AddDays(TextBox2.Text * 7)
+                                            cur = cur.AddDays(txtFor.Text * 7)
                                         Case 3
-                                            cur = cur.AddMonths(TextBox2.Text)
+                                            cur = cur.AddMonths(txtFor.Text)
                                         Case 4
-                                            cur = cur.AddYears(TextBox2.Text)
+                                            cur = cur.AddYears(txtFor.Text)
                                     End Select
                                     RootForm.GearDataS.Tables("Gear").Rows(i)("DueDay") = cur.Day
                                     RootForm.GearDataS.Tables("Gear").Rows(i)("DueMonth") = cur.Month
@@ -126,60 +126,60 @@
                                 RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
                                 loadTable()
                             Else
-                                Label1.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
+                                lblInputError.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
                                 show = True
                             End If
                             tmp = False
                         End If
                     Next
                     If tmp = True Then
-                        Label1.Text = "item not found"
+                        lblInputError.Text = "item not found"
                         show = True
                     End If
                 End If
             End If
-            TextBox1.Text = ""
+            txtInput.Text = ""
 
-            Label1.Visible = show
+            lblInputError.Visible = show
 
         End If
     End Sub
 
 
     Private Sub Loans_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TextBox1.Text = ""
+        txtInput.Text = ""
         student = ""
-        SetCueText(TextBox2, "Loan Length")
+        SetCueText(txtFor, "Loan Length")
         SetCueText(txtyear, "Year")
-        ComboBox1.SelectedIndex = 0
+        cmbFor.SelectedIndex = 0
         cmbDay.SelectedIndex = 0
         cmbMonth.SelectedIndex = 0
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         student = ""
-        Button1.Visible = False
-        Button4.Visible = False
-        Button5.Visible = True
-        GroupBox1.Text = "logged out"
-        Label2.Text = "Scan or input student ID to log in"
-        Label10.Text = 0
-        ListView1.Items.Clear()
+        btnLogout.Visible = False
+        btnPrint.Visible = False
+        btnPreview.Visible = True
+        grbInventory.Text = "logged out"
+        lblOutput.Text = "Scan or input student ID to log in"
+        lblTableCount.Text = 0
+        tableList.Items.Clear()
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-        TextBox2.Text = System.Text.RegularExpressions.Regex.Replace(TextBox2.Text, "[^0-9]", "")
-        TextBox2.Select(TextBox2.Text.Length, 0)
-        If TextBox2.Text = "1" Then
-            ComboBox1.Items(1) = "Day"
-            ComboBox1.Items(2) = "Week"
-            ComboBox1.Items(3) = "Month"
-            ComboBox1.Items(4) = "Year"
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtFor.TextChanged
+        txtFor.Text = System.Text.RegularExpressions.Regex.Replace(txtFor.Text, "[^0-9]", "")
+        txtFor.Select(txtFor.Text.Length, 0)
+        If txtFor.Text = "1" Then
+            cmbFor.Items(1) = "Day"
+            cmbFor.Items(2) = "Week"
+            cmbFor.Items(3) = "Month"
+            cmbFor.Items(4) = "Year"
         Else
-            ComboBox1.Items(1) = "Days"
-            ComboBox1.Items(2) = "Weeks"
-            ComboBox1.Items(3) = "Months"
-            ComboBox1.Items(4) = "Years"
+            cmbFor.Items(1) = "Days"
+            cmbFor.Items(2) = "Weeks"
+            cmbFor.Items(3) = "Months"
+            cmbFor.Items(4) = "Years"
         End If
     End Sub
 
@@ -213,27 +213,27 @@
     '        Next
     '    End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        TextBox1.Focus()
-        old = TextBox1.Text
-        TextBox1.Text = ""
-        Button2.BackColor = Color.Green
-        Button2.Text = "Scanning..."
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+        txtInput.Focus()
+        old = txtInput.Text
+        txtInput.Text = ""
+        btnBarcode.BackColor = Color.Green
+        btnBarcode.Text = "Scanning..."
     End Sub
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Button3.Visible = False
-        TextBox1.Focus()
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnManual.Click
+        btnManual.Visible = False
+        txtInput.Focus()
     End Sub
 
-    Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles TextBox1.LostFocus
-        If Button3.Visible Then
-            TextBox1.Text = old
+    Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles txtInput.LostFocus
+        If btnManual.Visible Then
+            txtInput.Text = old
         End If
-        Button3.Visible = True
-        Button2.BackColor = Button3.BackColor
-        Button2.Text = "Use Barcode Scanner"
+        btnManual.Visible = True
+        btnBarcode.BackColor = btnManual.BackColor
+        btnBarcode.Text = "Use Barcode Scanner"
     End Sub
 
     Private Function datevalid()
@@ -264,14 +264,14 @@
         Return True
     End Function
 
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-        cmbDay.Enabled = RadioButton2.Checked
-        cmbMonth.Enabled = RadioButton2.Checked
-        txtYear.Enabled = RadioButton2.Checked
-        TextBox2.Enabled = RadioButton1.Checked
-        ComboBox1.Enabled = RadioButton1.Checked
-        Label3.Visible = RadioButton1.Checked And Label3.Visible
-        Label4.Visible = RadioButton2.Checked And Label4.Visible
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles rdbUntil.CheckedChanged
+        cmbDay.Enabled = rdbUntil.Checked
+        cmbMonth.Enabled = rdbUntil.Checked
+        txtYear.Enabled = rdbUntil.Checked
+        txtFor.Enabled = rdbFor.Checked
+        cmbFor.Enabled = rdbFor.Checked
+        Label3.Visible = rdbFor.Checked And Label3.Visible
+        lblUntilError.Visible = rdbUntil.Checked And lblUntilError.Visible
     End Sub
 
     Private Sub txtYear_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
@@ -280,14 +280,14 @@
     End Sub
 
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
         Dim tmp As New WebBrowser
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
 
             Dim i As ListViewItem
             Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
-            For Each i In ListView1.Items
+            For Each i In tableList.Items
                 out += "<tr><td>" + i.SubItems(0).Text.ToString + "</td><td>" + i.SubItems(1).Text.ToString + "</td><td>" + i.SubItems(2).Text.ToString + "</td></tr>"
             Next
             out += "</table></p></body></html>"
@@ -300,14 +300,14 @@
 
     End Sub
 
-    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles btnPrint.Click
         Dim tmp As New WebBrowser
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
 
             Dim i As ListViewItem
             Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
-            For Each i In ListView1.Items
+            For Each i In tableList.Items
                 out += "<tr><td>" + i.SubItems(0).Text.ToString + "</td><td>" + i.SubItems(1).Text.ToString + "</td><td>" + i.SubItems(2).Text.ToString + "</td></tr>"
             Next
             out += "</table></p></body></html>"
