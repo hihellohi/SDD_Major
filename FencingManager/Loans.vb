@@ -6,6 +6,8 @@
     Dim things As ArrayList = New ArrayList
     Dim sort As Integer = -1
     Dim old As String = ""
+    Const HEAD_FONT As String = "trebuchet MS"
+    Const BODY_FONT As String = "helvetica"
 
     Public Sub reload()
 
@@ -285,14 +287,17 @@
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
 
-            Dim i As ListViewItem
-            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
-            For Each i In tableList.Items
-                out += "<tr><td>" + i.SubItems(0).Text.ToString + "</td><td>" + i.SubItems(1).Text.ToString + "</td><td>" + i.SubItems(2).Text.ToString + "</td></tr>"
+            Dim item As ListViewItem
+            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p align=""center"">"
+            out += "<font face=""" + HEAD_FONT + """ size = 6>L</font><font face=""" + HEAD_FONT + """ size = 5>OANED</font>"
+            out += " <font face=""" + HEAD_FONT + """ size = 6>I</font><font face=""" + HEAD_FONT + """ size = 5>TEMS"
+            out += " FOR " + student + "</font></p>"
+            out += "<font face=""" + BODY_FONT + """ size = 4><p><table width=""500"" align=""center""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
+            For Each item In tableList.Items
+                out += "<tr align=""center""><td>" + item.SubItems(0).Text.ToString + "</td><td>" + item.SubItems(1).Text.ToString + "</td><td>" + item.SubItems(2).Text.ToString + "</td></tr>"
             Next
-            out += "</table></p></body></html>"
+            out += "</table></p></font></body></html>"
             tmp.Document.Write(out)
-
             tmp.ShowPrintPreviewDialog()
         End If
 
@@ -305,12 +310,16 @@
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
 
-            Dim i As ListViewItem
-            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
-            For Each i In tableList.Items
-                out += "<tr><td>" + i.SubItems(0).Text.ToString + "</td><td>" + i.SubItems(1).Text.ToString + "</td><td>" + i.SubItems(2).Text.ToString + "</td></tr>"
+            Dim item As ListViewItem
+            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p align=""center"">"
+            out += "<font face=""" + HEAD_FONT + """ size = 6>L</font><font face=""" + HEAD_FONT + """ size = 5>OANED</font>"
+            out += " <font face=""" + HEAD_FONT + """ size = 6>I</font><font face=""" + HEAD_FONT + """ size = 5>TEMS"
+            out += " FOR " + student + "</font></p>"
+            out += "<font face=""" + BODY_FONT + """ size = 4><p><table width=""500"" align=""center""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
+            For Each item In tableList.Items
+                out += "<tr align=""center""><td>" + item.SubItems(0).Text.ToString + "</td><td>" + item.SubItems(1).Text.ToString + "</td><td>" + item.SubItems(2).Text.ToString + "</td></tr>"
             Next
-            out += "</table></p></body></html>"
+            out += "</table></p></font></body></html>"
             tmp.Document.Write(out)
 
             tmp.Print()

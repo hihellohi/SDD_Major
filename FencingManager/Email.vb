@@ -78,10 +78,10 @@ Public Class Email
                         email.Subject = "Overdue Notice"
                         email.IsBodyHtml = True
                         email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body>You have loaned " + things(hashtable(tmpa)).Count.ToString() + " items from your fencing organisation that are overdue. Please return immediately"
-                        email.Body += "<p><table><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
+                        email.Body += "<p><table width = ""500""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
                         Dim iter As Integer
                         For Each iter In things(hashtable(tmpa))
-                            email.Body += "<tr><td>" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("GearID").ToString() + "</td><td>" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("GearType").ToString() + "</td><td>"
+                            email.Body += "<tr align = center><td>" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("GearID").ToString() + "</td><td>" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("GearType").ToString() + "</td><td>"
                             email.Body += RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueDay").ToString() + "/" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueMonth").ToString() + "/" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueYear").ToString() + "</td></tr>"
                         Next
                         email.Body += "</table></p><p>This was an automated message. Do not reply to this email</p></body></html>"
@@ -250,10 +250,10 @@ Public Class Email
             email.IsBodyHtml = True
             email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p>" + txtMessage.Text.Replace(vbNewLine, "<br>").ToString
             If events.Count <> 0 Then
-                email.Body += "</p><p>upcoming events<table><tr><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Venue</th><th>Weapon</th><th>Age Group</th></tr>"
+                email.Body += "</p><p>upcoming events<table width=""500""><tr><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Venue</th><th>Weapon</th><th>Age Group</th></tr>"
                 Dim iter As item
                 For Each iter In events
-                    email.Body += "<tr><td>" + iter.eventName.ToString() + "</td><td>" + iter.day.Day.ToString() + "/" + iter.day.Month.ToString() + "/" + iter.day.Year.ToString() + "</td><td>" + iter.time.ToString() + "</td><td>" + iter.venue.ToString() + "</td><td>" + iter.weapon.ToString() + "</td><td>" + iter.group.ToString()
+                    email.Body += "<tr align=""center""><td>" + iter.eventName.ToString() + "</td><td>" + iter.day.Day.ToString() + "/" + iter.day.Month.ToString() + "/" + iter.day.Year.ToString() + "</td><td>" + iter.time.ToString() + "</td><td>" + iter.venue.ToString() + "</td><td>" + iter.weapon.ToString() + "</td><td>" + iter.group.ToString()
                     email.Body += "</td></tr>"
                 Next
                 email.Body += "</table>"
