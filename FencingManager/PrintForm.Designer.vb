@@ -373,7 +373,7 @@ Partial Class PrintForm
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents TexAdditionalInfo As System.Windows.Forms.TextBox
     Friend WithEvents LabNoAdditionalInfo As System.Windows.Forms.Label
-    'Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
+    Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents TexFencers As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
