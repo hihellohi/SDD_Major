@@ -37,6 +37,18 @@ Public Class RootForm
     '    End If
     'End Sub
 
+    Public Sub deleteStudent(ByRef student As Integer)
+        For x = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count
+            If RootForm.GearDataS.Tables("Gear").Rows(x).Item("StudentLoaned").ToString() = student.ToString() Then
+                RootForm.GearDataS.Tables("Gear").Rows(x).Item("StudentLoaned") = "0"
+                RootForm.GearDataS.Tables("Gear").Rows(x).Item("DueDay") = "0"
+                RootForm.GearDataS.Tables("Gear").Rows(x).Item("DueMonth") = "0"
+                RootForm.GearDataS.Tables("Gear").Rows(x).Item("DueYear") = "0"
+            End If
+            RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+        Next
+    End Sub
+
     Private Sub RootForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         connection.Close()
     End Sub

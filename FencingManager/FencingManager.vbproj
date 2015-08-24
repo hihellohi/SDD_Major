@@ -287,6 +287,7 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\spinner.gif" />
     <None Include="Resources\Foil symbol.png" />
     <None Include="Resources\curly-brackets-md1.png" />
     <None Include="Resources\curly-brackets-md.png" />
