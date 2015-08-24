@@ -119,14 +119,19 @@ Public Class RootForm
     End Sub
 
     Private Sub btnGearLoan_Click(sender As Object, e As EventArgs) Handles btnGearLoan.Click
-        topform.hide()
-        topform = formGearLoaning
-        intform = GEAR_LOANING
-        topform.show()
-        formGearLoaning.reload()
+        If access_level < 2 Then
+            btnLogin_Click()
+            MsgBox("An access level of captain or higher is required to view this")
+        Else
+            topform.hide()
+            topform = formGearLoaning
+            intform = GEAR_LOANING
+            topform.show()
+            formGearLoaning.reload()
+        End If
     End Sub
 
-    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+    Private Sub btnLogin_Click() Handles btnLogin.Click
         topform.hide()
         topform = formLogin
         intform = STUDENT_PROFILE
@@ -141,11 +146,16 @@ Public Class RootForm
     End Sub
 
     Private Sub btnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
-        topform.hide()
-        topform = formEmail
-        intform = EMAIL
-        topform.show()
-        formEmail.reload()
+        If access_level < 3 Then
+            btnLogin_Click()
+            MsgBox("An access level of MIC or higher is required to view this")
+        Else
+            topform.hide()
+            topform = formEmail
+            intform = EMAIL
+            topform.show()
+            formEmail.reload()
+        End If
     End Sub
 
     Private Sub btnAdmin_Click(sender As Object, e As EventArgs) Handles btnAdmin.Click

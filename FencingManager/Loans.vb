@@ -130,10 +130,10 @@
                         show = True
                     End If
                 End If
-                End If
-                TextBox1.Text = ""
+            End If
+            TextBox1.Text = ""
 
-                Label1.Visible = show
+            Label1.Visible = show
 
         End If
     End Sub
