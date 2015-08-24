@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-
+﻿
 Public Class PrintForm
 
     Private Sub ButCancel_Click(sender As Object, e As EventArgs) Handles ButCancel.Click
@@ -32,7 +31,7 @@ Public Class PrintForm
             TexAdditionalInfo.Visible = True
         End If
 
-        'PrintForm1.Print(Me, PowerPacks.Printing.PrintForm.PrintOption.Scrollable)
+        PrintForm1.Print(Me, PowerPacks.Printing.PrintForm.PrintOption.Scrollable)
 
         Me.Close()
     End Sub
