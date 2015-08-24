@@ -82,7 +82,7 @@ Public Class Email
 
 
         Dim fail = sendOverdue()
-        Timer2.Enabled = False
+        'Timer2.Enabled = False
         If fail Then
             Button4.Text = "Failure!"
         Else
