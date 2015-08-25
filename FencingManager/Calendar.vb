@@ -1334,7 +1334,9 @@
 
         Try
             data_adapter.Update(dataset, "Calendar")
-            'My.Computer.audio.Play("ding.wav")
+            If Volume = True Then
+                My.Computer.Audio.Play("ding.wav")
+            End If
             MsgBox("Change successfully saved")
         Catch ex As Exception
             MsgBox("Change failed to save")
@@ -1435,8 +1437,8 @@
         'ComboWeapon.SelectedItem = Nothing
         'TexGroup.Text = ""
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
 
     End Sub
     Private Sub ButUpdate_Click(sender As Object, e As EventArgs) Handles ButUpdate.Click           'For editing existing dates
@@ -1494,7 +1496,10 @@
 
             Row.Item(7) = TexGroup.Text
 
-            'My.Computer.audio.Play("ding.wav")
+            If Volume = True Then
+                My.Computer.Audio.Play("ding.wav")
+            End If
+
             MsgBox("Information Updated")
 
 
@@ -1517,8 +1522,8 @@
 
         End If
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
 
     End Sub
     Private Sub ButAddNew_Click(sender As Object, e As EventArgs) Handles ButAddNew.Click
@@ -1533,8 +1538,8 @@
         Disabling_Textboxes(False)
         Clear_Text()
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
 
     End Sub
     Private Sub ButCommit_Click(sender As Object, e As EventArgs) Handles ButCommit.Click           'For adding new dates
@@ -1598,7 +1603,9 @@
 
 
             dataset.Tables("Calendar").Rows.Add(datasetNewRow)
-            'My.Computer.audio.Play("ding.wav")
+            If Volume = True Then
+                My.Computer.Audio.Play("ding.wav")
+            End If
             MsgBox("New event added for the date: " & CStr(DatabaseDate))
 
 
@@ -1622,15 +1629,15 @@
 
         End If
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
 
     End Sub
     Private Sub ButClear_Click(sender As Object, e As EventArgs) Handles ButClear.Click
         Clear_Text()
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
     End Sub
     Private Sub ButCancel_Click(sender As Object, e As EventArgs) Handles ButCancel.Click
         Hide_Warnings()
@@ -1652,8 +1659,8 @@
             adding = False
         End If
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
     End Sub
     Private Sub ButDelete_Click(sender As Object, e As EventArgs) Handles ButDelete.Click
 
@@ -1686,8 +1693,8 @@
 
         Update_to_Database()
 
-        Label8.Text = updating
-        Label9.Text = adding
+
+
     End Sub
 
 
@@ -1845,7 +1852,7 @@
         'X/Left: 20 - 390
 
 
-        'Label8.Text = MouseX - ScreenPos.X
+        ''label8.Text = MouseX - ScreenPos.X
         'Label9.Text = MouseY - ScreenPos.Y
 
         If ViewDetailsHeld = True Then
@@ -1880,7 +1887,7 @@
     Private Sub ViewDetailsGroupBox_Click(sender As Object, e As EventArgs) Handles ViewDetailsGroupBox.Click
         ViewDetailsGroupBox.BringToFront()
     End Sub
-    Private Sub GroupBoxSettings_Click(Sender As Object, e As EventArgs) Handles GroupBoxSettings.Click
+    Private Sub GroupBoxSettings_Click(Sender As Object, e As EventArgs) Handles GroupBoxSettings.Click, Panel3.Click, Panel2.Click, PicVolumeOn.Click
         GroupBoxSettings.BringToFront()
     End Sub
     Private Sub panelhelp_Click(Sender As Object, e As EventArgs) Handles PanelHelp.Click
@@ -1953,7 +1960,7 @@
         LabClickToBegin.Visible = False
 
         If CheckBoxAdvancedSearch.Checked = True Then
-            Label9.Text = "checked"
+            'label9.Text = "checked"
             advancedsearch = True
             If TexSearch.Text = "" Then
                 MsgBox("Please enter an event name")
@@ -2016,7 +2023,7 @@
             End If
 
         Else : CheckBoxAdvancedSearch.Checked = False
-            Label9.Text = "not checked"
+            'label9.Text = "not checked"
             advancedsearch = False
             If EventNameChecked = True Then
                 If TexSearch.Text = "" Then
@@ -2031,7 +2038,7 @@
                         Row = dataset.Tables("Calendar").Rows.Find(SearchString)
 
                         TempDate = Row.Item(2)
-                        Label9.Text = TempDate
+                        'label9.Text = TempDate
                         DatabaseDate = TempDate
                         Get_Database_Details_For_Specified_Date(DatabaseDate)
 
@@ -2072,7 +2079,7 @@
                 'Textbox_Name.ForeColor = Color.Red
             End If
         End If
-        Label8.Text = DatabaseDate
+        'label8.Text = DatabaseDate
     End Sub
 
     'Mostly monitors graphics for the advanced search function
@@ -2847,7 +2854,6 @@
 
 
     Dim Volume As Boolean = True
-
     Private Sub ButResetPosition_Click(sender As Object, e As EventArgs) Handles ButResetPosition.Click
         If CheckBoxResetPositionBoth.Checked = True Then
             SearchGroupBox.Top = 161
@@ -2878,10 +2884,6 @@
     End Sub
 
 
-    Private Sub PicVolumeOn_Click(sender As Object, e As EventArgs) Handles PicVolumeOn.Click
-
-    End Sub
-
     Private Sub ButCloseSettings_Click(sender As Object, e As EventArgs) Handles ButCloseSettings.Click
         GroupBoxSettings.Visible = False
     End Sub
@@ -2890,6 +2892,15 @@
         GroupBoxSettings.Visible = True
     End Sub
 
+    Private Sub ButSaveVolume_Click(sender As Object, e As EventArgs) Handles ButSaveVolume.Click
+        If RadVolumeOn.Checked = True Then
+            Volume = True
+        Else
+            Volume = False
+        End If
+    End Sub
+
+    
 End Class
 Public Module GlobalVariablesModule
     Public PrintEventName As String
