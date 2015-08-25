@@ -1,5 +1,4 @@
 ﻿Public Class AttendanceForm
-    Dim year, month, day As Integer
 
     Private studentAdapter As FencingDataSetTableAdapters.StudentProfilesTableAdapter
     Private studentDataTable As New FencingDataSet.StudentProfilesDataTable()
@@ -25,13 +24,7 @@
         absencesAdapter.Fill(absencesTable)
     End Sub
 
-    Private Sub btnRoll_Click(sender As Object, e As EventArgs) Handles btnRoll.Click
-        SplitContainer1.Panel1.Enabled = False
-
-        year = DateTimePicker1.Value.Year
-        month = DateTimePicker1.Value.Month
-        day = DateTimePicker1.Value.Day
-
+    Private Sub FillRoll()
         Dim commandText As String = "StudentID > 0"
         If rdbFoil.Checked Then
             commandText += " AND Weapon = 1"
@@ -54,7 +47,26 @@
         lblTotal.Text = rowItems.Length
         lblPresent.Text = rowItems.Length
         lblAbsent.Text = 0
+    End Sub
+
+    Private Sub btnRoll_Click(sender As Object, e As EventArgs) Handles btnRoll.Click
+        SplitContainer1.Panel1.Enabled = False
+        FillRoll()        
         SplitContainer1.Panel2.Enabled = True
+        Label1.Text = "Attendance Check - Roll"
+    End Sub
+
+    Private Sub btnBarcode_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+        SplitContainer1.Panel1.Enabled = False
+        FillRoll()
+        SplitContainer1.Panel2.Enabled = True
+        barcodePanel.Show()
+        lblScanMsg.Text = ""
+        txtBarcode.Focus()
+        For i = 0 To roll.Items.Count - 1
+            roll.SetItemChecked(i, True)
+        Next
+        Label1.Text = "Attendance Check - Barcode Scan"
     End Sub
 
     Private Sub Reset()
@@ -64,9 +76,15 @@
         lblPresent.Text = ""
         SplitContainer1.Panel2.Enabled = False
         SplitContainer1.Panel1.Enabled = True
+        barcodePanel.Hide()
+        Label1.Text = "Attendance Check"
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Reset()
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Reset()
     End Sub
 
@@ -83,9 +101,57 @@
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim i = 0
+        Dim row As FencingDataSet.StudentProfilesRow
         While i < roll.Items.Count
-            'If roll.check Then
+            row = studentDataTable.FindByStudentID(rowItems(i).StudentID)
+            If roll.GetItemChecked(i) Then 'Student is absent
+                row.totalAbsences += 1
+                row.unexplainedAbsences += 1
+                Dim absenceRecord = absencesTable.NewAbsencesRow()
+                absenceRecord.AbsenceDate = DateTimePicker1.Value
+                absenceRecord.StudentID = row.StudentID
+                absenceRecord.Explained = False
+                absenceRecord.Explanation = ""
+                absencesTable.AddAbsencesRow(absenceRecord)
+            Else
+                row.totalPresences += 1
+            End If
             i = i + 1
         End While
+        studentAdapter.Update(studentDataTable)
+        absencesAdapter.Update(absencesTable)
+        Reset()
+        Label1.Text = "Attendance Check - Saved"
+        Timer1.Start()
+    End Sub
+
+    Private Sub txtBarcode_Leave(sender As Object, e As EventArgs) Handles txtBarcode.Leave
+        txtBarcode.Focus()
+    End Sub
+
+    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        barcodePanel.Hide()
+        Label1.Text = "Attendance Check - Confirm"
+    End Sub
+
+    Private Sub btnEnterBarcode_Click(sender As Object, e As EventArgs) Handles btnEnterBarcode.Click
+        If IsNumeric(txtBarcode.Text) Then
+            Dim scannedID As Integer = txtBarcode.Text
+            Dim found = False
+            Dim i = 0
+            While found = False And i < roll.Items.Count
+                If rowItems(i).StudentID = scannedID Then
+                    roll.SetItemChecked(i, False)
+                    found = True
+                End If
+                i = i + 1
+            End While
+            lblScanMsg.Text = txtBarcode.Text + "   " + Now.Hour.ToString() + ":" + Now.Minute.ToString()
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Timer1.Stop()
+        Label1.Text = "Attendance Check"
     End Sub
 End Class

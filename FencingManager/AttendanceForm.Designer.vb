@@ -22,6 +22,7 @@ Partial Class AttendanceForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -39,6 +40,13 @@ Partial Class AttendanceForm
         Me.rdbAllWeapons = New System.Windows.Forms.RadioButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.barcodePanel = New System.Windows.Forms.Panel()
+        Me.lblScanMsg = New System.Windows.Forms.Label()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnEnterBarcode = New System.Windows.Forms.Button()
+        Me.btnNext = New System.Windows.Forms.Button()
+        Me.txtBarcode = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblAbsent = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -49,6 +57,7 @@ Partial Class AttendanceForm
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.roll = New System.Windows.Forms.CheckedListBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -56,6 +65,7 @@ Partial Class AttendanceForm
         Me.SplitContainer1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.barcodePanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -110,6 +120,7 @@ Partial Class AttendanceForm
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.SplitContainer1.Panel2.Controls.Add(Me.barcodePanel)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label5)
         Me.SplitContainer1.Panel2.Controls.Add(Me.lblAbsent)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label6)
@@ -136,7 +147,6 @@ Partial Class AttendanceForm
         '
         'btnBarcode
         '
-        Me.btnBarcode.Enabled = False
         Me.btnBarcode.Location = New System.Drawing.Point(53, 533)
         Me.btnBarcode.Name = "btnBarcode"
         Me.btnBarcode.Size = New System.Drawing.Size(308, 47)
@@ -259,6 +269,76 @@ Partial Class AttendanceForm
         Me.DateTimePicker1.Size = New System.Drawing.Size(365, 32)
         Me.DateTimePicker1.TabIndex = 0
         '
+        'barcodePanel
+        '
+        Me.barcodePanel.Controls.Add(Me.lblScanMsg)
+        Me.barcodePanel.Controls.Add(Me.btnBack)
+        Me.barcodePanel.Controls.Add(Me.btnEnterBarcode)
+        Me.barcodePanel.Controls.Add(Me.btnNext)
+        Me.barcodePanel.Controls.Add(Me.txtBarcode)
+        Me.barcodePanel.Controls.Add(Me.Label7)
+        Me.barcodePanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.barcodePanel.Location = New System.Drawing.Point(0, 0)
+        Me.barcodePanel.Name = "barcodePanel"
+        Me.barcodePanel.Size = New System.Drawing.Size(834, 658)
+        Me.barcodePanel.TabIndex = 10
+        Me.barcodePanel.Visible = False
+        '
+        'lblScanMsg
+        '
+        Me.lblScanMsg.AutoSize = True
+        Me.lblScanMsg.Location = New System.Drawing.Point(337, 247)
+        Me.lblScanMsg.Name = "lblScanMsg"
+        Me.lblScanMsg.Size = New System.Drawing.Size(192, 26)
+        Me.lblScanMsg.TabIndex = 5
+        Me.lblScanMsg.Text = "444444444   13:00"
+        Me.lblScanMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnBack
+        '
+        Me.btnBack.Location = New System.Drawing.Point(577, 592)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(116, 47)
+        Me.btnBack.TabIndex = 4
+        Me.btnBack.Text = "Cancel"
+        Me.btnBack.UseVisualStyleBackColor = True
+        '
+        'btnEnterBarcode
+        '
+        Me.btnEnterBarcode.Location = New System.Drawing.Point(838, 286)
+        Me.btnEnterBarcode.Name = "btnEnterBarcode"
+        Me.btnEnterBarcode.Size = New System.Drawing.Size(110, 41)
+        Me.btnEnterBarcode.TabIndex = 3
+        Me.btnEnterBarcode.Text = "Button3"
+        Me.btnEnterBarcode.UseVisualStyleBackColor = True
+        '
+        'btnNext
+        '
+        Me.btnNext.Location = New System.Drawing.Point(712, 592)
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(110, 47)
+        Me.btnNext.TabIndex = 2
+        Me.btnNext.Text = "Next"
+        Me.btnNext.UseVisualStyleBackColor = True
+        '
+        'txtBarcode
+        '
+        Me.txtBarcode.Location = New System.Drawing.Point(845, 298)
+        Me.txtBarcode.MaxLength = 9
+        Me.txtBarcode.Name = "txtBarcode"
+        Me.txtBarcode.Size = New System.Drawing.Size(115, 32)
+        Me.txtBarcode.TabIndex = 1
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(144, 173)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(576, 37)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "Scan your ID card to record attendance"
+        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -340,7 +420,7 @@ Partial Class AttendanceForm
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(175, 42)
         Me.btnCancel.TabIndex = 1
-        Me.btnCancel.Text = "Back"
+        Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'roll
@@ -351,8 +431,13 @@ Partial Class AttendanceForm
         Me.roll.Size = New System.Drawing.Size(597, 544)
         Me.roll.TabIndex = 0
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 2400
+        '
         'AttendanceForm
         '
+        Me.AcceptButton = Me.btnEnterBarcode
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.SplitContainer1)
@@ -376,6 +461,8 @@ Partial Class AttendanceForm
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.barcodePanel.ResumeLayout(False)
+        Me.barcodePanel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -406,4 +493,12 @@ Partial Class AttendanceForm
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents roll As System.Windows.Forms.CheckedListBox
+    Friend WithEvents barcodePanel As System.Windows.Forms.Panel
+    Friend WithEvents txtBarcode As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents btnNext As System.Windows.Forms.Button
+    Friend WithEvents btnEnterBarcode As System.Windows.Forms.Button
+    Friend WithEvents btnBack As System.Windows.Forms.Button
+    Friend WithEvents lblScanMsg As System.Windows.Forms.Label
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 End Class
