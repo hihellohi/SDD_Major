@@ -123,6 +123,11 @@
     <Compile Include="PrintForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Resources\Ding.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ding.resx</DependentUpon>
+    </Compile>
     <Compile Include="returnhelp.Designer.vb">
       <DependentUpon>returnhelp.vb</DependentUpon>
     </Compile>
@@ -242,6 +247,11 @@
     <EmbeddedResource Include="PrintForm.resx">
       <DependentUpon>PrintForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Ding.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ding.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="returnhelp.resx">
       <DependentUpon>returnhelp.vb</DependentUpon>
     </EmbeddedResource>
@@ -318,6 +328,9 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\volume icon on.jpg" />
+    <None Include="Resources\gear icon1.jpg" />
+    <None Include="Resources\gear icon.jpg" />
     <None Include="Resources\returns.PNG" />
     <None Include="Resources\loans.PNG" />
     <None Include="Resources\email.PNG" />

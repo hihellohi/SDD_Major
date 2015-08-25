@@ -38,4 +38,8 @@
     Private Sub TexAdditionalInfo_Click(sender As Object, e As EventArgs) Handles TexAdditionalInfo.Click
         TexAdditionalInfo.Text = ""
     End Sub
+
+    Private Sub TexFencers_TextChanged(sender As Object, e As EventArgs) Handles TexFencers.TextChanged
+        TexFencers.Text = ""
+    End Sub
 End Class

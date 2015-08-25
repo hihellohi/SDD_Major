@@ -1880,6 +1880,12 @@
     Private Sub ViewDetailsGroupBox_Click(sender As Object, e As EventArgs) Handles ViewDetailsGroupBox.Click
         ViewDetailsGroupBox.BringToFront()
     End Sub
+    Private Sub GroupBoxSettings_Click(Sender As Object, e As EventArgs) Handles GroupBoxSettings.Click
+        GroupBoxSettings.BringToFront()
+    End Sub
+    Private Sub panelhelp_Click(Sender As Object, e As EventArgs) Handles PanelHelp.Click
+        PanelHelp.BringToFront()
+    End Sub
 
 
 
@@ -2837,6 +2843,52 @@
         Get_Database_Details_For_Specified_Date(DatabaseDate)
     End Sub
 
+
+
+
+    Dim Volume As Boolean = True
+
+    Private Sub ButResetPosition_Click(sender As Object, e As EventArgs) Handles ButResetPosition.Click
+        If CheckBoxResetPositionBoth.Checked = True Then
+            SearchGroupBox.Top = 161
+            SearchGroupBox.Left = 14
+
+            ViewDetailsGroupBox.Top = 386
+            ViewDetailsGroupBox.Left = 14
+        ElseIf RadResetPositionExtras.Checked = True Then
+            ViewDetailsGroupBox.Top = 386
+            ViewDetailsGroupBox.Left = 14
+        Else : RadResetPositionSearch.Checked = True
+            SearchGroupBox.Top = 161
+            SearchGroupBox.Left = 14
+
+        End If
+    End Sub
+
+    Private Sub CheckBoxResetPositionBoth_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxResetPositionBoth.CheckedChanged
+        If CheckBoxResetPositionBoth.Checked = True Then
+            RadResetPositionExtras.Enabled = False
+            RadResetPositionSearch.Enabled = False
+        Else
+            RadResetPositionExtras.Enabled = True
+            RadResetPositionSearch.Enabled = True
+
+            RadResetPositionSearch.Checked = True
+        End If
+    End Sub
+
+
+    Private Sub PicVolumeOn_Click(sender As Object, e As EventArgs) Handles PicVolumeOn.Click
+
+    End Sub
+
+    Private Sub ButCloseSettings_Click(sender As Object, e As EventArgs) Handles ButCloseSettings.Click
+        GroupBoxSettings.Visible = False
+    End Sub
+
+    Private Sub ButSettings_Click(sender As Object, e As EventArgs) Handles ButSettings.Click
+        GroupBoxSettings.Visible = True
+    End Sub
 
 End Class
 Public Module GlobalVariablesModule

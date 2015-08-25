@@ -48,6 +48,8 @@ Partial Class PrintForm
         Me.LabNoAdditionalInfo = New System.Windows.Forms.Label()
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.TexFencers = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -75,11 +77,11 @@ Partial Class PrintForm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(8, 281)
+        Me.Label3.Location = New System.Drawing.Point(8, 260)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(119, 24)
+        Me.Label3.Size = New System.Drawing.Size(66, 24)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Event Name:"
+        Me.Label3.Text = "Name:"
         '
         'Label4
         '
@@ -94,7 +96,7 @@ Partial Class PrintForm
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(8, 329)
+        Me.Label5.Location = New System.Drawing.Point(8, 293)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 24)
         Me.Label5.TabIndex = 5
@@ -104,7 +106,7 @@ Partial Class PrintForm
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(8, 430)
+        Me.Label6.Location = New System.Drawing.Point(8, 326)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(87, 24)
         Me.Label6.TabIndex = 6
@@ -114,7 +116,7 @@ Partial Class PrintForm
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(8, 479)
+        Me.Label7.Location = New System.Drawing.Point(251, 326)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(68, 24)
         Me.Label7.TabIndex = 7
@@ -134,7 +136,7 @@ Partial Class PrintForm
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(8, 378)
+        Me.Label8.Location = New System.Drawing.Point(251, 293)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(72, 24)
         Me.Label8.TabIndex = 9
@@ -144,7 +146,7 @@ Partial Class PrintForm
         '
         Me.LabTime.AutoSize = True
         Me.LabTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabTime.Location = New System.Drawing.Point(133, 329)
+        Me.LabTime.Location = New System.Drawing.Point(100, 293)
         Me.LabTime.Name = "LabTime"
         Me.LabTime.Size = New System.Drawing.Size(119, 24)
         Me.LabTime.TabIndex = 10
@@ -154,7 +156,7 @@ Partial Class PrintForm
         '
         Me.LabEventName.AutoSize = True
         Me.LabEventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabEventName.Location = New System.Drawing.Point(133, 281)
+        Me.LabEventName.Location = New System.Drawing.Point(100, 260)
         Me.LabEventName.Name = "LabEventName"
         Me.LabEventName.Size = New System.Drawing.Size(154, 24)
         Me.LabEventName.TabIndex = 11
@@ -164,7 +166,7 @@ Partial Class PrintForm
         '
         Me.LabVenue.AutoSize = True
         Me.LabVenue.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabVenue.Location = New System.Drawing.Point(133, 378)
+        Me.LabVenue.Location = New System.Drawing.Point(329, 293)
         Me.LabVenue.Name = "LabVenue"
         Me.LabVenue.Size = New System.Drawing.Size(119, 24)
         Me.LabVenue.TabIndex = 12
@@ -174,7 +176,7 @@ Partial Class PrintForm
         '
         Me.LabWeapon.AutoSize = True
         Me.LabWeapon.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabWeapon.Location = New System.Drawing.Point(133, 430)
+        Me.LabWeapon.Location = New System.Drawing.Point(100, 326)
         Me.LabWeapon.Name = "LabWeapon"
         Me.LabWeapon.Size = New System.Drawing.Size(119, 24)
         Me.LabWeapon.TabIndex = 13
@@ -184,7 +186,7 @@ Partial Class PrintForm
         '
         Me.LabGroup.AutoSize = True
         Me.LabGroup.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabGroup.Location = New System.Drawing.Point(133, 479)
+        Me.LabGroup.Location = New System.Drawing.Point(329, 326)
         Me.LabGroup.Name = "LabGroup"
         Me.LabGroup.Size = New System.Drawing.Size(119, 24)
         Me.LabGroup.TabIndex = 14
@@ -242,7 +244,7 @@ Partial Class PrintForm
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(8, 529)
+        Me.Label10.Location = New System.Drawing.Point(8, 562)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(152, 24)
         Me.Label10.TabIndex = 19
@@ -251,7 +253,7 @@ Partial Class PrintForm
         'TexAdditionalInfo
         '
         Me.TexAdditionalInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TexAdditionalInfo.Location = New System.Drawing.Point(12, 571)
+        Me.TexAdditionalInfo.Location = New System.Drawing.Point(12, 589)
         Me.TexAdditionalInfo.MaxLength = 500
         Me.TexAdditionalInfo.Multiline = True
         Me.TexAdditionalInfo.Name = "TexAdditionalInfo"
@@ -263,7 +265,7 @@ Partial Class PrintForm
         '
         Me.LabNoAdditionalInfo.AutoSize = True
         Me.LabNoAdditionalInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabNoAdditionalInfo.Location = New System.Drawing.Point(166, 529)
+        Me.LabNoAdditionalInfo.Location = New System.Drawing.Point(166, 562)
         Me.LabNoAdditionalInfo.Name = "LabNoAdditionalInfo"
         Me.LabNoAdditionalInfo.Size = New System.Drawing.Size(57, 24)
         Me.LabNoAdditionalInfo.TabIndex = 21
@@ -288,12 +290,35 @@ Partial Class PrintForm
         Me.Label11.TabIndex = 22
         Me.Label11.Text = "Fencing MIC: Mr Dat Huynh, IA Department"
         '
+        'TexFencers
+        '
+        Me.TexFencers.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TexFencers.Location = New System.Drawing.Point(12, 413)
+        Me.TexFencers.MaxLength = 350
+        Me.TexFencers.Multiline = True
+        Me.TexFencers.Name = "TexFencers"
+        Me.TexFencers.Size = New System.Drawing.Size(587, 109)
+        Me.TexFencers.TabIndex = 24
+        Me.TexFencers.Text = "Enter fencers/participants names here"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(12, 386)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(185, 24)
+        Me.Label12.TabIndex = 23
+        Me.Label12.Text = "Fencers/Participants:"
+        '
         'PrintForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ClientSize = New System.Drawing.Size(699, 853)
+        Me.Controls.Add(Me.TexFencers)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.LabNoAdditionalInfo)
         Me.Controls.Add(Me.TexAdditionalInfo)
@@ -350,4 +375,6 @@ Partial Class PrintForm
     Friend WithEvents LabNoAdditionalInfo As System.Windows.Forms.Label
     Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents TexFencers As System.Windows.Forms.TextBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
 End Class
