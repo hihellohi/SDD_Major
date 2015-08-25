@@ -28,7 +28,9 @@ Partial Class fight
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnBegin = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -84,6 +86,7 @@ Partial Class fight
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Red
+        Me.Panel2.Controls.Add(Me.TextBox1)
         Me.Panel2.Location = New System.Drawing.Point(0, 110)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(200, 658)
@@ -91,12 +94,19 @@ Partial Class fight
         '
         'btnBegin
         '
-        Me.btnBegin.Location = New System.Drawing.Point(625, 116)
+        Me.btnBegin.Location = New System.Drawing.Point(587, 116)
         Me.btnBegin.Name = "btnBegin"
         Me.btnBegin.Size = New System.Drawing.Size(193, 71)
         Me.btnBegin.TabIndex = 7
         Me.btnBegin.Text = "En Garde"
         Me.btnBegin.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(12, 32)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 0
         '
         'fight
         '
@@ -111,6 +121,8 @@ Partial Class fight
         Me.Text = "fight"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -120,4 +132,5 @@ Partial Class fight
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents btnBegin As System.Windows.Forms.Button
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class
