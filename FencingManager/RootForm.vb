@@ -175,6 +175,7 @@ Public Class RootForm
         topform = frmfight
         intform = FIGHT_FORM
         topform.show()
+        frmfight.reload()
     End Sub
 End Class
 
