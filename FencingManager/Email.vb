@@ -20,6 +20,7 @@ Public Class Email
     End Structure
 
     Public Sub reload()
+        'refresh the datasets
         adapter = New OleDb.OleDbDataAdapter("SELECT * FROM StudentProfiles", RootForm.connection)
         adapter.Fill(dataS, "StudentProfiles")
         cadapter = New OleDb.OleDbDataAdapter("SELECT * FROM Calendar", RootForm.connection)
@@ -28,14 +29,16 @@ Public Class Email
 
 
     Private Function sendOverdue()
+        'send overdue notices
         Dim hashtable As New Hashtable()
         Dim count As Integer = 0
         Dim things(RootForm.GearDataS.Tables("Gear").Rows.Count) As List(Of Integer)
 
         Dim tmp As DataRow
         For Each tmp In RootForm.GearDataS.Tables("Gear").Rows
-            If tmp("StudentLoaned") <> 0 Then
+            'find all overdue items and record them in a hashtable and a list
 
+            If tmp("StudentLoaned") <> 0 Then
                 Dim due As New Date(tmp("DueYear"), tmp("DueMonth"), tmp("DueDay"))
                 If due < Date.Today Then
                     If Not hashtable.Contains(tmp("StudentLoaned")) Then
@@ -50,6 +53,8 @@ Public Class Email
         Dim tmpa As Integer
         count = 0
         For Each tmpa In hashtable.Keys
+
+            'progress report
             If Not all Then
                 btnODYes.Text = Math.Round(((count * 100) / hashtable.Count)).ToString + "%"
             Else
@@ -59,11 +64,10 @@ Public Class Email
             count += 1
             System.Windows.Forms.Application.DoEvents()
             Dim tmpb As DataRow
+            'send the actual email
             For Each tmpb In dataS.Tables("StudentProfiles").Rows
                 If tmpa = tmpb("StudentID") Then
-                    'email
                     Try
-                        'YUNO WORK
                         Dim Smtp_Server As New SmtpClient
                         Dim email As New MailMessage()
                         Smtp_Server.UseDefaultCredentials = False
@@ -78,6 +82,7 @@ Public Class Email
                         email.Subject = "Overdue Notice"
                         email.IsBodyHtml = True
                         email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body>You have loaned " + things(hashtable(tmpa)).Count.ToString() + " items from your fencing organisation that are overdue. Please return immediately"
+                        'construct table
                         email.Body += "<p><table width = ""500""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
                         Dim iter As Integer
                         For Each iter In things(hashtable(tmpa))
@@ -85,9 +90,9 @@ Public Class Email
                             email.Body += RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueDay").ToString() + "/" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueMonth").ToString() + "/" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueYear").ToString() + "</td></tr>"
                         Next
                         email.Body += "</table></p><p>This was an automated message. Do not reply to this email</p></body></html>"
-                        'top kek
                         Smtp_Server.Send(email)
                     Catch error_t As Exception
+                        'If error occurs
                         MsgBox(error_t.ToString)
                         Return True
                     End Try
@@ -97,8 +102,8 @@ Public Class Email
         Return False
     End Function
 
-    Private Sub Button4_Click() Handles btnODYes.Click
-        Timer1.Enabled = False
+    Private Sub btnODYes_Click() Handles btnODYes.Click
+        timerMove.Enabled = False
         btnODYes.BackgroundImage = My.Resources.spinner
         btnODYes.Enabled = False
         all = False
@@ -112,13 +117,14 @@ Public Class Email
         End If
         btnODYes.BackgroundImage = Nothing
         btnODYes.Enabled = True
-        Timer2.Enabled = True
+        timerWait.Enabled = True
 
     End Sub
 
 
 
     Private Function sendGeneral()
+        'initialise lists
         Dim weapons() = {"foil", "sabre", "epee"}
         Dim senior(3) As List(Of item)
         Dim junior(3) As List(Of item)
@@ -130,6 +136,8 @@ Public Class Email
             esenior(i) = New List(Of String)
             ejunior(i) = New List(Of String)
         Next
+
+        'find all valid events
         Dim row As DataRow
         For Each row In cdataS.Tables("Calendar").Rows
             If row("EventDate") < Date.Today Then
@@ -155,6 +163,7 @@ Public Class Email
                 Continue For
             End If
             Dim none As Boolean = True
+            'sort events into junior/senior foil/sabre/epee
             For i = 0 To 2
                 If weapons(i) = row("Weapon").ToString.ToLower Then
                     none = False
@@ -185,6 +194,8 @@ Public Class Email
                     tmp.venue = row("Venue").ToString
                     tmp.weapon = row("Weapon").ToString
                     If row("Group").ToString.ToLower = "junior" Then
+                        junior(i).Add(tmp)
+                    ElseIf row("Group").ToString.ToLower = "senior" Then
                         senior(i).Add(tmp)
                     Else
                         junior(i).Add(tmp)
@@ -193,6 +204,7 @@ Public Class Email
                 Next
             End If
         Next
+        'sort students into junior/senior foil/sabre/epee
         For Each row In dataS.Tables("StudentProfiles").Rows
             If row("YearGroup") = 1 Then
                 esenior(row("Weapon") - 1).Add(row("email"))
@@ -200,6 +212,8 @@ Public Class Email
                 ejunior(row("Weapon") - 1).Add(row("email"))
             End If
         Next
+
+        'send emails to all their relevant recipients
         Dim count = 0
         For i = 0 To 2
             If Not all Then
@@ -315,7 +329,7 @@ Public Class Email
             End If
             btnGEYes.BackgroundImage = Nothing
             btnGEYes.Enabled = True
-            Timer2.Enabled = True
+            timerWait.Enabled = True
         End If
     End Sub
 
@@ -399,27 +413,27 @@ Public Class Email
             End If
             btnBothYes.BackgroundImage = Nothing
             btnBothYes.Enabled = True
-            Timer2.Enabled = True
+            timerWait.Enabled = True
         End If
     End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
         If mode = 1 Then
             btnODYes.Left = Math.Min(btnODYes.Left + 10, 321)
             If btnODYes.Left = 321 Then
                 btnOverdue.Text = "Are you sure?"
-                Timer1.Enabled = False
+                timerMove.Enabled = False
             End If
         ElseIf mode = 2 Then
             btnGEYes.Left = Math.Max(btnGEYes.Left - 10, 278)
             If btnGEYes.Left = 278 Then
                 btnGeneral.Text = "Are you sure?"
-                Timer1.Enabled = False
+                timerMove.Enabled = False
             End If
         ElseIf mode = 3 Then
             btnBothYes.Left = Math.Min(btnBothYes.Left + 10, 321)
             If btnBothYes.Left = 321 Then
                 btnboth.Text = "Are you sure?"
-                Timer1.Enabled = False
+                timerMove.Enabled = False
             End If
         ElseIf mode = 0 Then
             btnODYes.Left = Math.Max(btnODYes.Left - 10, 231)
@@ -446,20 +460,20 @@ Public Class Email
                 all = False
             End If
             If all Then
-                Timer1.Enabled = False
+                timerMove.Enabled = False
             End If
         End If
     End Sub
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles timerWait.Tick
         mode = 0
-        Timer2.Enabled = False
-        Timer1.Enabled = True
+        timerWait.Enabled = False
+        timerMove.Enabled = True
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnOverdue.Click
         If mode >= 0 Then
             mode = 1
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
 
@@ -474,7 +488,7 @@ Public Class Email
         If mode > 0 Then
             mode = 0
 
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
 
@@ -488,13 +502,13 @@ Public Class Email
         If mode > 0 Then
             mode = 0
 
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnGeneral.Click
         If mode >= 0 Then
             mode = 2
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
     Private Sub button1_MouseEnter(sender As Object, e As EventArgs) Handles btnGeneral.MouseEnter
@@ -508,7 +522,7 @@ Public Class Email
         If mode > 0 Then
             mode = 0
 
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
 
@@ -522,13 +536,13 @@ Public Class Email
         If mode > 0 Then
             mode = 0
 
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
     Private Sub btnboth_Click(sender As Object, e As EventArgs) Handles btnboth.Click
         If mode >= 0 Then
             mode = 3
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
     Private Sub btnboth_MouseEnter(sender As Object, e As EventArgs) Handles btnboth.MouseEnter
@@ -542,7 +556,7 @@ Public Class Email
         If mode > 0 Then
             mode = 0
 
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
 
@@ -556,7 +570,7 @@ Public Class Email
         If mode > 0 Then
             mode = 0
 
-            Timer1.Enabled = True
+            timerMove.Enabled = True
         End If
     End Sub
 

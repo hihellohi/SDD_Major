@@ -32,7 +32,7 @@ Partial Class Email
         Me.btnGeneral = New System.Windows.Forms.Button()
         Me.btnboth = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.timerMove = New System.Windows.Forms.Timer(Me.components)
         Me.btnOverdue = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lblUntilError = New System.Windows.Forms.Label()
@@ -46,7 +46,7 @@ Partial Class Email
         Me.cmbNext = New System.Windows.Forms.ComboBox()
         Me.btnGEYes = New System.Windows.Forms.Button()
         Me.btnBothYes = New System.Windows.Forms.Button()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.timerWait = New System.Windows.Forms.Timer(Me.components)
         Me.ptbHelp = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -156,9 +156,9 @@ Partial Class Email
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "Personalised Message"
         '
-        'Timer1
+        'timerMove
         '
-        Me.Timer1.Interval = 10
+        Me.timerMove.Interval = 10
         '
         'btnOverdue
         '
@@ -323,9 +323,9 @@ Partial Class Email
         Me.btnBothYes.Text = "Yes"
         Me.btnBothYes.UseVisualStyleBackColor = False
         '
-        'Timer2
+        'timerWait
         '
-        Me.Timer2.Interval = 1000
+        Me.timerWait.Interval = 1000
         '
         'ptbHelp
         '
@@ -369,7 +369,7 @@ Partial Class Email
     Friend WithEvents btnGeneral As System.Windows.Forms.Button
     Friend WithEvents btnboth As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents timerMove As System.Windows.Forms.Timer
     Friend WithEvents btnOverdue As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents lblUntilError As System.Windows.Forms.Label
@@ -383,7 +383,7 @@ Partial Class Email
     Friend WithEvents cmbNext As System.Windows.Forms.ComboBox
     Friend WithEvents btnGEYes As System.Windows.Forms.Button
     Friend WithEvents btnBothYes As System.Windows.Forms.Button
-    Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents timerWait As System.Windows.Forms.Timer
     Friend WithEvents btnMain As System.Windows.Forms.Button
     Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents ptbHelp As System.Windows.Forms.PictureBox
