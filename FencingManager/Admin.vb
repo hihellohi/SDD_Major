@@ -7,6 +7,12 @@ Public Class Admin
 
 
     Private Sub Admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If RootForm.access_level = 3 Then
+            lbAcc.Text = "MIC ACCOUNT"
+        Else : lbAcc.Text = "OTHER"
+        End If
+
         ' Connection
         Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=Fencing.accdb")
         'Query, Parameters
@@ -46,20 +52,21 @@ Public Class Admin
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        PWChange.Show()
+
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btRefresh.Click
-        lvEvents.Items.Clear()
-        ' Connection
-        Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=Fencing.accdb")
+        'Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=Fencing.accdb")
         'Query, Parameters
+        lvEvents.Items.Clear()
+        DS.Clear()
+
         Dim sql As String = "SELECT * FROM Calendar"
         Dim cmd As New OleDbCommand(sql, RootForm.connection)
         adapter = New OleDbDataAdapter(cmd)
         adapter.Fill(DS)
 
-        conn.Open()
+
         lvEvents.Items.Clear()
         For i = 1 To (DS.Tables(0).Rows.Count - 1)
             Dim str1 As String = DS.Tables(0).Rows(i)("EventDate").ToString
@@ -72,20 +79,20 @@ Public Class Admin
             lvi.SubItems.AddRange(New String() {str2, str3, str4}) 'Put text in columns 2,3,4
             lvEvents.Items.Add(lvi) 'Add the new row to listview
         Next
+        'With lvEvents
+        '    .View = View.Details
+        '    .GridLines = True
+        '    .FullRowSelect = True
 
-        conn.Close()
+        '    lvEvents.Columns.Add("EventDate", 270, HorizontalAlignment.Center)
+        '    lvEvents.Columns.Add("Time", 100, HorizontalAlignment.Center)
+        '    lvEvents.Columns.Add("Venue", 100, HorizontalAlignment.Center)
+        '    lvEvents.Columns.Add("Group", 100, HorizontalAlignment.Center)
 
+        'End With
+    End Sub
 
-        With lvEvents
-            .View = View.Details
-            .GridLines = True
-            .FullRowSelect = True
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
-            lvEvents.Columns.Add("EventDate", 270, HorizontalAlignment.Center)
-            lvEvents.Columns.Add("Time", 100, HorizontalAlignment.Center)
-            lvEvents.Columns.Add("Venue", 100, HorizontalAlignment.Center)
-            lvEvents.Columns.Add("Group", 100, HorizontalAlignment.Center)
-
-        End With
     End Sub
 End Class
