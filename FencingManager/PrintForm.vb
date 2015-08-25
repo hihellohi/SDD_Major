@@ -40,7 +40,7 @@ Public Class PrintForm
         TexAdditionalInfo.Text = ""
     End Sub
 
-    Private Sub TexFencers_TextChanged(sender As Object, e As EventArgs) Handles TexFencers.TextChanged
+    Private Sub TexFencers_Click(sender As Object, e As EventArgs) Handles TexFencers.Click
         TexFencers.Text = ""
     End Sub
 End Class

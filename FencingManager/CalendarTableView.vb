@@ -33,7 +33,7 @@
     End Sub
 
     'simple msgbox label
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub Label1_Click(sender As Object, e As EventArgs)
         MsgBox("For Weapon: 0 is No Weapon, 1 is Foil, 2 is Sabre, 3 is Epee")
     End Sub
 

@@ -50,7 +50,6 @@ Partial Class CalendarTableView
         Me.ButDisableSearch = New System.Windows.Forms.Button()
         Me.ButEnableSearch = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.EventNameToolStrip = New System.Windows.Forms.ToolStrip()
         Me.EventNameToolStripLabel = New System.Windows.Forms.ToolStripLabel()
@@ -269,16 +268,6 @@ Partial Class CalendarTableView
         Me.PictureBox1.TabIndex = 106
         Me.PictureBox1.TabStop = False
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(645, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(32, 13)
-        Me.Label1.TabIndex = 105
-        Me.Label1.Text = "*note"
-        Me.Label1.Visible = False
-        '
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.White
@@ -332,7 +321,6 @@ Partial Class CalendarTableView
         Me.Controls.Add(Me.ButDisableSearch)
         Me.Controls.Add(Me.ButEnableSearch)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CalendarDataGridView)
         Me.Controls.Add(Me.CalendarBindingNavigator)
@@ -379,7 +367,6 @@ Partial Class CalendarTableView
     Friend WithEvents ButDisableSearch As System.Windows.Forms.Button
     Friend WithEvents ButEnableSearch As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents EventNameToolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents EventNameToolStripLabel As System.Windows.Forms.ToolStripLabel

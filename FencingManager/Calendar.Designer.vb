@@ -25,39 +25,10 @@ Partial Class Calendar
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Calendar))
         Me.Panel = New System.Windows.Forms.Panel()
-        Me.GroupBoxSettings = New System.Windows.Forms.GroupBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.RadResetPositionSearch = New System.Windows.Forms.RadioButton()
-        Me.RadResetPositionExtras = New System.Windows.Forms.RadioButton()
-        Me.CheckBoxResetPositionBoth = New System.Windows.Forms.CheckBox()
-        Me.ButResetPosition = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ButSaveVolume = New System.Windows.Forms.Button()
-        Me.RadVolumeOff = New System.Windows.Forms.RadioButton()
-        Me.RadVolumeOn = New System.Windows.Forms.RadioButton()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.ButCloseSettings = New System.Windows.Forms.Button()
-        Me.PicVolumeOn = New System.Windows.Forms.PictureBox()
-        Me.PanelHelp = New System.Windows.Forms.GroupBox()
-        Me.ButCloseHelp = New System.Windows.Forms.Button()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.ButSettings = New System.Windows.Forms.Button()
-        Me.SearchGroupBox = New System.Windows.Forms.GroupBox()
-        Me.PanelWeaponChoices = New System.Windows.Forms.Panel()
-        Me.RadChoiceEpee = New System.Windows.Forms.RadioButton()
-        Me.RadChoiceNoWeapon = New System.Windows.Forms.RadioButton()
-        Me.RadChoiceSabre = New System.Windows.Forms.RadioButton()
-        Me.RadChoiceFoil = New System.Windows.Forms.RadioButton()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.CheckBoxAll = New System.Windows.Forms.CheckBox()
-        Me.RadAdvSearchGroup = New System.Windows.Forms.RadioButton()
-        Me.RadAdvSearchEventName = New System.Windows.Forms.RadioButton()
-        Me.RadAdvSearchWeapon = New System.Windows.Forms.RadioButton()
-        Me.RadAdvSearchVenue = New System.Windows.Forms.RadioButton()
-        Me.ButAdvancedSearch = New System.Windows.Forms.Button()
-        Me.ButCloseAdvancedSearch = New System.Windows.Forms.Button()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.ControlPanelSearch = New System.Windows.Forms.Panel()
+        Me.LabNoResultsFound = New System.Windows.Forms.Label()
+        Me.ButSearch = New System.Windows.Forms.Button()
+        Me.LabInTheSelectedFields = New System.Windows.Forms.Label()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.ColumnEventName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnEventDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -65,18 +36,39 @@ Partial Class Calendar
         Me.ColumnVenue = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnWeapon = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnGroup = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.CheckBoxAdvancedSearch = New System.Windows.Forms.CheckBox()
-        Me.ButSearchHide = New System.Windows.Forms.Button()
-        Me.PicSearchSlider = New System.Windows.Forms.PictureBox()
-        Me.ButSearch = New System.Windows.Forms.Button()
-        Me.DateTimePickerSearch = New System.Windows.Forms.DateTimePicker()
-        Me.RadDate = New System.Windows.Forms.RadioButton()
-        Me.RadEventName = New System.Windows.Forms.RadioButton()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TexSearch = New System.Windows.Forms.RichTextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.CalendarGroupBox = New System.Windows.Forms.GroupBox()
+        Me.TexSearch = New System.Windows.Forms.RichTextBox()
+        Me.PanelSelectedFields = New System.Windows.Forms.Panel()
+        Me.CheckBoxAll = New System.Windows.Forms.CheckBox()
+        Me.RadAdvSearchGroup = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchEventName = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchWeapon = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchVenue = New System.Windows.Forms.RadioButton()
+        Me.PanelWeaponChoices = New System.Windows.Forms.Panel()
+        Me.RadChoiceEpee = New System.Windows.Forms.RadioButton()
+        Me.RadChoiceNoWeapon = New System.Windows.Forms.RadioButton()
+        Me.RadChoiceSabre = New System.Windows.Forms.RadioButton()
+        Me.RadChoiceFoil = New System.Windows.Forms.RadioButton()
+        Me.ControlPanelSettings = New System.Windows.Forms.Panel()
+        Me.GroupBoxSettings = New System.Windows.Forms.GroupBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.RadResetPositionSearch = New System.Windows.Forms.RadioButton()
+        Me.RadResetPositionCalendar = New System.Windows.Forms.RadioButton()
+        Me.CheckBoxResetPositionBoth = New System.Windows.Forms.CheckBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ButSaveVolume = New System.Windows.Forms.Button()
+        Me.RadVolumeOff = New System.Windows.Forms.RadioButton()
+        Me.RadVolumeOn = New System.Windows.Forms.RadioButton()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.ButResetPosition = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.PicVolumeOn = New System.Windows.Forms.PictureBox()
+        Me.ControlPanelCalendar = New System.Windows.Forms.Panel()
+        Me.PanelImportedCalendar = New System.Windows.Forms.Panel()
+        Me.ButMinimisedView = New System.Windows.Forms.Button()
+        Me.PicSearchSlider = New System.Windows.Forms.PictureBox()
+        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
+        Me.ButExpandedView = New System.Windows.Forms.Button()
         Me.LabelDetails = New System.Windows.Forms.Label()
         Me.PanInput = New System.Windows.Forms.Panel()
         Me.RadioButtonPM = New System.Windows.Forms.RadioButton()
@@ -242,33 +234,45 @@ Partial Class Calendar
         Me.pansu1 = New System.Windows.Forms.Panel()
         Me.su1 = New System.Windows.Forms.Label()
         Me.Textsu1 = New System.Windows.Forms.RichTextBox()
-        Me.PicSearchShow = New System.Windows.Forms.PictureBox()
-        Me.ButHelp = New System.Windows.Forms.Button()
-        Me.PicViewDetailsShow = New System.Windows.Forms.PictureBox()
-        Me.ViewDetailsGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.ButViewDatabase = New System.Windows.Forms.Button()
-        Me.ButViewDetailsHide = New System.Windows.Forms.Button()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
-        Me.PicViewDetailsSlider = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.SlideTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.CalendarPanelTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.ControlPanelDatabaseView = New System.Windows.Forms.Panel()
+        Me.CalendarDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CalendarBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FencingDataSet = New FencingManager.FencingDataSet()
-        Me.TableAdapterManager1 = New FencingManager.FencingDataSetTableAdapters.TableAdapterManager()
+        Me.ButControlDatabaseView = New System.Windows.Forms.Button()
+        Me.ButControlSearch = New System.Windows.Forms.Button()
+        Me.ButControlCalendar = New System.Windows.Forms.Button()
+        Me.ControlPanelHelp = New System.Windows.Forms.Panel()
+        Me.PanelHelp = New System.Windows.Forms.GroupBox()
+        Me.ButCloseHelp = New System.Windows.Forms.Button()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.ButSettings = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.ButHelp = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.SlideTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.CalendarTableAdapter = New FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter()
+        Me.TableAdapterManager = New FencingManager.FencingDataSetTableAdapters.TableAdapterManager()
         Me.Panel.SuspendLayout()
+        Me.ControlPanelSearch.SuspendLayout()
+        Me.PanelSelectedFields.SuspendLayout()
+        Me.PanelWeaponChoices.SuspendLayout()
+        Me.ControlPanelSettings.SuspendLayout()
         Me.GroupBoxSettings.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelHelp.SuspendLayout()
-        Me.SearchGroupBox.SuspendLayout()
-        Me.PanelWeaponChoices.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.ControlPanelCalendar.SuspendLayout()
+        Me.PanelImportedCalendar.SuspendLayout()
         CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CalendarGroupBox.SuspendLayout()
         Me.PanInput.SuspendLayout()
         Me.PanelControls.SuspendLayout()
         Me.pansa6.SuspendLayout()
@@ -313,28 +317,29 @@ Partial Class Calendar
         Me.pantu1.SuspendLayout()
         Me.pansu2.SuspendLayout()
         Me.pansu1.SuspendLayout()
-        CType(Me.PicSearchShow, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PicViewDetailsShow, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ViewDetailsGroupBox.SuspendLayout()
-        CType(Me.PicViewDetailsSlider, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ControlPanelDatabaseView.SuspendLayout()
+        CType(Me.CalendarDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CalendarBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FencingDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ControlPanelHelp.SuspendLayout()
+        Me.PanelHelp.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel
         '
-        Me.Panel.BackColor = System.Drawing.Color.CadetBlue
-        Me.Panel.Controls.Add(Me.GroupBoxSettings)
-        Me.Panel.Controls.Add(Me.PanelHelp)
+        Me.Panel.BackColor = System.Drawing.Color.White
+        Me.Panel.Controls.Add(Me.ControlPanelSearch)
+        Me.Panel.Controls.Add(Me.ControlPanelSettings)
+        Me.Panel.Controls.Add(Me.ControlPanelCalendar)
+        Me.Panel.Controls.Add(Me.ControlPanelDatabaseView)
+        Me.Panel.Controls.Add(Me.ButControlDatabaseView)
+        Me.Panel.Controls.Add(Me.ButControlSearch)
+        Me.Panel.Controls.Add(Me.ButControlCalendar)
+        Me.Panel.Controls.Add(Me.ControlPanelHelp)
         Me.Panel.Controls.Add(Me.ButSettings)
-        Me.Panel.Controls.Add(Me.SearchGroupBox)
         Me.Panel.Controls.Add(Me.Label14)
-        Me.Panel.Controls.Add(Me.CalendarGroupBox)
-        Me.Panel.Controls.Add(Me.PicSearchShow)
         Me.Panel.Controls.Add(Me.ButHelp)
-        Me.Panel.Controls.Add(Me.PicViewDetailsShow)
-        Me.Panel.Controls.Add(Me.ViewDetailsGroupBox)
         Me.Panel.Controls.Add(Me.PictureBox2)
         Me.Panel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Panel.Location = New System.Drawing.Point(0, 0)
@@ -342,308 +347,129 @@ Partial Class Calendar
         Me.Panel.Size = New System.Drawing.Size(1281, 768)
         Me.Panel.TabIndex = 0
         '
-        'GroupBoxSettings
+        'ControlPanelSearch
         '
-        Me.GroupBoxSettings.BackColor = System.Drawing.Color.CadetBlue
-        Me.GroupBoxSettings.Controls.Add(Me.Panel3)
-        Me.GroupBoxSettings.Controls.Add(Me.Panel2)
-        Me.GroupBoxSettings.Controls.Add(Me.Label16)
-        Me.GroupBoxSettings.Controls.Add(Me.Label15)
-        Me.GroupBoxSettings.Controls.Add(Me.ButCloseSettings)
-        Me.GroupBoxSettings.Controls.Add(Me.PicVolumeOn)
-        Me.GroupBoxSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBoxSettings.Location = New System.Drawing.Point(382, 190)
-        Me.GroupBoxSettings.Name = "GroupBoxSettings"
-        Me.GroupBoxSettings.Size = New System.Drawing.Size(546, 391)
-        Me.GroupBoxSettings.TabIndex = 81
-        Me.GroupBoxSettings.TabStop = False
-        Me.GroupBoxSettings.Text = "Settings"
-        Me.GroupBoxSettings.Visible = False
+        Me.ControlPanelSearch.BackColor = System.Drawing.Color.Teal
+        Me.ControlPanelSearch.Controls.Add(Me.LabNoResultsFound)
+        Me.ControlPanelSearch.Controls.Add(Me.ButSearch)
+        Me.ControlPanelSearch.Controls.Add(Me.LabInTheSelectedFields)
+        Me.ControlPanelSearch.Controls.Add(Me.ListView1)
+        Me.ControlPanelSearch.Controls.Add(Me.Label6)
+        Me.ControlPanelSearch.Controls.Add(Me.TexSearch)
+        Me.ControlPanelSearch.Controls.Add(Me.PanelSelectedFields)
+        Me.ControlPanelSearch.Controls.Add(Me.PanelWeaponChoices)
+        Me.ControlPanelSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControlPanelSearch.Location = New System.Drawing.Point(194, 363)
+        Me.ControlPanelSearch.Name = "ControlPanelSearch"
+        Me.ControlPanelSearch.Size = New System.Drawing.Size(305, 169)
+        Me.ControlPanelSearch.TabIndex = 89
         '
-        'Panel3
+        'LabNoResultsFound
         '
-        Me.Panel3.Controls.Add(Me.RadResetPositionSearch)
-        Me.Panel3.Controls.Add(Me.RadResetPositionExtras)
-        Me.Panel3.Controls.Add(Me.CheckBoxResetPositionBoth)
-        Me.Panel3.Controls.Add(Me.ButResetPosition)
-        Me.Panel3.Location = New System.Drawing.Point(36, 251)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(427, 100)
-        Me.Panel3.TabIndex = 12
+        Me.LabNoResultsFound.AutoSize = True
+        Me.LabNoResultsFound.BackColor = System.Drawing.SystemColors.Window
+        Me.LabNoResultsFound.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabNoResultsFound.Location = New System.Drawing.Point(274, 334)
+        Me.LabNoResultsFound.Name = "LabNoResultsFound"
+        Me.LabNoResultsFound.Size = New System.Drawing.Size(127, 31)
+        Me.LabNoResultsFound.TabIndex = 104
+        Me.LabNoResultsFound.Text = "initial text"
+        Me.LabNoResultsFound.Visible = False
         '
-        'RadResetPositionSearch
+        'ButSearch
         '
-        Me.RadResetPositionSearch.AutoSize = True
-        Me.RadResetPositionSearch.Enabled = False
-        Me.RadResetPositionSearch.Location = New System.Drawing.Point(17, 67)
-        Me.RadResetPositionSearch.Name = "RadResetPositionSearch"
-        Me.RadResetPositionSearch.Size = New System.Drawing.Size(73, 22)
-        Me.RadResetPositionSearch.TabIndex = 10
-        Me.RadResetPositionSearch.TabStop = True
-        Me.RadResetPositionSearch.Text = "Search"
-        Me.RadResetPositionSearch.UseVisualStyleBackColor = True
+        Me.ButSearch.BackColor = System.Drawing.Color.White
+        Me.ButSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButSearch.Location = New System.Drawing.Point(423, 190)
+        Me.ButSearch.Name = "ButSearch"
+        Me.ButSearch.Size = New System.Drawing.Size(86, 26)
+        Me.ButSearch.TabIndex = 8
+        Me.ButSearch.Text = "Search"
+        Me.ButSearch.UseVisualStyleBackColor = False
         '
-        'RadResetPositionExtras
+        'LabInTheSelectedFields
         '
-        Me.RadResetPositionExtras.AutoSize = True
-        Me.RadResetPositionExtras.Enabled = False
-        Me.RadResetPositionExtras.Location = New System.Drawing.Point(19, 39)
-        Me.RadResetPositionExtras.Name = "RadResetPositionExtras"
-        Me.RadResetPositionExtras.Size = New System.Drawing.Size(72, 22)
-        Me.RadResetPositionExtras.TabIndex = 9
-        Me.RadResetPositionExtras.TabStop = True
-        Me.RadResetPositionExtras.Text = "Extras "
-        Me.RadResetPositionExtras.UseVisualStyleBackColor = True
+        Me.LabInTheSelectedFields.AutoSize = True
+        Me.LabInTheSelectedFields.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.LabInTheSelectedFields.Location = New System.Drawing.Point(631, 137)
+        Me.LabInTheSelectedFields.Name = "LabInTheSelectedFields"
+        Me.LabInTheSelectedFields.Size = New System.Drawing.Size(159, 20)
+        Me.LabInTheSelectedFields.TabIndex = 93
+        Me.LabInTheSelectedFields.Text = "In the selected fields:"
         '
-        'CheckBoxResetPositionBoth
+        'ListView1
         '
-        Me.CheckBoxResetPositionBoth.AutoSize = True
-        Me.CheckBoxResetPositionBoth.Checked = True
-        Me.CheckBoxResetPositionBoth.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxResetPositionBoth.Location = New System.Drawing.Point(19, 11)
-        Me.CheckBoxResetPositionBoth.Name = "CheckBoxResetPositionBoth"
-        Me.CheckBoxResetPositionBoth.Size = New System.Drawing.Size(58, 22)
-        Me.CheckBoxResetPositionBoth.TabIndex = 8
-        Me.CheckBoxResetPositionBoth.Text = "Both"
-        Me.CheckBoxResetPositionBoth.UseVisualStyleBackColor = True
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnEventName, Me.ColumnEventDate, Me.ColumnTime, Me.ColumnVenue, Me.ColumnWeapon, Me.ColumnGroup})
+        Me.ListView1.GridLines = True
+        Me.ListView1.Location = New System.Drawing.Point(152, 252)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(955, 364)
+        Me.ListView1.TabIndex = 1
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
         '
-        'ButResetPosition
+        'ColumnEventName
         '
-        Me.ButResetPosition.BackColor = System.Drawing.Color.White
-        Me.ButResetPosition.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButResetPosition.Location = New System.Drawing.Point(230, 36)
-        Me.ButResetPosition.Name = "ButResetPosition"
-        Me.ButResetPosition.Size = New System.Drawing.Size(135, 28)
-        Me.ButResetPosition.TabIndex = 7
-        Me.ButResetPosition.Text = "Reset Position"
-        Me.ButResetPosition.UseVisualStyleBackColor = False
+        Me.ColumnEventName.Text = "Event Name"
+        Me.ColumnEventName.Width = 302
         '
-        'Panel2
+        'ColumnEventDate
         '
-        Me.Panel2.Controls.Add(Me.ButSaveVolume)
-        Me.Panel2.Controls.Add(Me.RadVolumeOff)
-        Me.Panel2.Controls.Add(Me.RadVolumeOn)
-        Me.Panel2.Location = New System.Drawing.Point(166, 110)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(297, 100)
-        Me.Panel2.TabIndex = 9
+        Me.ColumnEventDate.Text = "Event Date"
+        Me.ColumnEventDate.Width = 97
         '
-        'ButSaveVolume
+        'ColumnTime
         '
-        Me.ButSaveVolume.BackColor = System.Drawing.Color.White
-        Me.ButSaveVolume.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSaveVolume.Location = New System.Drawing.Point(101, 33)
-        Me.ButSaveVolume.Name = "ButSaveVolume"
-        Me.ButSaveVolume.Size = New System.Drawing.Size(135, 28)
-        Me.ButSaveVolume.TabIndex = 10
-        Me.ButSaveVolume.Text = "Save"
-        Me.ButSaveVolume.UseVisualStyleBackColor = False
+        Me.ColumnTime.Text = "Time"
+        Me.ColumnTime.Width = 88
         '
-        'RadVolumeOff
+        'ColumnVenue
         '
-        Me.RadVolumeOff.AutoSize = True
-        Me.RadVolumeOff.Location = New System.Drawing.Point(16, 46)
-        Me.RadVolumeOff.Name = "RadVolumeOff"
-        Me.RadVolumeOff.Size = New System.Drawing.Size(46, 22)
-        Me.RadVolumeOff.TabIndex = 11
-        Me.RadVolumeOff.Text = "Off"
-        Me.RadVolumeOff.UseVisualStyleBackColor = True
+        Me.ColumnVenue.Text = "Venue"
+        Me.ColumnVenue.Width = 196
         '
-        'RadVolumeOn
+        'ColumnWeapon
         '
-        Me.RadVolumeOn.AutoSize = True
-        Me.RadVolumeOn.Checked = True
-        Me.RadVolumeOn.Location = New System.Drawing.Point(18, 18)
-        Me.RadVolumeOn.Name = "RadVolumeOn"
-        Me.RadVolumeOn.Size = New System.Drawing.Size(46, 22)
-        Me.RadVolumeOn.TabIndex = 10
-        Me.RadVolumeOn.TabStop = True
-        Me.RadVolumeOn.Text = "On"
-        Me.RadVolumeOn.UseVisualStyleBackColor = True
+        Me.ColumnWeapon.Text = "Weapon"
+        Me.ColumnWeapon.Width = 107
         '
-        'Label16
+        'ColumnGroup
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(51, 66)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(157, 18)
-        Me.Label16.TabIndex = 7
-        Me.Label16.Text = "Disable/Enable Sound:"
+        Me.ColumnGroup.Text = "Group"
+        Me.ColumnGroup.Width = 161
         '
-        'Label15
+        'Label6
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(51, 222)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(258, 18)
-        Me.Label15.TabIndex = 3
-        Me.Label15.Text = "Reset Extras/Search Panel Locations:"
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label6.Location = New System.Drawing.Point(247, 135)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(87, 20)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Search for:"
         '
-        'ButCloseSettings
+        'TexSearch
         '
-        Me.ButCloseSettings.BackColor = System.Drawing.Color.White
-        Me.ButCloseSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButCloseSettings.Location = New System.Drawing.Point(424, 351)
-        Me.ButCloseSettings.Name = "ButCloseSettings"
-        Me.ButCloseSettings.Size = New System.Drawing.Size(112, 28)
-        Me.ButCloseSettings.TabIndex = 1
-        Me.ButCloseSettings.Text = "Close Settings"
-        Me.ButCloseSettings.UseVisualStyleBackColor = False
+        Me.TexSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.TexSearch.Location = New System.Drawing.Point(340, 134)
+        Me.TexSearch.Multiline = False
+        Me.TexSearch.Name = "TexSearch"
+        Me.TexSearch.Size = New System.Drawing.Size(259, 26)
+        Me.TexSearch.TabIndex = 2
+        Me.TexSearch.Text = ""
         '
-        'PicVolumeOn
+        'PanelSelectedFields
         '
-        Me.PicVolumeOn.BackgroundImage = Global.FencingManager.My.Resources.Resources.volume_icon_on
-        Me.PicVolumeOn.Location = New System.Drawing.Point(54, 102)
-        Me.PicVolumeOn.Name = "PicVolumeOn"
-        Me.PicVolumeOn.Size = New System.Drawing.Size(100, 100)
-        Me.PicVolumeOn.TabIndex = 8
-        Me.PicVolumeOn.TabStop = False
-        '
-        'PanelHelp
-        '
-        Me.PanelHelp.BackColor = System.Drawing.Color.CadetBlue
-        Me.PanelHelp.Controls.Add(Me.ButCloseHelp)
-        Me.PanelHelp.Controls.Add(Me.RichTextBox1)
-        Me.PanelHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelHelp.Location = New System.Drawing.Point(382, 190)
-        Me.PanelHelp.Name = "PanelHelp"
-        Me.PanelHelp.Size = New System.Drawing.Size(546, 391)
-        Me.PanelHelp.TabIndex = 80
-        Me.PanelHelp.TabStop = False
-        Me.PanelHelp.Text = "Help"
-        Me.PanelHelp.Visible = False
-        '
-        'ButCloseHelp
-        '
-        Me.ButCloseHelp.BackColor = System.Drawing.Color.White
-        Me.ButCloseHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButCloseHelp.Location = New System.Drawing.Point(424, 351)
-        Me.ButCloseHelp.Name = "ButCloseHelp"
-        Me.ButCloseHelp.Size = New System.Drawing.Size(112, 28)
-        Me.ButCloseHelp.TabIndex = 1
-        Me.ButCloseHelp.Text = "Close Help"
-        Me.ButCloseHelp.UseVisualStyleBackColor = False
-        '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.SteelBlue
-        Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(14, 34)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(520, 306)
-        Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
-        '
-        'ButSettings
-        '
-        Me.ButSettings.BackColor = System.Drawing.Color.White
-        Me.ButSettings.BackgroundImage = Global.FencingManager.My.Resources.Resources.gear_icon1
-        Me.ButSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButSettings.Location = New System.Drawing.Point(45, 116)
-        Me.ButSettings.Name = "ButSettings"
-        Me.ButSettings.Size = New System.Drawing.Size(33, 32)
-        Me.ButSettings.TabIndex = 87
-        Me.ButSettings.UseVisualStyleBackColor = False
-        '
-        'SearchGroupBox
-        '
-        Me.SearchGroupBox.BackColor = System.Drawing.Color.SteelBlue
-        Me.SearchGroupBox.Controls.Add(Me.PanelWeaponChoices)
-        Me.SearchGroupBox.Controls.Add(Me.Panel1)
-        Me.SearchGroupBox.Controls.Add(Me.ButAdvancedSearch)
-        Me.SearchGroupBox.Controls.Add(Me.ButCloseAdvancedSearch)
-        Me.SearchGroupBox.Controls.Add(Me.Label12)
-        Me.SearchGroupBox.Controls.Add(Me.ListView1)
-        Me.SearchGroupBox.Controls.Add(Me.CheckBoxAdvancedSearch)
-        Me.SearchGroupBox.Controls.Add(Me.ButSearchHide)
-        Me.SearchGroupBox.Controls.Add(Me.PicSearchSlider)
-        Me.SearchGroupBox.Controls.Add(Me.ButSearch)
-        Me.SearchGroupBox.Controls.Add(Me.DateTimePickerSearch)
-        Me.SearchGroupBox.Controls.Add(Me.RadDate)
-        Me.SearchGroupBox.Controls.Add(Me.RadEventName)
-        Me.SearchGroupBox.Controls.Add(Me.Label7)
-        Me.SearchGroupBox.Controls.Add(Me.TexSearch)
-        Me.SearchGroupBox.Controls.Add(Me.Label6)
-        Me.SearchGroupBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchGroupBox.ForeColor = System.Drawing.Color.Blue
-        Me.SearchGroupBox.Location = New System.Drawing.Point(14, 161)
-        Me.SearchGroupBox.Name = "SearchGroupBox"
-        Me.SearchGroupBox.Size = New System.Drawing.Size(173, 190)
-        Me.SearchGroupBox.TabIndex = 79
-        Me.SearchGroupBox.TabStop = False
-        Me.SearchGroupBox.Text = "Search"
-        '
-        'PanelWeaponChoices
-        '
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceEpee)
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceNoWeapon)
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceSabre)
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceFoil)
-        Me.PanelWeaponChoices.Location = New System.Drawing.Point(647, 25)
-        Me.PanelWeaponChoices.Name = "PanelWeaponChoices"
-        Me.PanelWeaponChoices.Size = New System.Drawing.Size(123, 146)
-        Me.PanelWeaponChoices.TabIndex = 103
-        Me.PanelWeaponChoices.Visible = False
-        '
-        'RadChoiceEpee
-        '
-        Me.RadChoiceEpee.AutoSize = True
-        Me.RadChoiceEpee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceEpee.Location = New System.Drawing.Point(4, 118)
-        Me.RadChoiceEpee.Name = "RadChoiceEpee"
-        Me.RadChoiceEpee.Size = New System.Drawing.Size(65, 24)
-        Me.RadChoiceEpee.TabIndex = 106
-        Me.RadChoiceEpee.Text = "Epee"
-        Me.RadChoiceEpee.UseVisualStyleBackColor = True
-        '
-        'RadChoiceNoWeapon
-        '
-        Me.RadChoiceNoWeapon.AutoSize = True
-        Me.RadChoiceNoWeapon.Checked = True
-        Me.RadChoiceNoWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceNoWeapon.Location = New System.Drawing.Point(4, 31)
-        Me.RadChoiceNoWeapon.Name = "RadChoiceNoWeapon"
-        Me.RadChoiceNoWeapon.Size = New System.Drawing.Size(111, 24)
-        Me.RadChoiceNoWeapon.TabIndex = 102
-        Me.RadChoiceNoWeapon.TabStop = True
-        Me.RadChoiceNoWeapon.Text = "No Weapon"
-        Me.RadChoiceNoWeapon.UseVisualStyleBackColor = True
-        '
-        'RadChoiceSabre
-        '
-        Me.RadChoiceSabre.AutoSize = True
-        Me.RadChoiceSabre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceSabre.Location = New System.Drawing.Point(4, 88)
-        Me.RadChoiceSabre.Name = "RadChoiceSabre"
-        Me.RadChoiceSabre.Size = New System.Drawing.Size(70, 24)
-        Me.RadChoiceSabre.TabIndex = 105
-        Me.RadChoiceSabre.Text = "Sabre"
-        Me.RadChoiceSabre.UseVisualStyleBackColor = True
-        '
-        'RadChoiceFoil
-        '
-        Me.RadChoiceFoil.AutoSize = True
-        Me.RadChoiceFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceFoil.Location = New System.Drawing.Point(4, 59)
-        Me.RadChoiceFoil.Name = "RadChoiceFoil"
-        Me.RadChoiceFoil.Size = New System.Drawing.Size(52, 24)
-        Me.RadChoiceFoil.TabIndex = 104
-        Me.RadChoiceFoil.Text = "Foil"
-        Me.RadChoiceFoil.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.CheckBoxAll)
-        Me.Panel1.Controls.Add(Me.RadAdvSearchGroup)
-        Me.Panel1.Controls.Add(Me.RadAdvSearchEventName)
-        Me.Panel1.Controls.Add(Me.RadAdvSearchWeapon)
-        Me.Panel1.Controls.Add(Me.RadAdvSearchVenue)
-        Me.Panel1.Location = New System.Drawing.Point(525, 25)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(123, 146)
-        Me.Panel1.TabIndex = 102
+        Me.PanelSelectedFields.Controls.Add(Me.CheckBoxAll)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchGroup)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchEventName)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchWeapon)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchVenue)
+        Me.PanelSelectedFields.Location = New System.Drawing.Point(792, 73)
+        Me.PanelSelectedFields.Name = "PanelSelectedFields"
+        Me.PanelSelectedFields.Size = New System.Drawing.Size(123, 146)
+        Me.PanelSelectedFields.TabIndex = 102
         '
         'CheckBoxAll
         '
@@ -702,280 +528,349 @@ Partial Class Calendar
         Me.RadAdvSearchVenue.Text = "Venue"
         Me.RadAdvSearchVenue.UseVisualStyleBackColor = True
         '
-        'ButAdvancedSearch
+        'PanelWeaponChoices
         '
-        Me.ButAdvancedSearch.BackColor = System.Drawing.Color.White
-        Me.ButAdvancedSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButAdvancedSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButAdvancedSearch.Location = New System.Drawing.Point(126, 139)
-        Me.ButAdvancedSearch.Name = "ButAdvancedSearch"
-        Me.ButAdvancedSearch.Size = New System.Drawing.Size(73, 26)
-        Me.ButAdvancedSearch.TabIndex = 96
-        Me.ButAdvancedSearch.Text = "Adv Search"
-        Me.ButAdvancedSearch.UseVisualStyleBackColor = False
-        Me.ButAdvancedSearch.Visible = False
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceEpee)
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceNoWeapon)
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceSabre)
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceFoil)
+        Me.PanelWeaponChoices.Location = New System.Drawing.Point(792, 73)
+        Me.PanelWeaponChoices.Name = "PanelWeaponChoices"
+        Me.PanelWeaponChoices.Size = New System.Drawing.Size(123, 146)
+        Me.PanelWeaponChoices.TabIndex = 103
         '
-        'ButCloseAdvancedSearch
+        'RadChoiceEpee
         '
-        Me.ButCloseAdvancedSearch.BackColor = System.Drawing.Color.White
-        Me.ButCloseAdvancedSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButCloseAdvancedSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButCloseAdvancedSearch.Location = New System.Drawing.Point(769, 59)
-        Me.ButCloseAdvancedSearch.Name = "ButCloseAdvancedSearch"
-        Me.ButCloseAdvancedSearch.Size = New System.Drawing.Size(70, 78)
-        Me.ButCloseAdvancedSearch.TabIndex = 94
-        Me.ButCloseAdvancedSearch.Text = "Close Adv Search"
-        Me.ButCloseAdvancedSearch.UseVisualStyleBackColor = False
+        Me.RadChoiceEpee.AutoSize = True
+        Me.RadChoiceEpee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceEpee.Location = New System.Drawing.Point(9, 118)
+        Me.RadChoiceEpee.Name = "RadChoiceEpee"
+        Me.RadChoiceEpee.Size = New System.Drawing.Size(65, 24)
+        Me.RadChoiceEpee.TabIndex = 106
+        Me.RadChoiceEpee.Text = "Epee"
+        Me.RadChoiceEpee.UseVisualStyleBackColor = True
         '
-        'Label12
+        'RadChoiceNoWeapon
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label12.Location = New System.Drawing.Point(364, 88)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(159, 20)
-        Me.Label12.TabIndex = 93
-        Me.Label12.Text = "In the selected fields:"
+        Me.RadChoiceNoWeapon.AutoSize = True
+        Me.RadChoiceNoWeapon.Checked = True
+        Me.RadChoiceNoWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceNoWeapon.Location = New System.Drawing.Point(9, 31)
+        Me.RadChoiceNoWeapon.Name = "RadChoiceNoWeapon"
+        Me.RadChoiceNoWeapon.Size = New System.Drawing.Size(111, 24)
+        Me.RadChoiceNoWeapon.TabIndex = 102
+        Me.RadChoiceNoWeapon.TabStop = True
+        Me.RadChoiceNoWeapon.Text = "No Weapon"
+        Me.RadChoiceNoWeapon.UseVisualStyleBackColor = True
         '
-        'ListView1
+        'RadChoiceSabre
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnEventName, Me.ColumnEventDate, Me.ColumnTime, Me.ColumnVenue, Me.ColumnWeapon, Me.ColumnGroup})
-        Me.ListView1.Enabled = False
-        Me.ListView1.GridLines = True
-        Me.ListView1.Location = New System.Drawing.Point(23, 195)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(816, 291)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.RadChoiceSabre.AutoSize = True
+        Me.RadChoiceSabre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceSabre.Location = New System.Drawing.Point(9, 87)
+        Me.RadChoiceSabre.Name = "RadChoiceSabre"
+        Me.RadChoiceSabre.Size = New System.Drawing.Size(70, 24)
+        Me.RadChoiceSabre.TabIndex = 105
+        Me.RadChoiceSabre.Text = "Sabre"
+        Me.RadChoiceSabre.UseVisualStyleBackColor = True
         '
-        'ColumnEventName
+        'RadChoiceFoil
         '
-        Me.ColumnEventName.Text = "Event Name"
-        Me.ColumnEventName.Width = 178
+        Me.RadChoiceFoil.AutoSize = True
+        Me.RadChoiceFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceFoil.Location = New System.Drawing.Point(9, 59)
+        Me.RadChoiceFoil.Name = "RadChoiceFoil"
+        Me.RadChoiceFoil.Size = New System.Drawing.Size(52, 24)
+        Me.RadChoiceFoil.TabIndex = 104
+        Me.RadChoiceFoil.Text = "Foil"
+        Me.RadChoiceFoil.UseVisualStyleBackColor = True
         '
-        'ColumnEventDate
+        'ControlPanelSettings
         '
-        Me.ColumnEventDate.Text = "Event Date"
-        Me.ColumnEventDate.Width = 97
+        Me.ControlPanelSettings.Controls.Add(Me.GroupBoxSettings)
+        Me.ControlPanelSettings.Location = New System.Drawing.Point(443, 160)
+        Me.ControlPanelSettings.Name = "ControlPanelSettings"
+        Me.ControlPanelSettings.Size = New System.Drawing.Size(224, 134)
+        Me.ControlPanelSettings.TabIndex = 91
         '
-        'ColumnTime
+        'GroupBoxSettings
         '
-        Me.ColumnTime.Text = "Time"
-        Me.ColumnTime.Width = 88
+        Me.GroupBoxSettings.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBoxSettings.Controls.Add(Me.Panel3)
+        Me.GroupBoxSettings.Controls.Add(Me.Panel2)
+        Me.GroupBoxSettings.Controls.Add(Me.Label16)
+        Me.GroupBoxSettings.Controls.Add(Me.ButResetPosition)
+        Me.GroupBoxSettings.Controls.Add(Me.Label15)
+        Me.GroupBoxSettings.Controls.Add(Me.PicVolumeOn)
+        Me.GroupBoxSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBoxSettings.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBoxSettings.Name = "GroupBoxSettings"
+        Me.GroupBoxSettings.Size = New System.Drawing.Size(1281, 658)
+        Me.GroupBoxSettings.TabIndex = 81
+        Me.GroupBoxSettings.TabStop = False
+        Me.GroupBoxSettings.Text = "Settings"
         '
-        'ColumnVenue
+        'Panel3
         '
-        Me.ColumnVenue.Text = "Venue"
-        Me.ColumnVenue.Width = 163
+        Me.Panel3.Controls.Add(Me.RadResetPositionSearch)
+        Me.Panel3.Controls.Add(Me.RadResetPositionCalendar)
+        Me.Panel3.Controls.Add(Me.CheckBoxResetPositionBoth)
+        Me.Panel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel3.Location = New System.Drawing.Point(893, 259)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(186, 143)
+        Me.Panel3.TabIndex = 12
+        Me.Panel3.Visible = False
         '
-        'ColumnWeapon
+        'RadResetPositionSearch
         '
-        Me.ColumnWeapon.Text = "Weapon"
-        Me.ColumnWeapon.Width = 100
+        Me.RadResetPositionSearch.AutoSize = True
+        Me.RadResetPositionSearch.Enabled = False
+        Me.RadResetPositionSearch.Location = New System.Drawing.Point(36, 74)
+        Me.RadResetPositionSearch.Name = "RadResetPositionSearch"
+        Me.RadResetPositionSearch.Size = New System.Drawing.Size(78, 24)
+        Me.RadResetPositionSearch.TabIndex = 10
+        Me.RadResetPositionSearch.TabStop = True
+        Me.RadResetPositionSearch.Text = "Search"
+        Me.RadResetPositionSearch.UseVisualStyleBackColor = True
         '
-        'ColumnGroup
+        'RadResetPositionCalendar
         '
-        Me.ColumnGroup.Text = "Group"
-        Me.ColumnGroup.Width = 186
+        Me.RadResetPositionCalendar.AutoSize = True
+        Me.RadResetPositionCalendar.Enabled = False
+        Me.RadResetPositionCalendar.Location = New System.Drawing.Point(36, 46)
+        Me.RadResetPositionCalendar.Name = "RadResetPositionCalendar"
+        Me.RadResetPositionCalendar.Size = New System.Drawing.Size(129, 24)
+        Me.RadResetPositionCalendar.TabIndex = 9
+        Me.RadResetPositionCalendar.TabStop = True
+        Me.RadResetPositionCalendar.Text = "Calendar View"
+        Me.RadResetPositionCalendar.UseVisualStyleBackColor = True
         '
-        'CheckBoxAdvancedSearch
+        'CheckBoxResetPositionBoth
         '
-        Me.CheckBoxAdvancedSearch.AutoSize = True
-        Me.CheckBoxAdvancedSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxAdvancedSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBoxAdvancedSearch.Location = New System.Drawing.Point(209, 143)
-        Me.CheckBoxAdvancedSearch.Name = "CheckBoxAdvancedSearch"
-        Me.CheckBoxAdvancedSearch.Size = New System.Drawing.Size(135, 20)
-        Me.CheckBoxAdvancedSearch.TabIndex = 87
-        Me.CheckBoxAdvancedSearch.Text = "Advanced Search"
-        Me.CheckBoxAdvancedSearch.UseVisualStyleBackColor = True
+        Me.CheckBoxResetPositionBoth.AutoSize = True
+        Me.CheckBoxResetPositionBoth.Checked = True
+        Me.CheckBoxResetPositionBoth.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBoxResetPositionBoth.Location = New System.Drawing.Point(38, 18)
+        Me.CheckBoxResetPositionBoth.Name = "CheckBoxResetPositionBoth"
+        Me.CheckBoxResetPositionBoth.Size = New System.Drawing.Size(62, 24)
+        Me.CheckBoxResetPositionBoth.TabIndex = 8
+        Me.CheckBoxResetPositionBoth.Text = "Both"
+        Me.CheckBoxResetPositionBoth.UseVisualStyleBackColor = True
         '
-        'ButSearchHide
+        'Panel2
         '
-        Me.ButSearchHide.BackColor = System.Drawing.Color.White
-        Me.ButSearchHide.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSearchHide.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButSearchHide.Location = New System.Drawing.Point(23, 139)
-        Me.ButSearchHide.Name = "ButSearchHide"
-        Me.ButSearchHide.Size = New System.Drawing.Size(76, 26)
-        Me.ButSearchHide.TabIndex = 79
-        Me.ButSearchHide.Text = "Hide"
-        Me.ButSearchHide.UseVisualStyleBackColor = False
+        Me.Panel2.Controls.Add(Me.ButSaveVolume)
+        Me.Panel2.Controls.Add(Me.RadVolumeOff)
+        Me.Panel2.Controls.Add(Me.RadVolumeOn)
+        Me.Panel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel2.Location = New System.Drawing.Point(298, 146)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(361, 120)
+        Me.Panel2.TabIndex = 9
+        '
+        'ButSaveVolume
+        '
+        Me.ButSaveVolume.BackColor = System.Drawing.Color.White
+        Me.ButSaveVolume.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButSaveVolume.Location = New System.Drawing.Point(187, 31)
+        Me.ButSaveVolume.Name = "ButSaveVolume"
+        Me.ButSaveVolume.Size = New System.Drawing.Size(135, 28)
+        Me.ButSaveVolume.TabIndex = 10
+        Me.ButSaveVolume.Text = "Save"
+        Me.ButSaveVolume.UseVisualStyleBackColor = False
+        '
+        'RadVolumeOff
+        '
+        Me.RadVolumeOff.AutoSize = True
+        Me.RadVolumeOff.Location = New System.Drawing.Point(18, 46)
+        Me.RadVolumeOff.Name = "RadVolumeOff"
+        Me.RadVolumeOff.Size = New System.Drawing.Size(49, 24)
+        Me.RadVolumeOff.TabIndex = 11
+        Me.RadVolumeOff.Text = "Off"
+        Me.RadVolumeOff.UseVisualStyleBackColor = True
+        '
+        'RadVolumeOn
+        '
+        Me.RadVolumeOn.AutoSize = True
+        Me.RadVolumeOn.Checked = True
+        Me.RadVolumeOn.Location = New System.Drawing.Point(18, 18)
+        Me.RadVolumeOn.Name = "RadVolumeOn"
+        Me.RadVolumeOn.Size = New System.Drawing.Size(48, 24)
+        Me.RadVolumeOn.TabIndex = 10
+        Me.RadVolumeOn.TabStop = True
+        Me.RadVolumeOn.Text = "On"
+        Me.RadVolumeOn.UseVisualStyleBackColor = True
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(156, 98)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(203, 24)
+        Me.Label16.TabIndex = 7
+        Me.Label16.Text = "Disable/Enable Sound:"
+        '
+        'ButResetPosition
+        '
+        Me.ButResetPosition.BackColor = System.Drawing.Color.White
+        Me.ButResetPosition.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButResetPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButResetPosition.Location = New System.Drawing.Point(485, 365)
+        Me.ButResetPosition.Name = "ButResetPosition"
+        Me.ButResetPosition.Size = New System.Drawing.Size(135, 28)
+        Me.ButResetPosition.TabIndex = 7
+        Me.ButResetPosition.Text = "Reset Position"
+        Me.ButResetPosition.UseVisualStyleBackColor = False
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(156, 293)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(521, 24)
+        Me.Label15.TabIndex = 3
+        Me.Label15.Text = "Reset Calendar View location for the Virtual Calendar Display:"
+        '
+        'PicVolumeOn
+        '
+        Me.PicVolumeOn.BackgroundImage = Global.FencingManager.My.Resources.Resources.volume_icon_on
+        Me.PicVolumeOn.Location = New System.Drawing.Point(178, 140)
+        Me.PicVolumeOn.Name = "PicVolumeOn"
+        Me.PicVolumeOn.Size = New System.Drawing.Size(100, 100)
+        Me.PicVolumeOn.TabIndex = 8
+        Me.PicVolumeOn.TabStop = False
+        '
+        'ControlPanelCalendar
+        '
+        Me.ControlPanelCalendar.BackColor = System.Drawing.Color.SteelBlue
+        Me.ControlPanelCalendar.Controls.Add(Me.PanelImportedCalendar)
+        Me.ControlPanelCalendar.Controls.Add(Me.LabelDetails)
+        Me.ControlPanelCalendar.Controls.Add(Me.PanInput)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox7)
+        Me.ControlPanelCalendar.Controls.Add(Me.LabNoEventScheduled)
+        Me.ControlPanelCalendar.Controls.Add(Me.LabClickToBegin)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox5)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox6)
+        Me.ControlPanelCalendar.Controls.Add(Me.PanelControls)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox3)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox4)
+        Me.ControlPanelCalendar.Controls.Add(Me.btnPrevMonth)
+        Me.ControlPanelCalendar.Controls.Add(Me.btnNextMonth)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox2)
+        Me.ControlPanelCalendar.Controls.Add(Me.TextBox1)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansa6)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansa5)
+        Me.ControlPanelCalendar.Controls.Add(Me.panf6)
+        Me.ControlPanelCalendar.Controls.Add(Me.panf5)
+        Me.ControlPanelCalendar.Controls.Add(Me.panth6)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansa3)
+        Me.ControlPanelCalendar.Controls.Add(Me.panw6)
+        Me.ControlPanelCalendar.Controls.Add(Me.panth5)
+        Me.ControlPanelCalendar.Controls.Add(Me.panm6)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansa1)
+        Me.ControlPanelCalendar.Controls.Add(Me.pantu6)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansu6)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansa4)
+        Me.ControlPanelCalendar.Controls.Add(Me.panf3)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansa2)
+        Me.ControlPanelCalendar.Controls.Add(Me.panf1)
+        Me.ControlPanelCalendar.Controls.Add(Me.panth4)
+        Me.ControlPanelCalendar.Controls.Add(Me.panf4)
+        Me.ControlPanelCalendar.Controls.Add(Me.panth3)
+        Me.ControlPanelCalendar.Controls.Add(Me.panf2)
+        Me.ControlPanelCalendar.Controls.Add(Me.panth2)
+        Me.ControlPanelCalendar.Controls.Add(Me.panth1)
+        Me.ControlPanelCalendar.Controls.Add(Me.panw5)
+        Me.ControlPanelCalendar.Controls.Add(Me.panm5)
+        Me.ControlPanelCalendar.Controls.Add(Me.pantu5)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansu5)
+        Me.ControlPanelCalendar.Controls.Add(Me.panw3)
+        Me.ControlPanelCalendar.Controls.Add(Me.panm3)
+        Me.ControlPanelCalendar.Controls.Add(Me.panw1)
+        Me.ControlPanelCalendar.Controls.Add(Me.panm1)
+        Me.ControlPanelCalendar.Controls.Add(Me.pantu4)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansu4)
+        Me.ControlPanelCalendar.Controls.Add(Me.panw4)
+        Me.ControlPanelCalendar.Controls.Add(Me.panm4)
+        Me.ControlPanelCalendar.Controls.Add(Me.pantu3)
+        Me.ControlPanelCalendar.Controls.Add(Me.panw2)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansu3)
+        Me.ControlPanelCalendar.Controls.Add(Me.pantu2)
+        Me.ControlPanelCalendar.Controls.Add(Me.panm2)
+        Me.ControlPanelCalendar.Controls.Add(Me.pantu1)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansu2)
+        Me.ControlPanelCalendar.Controls.Add(Me.pansu1)
+        Me.ControlPanelCalendar.Location = New System.Drawing.Point(3, 116)
+        Me.ControlPanelCalendar.Name = "ControlPanelCalendar"
+        Me.ControlPanelCalendar.Size = New System.Drawing.Size(169, 166)
+        Me.ControlPanelCalendar.TabIndex = 88
+        '
+        'PanelImportedCalendar
+        '
+        Me.PanelImportedCalendar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelImportedCalendar.Controls.Add(Me.ButMinimisedView)
+        Me.PanelImportedCalendar.Controls.Add(Me.PicSearchSlider)
+        Me.PanelImportedCalendar.Controls.Add(Me.MonthCalendar1)
+        Me.PanelImportedCalendar.Controls.Add(Me.ButExpandedView)
+        Me.PanelImportedCalendar.Location = New System.Drawing.Point(864, 422)
+        Me.PanelImportedCalendar.Name = "PanelImportedCalendar"
+        Me.PanelImportedCalendar.Size = New System.Drawing.Size(256, 227)
+        Me.PanelImportedCalendar.TabIndex = 138
+        '
+        'ButMinimisedView
+        '
+        Me.ButMinimisedView.BackColor = System.Drawing.Color.White
+        Me.ButMinimisedView.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButMinimisedView.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButMinimisedView.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButMinimisedView.Location = New System.Drawing.Point(14, 341)
+        Me.ButMinimisedView.Name = "ButMinimisedView"
+        Me.ButMinimisedView.Size = New System.Drawing.Size(121, 25)
+        Me.ButMinimisedView.TabIndex = 140
+        Me.ButMinimisedView.Text = "Minimised View"
+        Me.ButMinimisedView.UseVisualStyleBackColor = False
         '
         'PicSearchSlider
         '
         Me.PicSearchSlider.BackColor = System.Drawing.Color.Maroon
-        Me.PicSearchSlider.Location = New System.Drawing.Point(150, -4)
+        Me.PicSearchSlider.Location = New System.Drawing.Point(92, 0)
         Me.PicSearchSlider.Name = "PicSearchSlider"
         Me.PicSearchSlider.Size = New System.Drawing.Size(61, 13)
-        Me.PicSearchSlider.TabIndex = 78
+        Me.PicSearchSlider.TabIndex = 139
         Me.PicSearchSlider.TabStop = False
         '
-        'ButSearch
+        'MonthCalendar1
         '
-        Me.ButSearch.BackColor = System.Drawing.Color.White
-        Me.ButSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButSearch.Location = New System.Drawing.Point(126, 139)
-        Me.ButSearch.Name = "ButSearch"
-        Me.ButSearch.Size = New System.Drawing.Size(73, 26)
-        Me.ButSearch.TabIndex = 8
-        Me.ButSearch.Text = "Search"
-        Me.ButSearch.UseVisualStyleBackColor = False
+        Me.MonthCalendar1.Location = New System.Drawing.Point(14, 16)
+        Me.MonthCalendar1.MaxSelectionCount = 1
+        Me.MonthCalendar1.Name = "MonthCalendar1"
+        Me.MonthCalendar1.TabIndex = 136
         '
-        'DateTimePickerSearch
+        'ButExpandedView
         '
-        Me.DateTimePickerSearch.CalendarMonthBackground = System.Drawing.SystemColors.Control
-        Me.DateTimePickerSearch.Location = New System.Drawing.Point(126, 86)
-        Me.DateTimePickerSearch.Name = "DateTimePickerSearch"
-        Me.DateTimePickerSearch.Size = New System.Drawing.Size(211, 26)
-        Me.DateTimePickerSearch.TabIndex = 7
-        Me.DateTimePickerSearch.Visible = False
-        '
-        'RadDate
-        '
-        Me.RadDate.AutoSize = True
-        Me.RadDate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.RadDate.Location = New System.Drawing.Point(275, 43)
-        Me.RadDate.Name = "RadDate"
-        Me.RadDate.Size = New System.Drawing.Size(62, 24)
-        Me.RadDate.TabIndex = 6
-        Me.RadDate.Text = "Date"
-        Me.RadDate.UseVisualStyleBackColor = True
-        '
-        'RadEventName
-        '
-        Me.RadEventName.AutoSize = True
-        Me.RadEventName.Checked = True
-        Me.RadEventName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.RadEventName.Location = New System.Drawing.Point(126, 43)
-        Me.RadEventName.Name = "RadEventName"
-        Me.RadEventName.Size = New System.Drawing.Size(114, 24)
-        Me.RadEventName.TabIndex = 5
-        Me.RadEventName.TabStop = True
-        Me.RadEventName.Text = "Event Name"
-        Me.RadEventName.UseVisualStyleBackColor = True
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label7.Location = New System.Drawing.Point(19, 45)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(80, 20)
-        Me.Label7.TabIndex = 4
-        Me.Label7.Text = "Search in:"
-        '
-        'TexSearch
-        '
-        Me.TexSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.TexSearch.Location = New System.Drawing.Point(126, 86)
-        Me.TexSearch.Multiline = False
-        Me.TexSearch.Name = "TexSearch"
-        Me.TexSearch.Size = New System.Drawing.Size(211, 26)
-        Me.TexSearch.TabIndex = 2
-        Me.TexSearch.Text = ""
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(19, 88)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(87, 20)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Search for:"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.BackColor = System.Drawing.Color.Maroon
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(92, 34)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(170, 42)
-        Me.Label14.TabIndex = 86
-        Me.Label14.Text = "Calendar"
-        '
-        'CalendarGroupBox
-        '
-        Me.CalendarGroupBox.BackColor = System.Drawing.Color.Teal
-        Me.CalendarGroupBox.Controls.Add(Me.LabelDetails)
-        Me.CalendarGroupBox.Controls.Add(Me.PanInput)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox7)
-        Me.CalendarGroupBox.Controls.Add(Me.LabNoEventScheduled)
-        Me.CalendarGroupBox.Controls.Add(Me.LabClickToBegin)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox5)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox6)
-        Me.CalendarGroupBox.Controls.Add(Me.PanelControls)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox3)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox4)
-        Me.CalendarGroupBox.Controls.Add(Me.btnPrevMonth)
-        Me.CalendarGroupBox.Controls.Add(Me.btnNextMonth)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox2)
-        Me.CalendarGroupBox.Controls.Add(Me.TextBox1)
-        Me.CalendarGroupBox.Controls.Add(Me.pansa6)
-        Me.CalendarGroupBox.Controls.Add(Me.pansa5)
-        Me.CalendarGroupBox.Controls.Add(Me.panf6)
-        Me.CalendarGroupBox.Controls.Add(Me.panf5)
-        Me.CalendarGroupBox.Controls.Add(Me.panth6)
-        Me.CalendarGroupBox.Controls.Add(Me.pansa3)
-        Me.CalendarGroupBox.Controls.Add(Me.panw6)
-        Me.CalendarGroupBox.Controls.Add(Me.panth5)
-        Me.CalendarGroupBox.Controls.Add(Me.panm6)
-        Me.CalendarGroupBox.Controls.Add(Me.pansa1)
-        Me.CalendarGroupBox.Controls.Add(Me.pantu6)
-        Me.CalendarGroupBox.Controls.Add(Me.pansu6)
-        Me.CalendarGroupBox.Controls.Add(Me.pansa4)
-        Me.CalendarGroupBox.Controls.Add(Me.panf3)
-        Me.CalendarGroupBox.Controls.Add(Me.pansa2)
-        Me.CalendarGroupBox.Controls.Add(Me.panf1)
-        Me.CalendarGroupBox.Controls.Add(Me.panth4)
-        Me.CalendarGroupBox.Controls.Add(Me.panf4)
-        Me.CalendarGroupBox.Controls.Add(Me.panth3)
-        Me.CalendarGroupBox.Controls.Add(Me.panf2)
-        Me.CalendarGroupBox.Controls.Add(Me.panth2)
-        Me.CalendarGroupBox.Controls.Add(Me.panth1)
-        Me.CalendarGroupBox.Controls.Add(Me.panw5)
-        Me.CalendarGroupBox.Controls.Add(Me.panm5)
-        Me.CalendarGroupBox.Controls.Add(Me.pantu5)
-        Me.CalendarGroupBox.Controls.Add(Me.pansu5)
-        Me.CalendarGroupBox.Controls.Add(Me.panw3)
-        Me.CalendarGroupBox.Controls.Add(Me.panm3)
-        Me.CalendarGroupBox.Controls.Add(Me.panw1)
-        Me.CalendarGroupBox.Controls.Add(Me.panm1)
-        Me.CalendarGroupBox.Controls.Add(Me.pantu4)
-        Me.CalendarGroupBox.Controls.Add(Me.pansu4)
-        Me.CalendarGroupBox.Controls.Add(Me.panw4)
-        Me.CalendarGroupBox.Controls.Add(Me.panm4)
-        Me.CalendarGroupBox.Controls.Add(Me.pantu3)
-        Me.CalendarGroupBox.Controls.Add(Me.panw2)
-        Me.CalendarGroupBox.Controls.Add(Me.pansu3)
-        Me.CalendarGroupBox.Controls.Add(Me.pantu2)
-        Me.CalendarGroupBox.Controls.Add(Me.panm2)
-        Me.CalendarGroupBox.Controls.Add(Me.pantu1)
-        Me.CalendarGroupBox.Controls.Add(Me.pansu2)
-        Me.CalendarGroupBox.Controls.Add(Me.pansu1)
-        Me.CalendarGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.CalendarGroupBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CalendarGroupBox.ForeColor = System.Drawing.Color.Blue
-        Me.CalendarGroupBox.Location = New System.Drawing.Point(397, 110)
-        Me.CalendarGroupBox.Name = "CalendarGroupBox"
-        Me.CalendarGroupBox.Size = New System.Drawing.Size(884, 670)
-        Me.CalendarGroupBox.TabIndex = 4
-        Me.CalendarGroupBox.TabStop = False
+        Me.ButExpandedView.BackColor = System.Drawing.Color.White
+        Me.ButExpandedView.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButExpandedView.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButExpandedView.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButExpandedView.Location = New System.Drawing.Point(14, 188)
+        Me.ButExpandedView.Name = "ButExpandedView"
+        Me.ButExpandedView.Size = New System.Drawing.Size(121, 25)
+        Me.ButExpandedView.TabIndex = 75
+        Me.ButExpandedView.Text = "Expanded View"
+        Me.ButExpandedView.UseVisualStyleBackColor = False
         '
         'LabelDetails
         '
         Me.LabelDetails.AutoSize = True
-        Me.LabelDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelDetails.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.LabelDetails.Location = New System.Drawing.Point(20, 0)
+        Me.LabelDetails.Location = New System.Drawing.Point(859, 19)
         Me.LabelDetails.Name = "LabelDetails"
-        Me.LabelDetails.Size = New System.Drawing.Size(100, 18)
-        Me.LabelDetails.TabIndex = 79
+        Me.LabelDetails.Size = New System.Drawing.Size(115, 20)
+        Me.LabelDetails.TabIndex = 135
         Me.LabelDetails.Text = "View Details"
         '
         'PanInput
@@ -1000,18 +895,19 @@ Partial Class Calendar
         Me.PanInput.Controls.Add(Me.Label1)
         Me.PanInput.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PanInput.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.PanInput.Location = New System.Drawing.Point(109, 27)
+        Me.PanInput.Location = New System.Drawing.Point(864, 113)
         Me.PanInput.Name = "PanInput"
-        Me.PanInput.Size = New System.Drawing.Size(571, 121)
-        Me.PanInput.TabIndex = 62
+        Me.PanInput.Size = New System.Drawing.Size(393, 244)
+        Me.PanInput.TabIndex = 132
         Me.PanInput.Visible = False
         '
         'RadioButtonPM
         '
         Me.RadioButtonPM.AutoSize = True
-        Me.RadioButtonPM.Location = New System.Drawing.Point(236, 49)
+        Me.RadioButtonPM.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.RadioButtonPM.Location = New System.Drawing.Point(302, 67)
         Me.RadioButtonPM.Name = "RadioButtonPM"
-        Me.RadioButtonPM.Size = New System.Drawing.Size(44, 19)
+        Me.RadioButtonPM.Size = New System.Drawing.Size(50, 24)
         Me.RadioButtonPM.TabIndex = 33
         Me.RadioButtonPM.TabStop = True
         Me.RadioButtonPM.Text = "PM"
@@ -1021,9 +917,10 @@ Partial Class Calendar
         '
         Me.RadioButtonAM.AutoSize = True
         Me.RadioButtonAM.Checked = True
-        Me.RadioButtonAM.Location = New System.Drawing.Point(189, 49)
+        Me.RadioButtonAM.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.RadioButtonAM.Location = New System.Drawing.Point(240, 67)
         Me.RadioButtonAM.Name = "RadioButtonAM"
-        Me.RadioButtonAM.Size = New System.Drawing.Size(43, 19)
+        Me.RadioButtonAM.Size = New System.Drawing.Size(51, 24)
         Me.RadioButtonAM.TabIndex = 32
         Me.RadioButtonAM.TabStop = True
         Me.RadioButtonAM.Text = "AM"
@@ -1033,43 +930,47 @@ Partial Class Calendar
         '
         Me.ComboBoxTime.BackColor = System.Drawing.SystemColors.Control
         Me.ComboBoxTime.Enabled = False
+        Me.ComboBoxTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBoxTime.FormattingEnabled = True
         Me.ComboBoxTime.Items.AddRange(New Object() {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"})
-        Me.ComboBoxTime.Location = New System.Drawing.Point(116, 48)
+        Me.ComboBoxTime.Location = New System.Drawing.Point(116, 65)
         Me.ComboBoxTime.Name = "ComboBoxTime"
-        Me.ComboBoxTime.Size = New System.Drawing.Size(61, 23)
+        Me.ComboBoxTime.Size = New System.Drawing.Size(96, 28)
         Me.ComboBoxTime.TabIndex = 31
         '
         'TexGroup
         '
         Me.TexGroup.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TexGroup.Location = New System.Drawing.Point(394, 87)
+        Me.TexGroup.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TexGroup.Location = New System.Drawing.Point(118, 196)
         Me.TexGroup.MaxLength = 40
         Me.TexGroup.Name = "TexGroup"
         Me.TexGroup.ReadOnly = True
-        Me.TexGroup.Size = New System.Drawing.Size(150, 23)
+        Me.TexGroup.Size = New System.Drawing.Size(234, 28)
         Me.TexGroup.TabIndex = 30
         Me.TexGroup.Text = ""
         '
         'TexVenue
         '
         Me.TexVenue.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TexVenue.Location = New System.Drawing.Point(117, 84)
+        Me.TexVenue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TexVenue.Location = New System.Drawing.Point(117, 110)
         Me.TexVenue.MaxLength = 40
         Me.TexVenue.Name = "TexVenue"
         Me.TexVenue.ReadOnly = True
-        Me.TexVenue.Size = New System.Drawing.Size(156, 23)
+        Me.TexVenue.Size = New System.Drawing.Size(235, 28)
         Me.TexVenue.TabIndex = 29
         Me.TexVenue.Text = ""
         '
         'TexEventName
         '
         Me.TexEventName.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TexEventName.Location = New System.Drawing.Point(117, 13)
+        Me.TexEventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TexEventName.Location = New System.Drawing.Point(116, 20)
         Me.TexEventName.MaxLength = 40
         Me.TexEventName.Name = "TexEventName"
         Me.TexEventName.ReadOnly = True
-        Me.TexEventName.Size = New System.Drawing.Size(427, 23)
+        Me.TexEventName.Size = New System.Drawing.Size(236, 28)
         Me.TexEventName.TabIndex = 27
         Me.TexEventName.Text = ""
         '
@@ -1078,7 +979,7 @@ Partial Class Calendar
         Me.WarningGroup.AutoSize = True
         Me.WarningGroup.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WarningGroup.ForeColor = System.Drawing.Color.Gold
-        Me.WarningGroup.Location = New System.Drawing.Point(550, 84)
+        Me.WarningGroup.Location = New System.Drawing.Point(354, 198)
         Me.WarningGroup.Name = "WarningGroup"
         Me.WarningGroup.Size = New System.Drawing.Size(16, 24)
         Me.WarningGroup.TabIndex = 25
@@ -1090,7 +991,7 @@ Partial Class Calendar
         Me.WarningWeapon.AutoSize = True
         Me.WarningWeapon.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WarningWeapon.ForeColor = System.Drawing.Color.Gold
-        Me.WarningWeapon.Location = New System.Drawing.Point(550, 45)
+        Me.WarningWeapon.Location = New System.Drawing.Point(354, 156)
         Me.WarningWeapon.Name = "WarningWeapon"
         Me.WarningWeapon.Size = New System.Drawing.Size(16, 24)
         Me.WarningWeapon.TabIndex = 24
@@ -1102,7 +1003,7 @@ Partial Class Calendar
         Me.WarningVenue.AutoSize = True
         Me.WarningVenue.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WarningVenue.ForeColor = System.Drawing.Color.Gold
-        Me.WarningVenue.Location = New System.Drawing.Point(279, 82)
+        Me.WarningVenue.Location = New System.Drawing.Point(353, 111)
         Me.WarningVenue.Name = "WarningVenue"
         Me.WarningVenue.Size = New System.Drawing.Size(16, 24)
         Me.WarningVenue.TabIndex = 23
@@ -1114,7 +1015,7 @@ Partial Class Calendar
         Me.WarningTime.AutoSize = True
         Me.WarningTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WarningTime.ForeColor = System.Drawing.Color.Gold
-        Me.WarningTime.Location = New System.Drawing.Point(279, 47)
+        Me.WarningTime.Location = New System.Drawing.Point(352, 67)
         Me.WarningTime.Name = "WarningTime"
         Me.WarningTime.Size = New System.Drawing.Size(16, 24)
         Me.WarningTime.TabIndex = 22
@@ -1126,7 +1027,7 @@ Partial Class Calendar
         Me.WarningEventName.AutoSize = True
         Me.WarningEventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WarningEventName.ForeColor = System.Drawing.Color.Gold
-        Me.WarningEventName.Location = New System.Drawing.Point(550, 13)
+        Me.WarningEventName.Location = New System.Drawing.Point(351, 22)
         Me.WarningEventName.Name = "WarningEventName"
         Me.WarningEventName.Size = New System.Drawing.Size(16, 24)
         Me.WarningEventName.TabIndex = 21
@@ -1137,11 +1038,12 @@ Partial Class Calendar
         '
         Me.ComboWeapon.BackColor = System.Drawing.SystemColors.Control
         Me.ComboWeapon.Enabled = False
+        Me.ComboWeapon.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboWeapon.FormattingEnabled = True
         Me.ComboWeapon.Items.AddRange(New Object() {"No Weapon", "Foil", "Sabre", "Epee"})
-        Me.ComboWeapon.Location = New System.Drawing.Point(394, 46)
+        Me.ComboWeapon.Location = New System.Drawing.Point(116, 152)
         Me.ComboWeapon.Name = "ComboWeapon"
-        Me.ComboWeapon.Size = New System.Drawing.Size(150, 23)
+        Me.ComboWeapon.Size = New System.Drawing.Size(237, 28)
         Me.ComboWeapon.TabIndex = 20
         Me.ComboWeapon.Text = "No Weapon"
         '
@@ -1149,7 +1051,7 @@ Partial Class Calendar
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(307, 84)
+        Me.Label5.Location = New System.Drawing.Point(16, 199)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(54, 20)
         Me.Label5.TabIndex = 18
@@ -1159,7 +1061,7 @@ Partial Class Calendar
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(307, 48)
+        Me.Label4.Location = New System.Drawing.Point(16, 156)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(69, 20)
         Me.Label4.TabIndex = 16
@@ -1169,7 +1071,7 @@ Partial Class Calendar
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(15, 84)
+        Me.Label3.Location = New System.Drawing.Point(16, 114)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(56, 20)
         Me.Label3.TabIndex = 14
@@ -1179,7 +1081,7 @@ Partial Class Calendar
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(15, 48)
+        Me.Label2.Location = New System.Drawing.Point(16, 69)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(43, 20)
         Me.Label2.TabIndex = 12
@@ -1189,7 +1091,7 @@ Partial Class Calendar
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(15, 15)
+        Me.Label1.Location = New System.Drawing.Point(15, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(96, 20)
         Me.Label1.TabIndex = 10
@@ -1199,11 +1101,11 @@ Partial Class Calendar
         '
         Me.TextBox7.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(743, 154)
+        Me.TextBox7.Location = New System.Drawing.Point(720, 0)
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.ReadOnly = True
         Me.TextBox7.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox7.TabIndex = 47
+        Me.TextBox7.TabIndex = 128
         Me.TextBox7.Text = "SATURDAY"
         Me.TextBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1212,10 +1114,10 @@ Partial Class Calendar
         Me.LabNoEventScheduled.AutoSize = True
         Me.LabNoEventScheduled.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabNoEventScheduled.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LabNoEventScheduled.Location = New System.Drawing.Point(271, 59)
+        Me.LabNoEventScheduled.Location = New System.Drawing.Point(906, 220)
         Me.LabNoEventScheduled.Name = "LabNoEventScheduled"
         Me.LabNoEventScheduled.Size = New System.Drawing.Size(307, 37)
-        Me.LabNoEventScheduled.TabIndex = 61
+        Me.LabNoEventScheduled.TabIndex = 131
         Me.LabNoEventScheduled.Text = "No Event Scheduled"
         Me.LabNoEventScheduled.Visible = False
         '
@@ -1224,10 +1126,10 @@ Partial Class Calendar
         Me.LabClickToBegin.AutoSize = True
         Me.LabClickToBegin.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabClickToBegin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LabClickToBegin.Location = New System.Drawing.Point(277, 50)
+        Me.LabClickToBegin.Location = New System.Drawing.Point(902, 202)
         Me.LabClickToBegin.Name = "LabClickToBegin"
         Me.LabClickToBegin.Size = New System.Drawing.Size(307, 66)
-        Me.LabClickToBegin.TabIndex = 74
+        Me.LabClickToBegin.TabIndex = 133
         Me.LabClickToBegin.Text = "Click on a date to view" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "details" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.LabClickToBegin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -1235,11 +1137,11 @@ Partial Class Calendar
         '
         Me.TextBox5.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(623, 154)
+        Me.TextBox5.Location = New System.Drawing.Point(600, 0)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.ReadOnly = True
         Me.TextBox5.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox5.TabIndex = 46
+        Me.TextBox5.TabIndex = 127
         Me.TextBox5.Text = "FRIDAY"
         Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1247,17 +1149,17 @@ Partial Class Calendar
         '
         Me.TextBox6.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(503, 154)
+        Me.TextBox6.Location = New System.Drawing.Point(480, 0)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.ReadOnly = True
         Me.TextBox6.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox6.TabIndex = 45
+        Me.TextBox6.TabIndex = 126
         Me.TextBox6.Text = "THURSDAY"
         Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'PanelControls
         '
-        Me.PanelControls.BackColor = System.Drawing.Color.Teal
+        Me.PanelControls.BackColor = System.Drawing.Color.SteelBlue
         Me.PanelControls.Controls.Add(Me.ButPrint)
         Me.PanelControls.Controls.Add(Me.ButEdit)
         Me.PanelControls.Controls.Add(Me.ButAddNew)
@@ -1266,10 +1168,10 @@ Partial Class Calendar
         Me.PanelControls.Controls.Add(Me.ButUpdate)
         Me.PanelControls.Controls.Add(Me.ButClear)
         Me.PanelControls.Controls.Add(Me.ButDelete)
-        Me.PanelControls.Location = New System.Drawing.Point(675, 13)
+        Me.PanelControls.Location = New System.Drawing.Point(864, 360)
         Me.PanelControls.Name = "PanelControls"
-        Me.PanelControls.Size = New System.Drawing.Size(94, 138)
-        Me.PanelControls.TabIndex = 78
+        Me.PanelControls.Size = New System.Drawing.Size(393, 56)
+        Me.PanelControls.TabIndex = 134
         '
         'ButPrint
         '
@@ -1277,7 +1179,7 @@ Partial Class Calendar
         Me.ButPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButPrint.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButPrint.Location = New System.Drawing.Point(8, 78)
+        Me.ButPrint.Location = New System.Drawing.Point(194, 14)
         Me.ButPrint.Name = "ButPrint"
         Me.ButPrint.Size = New System.Drawing.Size(80, 25)
         Me.ButPrint.TabIndex = 74
@@ -1291,7 +1193,7 @@ Partial Class Calendar
         Me.ButEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButEdit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButEdit.Location = New System.Drawing.Point(8, 14)
+        Me.ButEdit.Location = New System.Drawing.Point(11, 14)
         Me.ButEdit.Name = "ButEdit"
         Me.ButEdit.Size = New System.Drawing.Size(80, 25)
         Me.ButEdit.TabIndex = 73
@@ -1305,7 +1207,7 @@ Partial Class Calendar
         Me.ButAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButAddNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButAddNew.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButAddNew.Location = New System.Drawing.Point(8, 14)
+        Me.ButAddNew.Location = New System.Drawing.Point(11, 14)
         Me.ButAddNew.Name = "ButAddNew"
         Me.ButAddNew.Size = New System.Drawing.Size(80, 25)
         Me.ButAddNew.TabIndex = 67
@@ -1319,11 +1221,11 @@ Partial Class Calendar
         Me.ButCommit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButCommit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButCommit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButCommit.Location = New System.Drawing.Point(8, 46)
+        Me.ButCommit.Location = New System.Drawing.Point(102, 14)
         Me.ButCommit.Name = "ButCommit"
         Me.ButCommit.Size = New System.Drawing.Size(80, 25)
         Me.ButCommit.TabIndex = 68
-        Me.ButCommit.Text = "Commit"
+        Me.ButCommit.Text = "Save"
         Me.ButCommit.UseVisualStyleBackColor = False
         Me.ButCommit.Visible = False
         '
@@ -1333,7 +1235,7 @@ Partial Class Calendar
         Me.ButCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButCancel.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButCancel.Location = New System.Drawing.Point(8, 110)
+        Me.ButCancel.Location = New System.Drawing.Point(287, 14)
         Me.ButCancel.Name = "ButCancel"
         Me.ButCancel.Size = New System.Drawing.Size(80, 25)
         Me.ButCancel.TabIndex = 71
@@ -1347,11 +1249,11 @@ Partial Class Calendar
         Me.ButUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButUpdate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButUpdate.Location = New System.Drawing.Point(8, 46)
+        Me.ButUpdate.Location = New System.Drawing.Point(102, 14)
         Me.ButUpdate.Name = "ButUpdate"
         Me.ButUpdate.Size = New System.Drawing.Size(80, 25)
         Me.ButUpdate.TabIndex = 69
-        Me.ButUpdate.Text = "Update"
+        Me.ButUpdate.Text = "Save"
         Me.ButUpdate.UseVisualStyleBackColor = False
         Me.ButUpdate.Visible = False
         '
@@ -1361,7 +1263,7 @@ Partial Class Calendar
         Me.ButClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButClear.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButClear.Location = New System.Drawing.Point(8, 78)
+        Me.ButClear.Location = New System.Drawing.Point(194, 14)
         Me.ButClear.Name = "ButClear"
         Me.ButClear.Size = New System.Drawing.Size(80, 25)
         Me.ButClear.TabIndex = 70
@@ -1375,7 +1277,7 @@ Partial Class Calendar
         Me.ButDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButDelete.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButDelete.Location = New System.Drawing.Point(8, 46)
+        Me.ButDelete.Location = New System.Drawing.Point(102, 14)
         Me.ButDelete.Name = "ButDelete"
         Me.ButDelete.Size = New System.Drawing.Size(80, 25)
         Me.ButDelete.TabIndex = 72
@@ -1387,11 +1289,11 @@ Partial Class Calendar
         '
         Me.TextBox3.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(383, 154)
+        Me.TextBox3.Location = New System.Drawing.Point(360, 0)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox3.TabIndex = 44
+        Me.TextBox3.TabIndex = 125
         Me.TextBox3.Text = "WEDNESDAY"
         Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1399,11 +1301,11 @@ Partial Class Calendar
         '
         Me.TextBox4.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(263, 154)
+        Me.TextBox4.Location = New System.Drawing.Point(240, 0)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.ReadOnly = True
         Me.TextBox4.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox4.TabIndex = 43
+        Me.TextBox4.TabIndex = 124
         Me.TextBox4.Text = "TUESDAY"
         Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1413,10 +1315,10 @@ Partial Class Calendar
         Me.btnPrevMonth.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnPrevMonth.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPrevMonth.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnPrevMonth.Location = New System.Drawing.Point(25, 51)
+        Me.btnPrevMonth.Location = New System.Drawing.Point(864, 66)
         Me.btnPrevMonth.Name = "btnPrevMonth"
-        Me.btnPrevMonth.Size = New System.Drawing.Size(68, 63)
-        Me.btnPrevMonth.TabIndex = 49
+        Me.btnPrevMonth.Size = New System.Drawing.Size(111, 31)
+        Me.btnPrevMonth.TabIndex = 129
         Me.btnPrevMonth.Text = "Prev. Month"
         Me.btnPrevMonth.UseVisualStyleBackColor = False
         '
@@ -1426,10 +1328,10 @@ Partial Class Calendar
         Me.btnNextMonth.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnNextMonth.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNextMonth.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnNextMonth.Location = New System.Drawing.Point(776, 50)
+        Me.btnNextMonth.Location = New System.Drawing.Point(1125, 65)
         Me.btnNextMonth.Name = "btnNextMonth"
-        Me.btnNextMonth.Size = New System.Drawing.Size(68, 64)
-        Me.btnNextMonth.TabIndex = 50
+        Me.btnNextMonth.Size = New System.Drawing.Size(111, 32)
+        Me.btnNextMonth.TabIndex = 130
         Me.btnNextMonth.Text = "Next Month"
         Me.btnNextMonth.UseVisualStyleBackColor = False
         '
@@ -1437,11 +1339,11 @@ Partial Class Calendar
         '
         Me.TextBox2.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(143, 154)
+        Me.TextBox2.Location = New System.Drawing.Point(120, 0)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox2.TabIndex = 42
+        Me.TextBox2.TabIndex = 123
         Me.TextBox2.Text = "MONDAY"
         Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1449,11 +1351,11 @@ Partial Class Calendar
         '
         Me.TextBox1.BackColor = System.Drawing.Color.SteelBlue
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(23, 154)
+        Me.TextBox1.Location = New System.Drawing.Point(0, 0)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(122, 24)
-        Me.TextBox1.TabIndex = 41
+        Me.TextBox1.TabIndex = 122
         Me.TextBox1.Text = "SUNDAY"
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1463,10 +1365,10 @@ Partial Class Calendar
         Me.pansa6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansa6.Controls.Add(Me.sa6)
         Me.pansa6.Controls.Add(Me.Textsa6)
-        Me.pansa6.Location = New System.Drawing.Point(745, 577)
+        Me.pansa6.Location = New System.Drawing.Point(721, 552)
         Me.pansa6.Name = "pansa6"
-        Me.pansa6.Size = New System.Drawing.Size(120, 80)
-        Me.pansa6.TabIndex = 40
+        Me.pansa6.Size = New System.Drawing.Size(120, 106)
+        Me.pansa6.TabIndex = 121
         '
         'sa6
         '
@@ -1486,7 +1388,7 @@ Partial Class Calendar
         Me.Textsa6.Location = New System.Drawing.Point(3, 19)
         Me.Textsa6.Name = "Textsa6"
         Me.Textsa6.ReadOnly = True
-        Me.Textsa6.Size = New System.Drawing.Size(110, 55)
+        Me.Textsa6.Size = New System.Drawing.Size(110, 82)
         Me.Textsa6.TabIndex = 42
         Me.Textsa6.Text = ""
         '
@@ -1496,10 +1398,10 @@ Partial Class Calendar
         Me.pansa5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansa5.Controls.Add(Me.sa5)
         Me.pansa5.Controls.Add(Me.Textsa5)
-        Me.pansa5.Location = New System.Drawing.Point(745, 497)
+        Me.pansa5.Location = New System.Drawing.Point(721, 446)
         Me.pansa5.Name = "pansa5"
-        Me.pansa5.Size = New System.Drawing.Size(120, 80)
-        Me.pansa5.TabIndex = 33
+        Me.pansa5.Size = New System.Drawing.Size(120, 106)
+        Me.pansa5.TabIndex = 114
         '
         'sa5
         '
@@ -1519,7 +1421,7 @@ Partial Class Calendar
         Me.Textsa5.Location = New System.Drawing.Point(4, 18)
         Me.Textsa5.Name = "Textsa5"
         Me.Textsa5.ReadOnly = True
-        Me.Textsa5.Size = New System.Drawing.Size(110, 55)
+        Me.Textsa5.Size = New System.Drawing.Size(110, 82)
         Me.Textsa5.TabIndex = 41
         Me.Textsa5.Text = ""
         '
@@ -1529,10 +1431,10 @@ Partial Class Calendar
         Me.panf6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panf6.Controls.Add(Me.f6)
         Me.panf6.Controls.Add(Me.Textf6)
-        Me.panf6.Location = New System.Drawing.Point(625, 577)
+        Me.panf6.Location = New System.Drawing.Point(601, 552)
         Me.panf6.Name = "panf6"
-        Me.panf6.Size = New System.Drawing.Size(120, 80)
-        Me.panf6.TabIndex = 39
+        Me.panf6.Size = New System.Drawing.Size(120, 106)
+        Me.panf6.TabIndex = 120
         '
         'f6
         '
@@ -1552,7 +1454,7 @@ Partial Class Calendar
         Me.Textf6.Location = New System.Drawing.Point(3, 19)
         Me.Textf6.Name = "Textf6"
         Me.Textf6.ReadOnly = True
-        Me.Textf6.Size = New System.Drawing.Size(110, 55)
+        Me.Textf6.Size = New System.Drawing.Size(110, 82)
         Me.Textf6.TabIndex = 37
         Me.Textf6.Text = ""
         '
@@ -1562,10 +1464,10 @@ Partial Class Calendar
         Me.panf5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panf5.Controls.Add(Me.f5)
         Me.panf5.Controls.Add(Me.Textf5)
-        Me.panf5.Location = New System.Drawing.Point(625, 497)
+        Me.panf5.Location = New System.Drawing.Point(601, 446)
         Me.panf5.Name = "panf5"
-        Me.panf5.Size = New System.Drawing.Size(120, 80)
-        Me.panf5.TabIndex = 28
+        Me.panf5.Size = New System.Drawing.Size(120, 106)
+        Me.panf5.TabIndex = 109
         '
         'f5
         '
@@ -1585,7 +1487,7 @@ Partial Class Calendar
         Me.Textf5.Location = New System.Drawing.Point(3, 18)
         Me.Textf5.Name = "Textf5"
         Me.Textf5.ReadOnly = True
-        Me.Textf5.Size = New System.Drawing.Size(110, 55)
+        Me.Textf5.Size = New System.Drawing.Size(110, 82)
         Me.Textf5.TabIndex = 36
         Me.Textf5.Text = ""
         '
@@ -1595,10 +1497,10 @@ Partial Class Calendar
         Me.panth6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panth6.Controls.Add(Me.th6)
         Me.panth6.Controls.Add(Me.Textth6)
-        Me.panth6.Location = New System.Drawing.Point(505, 577)
+        Me.panth6.Location = New System.Drawing.Point(481, 552)
         Me.panth6.Name = "panth6"
-        Me.panth6.Size = New System.Drawing.Size(120, 80)
-        Me.panth6.TabIndex = 38
+        Me.panth6.Size = New System.Drawing.Size(120, 106)
+        Me.panth6.TabIndex = 119
         '
         'th6
         '
@@ -1618,7 +1520,7 @@ Partial Class Calendar
         Me.Textth6.Location = New System.Drawing.Point(3, 19)
         Me.Textth6.Name = "Textth6"
         Me.Textth6.ReadOnly = True
-        Me.Textth6.Size = New System.Drawing.Size(110, 55)
+        Me.Textth6.Size = New System.Drawing.Size(110, 82)
         Me.Textth6.TabIndex = 32
         Me.Textth6.Text = ""
         '
@@ -1628,10 +1530,10 @@ Partial Class Calendar
         Me.pansa3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansa3.Controls.Add(Me.sa3)
         Me.pansa3.Controls.Add(Me.Textsa3)
-        Me.pansa3.Location = New System.Drawing.Point(745, 337)
+        Me.pansa3.Location = New System.Drawing.Point(721, 234)
         Me.pansa3.Name = "pansa3"
-        Me.pansa3.Size = New System.Drawing.Size(120, 80)
-        Me.pansa3.TabIndex = 31
+        Me.pansa3.Size = New System.Drawing.Size(120, 106)
+        Me.pansa3.TabIndex = 112
         '
         'sa3
         '
@@ -1651,7 +1553,7 @@ Partial Class Calendar
         Me.Textsa3.Location = New System.Drawing.Point(3, 18)
         Me.Textsa3.Name = "Textsa3"
         Me.Textsa3.ReadOnly = True
-        Me.Textsa3.Size = New System.Drawing.Size(110, 55)
+        Me.Textsa3.Size = New System.Drawing.Size(110, 82)
         Me.Textsa3.TabIndex = 39
         Me.Textsa3.Text = ""
         '
@@ -1661,10 +1563,10 @@ Partial Class Calendar
         Me.panw6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panw6.Controls.Add(Me.w6)
         Me.panw6.Controls.Add(Me.Textw6)
-        Me.panw6.Location = New System.Drawing.Point(385, 577)
+        Me.panw6.Location = New System.Drawing.Point(361, 552)
         Me.panw6.Name = "panw6"
-        Me.panw6.Size = New System.Drawing.Size(120, 80)
-        Me.panw6.TabIndex = 37
+        Me.panw6.Size = New System.Drawing.Size(120, 106)
+        Me.panw6.TabIndex = 118
         '
         'w6
         '
@@ -1684,7 +1586,7 @@ Partial Class Calendar
         Me.Textw6.Location = New System.Drawing.Point(3, 19)
         Me.Textw6.Name = "Textw6"
         Me.Textw6.ReadOnly = True
-        Me.Textw6.Size = New System.Drawing.Size(110, 55)
+        Me.Textw6.Size = New System.Drawing.Size(110, 82)
         Me.Textw6.TabIndex = 27
         Me.Textw6.Text = ""
         '
@@ -1694,10 +1596,10 @@ Partial Class Calendar
         Me.panth5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panth5.Controls.Add(Me.th5)
         Me.panth5.Controls.Add(Me.Textth5)
-        Me.panth5.Location = New System.Drawing.Point(505, 497)
+        Me.panth5.Location = New System.Drawing.Point(481, 446)
         Me.panth5.Name = "panth5"
-        Me.panth5.Size = New System.Drawing.Size(120, 80)
-        Me.panth5.TabIndex = 23
+        Me.panth5.Size = New System.Drawing.Size(120, 106)
+        Me.panth5.TabIndex = 104
         '
         'th5
         '
@@ -1717,7 +1619,7 @@ Partial Class Calendar
         Me.Textth5.Location = New System.Drawing.Point(3, 18)
         Me.Textth5.Name = "Textth5"
         Me.Textth5.ReadOnly = True
-        Me.Textth5.Size = New System.Drawing.Size(110, 55)
+        Me.Textth5.Size = New System.Drawing.Size(110, 82)
         Me.Textth5.TabIndex = 31
         Me.Textth5.Text = ""
         '
@@ -1727,10 +1629,10 @@ Partial Class Calendar
         Me.panm6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panm6.Controls.Add(Me.m6)
         Me.panm6.Controls.Add(Me.Textm6)
-        Me.panm6.Location = New System.Drawing.Point(145, 577)
+        Me.panm6.Location = New System.Drawing.Point(121, 552)
         Me.panm6.Name = "panm6"
-        Me.panm6.Size = New System.Drawing.Size(120, 80)
-        Me.panm6.TabIndex = 35
+        Me.panm6.Size = New System.Drawing.Size(120, 106)
+        Me.panm6.TabIndex = 116
         '
         'm6
         '
@@ -1750,7 +1652,7 @@ Partial Class Calendar
         Me.Textm6.Location = New System.Drawing.Point(3, 19)
         Me.Textm6.Name = "Textm6"
         Me.Textm6.ReadOnly = True
-        Me.Textm6.Size = New System.Drawing.Size(110, 55)
+        Me.Textm6.Size = New System.Drawing.Size(110, 82)
         Me.Textm6.TabIndex = 11
         Me.Textm6.Text = ""
         '
@@ -1760,10 +1662,10 @@ Partial Class Calendar
         Me.pansa1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansa1.Controls.Add(Me.sa1)
         Me.pansa1.Controls.Add(Me.Textsa1)
-        Me.pansa1.Location = New System.Drawing.Point(745, 177)
+        Me.pansa1.Location = New System.Drawing.Point(721, 23)
         Me.pansa1.Name = "pansa1"
-        Me.pansa1.Size = New System.Drawing.Size(120, 80)
-        Me.pansa1.TabIndex = 29
+        Me.pansa1.Size = New System.Drawing.Size(120, 106)
+        Me.pansa1.TabIndex = 110
         '
         'sa1
         '
@@ -1783,7 +1685,7 @@ Partial Class Calendar
         Me.Textsa1.Location = New System.Drawing.Point(2, 17)
         Me.Textsa1.Name = "Textsa1"
         Me.Textsa1.ReadOnly = True
-        Me.Textsa1.Size = New System.Drawing.Size(110, 55)
+        Me.Textsa1.Size = New System.Drawing.Size(110, 82)
         Me.Textsa1.TabIndex = 17
         Me.Textsa1.Text = ""
         '
@@ -1793,10 +1695,10 @@ Partial Class Calendar
         Me.pantu6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pantu6.Controls.Add(Me.tu6)
         Me.pantu6.Controls.Add(Me.Texttu6)
-        Me.pantu6.Location = New System.Drawing.Point(265, 577)
+        Me.pantu6.Location = New System.Drawing.Point(241, 552)
         Me.pantu6.Name = "pantu6"
-        Me.pantu6.Size = New System.Drawing.Size(120, 80)
-        Me.pantu6.TabIndex = 36
+        Me.pantu6.Size = New System.Drawing.Size(120, 106)
+        Me.pantu6.TabIndex = 117
         '
         'tu6
         '
@@ -1816,7 +1718,7 @@ Partial Class Calendar
         Me.Texttu6.Location = New System.Drawing.Point(3, 19)
         Me.Texttu6.Name = "Texttu6"
         Me.Texttu6.ReadOnly = True
-        Me.Texttu6.Size = New System.Drawing.Size(110, 55)
+        Me.Texttu6.Size = New System.Drawing.Size(110, 82)
         Me.Texttu6.TabIndex = 22
         Me.Texttu6.Text = ""
         '
@@ -1826,10 +1728,10 @@ Partial Class Calendar
         Me.pansu6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansu6.Controls.Add(Me.su6)
         Me.pansu6.Controls.Add(Me.Textsu6)
-        Me.pansu6.Location = New System.Drawing.Point(25, 577)
+        Me.pansu6.Location = New System.Drawing.Point(1, 552)
         Me.pansu6.Name = "pansu6"
-        Me.pansu6.Size = New System.Drawing.Size(120, 80)
-        Me.pansu6.TabIndex = 34
+        Me.pansu6.Size = New System.Drawing.Size(120, 106)
+        Me.pansu6.TabIndex = 115
         '
         'su6
         '
@@ -1849,7 +1751,7 @@ Partial Class Calendar
         Me.Textsu6.Location = New System.Drawing.Point(3, 19)
         Me.Textsu6.Name = "Textsu6"
         Me.Textsu6.ReadOnly = True
-        Me.Textsu6.Size = New System.Drawing.Size(110, 55)
+        Me.Textsu6.Size = New System.Drawing.Size(110, 82)
         Me.Textsu6.TabIndex = 5
         Me.Textsu6.Text = ""
         '
@@ -1859,10 +1761,10 @@ Partial Class Calendar
         Me.pansa4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansa4.Controls.Add(Me.sa4)
         Me.pansa4.Controls.Add(Me.Textsa4)
-        Me.pansa4.Location = New System.Drawing.Point(745, 417)
+        Me.pansa4.Location = New System.Drawing.Point(721, 340)
         Me.pansa4.Name = "pansa4"
-        Me.pansa4.Size = New System.Drawing.Size(120, 80)
-        Me.pansa4.TabIndex = 30
+        Me.pansa4.Size = New System.Drawing.Size(120, 106)
+        Me.pansa4.TabIndex = 111
         '
         'sa4
         '
@@ -1882,7 +1784,7 @@ Partial Class Calendar
         Me.Textsa4.Location = New System.Drawing.Point(4, 18)
         Me.Textsa4.Name = "Textsa4"
         Me.Textsa4.ReadOnly = True
-        Me.Textsa4.Size = New System.Drawing.Size(110, 55)
+        Me.Textsa4.Size = New System.Drawing.Size(110, 82)
         Me.Textsa4.TabIndex = 40
         Me.Textsa4.Text = ""
         '
@@ -1892,10 +1794,10 @@ Partial Class Calendar
         Me.panf3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panf3.Controls.Add(Me.f3)
         Me.panf3.Controls.Add(Me.Textf3)
-        Me.panf3.Location = New System.Drawing.Point(625, 337)
+        Me.panf3.Location = New System.Drawing.Point(601, 234)
         Me.panf3.Name = "panf3"
-        Me.panf3.Size = New System.Drawing.Size(120, 80)
-        Me.panf3.TabIndex = 26
+        Me.panf3.Size = New System.Drawing.Size(120, 106)
+        Me.panf3.TabIndex = 107
         '
         'f3
         '
@@ -1915,7 +1817,7 @@ Partial Class Calendar
         Me.Textf3.Location = New System.Drawing.Point(3, 18)
         Me.Textf3.Name = "Textf3"
         Me.Textf3.ReadOnly = True
-        Me.Textf3.Size = New System.Drawing.Size(110, 55)
+        Me.Textf3.Size = New System.Drawing.Size(110, 82)
         Me.Textf3.TabIndex = 34
         Me.Textf3.Text = ""
         '
@@ -1925,10 +1827,10 @@ Partial Class Calendar
         Me.pansa2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansa2.Controls.Add(Me.sa2)
         Me.pansa2.Controls.Add(Me.Textsa2)
-        Me.pansa2.Location = New System.Drawing.Point(745, 257)
+        Me.pansa2.Location = New System.Drawing.Point(721, 129)
         Me.pansa2.Name = "pansa2"
-        Me.pansa2.Size = New System.Drawing.Size(120, 80)
-        Me.pansa2.TabIndex = 32
+        Me.pansa2.Size = New System.Drawing.Size(120, 105)
+        Me.pansa2.TabIndex = 113
         '
         'sa2
         '
@@ -1948,7 +1850,7 @@ Partial Class Calendar
         Me.Textsa2.Location = New System.Drawing.Point(4, 18)
         Me.Textsa2.Name = "Textsa2"
         Me.Textsa2.ReadOnly = True
-        Me.Textsa2.Size = New System.Drawing.Size(110, 55)
+        Me.Textsa2.Size = New System.Drawing.Size(110, 82)
         Me.Textsa2.TabIndex = 38
         Me.Textsa2.Text = ""
         '
@@ -1958,10 +1860,10 @@ Partial Class Calendar
         Me.panf1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panf1.Controls.Add(Me.f1)
         Me.panf1.Controls.Add(Me.Textf1)
-        Me.panf1.Location = New System.Drawing.Point(625, 177)
+        Me.panf1.Location = New System.Drawing.Point(601, 23)
         Me.panf1.Name = "panf1"
-        Me.panf1.Size = New System.Drawing.Size(120, 80)
-        Me.panf1.TabIndex = 24
+        Me.panf1.Size = New System.Drawing.Size(120, 106)
+        Me.panf1.TabIndex = 105
         '
         'f1
         '
@@ -1981,7 +1883,7 @@ Partial Class Calendar
         Me.Textf1.Location = New System.Drawing.Point(2, 17)
         Me.Textf1.Name = "Textf1"
         Me.Textf1.ReadOnly = True
-        Me.Textf1.Size = New System.Drawing.Size(110, 55)
+        Me.Textf1.Size = New System.Drawing.Size(110, 82)
         Me.Textf1.TabIndex = 15
         Me.Textf1.Text = ""
         '
@@ -1991,10 +1893,10 @@ Partial Class Calendar
         Me.panth4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panth4.Controls.Add(Me.th4)
         Me.panth4.Controls.Add(Me.Textth4)
-        Me.panth4.Location = New System.Drawing.Point(505, 417)
+        Me.panth4.Location = New System.Drawing.Point(481, 340)
         Me.panth4.Name = "panth4"
-        Me.panth4.Size = New System.Drawing.Size(120, 80)
-        Me.panth4.TabIndex = 20
+        Me.panth4.Size = New System.Drawing.Size(120, 106)
+        Me.panth4.TabIndex = 101
         '
         'th4
         '
@@ -2014,7 +1916,7 @@ Partial Class Calendar
         Me.Textth4.Location = New System.Drawing.Point(3, 18)
         Me.Textth4.Name = "Textth4"
         Me.Textth4.ReadOnly = True
-        Me.Textth4.Size = New System.Drawing.Size(110, 55)
+        Me.Textth4.Size = New System.Drawing.Size(110, 82)
         Me.Textth4.TabIndex = 30
         Me.Textth4.Text = ""
         '
@@ -2024,10 +1926,10 @@ Partial Class Calendar
         Me.panf4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panf4.Controls.Add(Me.f4)
         Me.panf4.Controls.Add(Me.Textf4)
-        Me.panf4.Location = New System.Drawing.Point(625, 417)
+        Me.panf4.Location = New System.Drawing.Point(601, 340)
         Me.panf4.Name = "panf4"
-        Me.panf4.Size = New System.Drawing.Size(120, 80)
-        Me.panf4.TabIndex = 25
+        Me.panf4.Size = New System.Drawing.Size(120, 106)
+        Me.panf4.TabIndex = 106
         '
         'f4
         '
@@ -2047,7 +1949,7 @@ Partial Class Calendar
         Me.Textf4.Location = New System.Drawing.Point(3, 18)
         Me.Textf4.Name = "Textf4"
         Me.Textf4.ReadOnly = True
-        Me.Textf4.Size = New System.Drawing.Size(110, 55)
+        Me.Textf4.Size = New System.Drawing.Size(110, 82)
         Me.Textf4.TabIndex = 35
         Me.Textf4.Text = ""
         '
@@ -2057,10 +1959,10 @@ Partial Class Calendar
         Me.panth3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panth3.Controls.Add(Me.th3)
         Me.panth3.Controls.Add(Me.Textth3)
-        Me.panth3.Location = New System.Drawing.Point(505, 337)
+        Me.panth3.Location = New System.Drawing.Point(481, 234)
         Me.panth3.Name = "panth3"
-        Me.panth3.Size = New System.Drawing.Size(120, 80)
-        Me.panth3.TabIndex = 21
+        Me.panth3.Size = New System.Drawing.Size(120, 106)
+        Me.panth3.TabIndex = 102
         '
         'th3
         '
@@ -2080,7 +1982,7 @@ Partial Class Calendar
         Me.Textth3.Location = New System.Drawing.Point(3, 18)
         Me.Textth3.Name = "Textth3"
         Me.Textth3.ReadOnly = True
-        Me.Textth3.Size = New System.Drawing.Size(110, 55)
+        Me.Textth3.Size = New System.Drawing.Size(110, 82)
         Me.Textth3.TabIndex = 29
         Me.Textth3.Text = ""
         '
@@ -2090,10 +1992,10 @@ Partial Class Calendar
         Me.panf2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panf2.Controls.Add(Me.f2)
         Me.panf2.Controls.Add(Me.Textf2)
-        Me.panf2.Location = New System.Drawing.Point(625, 257)
+        Me.panf2.Location = New System.Drawing.Point(601, 129)
         Me.panf2.Name = "panf2"
-        Me.panf2.Size = New System.Drawing.Size(120, 80)
-        Me.panf2.TabIndex = 27
+        Me.panf2.Size = New System.Drawing.Size(120, 105)
+        Me.panf2.TabIndex = 108
         '
         'f2
         '
@@ -2113,7 +2015,7 @@ Partial Class Calendar
         Me.Textf2.Location = New System.Drawing.Point(3, 18)
         Me.Textf2.Name = "Textf2"
         Me.Textf2.ReadOnly = True
-        Me.Textf2.Size = New System.Drawing.Size(110, 55)
+        Me.Textf2.Size = New System.Drawing.Size(110, 82)
         Me.Textf2.TabIndex = 33
         Me.Textf2.Text = ""
         '
@@ -2123,10 +2025,10 @@ Partial Class Calendar
         Me.panth2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panth2.Controls.Add(Me.th2)
         Me.panth2.Controls.Add(Me.Textth2)
-        Me.panth2.Location = New System.Drawing.Point(505, 257)
+        Me.panth2.Location = New System.Drawing.Point(481, 129)
         Me.panth2.Name = "panth2"
-        Me.panth2.Size = New System.Drawing.Size(120, 80)
-        Me.panth2.TabIndex = 22
+        Me.panth2.Size = New System.Drawing.Size(120, 105)
+        Me.panth2.TabIndex = 103
         '
         'th2
         '
@@ -2146,7 +2048,7 @@ Partial Class Calendar
         Me.Textth2.Location = New System.Drawing.Point(3, 18)
         Me.Textth2.Name = "Textth2"
         Me.Textth2.ReadOnly = True
-        Me.Textth2.Size = New System.Drawing.Size(110, 55)
+        Me.Textth2.Size = New System.Drawing.Size(110, 82)
         Me.Textth2.TabIndex = 28
         Me.Textth2.Text = ""
         '
@@ -2156,10 +2058,10 @@ Partial Class Calendar
         Me.panth1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panth1.Controls.Add(Me.th1)
         Me.panth1.Controls.Add(Me.Textth1)
-        Me.panth1.Location = New System.Drawing.Point(505, 177)
+        Me.panth1.Location = New System.Drawing.Point(481, 23)
         Me.panth1.Name = "panth1"
-        Me.panth1.Size = New System.Drawing.Size(120, 80)
-        Me.panth1.TabIndex = 19
+        Me.panth1.Size = New System.Drawing.Size(120, 106)
+        Me.panth1.TabIndex = 100
         '
         'th1
         '
@@ -2179,7 +2081,7 @@ Partial Class Calendar
         Me.Textth1.Location = New System.Drawing.Point(3, 17)
         Me.Textth1.Name = "Textth1"
         Me.Textth1.ReadOnly = True
-        Me.Textth1.Size = New System.Drawing.Size(110, 55)
+        Me.Textth1.Size = New System.Drawing.Size(110, 82)
         Me.Textth1.TabIndex = 14
         Me.Textth1.Text = ""
         '
@@ -2189,10 +2091,10 @@ Partial Class Calendar
         Me.panw5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panw5.Controls.Add(Me.w5)
         Me.panw5.Controls.Add(Me.Textw5)
-        Me.panw5.Location = New System.Drawing.Point(385, 497)
+        Me.panw5.Location = New System.Drawing.Point(361, 446)
         Me.panw5.Name = "panw5"
-        Me.panw5.Size = New System.Drawing.Size(120, 80)
-        Me.panw5.TabIndex = 18
+        Me.panw5.Size = New System.Drawing.Size(120, 106)
+        Me.panw5.TabIndex = 99
         '
         'w5
         '
@@ -2212,7 +2114,7 @@ Partial Class Calendar
         Me.Textw5.Location = New System.Drawing.Point(3, 18)
         Me.Textw5.Name = "Textw5"
         Me.Textw5.ReadOnly = True
-        Me.Textw5.Size = New System.Drawing.Size(110, 55)
+        Me.Textw5.Size = New System.Drawing.Size(110, 82)
         Me.Textw5.TabIndex = 26
         Me.Textw5.Text = ""
         '
@@ -2222,10 +2124,10 @@ Partial Class Calendar
         Me.panm5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panm5.Controls.Add(Me.m5)
         Me.panm5.Controls.Add(Me.Textm5)
-        Me.panm5.Location = New System.Drawing.Point(145, 497)
+        Me.panm5.Location = New System.Drawing.Point(121, 446)
         Me.panm5.Name = "panm5"
-        Me.panm5.Size = New System.Drawing.Size(120, 80)
-        Me.panm5.TabIndex = 8
+        Me.panm5.Size = New System.Drawing.Size(120, 106)
+        Me.panm5.TabIndex = 89
         '
         'm5
         '
@@ -2245,7 +2147,7 @@ Partial Class Calendar
         Me.Textm5.Location = New System.Drawing.Point(3, 18)
         Me.Textm5.Name = "Textm5"
         Me.Textm5.ReadOnly = True
-        Me.Textm5.Size = New System.Drawing.Size(110, 55)
+        Me.Textm5.Size = New System.Drawing.Size(110, 82)
         Me.Textm5.TabIndex = 10
         Me.Textm5.Text = ""
         '
@@ -2255,10 +2157,10 @@ Partial Class Calendar
         Me.pantu5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pantu5.Controls.Add(Me.tu5)
         Me.pantu5.Controls.Add(Me.Texttu5)
-        Me.pantu5.Location = New System.Drawing.Point(265, 497)
+        Me.pantu5.Location = New System.Drawing.Point(241, 446)
         Me.pantu5.Name = "pantu5"
-        Me.pantu5.Size = New System.Drawing.Size(120, 80)
-        Me.pantu5.TabIndex = 13
+        Me.pantu5.Size = New System.Drawing.Size(120, 106)
+        Me.pantu5.TabIndex = 94
         '
         'tu5
         '
@@ -2278,7 +2180,7 @@ Partial Class Calendar
         Me.Texttu5.Location = New System.Drawing.Point(3, 18)
         Me.Texttu5.Name = "Texttu5"
         Me.Texttu5.ReadOnly = True
-        Me.Texttu5.Size = New System.Drawing.Size(110, 55)
+        Me.Texttu5.Size = New System.Drawing.Size(110, 82)
         Me.Texttu5.TabIndex = 21
         Me.Texttu5.Text = ""
         '
@@ -2288,10 +2190,10 @@ Partial Class Calendar
         Me.pansu5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansu5.Controls.Add(Me.su5)
         Me.pansu5.Controls.Add(Me.Textsu5)
-        Me.pansu5.Location = New System.Drawing.Point(25, 497)
+        Me.pansu5.Location = New System.Drawing.Point(1, 446)
         Me.pansu5.Name = "pansu5"
-        Me.pansu5.Size = New System.Drawing.Size(120, 80)
-        Me.pansu5.TabIndex = 3
+        Me.pansu5.Size = New System.Drawing.Size(120, 106)
+        Me.pansu5.TabIndex = 84
         '
         'su5
         '
@@ -2311,7 +2213,7 @@ Partial Class Calendar
         Me.Textsu5.Location = New System.Drawing.Point(3, 18)
         Me.Textsu5.Name = "Textsu5"
         Me.Textsu5.ReadOnly = True
-        Me.Textsu5.Size = New System.Drawing.Size(110, 55)
+        Me.Textsu5.Size = New System.Drawing.Size(110, 82)
         Me.Textsu5.TabIndex = 4
         Me.Textsu5.Text = ""
         '
@@ -2321,10 +2223,10 @@ Partial Class Calendar
         Me.panw3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panw3.Controls.Add(Me.w3)
         Me.panw3.Controls.Add(Me.Textw3)
-        Me.panw3.Location = New System.Drawing.Point(385, 337)
+        Me.panw3.Location = New System.Drawing.Point(361, 234)
         Me.panw3.Name = "panw3"
-        Me.panw3.Size = New System.Drawing.Size(120, 80)
-        Me.panw3.TabIndex = 16
+        Me.panw3.Size = New System.Drawing.Size(120, 106)
+        Me.panw3.TabIndex = 97
         '
         'w3
         '
@@ -2344,7 +2246,7 @@ Partial Class Calendar
         Me.Textw3.Location = New System.Drawing.Point(3, 18)
         Me.Textw3.Name = "Textw3"
         Me.Textw3.ReadOnly = True
-        Me.Textw3.Size = New System.Drawing.Size(110, 55)
+        Me.Textw3.Size = New System.Drawing.Size(110, 82)
         Me.Textw3.TabIndex = 24
         Me.Textw3.Text = ""
         '
@@ -2354,10 +2256,10 @@ Partial Class Calendar
         Me.panm3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panm3.Controls.Add(Me.m3)
         Me.panm3.Controls.Add(Me.Textm3)
-        Me.panm3.Location = New System.Drawing.Point(145, 337)
+        Me.panm3.Location = New System.Drawing.Point(121, 234)
         Me.panm3.Name = "panm3"
-        Me.panm3.Size = New System.Drawing.Size(120, 80)
-        Me.panm3.TabIndex = 6
+        Me.panm3.Size = New System.Drawing.Size(120, 106)
+        Me.panm3.TabIndex = 87
         '
         'm3
         '
@@ -2377,7 +2279,7 @@ Partial Class Calendar
         Me.Textm3.Location = New System.Drawing.Point(3, 18)
         Me.Textm3.Name = "Textm3"
         Me.Textm3.ReadOnly = True
-        Me.Textm3.Size = New System.Drawing.Size(110, 55)
+        Me.Textm3.Size = New System.Drawing.Size(110, 82)
         Me.Textm3.TabIndex = 8
         Me.Textm3.Text = ""
         '
@@ -2387,10 +2289,10 @@ Partial Class Calendar
         Me.panw1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panw1.Controls.Add(Me.w1)
         Me.panw1.Controls.Add(Me.Textw1)
-        Me.panw1.Location = New System.Drawing.Point(385, 177)
+        Me.panw1.Location = New System.Drawing.Point(361, 23)
         Me.panw1.Name = "panw1"
-        Me.panw1.Size = New System.Drawing.Size(120, 80)
-        Me.panw1.TabIndex = 14
+        Me.panw1.Size = New System.Drawing.Size(120, 106)
+        Me.panw1.TabIndex = 95
         '
         'w1
         '
@@ -2410,7 +2312,7 @@ Partial Class Calendar
         Me.Textw1.Location = New System.Drawing.Point(2, 17)
         Me.Textw1.Name = "Textw1"
         Me.Textw1.ReadOnly = True
-        Me.Textw1.Size = New System.Drawing.Size(110, 55)
+        Me.Textw1.Size = New System.Drawing.Size(110, 82)
         Me.Textw1.TabIndex = 13
         Me.Textw1.Text = ""
         '
@@ -2420,10 +2322,10 @@ Partial Class Calendar
         Me.panm1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panm1.Controls.Add(Me.m1)
         Me.panm1.Controls.Add(Me.Textm1)
-        Me.panm1.Location = New System.Drawing.Point(145, 177)
+        Me.panm1.Location = New System.Drawing.Point(121, 23)
         Me.panm1.Name = "panm1"
-        Me.panm1.Size = New System.Drawing.Size(120, 80)
-        Me.panm1.TabIndex = 4
+        Me.panm1.Size = New System.Drawing.Size(120, 106)
+        Me.panm1.TabIndex = 85
         '
         'm1
         '
@@ -2443,7 +2345,7 @@ Partial Class Calendar
         Me.Textm1.Location = New System.Drawing.Point(3, 18)
         Me.Textm1.Name = "Textm1"
         Me.Textm1.ReadOnly = True
-        Me.Textm1.Size = New System.Drawing.Size(110, 55)
+        Me.Textm1.Size = New System.Drawing.Size(110, 82)
         Me.Textm1.TabIndex = 6
         Me.Textm1.Text = ""
         '
@@ -2453,10 +2355,10 @@ Partial Class Calendar
         Me.pantu4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pantu4.Controls.Add(Me.tu4)
         Me.pantu4.Controls.Add(Me.Texttu4)
-        Me.pantu4.Location = New System.Drawing.Point(265, 417)
+        Me.pantu4.Location = New System.Drawing.Point(241, 340)
         Me.pantu4.Name = "pantu4"
-        Me.pantu4.Size = New System.Drawing.Size(120, 80)
-        Me.pantu4.TabIndex = 10
+        Me.pantu4.Size = New System.Drawing.Size(120, 106)
+        Me.pantu4.TabIndex = 91
         '
         'tu4
         '
@@ -2476,7 +2378,7 @@ Partial Class Calendar
         Me.Texttu4.Location = New System.Drawing.Point(3, 18)
         Me.Texttu4.Name = "Texttu4"
         Me.Texttu4.ReadOnly = True
-        Me.Texttu4.Size = New System.Drawing.Size(110, 55)
+        Me.Texttu4.Size = New System.Drawing.Size(110, 82)
         Me.Texttu4.TabIndex = 20
         Me.Texttu4.Text = ""
         '
@@ -2486,10 +2388,10 @@ Partial Class Calendar
         Me.pansu4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansu4.Controls.Add(Me.su4)
         Me.pansu4.Controls.Add(Me.Textsu4)
-        Me.pansu4.Location = New System.Drawing.Point(25, 417)
+        Me.pansu4.Location = New System.Drawing.Point(1, 340)
         Me.pansu4.Name = "pansu4"
-        Me.pansu4.Size = New System.Drawing.Size(120, 80)
-        Me.pansu4.TabIndex = 1
+        Me.pansu4.Size = New System.Drawing.Size(120, 106)
+        Me.pansu4.TabIndex = 81
         '
         'su4
         '
@@ -2509,7 +2411,7 @@ Partial Class Calendar
         Me.Textsu4.Location = New System.Drawing.Point(3, 18)
         Me.Textsu4.Name = "Textsu4"
         Me.Textsu4.ReadOnly = True
-        Me.Textsu4.Size = New System.Drawing.Size(110, 55)
+        Me.Textsu4.Size = New System.Drawing.Size(110, 82)
         Me.Textsu4.TabIndex = 3
         Me.Textsu4.Text = ""
         '
@@ -2519,10 +2421,10 @@ Partial Class Calendar
         Me.panw4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panw4.Controls.Add(Me.w4)
         Me.panw4.Controls.Add(Me.Textw4)
-        Me.panw4.Location = New System.Drawing.Point(385, 417)
+        Me.panw4.Location = New System.Drawing.Point(361, 340)
         Me.panw4.Name = "panw4"
-        Me.panw4.Size = New System.Drawing.Size(120, 80)
-        Me.panw4.TabIndex = 15
+        Me.panw4.Size = New System.Drawing.Size(120, 106)
+        Me.panw4.TabIndex = 96
         '
         'w4
         '
@@ -2542,7 +2444,7 @@ Partial Class Calendar
         Me.Textw4.Location = New System.Drawing.Point(3, 18)
         Me.Textw4.Name = "Textw4"
         Me.Textw4.ReadOnly = True
-        Me.Textw4.Size = New System.Drawing.Size(110, 55)
+        Me.Textw4.Size = New System.Drawing.Size(110, 82)
         Me.Textw4.TabIndex = 25
         Me.Textw4.Text = ""
         '
@@ -2552,10 +2454,10 @@ Partial Class Calendar
         Me.panm4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panm4.Controls.Add(Me.m4)
         Me.panm4.Controls.Add(Me.Textm4)
-        Me.panm4.Location = New System.Drawing.Point(145, 417)
+        Me.panm4.Location = New System.Drawing.Point(121, 340)
         Me.panm4.Name = "panm4"
-        Me.panm4.Size = New System.Drawing.Size(120, 80)
-        Me.panm4.TabIndex = 5
+        Me.panm4.Size = New System.Drawing.Size(120, 106)
+        Me.panm4.TabIndex = 86
         '
         'm4
         '
@@ -2575,7 +2477,7 @@ Partial Class Calendar
         Me.Textm4.Location = New System.Drawing.Point(3, 18)
         Me.Textm4.Name = "Textm4"
         Me.Textm4.ReadOnly = True
-        Me.Textm4.Size = New System.Drawing.Size(110, 55)
+        Me.Textm4.Size = New System.Drawing.Size(110, 82)
         Me.Textm4.TabIndex = 9
         Me.Textm4.Text = ""
         '
@@ -2585,10 +2487,10 @@ Partial Class Calendar
         Me.pantu3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pantu3.Controls.Add(Me.tu3)
         Me.pantu3.Controls.Add(Me.Texttu3)
-        Me.pantu3.Location = New System.Drawing.Point(265, 337)
+        Me.pantu3.Location = New System.Drawing.Point(241, 234)
         Me.pantu3.Name = "pantu3"
-        Me.pantu3.Size = New System.Drawing.Size(120, 80)
-        Me.pantu3.TabIndex = 11
+        Me.pantu3.Size = New System.Drawing.Size(120, 106)
+        Me.pantu3.TabIndex = 92
         '
         'tu3
         '
@@ -2608,7 +2510,7 @@ Partial Class Calendar
         Me.Texttu3.Location = New System.Drawing.Point(3, 18)
         Me.Texttu3.Name = "Texttu3"
         Me.Texttu3.ReadOnly = True
-        Me.Texttu3.Size = New System.Drawing.Size(110, 55)
+        Me.Texttu3.Size = New System.Drawing.Size(110, 82)
         Me.Texttu3.TabIndex = 19
         Me.Texttu3.Text = ""
         '
@@ -2618,10 +2520,10 @@ Partial Class Calendar
         Me.panw2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panw2.Controls.Add(Me.w2)
         Me.panw2.Controls.Add(Me.Textw2)
-        Me.panw2.Location = New System.Drawing.Point(385, 257)
+        Me.panw2.Location = New System.Drawing.Point(361, 129)
         Me.panw2.Name = "panw2"
-        Me.panw2.Size = New System.Drawing.Size(120, 80)
-        Me.panw2.TabIndex = 17
+        Me.panw2.Size = New System.Drawing.Size(120, 105)
+        Me.panw2.TabIndex = 98
         '
         'w2
         '
@@ -2641,7 +2543,7 @@ Partial Class Calendar
         Me.Textw2.Location = New System.Drawing.Point(3, 18)
         Me.Textw2.Name = "Textw2"
         Me.Textw2.ReadOnly = True
-        Me.Textw2.Size = New System.Drawing.Size(110, 55)
+        Me.Textw2.Size = New System.Drawing.Size(110, 82)
         Me.Textw2.TabIndex = 23
         Me.Textw2.Text = ""
         '
@@ -2651,10 +2553,10 @@ Partial Class Calendar
         Me.pansu3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansu3.Controls.Add(Me.su3)
         Me.pansu3.Controls.Add(Me.Textsu3)
-        Me.pansu3.Location = New System.Drawing.Point(25, 337)
+        Me.pansu3.Location = New System.Drawing.Point(1, 234)
         Me.pansu3.Name = "pansu3"
-        Me.pansu3.Size = New System.Drawing.Size(120, 80)
-        Me.pansu3.TabIndex = 1
+        Me.pansu3.Size = New System.Drawing.Size(120, 106)
+        Me.pansu3.TabIndex = 82
         '
         'su3
         '
@@ -2674,7 +2576,7 @@ Partial Class Calendar
         Me.Textsu3.Location = New System.Drawing.Point(3, 18)
         Me.Textsu3.Name = "Textsu3"
         Me.Textsu3.ReadOnly = True
-        Me.Textsu3.Size = New System.Drawing.Size(110, 55)
+        Me.Textsu3.Size = New System.Drawing.Size(110, 82)
         Me.Textsu3.TabIndex = 2
         Me.Textsu3.Text = ""
         '
@@ -2684,10 +2586,10 @@ Partial Class Calendar
         Me.pantu2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pantu2.Controls.Add(Me.tu2)
         Me.pantu2.Controls.Add(Me.Texttu2)
-        Me.pantu2.Location = New System.Drawing.Point(265, 257)
+        Me.pantu2.Location = New System.Drawing.Point(241, 129)
         Me.pantu2.Name = "pantu2"
-        Me.pantu2.Size = New System.Drawing.Size(120, 80)
-        Me.pantu2.TabIndex = 12
+        Me.pantu2.Size = New System.Drawing.Size(120, 105)
+        Me.pantu2.TabIndex = 93
         '
         'tu2
         '
@@ -2707,7 +2609,7 @@ Partial Class Calendar
         Me.Texttu2.Location = New System.Drawing.Point(3, 18)
         Me.Texttu2.Name = "Texttu2"
         Me.Texttu2.ReadOnly = True
-        Me.Texttu2.Size = New System.Drawing.Size(110, 55)
+        Me.Texttu2.Size = New System.Drawing.Size(110, 82)
         Me.Texttu2.TabIndex = 18
         Me.Texttu2.Text = ""
         '
@@ -2717,10 +2619,10 @@ Partial Class Calendar
         Me.panm2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.panm2.Controls.Add(Me.m2)
         Me.panm2.Controls.Add(Me.Textm2)
-        Me.panm2.Location = New System.Drawing.Point(145, 257)
+        Me.panm2.Location = New System.Drawing.Point(121, 129)
         Me.panm2.Name = "panm2"
-        Me.panm2.Size = New System.Drawing.Size(120, 80)
-        Me.panm2.TabIndex = 7
+        Me.panm2.Size = New System.Drawing.Size(120, 105)
+        Me.panm2.TabIndex = 88
         '
         'm2
         '
@@ -2740,7 +2642,7 @@ Partial Class Calendar
         Me.Textm2.Location = New System.Drawing.Point(3, 18)
         Me.Textm2.Name = "Textm2"
         Me.Textm2.ReadOnly = True
-        Me.Textm2.Size = New System.Drawing.Size(110, 55)
+        Me.Textm2.Size = New System.Drawing.Size(110, 82)
         Me.Textm2.TabIndex = 7
         Me.Textm2.Text = ""
         '
@@ -2750,10 +2652,10 @@ Partial Class Calendar
         Me.pantu1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pantu1.Controls.Add(Me.tu1)
         Me.pantu1.Controls.Add(Me.Texttu1)
-        Me.pantu1.Location = New System.Drawing.Point(265, 177)
+        Me.pantu1.Location = New System.Drawing.Point(241, 23)
         Me.pantu1.Name = "pantu1"
-        Me.pantu1.Size = New System.Drawing.Size(120, 80)
-        Me.pantu1.TabIndex = 9
+        Me.pantu1.Size = New System.Drawing.Size(120, 106)
+        Me.pantu1.TabIndex = 90
         '
         'tu1
         '
@@ -2773,7 +2675,7 @@ Partial Class Calendar
         Me.Texttu1.Location = New System.Drawing.Point(3, 18)
         Me.Texttu1.Name = "Texttu1"
         Me.Texttu1.ReadOnly = True
-        Me.Texttu1.Size = New System.Drawing.Size(110, 55)
+        Me.Texttu1.Size = New System.Drawing.Size(110, 82)
         Me.Texttu1.TabIndex = 12
         Me.Texttu1.Text = ""
         '
@@ -2783,10 +2685,10 @@ Partial Class Calendar
         Me.pansu2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansu2.Controls.Add(Me.su2)
         Me.pansu2.Controls.Add(Me.Textsu2)
-        Me.pansu2.Location = New System.Drawing.Point(25, 257)
+        Me.pansu2.Location = New System.Drawing.Point(1, 129)
         Me.pansu2.Name = "pansu2"
-        Me.pansu2.Size = New System.Drawing.Size(120, 80)
-        Me.pansu2.TabIndex = 1
+        Me.pansu2.Size = New System.Drawing.Size(120, 105)
+        Me.pansu2.TabIndex = 83
         '
         'su2
         '
@@ -2806,7 +2708,7 @@ Partial Class Calendar
         Me.Textsu2.Location = New System.Drawing.Point(3, 18)
         Me.Textsu2.Name = "Textsu2"
         Me.Textsu2.ReadOnly = True
-        Me.Textsu2.Size = New System.Drawing.Size(110, 55)
+        Me.Textsu2.Size = New System.Drawing.Size(110, 82)
         Me.Textsu2.TabIndex = 1
         Me.Textsu2.Text = ""
         '
@@ -2816,10 +2718,10 @@ Partial Class Calendar
         Me.pansu1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pansu1.Controls.Add(Me.su1)
         Me.pansu1.Controls.Add(Me.Textsu1)
-        Me.pansu1.Location = New System.Drawing.Point(25, 177)
+        Me.pansu1.Location = New System.Drawing.Point(1, 23)
         Me.pansu1.Name = "pansu1"
-        Me.pansu1.Size = New System.Drawing.Size(120, 80)
-        Me.pansu1.TabIndex = 0
+        Me.pansu1.Size = New System.Drawing.Size(120, 106)
+        Me.pansu1.TabIndex = 80
         '
         'su1
         '
@@ -2839,129 +2741,91 @@ Partial Class Calendar
         Me.Textsu1.Location = New System.Drawing.Point(3, 18)
         Me.Textsu1.Name = "Textsu1"
         Me.Textsu1.ReadOnly = True
-        Me.Textsu1.Size = New System.Drawing.Size(110, 55)
+        Me.Textsu1.Size = New System.Drawing.Size(110, 82)
         Me.Textsu1.TabIndex = 0
         Me.Textsu1.Text = ""
         '
-        'PicSearchShow
+        'ControlPanelDatabaseView
         '
-        Me.PicSearchShow.BackColor = System.Drawing.Color.Maroon
-        Me.PicSearchShow.Location = New System.Drawing.Point(381, 234)
-        Me.PicSearchShow.Name = "PicSearchShow"
-        Me.PicSearchShow.Size = New System.Drawing.Size(16, 65)
-        Me.PicSearchShow.TabIndex = 81
-        Me.PicSearchShow.TabStop = False
-        Me.PicSearchShow.Visible = False
+        Me.ControlPanelDatabaseView.BackColor = System.Drawing.Color.PowderBlue
+        Me.ControlPanelDatabaseView.Controls.Add(Me.CalendarDataGridView)
+        Me.ControlPanelDatabaseView.Location = New System.Drawing.Point(604, 456)
+        Me.ControlPanelDatabaseView.Name = "ControlPanelDatabaseView"
+        Me.ControlPanelDatabaseView.Size = New System.Drawing.Size(169, 166)
+        Me.ControlPanelDatabaseView.TabIndex = 90
         '
-        'ButHelp
+        'CalendarDataGridView
         '
-        Me.ButHelp.BackColor = System.Drawing.Color.White
-        Me.ButHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButHelp.Location = New System.Drawing.Point(6, 115)
-        Me.ButHelp.Name = "ButHelp"
-        Me.ButHelp.Size = New System.Drawing.Size(33, 32)
-        Me.ButHelp.TabIndex = 75
-        Me.ButHelp.Text = "?"
-        Me.ButHelp.UseVisualStyleBackColor = False
+        Me.CalendarDataGridView.AutoGenerateColumns = False
+        Me.CalendarDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.CalendarDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.CalendarDataGridView.DataSource = Me.CalendarBindingSource
+        Me.CalendarDataGridView.Location = New System.Drawing.Point(2, 0)
+        Me.CalendarDataGridView.Name = "CalendarDataGridView"
+        Me.CalendarDataGridView.ReadOnly = True
+        Me.CalendarDataGridView.Size = New System.Drawing.Size(1279, 658)
+        Me.CalendarDataGridView.TabIndex = 115
         '
-        'PicViewDetailsShow
+        'DataGridViewTextBoxColumn1
         '
-        Me.PicViewDetailsShow.BackColor = System.Drawing.Color.Gold
-        Me.PicViewDetailsShow.Location = New System.Drawing.Point(381, 581)
-        Me.PicViewDetailsShow.Name = "PicViewDetailsShow"
-        Me.PicViewDetailsShow.Size = New System.Drawing.Size(16, 42)
-        Me.PicViewDetailsShow.TabIndex = 78
-        Me.PicViewDetailsShow.TabStop = False
-        Me.PicViewDetailsShow.Visible = False
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 50
         '
-        'ViewDetailsGroupBox
+        'DataGridViewTextBoxColumn2
         '
-        Me.ViewDetailsGroupBox.BackColor = System.Drawing.Color.SteelBlue
-        Me.ViewDetailsGroupBox.Controls.Add(Me.Label13)
-        Me.ViewDetailsGroupBox.Controls.Add(Me.ButViewDatabase)
-        Me.ViewDetailsGroupBox.Controls.Add(Me.ButViewDetailsHide)
-        Me.ViewDetailsGroupBox.Controls.Add(Me.MonthCalendar1)
-        Me.ViewDetailsGroupBox.Controls.Add(Me.PicViewDetailsSlider)
-        Me.ViewDetailsGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ViewDetailsGroupBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ViewDetailsGroupBox.ForeColor = System.Drawing.Color.Blue
-        Me.ViewDetailsGroupBox.Location = New System.Drawing.Point(14, 386)
-        Me.ViewDetailsGroupBox.Name = "ViewDetailsGroupBox"
-        Me.ViewDetailsGroupBox.Size = New System.Drawing.Size(279, 362)
-        Me.ViewDetailsGroupBox.TabIndex = 54
-        Me.ViewDetailsGroupBox.TabStop = False
-        Me.ViewDetailsGroupBox.Text = "Extras"
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "EventName"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Event Name"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 300
         '
-        'Label13
+        'DataGridViewTextBoxColumn3
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label13.Location = New System.Drawing.Point(21, 31)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(107, 20)
-        Me.Label13.TabIndex = 88
-        Me.Label13.Text = "Select a date:"
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "EventDate"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Event Date"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         '
-        'ButViewDatabase
+        'DataGridViewTextBoxColumn4
         '
-        Me.ButViewDatabase.BackColor = System.Drawing.Color.White
-        Me.ButViewDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButViewDatabase.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButViewDatabase.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButViewDatabase.Location = New System.Drawing.Point(27, 260)
-        Me.ButViewDatabase.Name = "ButViewDatabase"
-        Me.ButViewDatabase.Size = New System.Drawing.Size(227, 25)
-        Me.ButViewDatabase.TabIndex = 87
-        Me.ButViewDatabase.Text = "View Full Database of Events"
-        Me.ButViewDatabase.UseVisualStyleBackColor = False
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "DateDay"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Date Day"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         '
-        'ButViewDetailsHide
+        'DataGridViewTextBoxColumn5
         '
-        Me.ButViewDetailsHide.BackColor = System.Drawing.Color.White
-        Me.ButViewDetailsHide.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButViewDetailsHide.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButViewDetailsHide.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButViewDetailsHide.Location = New System.Drawing.Point(27, 309)
-        Me.ButViewDetailsHide.Name = "ButViewDetailsHide"
-        Me.ButViewDetailsHide.Size = New System.Drawing.Size(80, 25)
-        Me.ButViewDetailsHide.TabIndex = 77
-        Me.ButViewDetailsHide.Text = "Hide"
-        Me.ButViewDetailsHide.UseVisualStyleBackColor = False
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Time"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Time"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         '
-        'MonthCalendar1
+        'DataGridViewTextBoxColumn6
         '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(27, 72)
-        Me.MonthCalendar1.MaxSelectionCount = 1
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 86
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Venue"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Venue"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 250
         '
-        'PicViewDetailsSlider
+        'DataGridViewTextBoxColumn7
         '
-        Me.PicViewDetailsSlider.BackColor = System.Drawing.Color.Gold
-        Me.PicViewDetailsSlider.Location = New System.Drawing.Point(112, -4)
-        Me.PicViewDetailsSlider.Name = "PicViewDetailsSlider"
-        Me.PicViewDetailsSlider.Size = New System.Drawing.Size(61, 13)
-        Me.PicViewDetailsSlider.TabIndex = 76
-        Me.PicViewDetailsSlider.TabStop = False
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Weapon"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Weapon"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 86
         '
-        'PictureBox2
+        'DataGridViewTextBoxColumn8
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Maroon
-        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(1281, 110)
-        Me.PictureBox2.TabIndex = 85
-        Me.PictureBox2.TabStop = False
-        '
-        'SlideTimer
-        '
-        Me.SlideTimer.Enabled = True
-        Me.SlideTimer.Interval = 5
-        '
-        'CalendarPanelTimer
-        '
-        Me.CalendarPanelTimer.Interval = 10
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "Group"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Group"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Width = 250
         '
         'CalendarBindingSource
         '
@@ -2973,20 +2837,156 @@ Partial Class Calendar
         Me.FencingDataSet.DataSetName = "FencingDataSet"
         Me.FencingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'TableAdapterManager1
+        'ButControlDatabaseView
         '
-        Me.TableAdapterManager1.AbsencesTableAdapter = Nothing
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.CalendarTableAdapter = Nothing
-        Me.TableAdapterManager1.Connection = Nothing
-        Me.TableAdapterManager1.GearTableAdapter = Nothing
-        Me.TableAdapterManager1.LoginsTableAdapter = Nothing
-        Me.TableAdapterManager1.StudentProfilesTableAdapter = Nothing
-        Me.TableAdapterManager1.UpdateOrder = FencingManager.FencingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.ButControlDatabaseView.BackColor = System.Drawing.Color.PowderBlue
+        Me.ButControlDatabaseView.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButControlDatabaseView.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButControlDatabaseView.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButControlDatabaseView.Location = New System.Drawing.Point(958, 79)
+        Me.ButControlDatabaseView.Name = "ButControlDatabaseView"
+        Me.ButControlDatabaseView.Size = New System.Drawing.Size(150, 31)
+        Me.ButControlDatabaseView.TabIndex = 139
+        Me.ButControlDatabaseView.Text = "Database View"
+        Me.ButControlDatabaseView.UseVisualStyleBackColor = False
+        '
+        'ButControlSearch
+        '
+        Me.ButControlSearch.BackColor = System.Drawing.Color.Teal
+        Me.ButControlSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButControlSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButControlSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButControlSearch.Location = New System.Drawing.Point(809, 79)
+        Me.ButControlSearch.Name = "ButControlSearch"
+        Me.ButControlSearch.Size = New System.Drawing.Size(150, 31)
+        Me.ButControlSearch.TabIndex = 137
+        Me.ButControlSearch.Text = "Search"
+        Me.ButControlSearch.UseVisualStyleBackColor = False
+        '
+        'ButControlCalendar
+        '
+        Me.ButControlCalendar.BackColor = System.Drawing.Color.SteelBlue
+        Me.ButControlCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButControlCalendar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButControlCalendar.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButControlCalendar.Location = New System.Drawing.Point(660, 79)
+        Me.ButControlCalendar.Name = "ButControlCalendar"
+        Me.ButControlCalendar.Size = New System.Drawing.Size(150, 31)
+        Me.ButControlCalendar.TabIndex = 136
+        Me.ButControlCalendar.Text = "Calendar"
+        Me.ButControlCalendar.UseVisualStyleBackColor = False
+        '
+        'ControlPanelHelp
+        '
+        Me.ControlPanelHelp.Controls.Add(Me.PanelHelp)
+        Me.ControlPanelHelp.Location = New System.Drawing.Point(844, 298)
+        Me.ControlPanelHelp.Name = "ControlPanelHelp"
+        Me.ControlPanelHelp.Size = New System.Drawing.Size(200, 100)
+        Me.ControlPanelHelp.TabIndex = 92
+        '
+        'PanelHelp
+        '
+        Me.PanelHelp.BackColor = System.Drawing.Color.CadetBlue
+        Me.PanelHelp.Controls.Add(Me.ButCloseHelp)
+        Me.PanelHelp.Controls.Add(Me.RichTextBox1)
+        Me.PanelHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PanelHelp.Location = New System.Drawing.Point(46, 46)
+        Me.PanelHelp.Name = "PanelHelp"
+        Me.PanelHelp.Size = New System.Drawing.Size(546, 391)
+        Me.PanelHelp.TabIndex = 80
+        Me.PanelHelp.TabStop = False
+        Me.PanelHelp.Text = "Help"
+        Me.PanelHelp.Visible = False
+        '
+        'ButCloseHelp
+        '
+        Me.ButCloseHelp.BackColor = System.Drawing.Color.White
+        Me.ButCloseHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButCloseHelp.Location = New System.Drawing.Point(424, 351)
+        Me.ButCloseHelp.Name = "ButCloseHelp"
+        Me.ButCloseHelp.Size = New System.Drawing.Size(112, 28)
+        Me.ButCloseHelp.TabIndex = 1
+        Me.ButCloseHelp.Text = "Close Help"
+        Me.ButCloseHelp.UseVisualStyleBackColor = False
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.BackColor = System.Drawing.Color.SteelBlue
+        Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RichTextBox1.Location = New System.Drawing.Point(14, 34)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.Size = New System.Drawing.Size(520, 306)
+        Me.RichTextBox1.TabIndex = 0
+        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
+        '
+        'ButSettings
+        '
+        Me.ButSettings.BackColor = System.Drawing.Color.White
+        Me.ButSettings.BackgroundImage = Global.FencingManager.My.Resources.Resources.gear_icon1
+        Me.ButSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButSettings.Location = New System.Drawing.Point(314, 42)
+        Me.ButSettings.Name = "ButSettings"
+        Me.ButSettings.Size = New System.Drawing.Size(33, 32)
+        Me.ButSettings.TabIndex = 87
+        Me.ButSettings.UseVisualStyleBackColor = False
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.BackColor = System.Drawing.Color.Indigo
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(60, 32)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(170, 42)
+        Me.Label14.TabIndex = 86
+        Me.Label14.Text = "Calendar"
+        '
+        'ButHelp
+        '
+        Me.ButHelp.BackColor = System.Drawing.Color.White
+        Me.ButHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButHelp.Location = New System.Drawing.Point(275, 42)
+        Me.ButHelp.Name = "ButHelp"
+        Me.ButHelp.Size = New System.Drawing.Size(33, 32)
+        Me.ButHelp.TabIndex = 75
+        Me.ButHelp.Text = "?"
+        Me.ButHelp.UseVisualStyleBackColor = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Indigo
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(1281, 110)
+        Me.PictureBox2.TabIndex = 85
+        Me.PictureBox2.TabStop = False
+        '
+        'SlideTimer
+        '
+        Me.SlideTimer.Enabled = True
+        Me.SlideTimer.Interval = 5
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 10
         '
         'CalendarTableAdapter
         '
         Me.CalendarTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.AbsencesTableAdapter = Nothing
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CalendarTableAdapter = Me.CalendarTableAdapter
+        Me.TableAdapterManager.GearTableAdapter = Nothing
+        Me.TableAdapterManager.LoginsTableAdapter = Nothing
+        Me.TableAdapterManager.StudentProfilesTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = FencingManager.FencingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'Calendar
         '
@@ -2998,6 +2998,13 @@ Partial Class Calendar
         Me.Text = "Form1"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
+        Me.ControlPanelSearch.ResumeLayout(False)
+        Me.ControlPanelSearch.PerformLayout()
+        Me.PanelSelectedFields.ResumeLayout(False)
+        Me.PanelSelectedFields.PerformLayout()
+        Me.PanelWeaponChoices.ResumeLayout(False)
+        Me.PanelWeaponChoices.PerformLayout()
+        Me.ControlPanelSettings.ResumeLayout(False)
         Me.GroupBoxSettings.ResumeLayout(False)
         Me.GroupBoxSettings.PerformLayout()
         Me.Panel3.ResumeLayout(False)
@@ -3005,16 +3012,10 @@ Partial Class Calendar
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelHelp.ResumeLayout(False)
-        Me.SearchGroupBox.ResumeLayout(False)
-        Me.SearchGroupBox.PerformLayout()
-        Me.PanelWeaponChoices.ResumeLayout(False)
-        Me.PanelWeaponChoices.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.ControlPanelCalendar.ResumeLayout(False)
+        Me.ControlPanelCalendar.PerformLayout()
+        Me.PanelImportedCalendar.ResumeLayout(False)
         CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.CalendarGroupBox.ResumeLayout(False)
-        Me.CalendarGroupBox.PerformLayout()
         Me.PanInput.ResumeLayout(False)
         Me.PanInput.PerformLayout()
         Me.PanelControls.ResumeLayout(False)
@@ -3102,26 +3103,58 @@ Partial Class Calendar
         Me.pansu2.PerformLayout()
         Me.pansu1.ResumeLayout(False)
         Me.pansu1.PerformLayout()
-        CType(Me.PicSearchShow, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PicViewDetailsShow, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ViewDetailsGroupBox.ResumeLayout(False)
-        Me.ViewDetailsGroupBox.PerformLayout()
-        CType(Me.PicViewDetailsSlider, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ControlPanelDatabaseView.ResumeLayout(False)
+        CType(Me.CalendarDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CalendarBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FencingDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ControlPanelHelp.ResumeLayout(False)
+        Me.PanelHelp.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Panel As System.Windows.Forms.Panel
-    Friend WithEvents btnNextMonth As System.Windows.Forms.Button
-    Friend WithEvents btnPrevMonth As System.Windows.Forms.Button
-    Friend WithEvents CalendarGroupBox As System.Windows.Forms.GroupBox
+    Friend WithEvents SlideTimer As System.Windows.Forms.Timer
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents ControlPanelCalendar As System.Windows.Forms.Panel
+    Friend WithEvents LabelDetails As System.Windows.Forms.Label
+    Friend WithEvents PanInput As System.Windows.Forms.Panel
+    Friend WithEvents RadioButtonPM As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButtonAM As System.Windows.Forms.RadioButton
+    Friend WithEvents ComboBoxTime As System.Windows.Forms.ComboBox
+    Friend WithEvents TexGroup As System.Windows.Forms.RichTextBox
+    Friend WithEvents TexVenue As System.Windows.Forms.RichTextBox
+    Friend WithEvents TexEventName As System.Windows.Forms.RichTextBox
+    Friend WithEvents WarningGroup As System.Windows.Forms.Label
+    Friend WithEvents WarningWeapon As System.Windows.Forms.Label
+    Friend WithEvents WarningVenue As System.Windows.Forms.Label
+    Friend WithEvents WarningTime As System.Windows.Forms.Label
+    Friend WithEvents WarningEventName As System.Windows.Forms.Label
+    Friend WithEvents ComboWeapon As System.Windows.Forms.ComboBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents LabNoEventScheduled As System.Windows.Forms.Label
+    Friend WithEvents LabClickToBegin As System.Windows.Forms.Label
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents PanelControls As System.Windows.Forms.Panel
+    Friend WithEvents ButPrint As System.Windows.Forms.Button
+    Friend WithEvents ButEdit As System.Windows.Forms.Button
+    Friend WithEvents ButAddNew As System.Windows.Forms.Button
+    Friend WithEvents ButCommit As System.Windows.Forms.Button
+    Friend WithEvents ButCancel As System.Windows.Forms.Button
+    Friend WithEvents ButUpdate As System.Windows.Forms.Button
+    Friend WithEvents ButClear As System.Windows.Forms.Button
+    Friend WithEvents ButDelete As System.Windows.Forms.Button
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents btnPrevMonth As System.Windows.Forms.Button
+    Friend WithEvents btnNextMonth As System.Windows.Forms.Button
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents pansa6 As System.Windows.Forms.Panel
@@ -3215,6 +3248,7 @@ Partial Class Calendar
     Friend WithEvents m1 As System.Windows.Forms.Label
     Friend WithEvents Textm1 As System.Windows.Forms.RichTextBox
     Friend WithEvents pantu4 As System.Windows.Forms.Panel
+    Friend WithEvents tu4 As System.Windows.Forms.Label
     Friend WithEvents Texttu4 As System.Windows.Forms.RichTextBox
     Friend WithEvents pansu4 As System.Windows.Forms.Panel
     Friend WithEvents su4 As System.Windows.Forms.Label
@@ -3249,62 +3283,46 @@ Partial Class Calendar
     Friend WithEvents pansu1 As System.Windows.Forms.Panel
     Friend WithEvents su1 As System.Windows.Forms.Label
     Friend WithEvents Textsu1 As System.Windows.Forms.RichTextBox
-    Friend WithEvents ViewDetailsGroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents LabNoEventScheduled As System.Windows.Forms.Label
-    Friend WithEvents PanInput As System.Windows.Forms.Panel
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ButDelete As System.Windows.Forms.Button
-    Friend WithEvents ButCancel As System.Windows.Forms.Button
-    Friend WithEvents ButClear As System.Windows.Forms.Button
-    Friend WithEvents ButUpdate As System.Windows.Forms.Button
-    Friend WithEvents ButCommit As System.Windows.Forms.Button
-    Friend WithEvents ButAddNew As System.Windows.Forms.Button
-    Friend WithEvents ComboWeapon As System.Windows.Forms.ComboBox
-    Friend WithEvents ButEdit As System.Windows.Forms.Button
-    Friend WithEvents TexEventName As System.Windows.Forms.RichTextBox
-    Friend WithEvents WarningGroup As System.Windows.Forms.Label
-    Friend WithEvents WarningWeapon As System.Windows.Forms.Label
-    Friend WithEvents WarningVenue As System.Windows.Forms.Label
-    Friend WithEvents WarningTime As System.Windows.Forms.Label
-    Friend WithEvents WarningEventName As System.Windows.Forms.Label
-    Friend WithEvents TexGroup As System.Windows.Forms.RichTextBox
-    Friend WithEvents TexVenue As System.Windows.Forms.RichTextBox
-    Friend WithEvents LabClickToBegin As System.Windows.Forms.Label
-    Friend WithEvents tu4 As System.Windows.Forms.Label
-    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
-    Friend WithEvents PicViewDetailsSlider As System.Windows.Forms.PictureBox
-    Friend WithEvents SlideTimer As System.Windows.Forms.Timer
-    Friend WithEvents ButViewDetailsHide As System.Windows.Forms.Button
-    Friend WithEvents PicViewDetailsShow As System.Windows.Forms.PictureBox
-    Friend WithEvents SearchGroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents RadDate As System.Windows.Forms.RadioButton
-    Friend WithEvents RadEventName As System.Windows.Forms.RadioButton
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents TexSearch As System.Windows.Forms.RichTextBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents ButSearch As System.Windows.Forms.Button
-    Friend WithEvents DateTimePickerSearch As System.Windows.Forms.DateTimePicker
-    Friend WithEvents PicSearchShow As System.Windows.Forms.PictureBox
-    Friend WithEvents PicSearchSlider As System.Windows.Forms.PictureBox
-    Friend WithEvents ButSearchHide As System.Windows.Forms.Button
-    Friend WithEvents TableAdapterManager1 As FencingManager.FencingDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents PanelControls As System.Windows.Forms.Panel
-    Friend WithEvents RadioButtonPM As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButtonAM As System.Windows.Forms.RadioButton
-    Friend WithEvents ComboBoxTime As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelDetails As System.Windows.Forms.Label
-    Friend WithEvents ButHelp As System.Windows.Forms.Button
+    Friend WithEvents ControlPanelHelp As System.Windows.Forms.Panel
     Friend WithEvents PanelHelp As System.Windows.Forms.GroupBox
     Friend WithEvents ButCloseHelp As System.Windows.Forms.Button
-    Friend WithEvents FencingDataSet As FencingManager.FencingDataSet
-    Friend WithEvents CalendarBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents CalendarTableAdapter As FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents ControlPanelSettings As System.Windows.Forms.Panel
+    Friend WithEvents GroupBoxSettings As System.Windows.Forms.GroupBox
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents RadResetPositionSearch As System.Windows.Forms.RadioButton
+    Friend WithEvents RadResetPositionCalendar As System.Windows.Forms.RadioButton
+    Friend WithEvents CheckBoxResetPositionBoth As System.Windows.Forms.CheckBox
+    Friend WithEvents ButResetPosition As System.Windows.Forms.Button
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents ButSaveVolume As System.Windows.Forms.Button
+    Friend WithEvents RadVolumeOff As System.Windows.Forms.RadioButton
+    Friend WithEvents RadVolumeOn As System.Windows.Forms.RadioButton
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents PicVolumeOn As System.Windows.Forms.PictureBox
+    Friend WithEvents ControlPanelDatabaseView As System.Windows.Forms.Panel
+    Friend WithEvents ControlPanelSearch As System.Windows.Forms.Panel
+    Friend WithEvents ButSettings As System.Windows.Forms.Button
+    Friend WithEvents ButHelp As System.Windows.Forms.Button
+    Friend WithEvents ButControlDatabaseView As System.Windows.Forms.Button
+    Friend WithEvents ButControlSearch As System.Windows.Forms.Button
+    Friend WithEvents ButControlCalendar As System.Windows.Forms.Button
+    Friend WithEvents PanelImportedCalendar As System.Windows.Forms.Panel
     Friend WithEvents MonthCalendar1 As System.Windows.Forms.MonthCalendar
-    Friend WithEvents CheckBoxAdvancedSearch As System.Windows.Forms.CheckBox
+    Friend WithEvents ButSearch As System.Windows.Forms.Button
+    Friend WithEvents PanelWeaponChoices As System.Windows.Forms.Panel
+    Friend WithEvents RadChoiceEpee As System.Windows.Forms.RadioButton
+    Friend WithEvents RadChoiceNoWeapon As System.Windows.Forms.RadioButton
+    Friend WithEvents RadChoiceSabre As System.Windows.Forms.RadioButton
+    Friend WithEvents RadChoiceFoil As System.Windows.Forms.RadioButton
+    Friend WithEvents PanelSelectedFields As System.Windows.Forms.Panel
+    Friend WithEvents CheckBoxAll As System.Windows.Forms.CheckBox
+    Friend WithEvents RadAdvSearchGroup As System.Windows.Forms.RadioButton
+    Friend WithEvents RadAdvSearchEventName As System.Windows.Forms.RadioButton
+    Friend WithEvents RadAdvSearchWeapon As System.Windows.Forms.RadioButton
+    Friend WithEvents RadAdvSearchVenue As System.Windows.Forms.RadioButton
+    Friend WithEvents LabInTheSelectedFields As System.Windows.Forms.Label
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents ColumnEventName As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnEventDate As System.Windows.Forms.ColumnHeader
@@ -3312,40 +3330,25 @@ Partial Class Calendar
     Friend WithEvents ColumnVenue As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnWeapon As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnGroup As System.Windows.Forms.ColumnHeader
-    Friend WithEvents CalendarPanelTimer As System.Windows.Forms.Timer
-    Friend WithEvents ButCloseAdvancedSearch As System.Windows.Forms.Button
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents ButAdvancedSearch As System.Windows.Forms.Button
-    Friend WithEvents ButViewDatabase As System.Windows.Forms.Button
-    Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents RadAdvSearchGroup As System.Windows.Forms.RadioButton
-    Friend WithEvents RadAdvSearchWeapon As System.Windows.Forms.RadioButton
-    Friend WithEvents RadAdvSearchVenue As System.Windows.Forms.RadioButton
-    Friend WithEvents CheckBoxAll As System.Windows.Forms.CheckBox
-    Friend WithEvents RadAdvSearchEventName As System.Windows.Forms.RadioButton
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents PanelWeaponChoices As System.Windows.Forms.Panel
-    Friend WithEvents RadChoiceEpee As System.Windows.Forms.RadioButton
-    Friend WithEvents RadChoiceNoWeapon As System.Windows.Forms.RadioButton
-    Friend WithEvents RadChoiceSabre As System.Windows.Forms.RadioButton
-    Friend WithEvents RadChoiceFoil As System.Windows.Forms.RadioButton
-    Friend WithEvents ButPrint As System.Windows.Forms.Button
-    Friend WithEvents ButSettings As System.Windows.Forms.Button
-    Friend WithEvents GroupBoxSettings As System.Windows.Forms.GroupBox
-    Friend WithEvents ButCloseSettings As System.Windows.Forms.Button
-    Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents PicVolumeOn As System.Windows.Forms.PictureBox
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents ButSaveVolume As System.Windows.Forms.Button
-    Friend WithEvents RadVolumeOff As System.Windows.Forms.RadioButton
-    Friend WithEvents RadVolumeOn As System.Windows.Forms.RadioButton
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents RadResetPositionSearch As System.Windows.Forms.RadioButton
-    Friend WithEvents RadResetPositionExtras As System.Windows.Forms.RadioButton
-    Friend WithEvents CheckBoxResetPositionBoth As System.Windows.Forms.CheckBox
-    Friend WithEvents ButResetPosition As System.Windows.Forms.Button
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents TexSearch As System.Windows.Forms.RichTextBox
+    Friend WithEvents ButExpandedView As System.Windows.Forms.Button
+    Friend WithEvents PicSearchSlider As System.Windows.Forms.PictureBox
+    Friend WithEvents ButMinimisedView As System.Windows.Forms.Button
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents FencingDataSet As FencingManager.FencingDataSet
+    Friend WithEvents CalendarBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents CalendarTableAdapter As FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter
+    Friend WithEvents TableAdapterManager As FencingManager.FencingDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents CalendarDataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LabNoResultsFound As System.Windows.Forms.Label
 
 End Class
