@@ -111,6 +111,12 @@
     <Compile Include="CreateAcc.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fight.Designer.vb">
+      <DependentUpon>fight.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fight.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="loanshelp.Designer.vb">
       <DependentUpon>loanshelp.vb</DependentUpon>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAcc.resx">
       <DependentUpon>CreateAcc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fight.resx">
+      <DependentUpon>fight.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintForm.resx">
       <DependentUpon>PrintForm.vb</DependentUpon>

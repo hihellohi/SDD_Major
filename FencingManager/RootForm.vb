@@ -9,10 +9,12 @@ Public Class RootForm
     Const EMAIL = 4
     Const ATTENDANCE = 2
     Const ADMIN = 5
+    Const FIGHT_FORM = 6
     Const LOGGED_OUT = 0
     Const WEAP = 1
     Const CAP = 2
     Const MIC = 3
+    Dim frmfight As New fight()
     Dim formGearLoaning As New GearLoaning()
     Dim formStudentProfile As New StudentProfilesForm()
     Dim formAttendance As New AttendanceForm()
@@ -89,6 +91,9 @@ Public Class RootForm
         formAdmin.TopLevel = False
         Panel1.Controls.Add(formAdmin)
 
+        frmfight.TopLevel = False
+        Panel1.Controls.Add(frmfight)
+
         ' Show Student Profile on Load 
         'should totes change to login later
         formStudentProfile.Show()
@@ -162,6 +167,13 @@ Public Class RootForm
         topform.hide()
         topform = formAdmin
         intform = ADMIN
+        topform.show()
+    End Sub
+
+    Private Sub btnFight_Click(sender As Object, e As EventArgs) Handles btnFight.Click
+        topform.hide()
+        topform = frmfight
+        intform = FIGHT_FORM
         topform.show()
     End Sub
 End Class

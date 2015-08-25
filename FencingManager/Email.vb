@@ -243,6 +243,7 @@ Public Class Email
 
     Private Function send_email(ByRef blah As List(Of String), ByRef events As List(Of item))
         If blah.Count = 0 Then
+            'if no recipients
             Return False
         End If
         Try
@@ -264,6 +265,7 @@ Public Class Email
             email.IsBodyHtml = True
             email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p>" + txtMessage.Text.Replace(vbNewLine, "<br>").ToString
             If events.Count <> 0 Then
+                'construct table
                 email.Body += "</p><p>upcoming events<table width=""500""><tr><th>Event Name</th><th>Event Date</th><th>Event Time</th><th>Venue</th><th>Weapon</th><th>Age Group</th></tr>"
                 Dim iter As item
                 For Each iter In events
@@ -273,18 +275,20 @@ Public Class Email
                 email.Body += "</table>"
             End If
             email.Body += "</p><p>This was an automated message. Do not reply to this email</p></body></html>"
-            'top kek
             Smtp_Server.Send(email)
         Catch error_t As Exception
+            'if failure
             MsgBox(error_t.ToString)
             Return True
         End Try
         Return False
     End Function
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtNext.TextChanged
+    Private Sub txtNext_TextChanged(sender As Object, e As EventArgs) Handles txtNext.TextChanged
+        'data validation
         txtNext.Text = System.Text.RegularExpressions.Regex.Replace(txtNext.Text, "[^0-9]", "")
         txtNext.Select(txtNext.Text.Length, 0)
+        'correct grammar
         If txtNext.Text = "1" Then
             cmbNext.Items(1) = "Day"
             cmbNext.Items(2) = "Week"
@@ -298,7 +302,8 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnGEYes.Click
+    Private Sub btnGEYes_Click(sender As Object, e As EventArgs) Handles btnGEYes.Click
+        'data validation
         Dim valid = True
         If rdbNext.Checked Then
             If txtNext.Text = "" Then
@@ -317,6 +322,7 @@ Public Class Email
             lblUntilError.Visible = False
         End If
         If valid Then
+            'send email
             btnGEYes.BackgroundImage = My.Resources.spinner
             btnGEYes.Enabled = False
             all = False
@@ -336,6 +342,7 @@ Public Class Email
 
 
     Private Function datevalid()
+        'check if the input date exists
         If txtYear.Text = "" Then
             Return False
         End If
@@ -364,12 +371,13 @@ Public Class Email
     End Function
 
     Private Sub Email_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'initialisation
         SetCueText(txtYear, "Year")
         cmbNext.SelectedIndex = 0
         cmbDay.SelectedIndex = 0
         cmbMonth.SelectedIndex = 0
     End Sub
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles rdbUntil.CheckedChanged
+    Private Sub rdbUntil_CheckedChanged(sender As Object, e As EventArgs) Handles rdbUntil.CheckedChanged
         cmbDay.Enabled = rdbUntil.Checked
         cmbMonth.Enabled = rdbUntil.Checked
         txtYear.Enabled = rdbUntil.Checked
@@ -379,7 +387,8 @@ Public Class Email
         lblUntilError.Visible = rdbUntil.Checked And lblUntilError.Visible
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnBothYes.Click
+    Private Sub btnBothYes_Click(sender As Object, e As EventArgs) Handles btnBothYes.Click
+        'data Validation
         Dim valid = True
         If rdbNext.Checked Then
             If txtNext.Text = "" Then
@@ -398,6 +407,7 @@ Public Class Email
             lblUntilError.Visible = False
         End If
         If valid Then
+            'send the emails
             btnBothYes.BackgroundImage = My.Resources.spinner
             btnBothYes.Enabled = False
             all = True
@@ -416,26 +426,30 @@ Public Class Email
             timerWait.Enabled = True
         End If
     End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
+    Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
         If mode = 1 Then
+            'move OD right
             btnODYes.Left = Math.Min(btnODYes.Left + 10, 321)
             If btnODYes.Left = 321 Then
                 btnOverdue.Text = "Are you sure?"
                 timerMove.Enabled = False
             End If
         ElseIf mode = 2 Then
+            'move GE left
             btnGEYes.Left = Math.Max(btnGEYes.Left - 10, 278)
             If btnGEYes.Left = 278 Then
                 btnGeneral.Text = "Are you sure?"
                 timerMove.Enabled = False
             End If
         ElseIf mode = 3 Then
+            'move both right
             btnBothYes.Left = Math.Min(btnBothYes.Left + 10, 321)
             If btnBothYes.Left = 321 Then
                 btnboth.Text = "Are you sure?"
                 timerMove.Enabled = False
             End If
         ElseIf mode = 0 Then
+            'move all back
             btnODYes.Left = Math.Max(btnODYes.Left - 10, 231)
             btnBothYes.Left = Math.Max(btnBothYes.Left - 10, 231)
             btnGEYes.Left = Math.Min(367, btnGEYes.Left + 10)
@@ -464,27 +478,27 @@ Public Class Email
             End If
         End If
     End Sub
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles timerWait.Tick
+    Private Sub timerWait_Tick(sender As Object, e As EventArgs) Handles timerWait.Tick
         mode = 0
         timerWait.Enabled = False
         timerMove.Enabled = True
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnOverdue.Click
+    Private Sub btnOverdue_Click(sender As Object, e As EventArgs) Handles btnOverdue.Click
         If mode >= 0 Then
             mode = 1
             timerMove.Enabled = True
         End If
     End Sub
 
-    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles btnOverdue.MouseEnter
+    Private Sub btnOverdue_MouseEnter(sender As Object, e As EventArgs) Handles btnOverdue.MouseEnter
         If mode >= 0 Then
             mode = 1
         End If
         'Button3.Text = "Are you sure?"
     End Sub
 
-    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles btnOverdue.MouseLeave
+    Private Sub btnOverdue_LostFocus(sender As Object, e As EventArgs) Handles btnOverdue.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -492,33 +506,33 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub Button4_MouseEnter(sender As Object, e As EventArgs) Handles btnODYes.MouseEnter
+    Private Sub btnODYes_MouseEnter(sender As Object, e As EventArgs) Handles btnODYes.MouseEnter
         If mode >= 0 Then
             mode = 1
         End If
     End Sub
 
-    Private Sub Button4_MouseLeave(sender As Object, e As EventArgs) Handles btnODYes.MouseLeave
+    Private Sub btnODYes_MouseLeave(sender As Object, e As EventArgs) Handles btnODYes.MouseLeave
         If mode > 0 Then
             mode = 0
 
             timerMove.Enabled = True
         End If
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnGeneral.Click
+    Private Sub btnGeneral_Click(sender As Object, e As EventArgs) Handles btnGeneral.Click
         If mode >= 0 Then
             mode = 2
             timerMove.Enabled = True
         End If
     End Sub
-    Private Sub button1_MouseEnter(sender As Object, e As EventArgs) Handles btnGeneral.MouseEnter
+    Private Sub btnGeneral_MouseEnter(sender As Object, e As EventArgs) Handles btnGeneral.MouseEnter
         If mode >= 0 Then
             mode = 2
         End If
         'button1.Text = "Are you sure?"
     End Sub
 
-    Private Sub button1_LostFocus(sender As Object, e As EventArgs) Handles btnGeneral.MouseLeave
+    Private Sub btnGeneral_LostFocus(sender As Object, e As EventArgs) Handles btnGeneral.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -526,13 +540,13 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles btnGEYes.MouseEnter
+    Private Sub btnGEYes_MouseEnter(sender As Object, e As EventArgs) Handles btnGEYes.MouseEnter
         If mode >= 0 Then
             mode = 2
         End If
     End Sub
 
-    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles btnGEYes.MouseLeave
+    Private Sub btnGeYes_MouseLeave(sender As Object, e As EventArgs) Handles btnGEYes.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -560,13 +574,13 @@ Public Class Email
         End If
     End Sub
 
-    Private Sub button2_MouseEnter(sender As Object, e As EventArgs) Handles btnBothYes.MouseEnter
+    Private Sub btnBothYes_MouseEnter(sender As Object, e As EventArgs) Handles btnBothYes.MouseEnter
         If mode >= 0 Then
             mode = 3
         End If
     End Sub
 
-    Private Sub button2_MouseLeave(sender As Object, e As EventArgs) Handles btnBothYes.MouseLeave
+    Private Sub btnBothYes_MouseLeave(sender As Object, e As EventArgs) Handles btnBothYes.MouseLeave
         If mode > 0 Then
             mode = 0
 
@@ -580,7 +594,7 @@ Public Class Email
         ptbHelp.Visible = True
     End Sub
 
-    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnMain.Click
+    Private Sub btnMain_Click(sender As Object, e As EventArgs) Handles btnMain.Click
         btnHelp.BackColor = Color.DarkOrange
         btnMain.BackColor = Color.White
         ptbHelp.Visible = False

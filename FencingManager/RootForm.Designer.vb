@@ -31,12 +31,14 @@ Partial Class RootForm
         Me.btnAdmin = New System.Windows.Forms.Button()
         Me.btnEmail = New System.Windows.Forms.Button()
         Me.btnLogin = New System.Windows.Forms.Button()
+        Me.btnFight = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.Panel1.Controls.Add(Me.btnFight)
         Me.Panel1.Controls.Add(Me.btnminimize)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel1.Location = New System.Drawing.Point(110, 0)
@@ -123,6 +125,15 @@ Partial Class RootForm
         Me.btnLogin.Text = "Login"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
+        'btnFight
+        '
+        Me.btnFight.Location = New System.Drawing.Point(1097, 31)
+        Me.btnFight.Name = "btnFight"
+        Me.btnFight.Size = New System.Drawing.Size(75, 23)
+        Me.btnFight.TabIndex = 2
+        Me.btnFight.Text = "Fight!"
+        Me.btnFight.UseVisualStyleBackColor = True
+        '
         'RootForm
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -153,5 +164,6 @@ Partial Class RootForm
     Friend WithEvents btnAdmin As System.Windows.Forms.Button
     Friend WithEvents btnEmail As System.Windows.Forms.Button
     Friend WithEvents btnLogin As System.Windows.Forms.Button
+    Friend WithEvents btnFight As System.Windows.Forms.Button
 
 End Class
