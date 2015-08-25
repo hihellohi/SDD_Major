@@ -3,24 +3,26 @@
     Dim student As String
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim dataS As New DataSet()
-    Dim things As ArrayList = New ArrayList
+
     Dim sort As Integer = -1
     Dim old As String = ""
     Const HEAD_FONT As String = "trebuchet MS"
     Const BODY_FONT As String = "helvetica"
 
     Public Sub reload()
-
+        'Reload the student dataset
         adapter = New OleDb.OleDbDataAdapter("SELECT * FROM StudentProfiles", RootForm.connection)
         adapter.Fill(dataS, "StudentProfiles")
         If student <> "" Then
-            Dim tmp As Boolean = False
+            Dim found As Boolean = False
             For i = 0 To dataS.Tables("StudentProfiles").Rows.Count - 1
+                'check if student has been deleted
                 If dataS.Tables("StudentProfiles").Rows(i).Item(1).ToString = student Then
-                    tmp = True
+                    found = True
                 End If
             Next
-            If tmp = False Then
+            If found = False Then
+                'log out student if deleted
                 student = ""
                 grbInventory.Text = "logged out"
                 lblOutput.Text = "Scan or input student ID to log in"
@@ -35,14 +37,17 @@
     End Sub
 
     Private Sub loadTable()
+        'Clear table
+
         tableList.Items.Clear()
-        things.Clear()
         Dim row As DataRow
+        lblTableCount.Text = 0
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
+            'find all records that are loaned to the student and load it into the table
+
             If row("StudentLoaned").ToString = student And row.RowState <> DataRowState.Deleted Then
                 Dim rowItem = New ListViewItem(row("GearID").ToString())
                 rowItem.SubItems.Add(row("GearType"))
-                'rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
                 Dim due As New Date(row("DueYear"), row("DueMonth"), row("DueDay"))
                 rowItem.SubItems.Add(due)
                 If due < Date.Today Then
@@ -51,7 +56,6 @@
                     rowItem.BackColor = Color.Yellow
                 End If
                 tableList.Items.Add(rowItem)
-                things.Add(row("ID"))
                 lblTableCount.Text += 1
             End If
         Next
@@ -62,13 +66,16 @@
             Dim show = False
             e.SuppressKeyPress = True
             If student = "" Then
-                Dim tmp As Boolean = False
+                'things to do when student is logged out
+
+                Dim found As Boolean = False
                 For i = 0 To dataS.Tables("StudentProfiles").Rows.Count - 1
+                    'find student
                     If dataS.Tables("StudentProfiles").Rows(i).Item(1).ToString = txtInput.Text Then
                         student = txtInput.Text
                         grbInventory.Text = dataS.Tables("StudentProfiles").Rows(i)("FirstName") + " " + dataS.Tables("StudentProfiles").Rows(i)("Surname") + "'s Inventory"
                         lblOutput.Text = "Scan or input gear ID to loan"
-                        tmp = True
+                        found = True
                         btnLogout.Visible = True
                         btnPrint.Visible = True
                         btnPreview.Visible = True
@@ -76,12 +83,13 @@
 
                     End If
                 Next
-                If tmp = False Then
+                If found = False Then
                     lblInputError.Text = "Student not Found"
                     show = True
                 End If
-
             Else
+
+                'Data validation
                 Dim valid = True
                 If rdbFor.Checked Then
                     If txtFor.Text = "" Then
@@ -90,22 +98,26 @@
                     If cmbFor.SelectedIndex = 0 Then
                         valid = False
                     End If
-
                     Label3.Visible = Not valid
-
                 ElseIf Not datevalid() Then
                     valid = False
                     lblUntilError.Visible = True
                 Else
                     lblUntilError.Visible = False
                 End If
+
+
                 If valid Then
-                    Dim tmp As Boolean = True
+                    Dim found As Boolean = False
                     For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
+
+                        'find item with id matching input
                         If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = txtInput.Text Then
                             If RootForm.GearDataS.Tables("Gear").Rows(i)("StudentLoaned") = 0 Then
                                 RootForm.GearDataS.Tables("Gear").Rows(i)("StudentLoaned") = student
                                 If rdbFor.Checked Then
+
+                                    'calculate loan length
                                     Dim cur As Date = Date.Today
                                     Select Case cmbFor.SelectedIndex
                                         Case 1
@@ -131,17 +143,17 @@
                                 lblInputError.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
                                 show = True
                             End If
-                            tmp = False
+                            found = True
                         End If
                     Next
-                    If tmp = True Then
+                    If Not found Then
                         lblInputError.Text = "item not found"
                         show = True
                     End If
                 End If
             End If
-            txtInput.Text = ""
 
+            txtInput.Text = ""
             lblInputError.Visible = show
 
         End If
@@ -149,16 +161,18 @@
 
 
     Private Sub Loans_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'initialise
         txtInput.Text = ""
         student = ""
         SetCueText(txtFor, "Loan Length")
-        SetCueText(txtyear, "Year")
+        SetCueText(txtYear, "Year")
         cmbFor.SelectedIndex = 0
         cmbDay.SelectedIndex = 0
         cmbMonth.SelectedIndex = 0
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        'log the student out
         student = ""
         btnLogout.Visible = False
         btnPrint.Visible = False
@@ -169,9 +183,13 @@
         tableList.Items.Clear()
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtFor.TextChanged
+    Private Sub txtFor_TextChanged(sender As Object, e As EventArgs) Handles txtFor.TextChanged
+        'data validation
+
         txtFor.Text = System.Text.RegularExpressions.Regex.Replace(txtFor.Text, "[^0-9]", "")
         txtFor.Select(txtFor.Text.Length, 0)
+
+        'grammar check the combobox
         If txtFor.Text = "1" Then
             cmbFor.Items(1) = "Day"
             cmbFor.Items(2) = "Week"
@@ -185,37 +203,8 @@
         End If
     End Sub
 
-    'Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.MouseDoubleClick
-    '    If ListView1.SelectedIndices.Count = 1 Then
-    '        Dim iter As DataRow
-    '        For Each iter In RootForm.GearDataS.Tables("Gear").Rows
-    '            If iter("ID") = things(ListView1.SelectedIndices(0)) Then
 
-    '                GearLoaning.btnCatalog_Click()
-    '                GearLoaning.frmCatalog.selected = iter("ID") - 1
-    '            End If
-    '        Next
-    '    End If
-    'End Sub
-
-    '    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
-
-
-    '        For i = 1 To ListView1.Items.Count - 1
-    '            Dim tmp As ListViewItem = ListView1.Items(i)
-    '            For j = i - 1 To 0
-    '                If comp(ListView1.Items(j), tmp, e.Column) And j <> 0 Then
-    '                    ListView1.Items(j + 1) = ListView1.Items(j)
-    '                Else
-    '                    ListView1.Items(j + 1) = tmp
-    '                    GoTo endoffor
-    '                End If
-    '            Next
-    'endoffor:
-    '        Next
-    '    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+    Private Sub btnBarcode_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
         txtInput.Focus()
         old = txtInput.Text
         txtInput.Text = ""
@@ -224,12 +213,13 @@
     End Sub
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnManual.Click
+    Private Sub btnManual_Click(sender As Object, e As EventArgs) Handles btnManual.Click
         btnManual.Visible = False
         txtInput.Focus()
     End Sub
 
-    Private Sub TextBox1_LostFocus(sender As Object, e As EventArgs) Handles txtInput.LostFocus
+    Private Sub txtInput_LostFocus(sender As Object, e As EventArgs) Handles txtInput.LostFocus
+        'When textbox is clicked away
         If btnManual.Visible Then
             txtInput.Text = old
         End If
@@ -239,21 +229,26 @@
     End Sub
 
     Private Function datevalid()
+        'validate that the date in the combobox exists
         If txtYear.Text = "" Then
             Return False
         End If
+        'check Year is correct
         If cmbDay.SelectedIndex = 0 Or cmbMonth.SelectedIndex = 0 Or txtYear.Text < 1000 Or txtYear.Text > 9999 Then
             Return False
         End If
+        'check 31 day months
         If cmbDay.SelectedIndex > 31 Then
             Return False
         End If
+        'check 30 day months
         Dim thirty() = {4, 6, 9, 11}
         For i = 0 To 3
             If cmbMonth.SelectedIndex = thirty(i) And cmbDay.SelectedIndex = 31 Then
                 Return False
             End If
         Next
+        'check leap years
         If cmbMonth.SelectedIndex = 2 Then
             If (txtYear.Text Mod 400 = 0 Or (txtYear.Text Mod 4 = 0 And (Not txtYear.Text Mod 100 = 0))) Then
                 If cmbDay.SelectedIndex = 30 Then
@@ -266,7 +261,7 @@
         Return True
     End Function
 
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles rdbUntil.CheckedChanged
+    Private Sub rdbUntil_CheckedChanged(sender As Object, e As EventArgs) Handles rdbUntil.CheckedChanged
         cmbDay.Enabled = rdbUntil.Checked
         cmbMonth.Enabled = rdbUntil.Checked
         txtYear.Enabled = rdbUntil.Checked
@@ -277,21 +272,25 @@
     End Sub
 
     Private Sub txtYear_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
+        'data validation
         txtYear.Text = System.Text.RegularExpressions.Regex.Replace(txtYear.Text, "[^0-9]", "")
         txtYear.Select(txtYear.Text.Length, 0)
     End Sub
 
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
+    Private Sub btnPreview_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
         Dim tmp As New WebBrowser
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
 
             Dim item As ListViewItem
+            'make header
             Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p align=""center"">"
+            'make title
             out += "<font face=""" + HEAD_FONT + """ size = 6>L</font><font face=""" + HEAD_FONT + """ size = 5>OANED</font>"
             out += " <font face=""" + HEAD_FONT + """ size = 6>I</font><font face=""" + HEAD_FONT + """ size = 5>TEMS"
             out += " FOR " + student + "</font></p>"
+            'make table
             out += "<font face=""" + BODY_FONT + """ size = 4><p><table width=""500"" align=""center""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
             For Each item In tableList.Items
                 out += "<tr align=""center""><td>" + item.SubItems(0).Text.ToString + "</td><td>" + item.SubItems(1).Text.ToString + "</td><td>" + item.SubItems(2).Text.ToString + "</td></tr>"
@@ -300,21 +299,21 @@
             tmp.Document.Write(out)
             tmp.ShowPrintPreviewDialog()
         End If
-
-
-
     End Sub
 
-    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         Dim tmp As New WebBrowser
         tmp.Navigate("about:blank")
         If (tmp.Document <> Nothing) Then
 
             Dim item As ListViewItem
+            'make header
             Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p align=""center"">"
+            'make title
             out += "<font face=""" + HEAD_FONT + """ size = 6>L</font><font face=""" + HEAD_FONT + """ size = 5>OANED</font>"
             out += " <font face=""" + HEAD_FONT + """ size = 6>I</font><font face=""" + HEAD_FONT + """ size = 5>TEMS"
             out += " FOR " + student + "</font></p>"
+            'make table
             out += "<font face=""" + BODY_FONT + """ size = 4><p><table width=""500"" align=""center""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
             For Each item In tableList.Items
                 out += "<tr align=""center""><td>" + item.SubItems(0).Text.ToString + "</td><td>" + item.SubItems(1).Text.ToString + "</td><td>" + item.SubItems(2).Text.ToString + "</td></tr>"

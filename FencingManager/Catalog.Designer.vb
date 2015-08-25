@@ -45,6 +45,7 @@ Partial Class Catalog
         Me.txtNewID = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lblHide = New System.Windows.Forms.Label()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnReload = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -56,7 +57,6 @@ Partial Class Catalog
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.cmbDay = New System.Windows.Forms.ComboBox()
@@ -65,7 +65,9 @@ Partial Class Catalog
         Me.lblSelError = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblTableCount = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.animationTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.btnPreview = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -79,7 +81,7 @@ Partial Class Catalog
         Me.tablelist.GridLines = True
         Me.tablelist.Location = New System.Drawing.Point(12, 12)
         Me.tablelist.Name = "tablelist"
-        Me.tablelist.Size = New System.Drawing.Size(678, 610)
+        Me.tablelist.Size = New System.Drawing.Size(678, 600)
         Me.tablelist.TabIndex = 3
         Me.tablelist.UseCompatibleStateImageBehavior = False
         Me.tablelist.View = System.Windows.Forms.View.Details
@@ -119,17 +121,17 @@ Partial Class Catalog
         Me.rdbType.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rdbType.Location = New System.Drawing.Point(112, 71)
         Me.rdbType.Name = "rdbType"
-        Me.rdbType.Size = New System.Drawing.Size(95, 22)
+        Me.rdbType.Size = New System.Drawing.Size(133, 22)
         Me.rdbType.TabIndex = 5
         Me.rdbType.TabStop = True
-        Me.rdbType.Text = "Gear Type"
+        Me.rdbType.Text = "Item Description"
         Me.rdbType.UseVisualStyleBackColor = True
         '
         'rdbStudent
         '
         Me.rdbStudent.AutoSize = True
         Me.rdbStudent.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdbStudent.Location = New System.Drawing.Point(213, 71)
+        Me.rdbStudent.Location = New System.Drawing.Point(251, 71)
         Me.rdbStudent.Name = "rdbStudent"
         Me.rdbStudent.Size = New System.Drawing.Size(129, 22)
         Me.rdbStudent.TabIndex = 6
@@ -156,12 +158,12 @@ Partial Class Catalog
         '
         Me.rdbItemID.AutoSize = True
         Me.rdbItemID.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdbItemID.Location = New System.Drawing.Point(347, 71)
+        Me.rdbItemID.Location = New System.Drawing.Point(386, 71)
         Me.rdbItemID.Name = "rdbItemID"
-        Me.rdbItemID.Size = New System.Drawing.Size(68, 22)
+        Me.rdbItemID.Size = New System.Drawing.Size(72, 22)
         Me.rdbItemID.TabIndex = 8
         Me.rdbItemID.TabStop = True
-        Me.rdbItemID.Text = "ItemID"
+        Me.rdbItemID.Text = "Item ID"
         Me.rdbItemID.UseVisualStyleBackColor = True
         '
         'Label1
@@ -259,6 +261,7 @@ Partial Class Catalog
         '
         Me.txtNewDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNewDesc.Location = New System.Drawing.Point(285, 45)
+        Me.txtNewDesc.MaxLength = 45
         Me.txtNewDesc.Name = "txtNewDesc"
         Me.txtNewDesc.Size = New System.Drawing.Size(240, 26)
         Me.txtNewDesc.TabIndex = 5
@@ -304,12 +307,23 @@ Partial Class Catalog
         'lblHide
         '
         Me.lblHide.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHide.Location = New System.Drawing.Point(12, 27)
+        Me.lblHide.Location = New System.Drawing.Point(6, 27)
         Me.lblHide.Name = "lblHide"
         Me.lblHide.Size = New System.Drawing.Size(515, 260)
         Me.lblHide.TabIndex = 23
         Me.lblHide.Text = "Select an item by clicking it on the list"
         Me.lblHide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnDelete
+        '
+        Me.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.Location = New System.Drawing.Point(271, 256)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(74, 31)
+        Me.btnDelete.TabIndex = 15
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseVisualStyleBackColor = True
         '
         'btnReload
         '
@@ -355,6 +369,7 @@ Partial Class Catalog
         '
         Me.txtSelDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSelDesc.Location = New System.Drawing.Point(285, 45)
+        Me.txtSelDesc.MaxLength = 45
         Me.txtSelDesc.Name = "txtSelDesc"
         Me.txtSelDesc.Size = New System.Drawing.Size(240, 26)
         Me.txtSelDesc.TabIndex = 17
@@ -418,17 +433,6 @@ Partial Class Catalog
         Me.Label9.Size = New System.Drawing.Size(46, 15)
         Me.Label9.TabIndex = 9
         Me.Label9.Text = "Item ID"
-        '
-        'btnDelete
-        '
-        Me.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(271, 256)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(74, 31)
-        Me.btnDelete.TabIndex = 15
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
         '
         'btnConfirm
         '
@@ -501,7 +505,7 @@ Partial Class Catalog
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(12, 625)
+        Me.Label6.Location = New System.Drawing.Point(12, 620)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(113, 24)
         Me.Label6.TabIndex = 10
@@ -511,21 +515,45 @@ Partial Class Catalog
         '
         Me.lblTableCount.AutoSize = True
         Me.lblTableCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTableCount.Location = New System.Drawing.Point(131, 629)
+        Me.lblTableCount.Location = New System.Drawing.Point(131, 624)
         Me.lblTableCount.Name = "lblTableCount"
         Me.lblTableCount.Size = New System.Drawing.Size(16, 18)
         Me.lblTableCount.TabIndex = 11
         Me.lblTableCount.Text = "n"
         '
-        'Timer1
+        'animationTimer
         '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 10
+        Me.animationTimer.Enabled = True
+        Me.animationTimer.Interval = 10
+        '
+        'btnPrint
+        '
+        Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrint.Location = New System.Drawing.Point(468, 618)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(108, 31)
+        Me.btnPrint.TabIndex = 18
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.UseVisualStyleBackColor = True
+        '
+        'btnPreview
+        '
+        Me.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPreview.Location = New System.Drawing.Point(582, 618)
+        Me.btnPreview.Name = "btnPreview"
+        Me.btnPreview.Size = New System.Drawing.Size(108, 31)
+        Me.btnPreview.TabIndex = 19
+        Me.btnPreview.Text = "Preview"
+        Me.btnPreview.UseVisualStyleBackColor = True
         '
         'Catalog
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 658)
+        Me.Controls.Add(Me.btnPreview)
+        Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.lblTableCount)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.GroupBox3)
@@ -582,11 +610,13 @@ Partial Class Catalog
     Friend WithEvents txtSelID As System.Windows.Forms.TextBox
     Friend WithEvents lblHide As System.Windows.Forms.Label
     Friend WithEvents lblSelError As System.Windows.Forms.Label
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents animationTimer As System.Windows.Forms.Timer
     Friend WithEvents btnConfirm As System.Windows.Forms.Button
     Friend WithEvents txtYear As System.Windows.Forms.TextBox
     Friend WithEvents cmbMonth As System.Windows.Forms.ComboBox
     Friend WithEvents cmbDay As System.Windows.Forms.ComboBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents rdbItemID As System.Windows.Forms.RadioButton
+    Friend WithEvents btnPrint As System.Windows.Forms.Button
+    Friend WithEvents btnPreview As System.Windows.Forms.Button
 End Class

@@ -5,25 +5,25 @@ Public Class Returns
     Public Sub kbHook(sender As Object, e As KeyEventArgs) Handles txtInput.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            Dim tmp As Boolean = True
+            Dim found As Boolean = True
+            'find item
             For i = 0 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
                 If RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString = txtInput.Text Then
                     If RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0 Then
                         lblOutput.Text = "Item not loaned"
                     Else
+                        'remove loan on item
                         lblOutput.Text = RootForm.GearDataS.Tables("Gear").Rows(i).Item(1)
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(3) = 0
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(4) = 0
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(5) = 0
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(6) = 0
                         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
-
-
                     End If
-                    tmp = False
+                    found = False
                 End If
             Next
-            If tmp = True Then
+            If found = True Then
                 lblOutput.Text = "item not found"
             End If
             txtInput.Text = ""
@@ -37,7 +37,8 @@ Public Class Returns
     End Sub
 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+    Private Sub btnbarcode_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+        'Begin Scanning
         txtInput.Focus()
         old = txtInput.Text
         txtInput.Text = ""
@@ -46,12 +47,13 @@ Public Class Returns
     End Sub
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnManual.Click
+    Private Sub btnManual_Click(sender As Object, e As EventArgs) Handles btnManual.Click
         btnManual.Visible = False
         txtInput.Focus()
     End Sub
 
     Private Sub txtInput_LostFocus(sender As Object, e As EventArgs) Handles txtInput.LostFocus
+        'when textbox is clicked away
         If btnManual.Visible Then
             txtInput.Text = old
         End If

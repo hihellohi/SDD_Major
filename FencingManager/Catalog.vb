@@ -10,15 +10,21 @@ Public Class Catalog
         Public gearType As String
     End Structure
 
-    Dim things As New List(Of item)()
+    Dim items As New List(Of item)()
     Dim sort As Integer = -1
     Public selected As Integer = -1
     Dim check As Boolean = False
+    Dim opened As Boolean = False
+    Const HEAD_FONT As String = "trebuchet MS"
+    Const BODY_FONT As String = "helvetica"
 
     Public Sub reload()
-        things.Clear()
+        'refresh the page
+        items.Clear()
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
+
+            'apply filter
             Dim valid As Boolean = False
             If rdbType.Checked Then
                 If row("GearType").ToString.ToLower.StartsWith(txtSearchCriteria.Text.ToLower) Then
@@ -33,6 +39,8 @@ Public Class Catalog
                     valid = True
                 End If
             End If
+
+            'load item into array of item
             If valid Then
                 Dim rowItem = New item
                 rowItem.id = row("ID")
@@ -45,25 +53,25 @@ Public Class Catalog
                 Else
                     rowItem.due = New Date(9999, 12, 31)
                 End If
-                things.Add(rowItem)
+                items.Add(rowItem)
             End If
         Next
-        sort_things()
+        sort_items()
         loadTable()
-        Button4_Click()
+        btnReload_Click()
     End Sub
 
-    Private Sub sort_things()
-        'Heapsort master race
-        Dim heap(1 + (things.Count * 2)) As item
+    Private Sub sort_items()
+        'Heapsort master race (O(nlogn))
+        Dim heap(1 + (items.Count * 2)) As item
         Dim count As Integer = 1
         Dim tmp As item
-        For i = 0 To (1 + (things.Count * 2))
+        For i = 0 To (1 + (items.Count * 2))
             heap(i).gearID = -1
             heap(i).gearType = ""
         Next
         'construct heap
-        For Each tmp In things
+        For Each tmp In items
             heap(count) = tmp
 
             'bubble up
@@ -76,11 +84,11 @@ Public Class Catalog
             End While
             count += 1
         Next
-        things.Clear()
+        items.Clear()
 
         'construct sorted list
         For i = 1 To count - 1
-            things.Add(heap(1))
+            items.Add(heap(1))
 
             'bubble up
             Dim bubble As Integer = 1
@@ -120,14 +128,14 @@ Public Class Catalog
     End Function
 
     Private Sub loadTable()
+        'load array of item into table
         Dim count As Integer = 0
         tablelist.Items.Clear()
         Dim row As item
-        For Each row In things
+        For Each row In items
             count += 1
             Dim rowItem = New ListViewItem(row.gearID)
             rowItem.SubItems.Add(row.gearType)
-            'rowItem.SubItems.Add(row("DueDay").ToString() + "/" + row("DueMonth").ToString() + "/" + row("DueYear").ToString())
             If row.student <> 0 Then
                 rowItem.SubItems.Add(row.student)
                 Dim due As Date = row.due
@@ -147,25 +155,28 @@ Public Class Catalog
     End Sub
 
     Private Sub quickReload()
+        'if the filter is increases in length, we can assume that all items that pass the filter will already be in the existing 
+        'table in sorted order, thus we can increase efficiency by only filtering out the invalid items in the existing table
         Dim tmp As New List(Of item)()
-        For i = 0 To things.Count - 1
+        For i = 0 To items.Count - 1
             Dim comp As String
             If rdbType.Checked Then
-                comp = things(i).gearType.ToLower
+                comp = items(i).gearType.ToLower
             ElseIf rdbStudent.Checked Then
-                comp = things(i).student.ToString.ToLower
+                comp = items(i).student.ToString.ToLower
             Else
-                comp = things(i).gearID.ToLower
+                comp = items(i).gearID.ToLower
             End If
             If comp.StartsWith(txtSearchCriteria.Text.ToLower) Then
-                tmp.Add(things(i))
+                tmp.Add(items(i))
             End If
         Next
-        things = tmp
+        items = tmp
         loadTable()
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtSearchCriteria.TextChanged
+    Private Sub txtSearchCriteria_TextChanged(sender As Object, e As EventArgs) Handles txtSearchCriteria.TextChanged
+        'search
         Static old As String = ""
         If txtSearchCriteria.Text.StartsWith(old) Then
             quickReload()
@@ -175,10 +186,11 @@ Public Class Catalog
         old = txtSearchCriteria.Text
     End Sub
 
-    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles tablelist.ColumnClick
+    Private Sub tablelist_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles tablelist.ColumnClick
+        'updates the variable sort which determines the method of comparison when sorting then refreshes
         If sort <> -(e.Column + 1) Then
             sort = -(e.Column + 1)
-            sort_things()
+            sort_items()
             For i = 0 To 3
                 tablelist.Columns(i).Text = tablelist.Columns(i).Text.Trim(ChrW(&H25B2))
                 tablelist.Columns(i).Text = tablelist.Columns(i).Text.Trim(ChrW(&H25BC))
@@ -186,23 +198,20 @@ Public Class Catalog
             tablelist.Columns(e.Column).Text += ChrW(&H25BC)
         Else
             sort = (e.Column + 1)
-            things.Reverse()
+            items.Reverse()
             tablelist.Columns(e.Column).Text = tablelist.Columns(e.Column).Text.Trim(ChrW(&H25BC))
             tablelist.Columns(e.Column).Text += ChrW(&H25B2)
         End If
         loadTable()
     End Sub
 
-    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles tablelist.ItemSelectionChanged
+    Private Sub tablelist_DoubleClick(sender As Object, e As EventArgs) Handles tablelist.ItemSelectionChanged
+        'loads record information to the textboxes
         If tablelist.SelectedIndices.Count = 1 Then
-            'MsgBox(things(ListView1.SelectedIndices(0)).id)
-            selected = things(tablelist.SelectedIndices(0)).id - 1
-            'Dim row As DataRow
-            'For Each row In RootForm.GearDataS.Tables("Gear").Rows
-            '    If things(ListView1.SelectedIndices(0)).id = row("ID") Then
+            selected = items(tablelist.SelectedIndices(0)).id - 1
             txtSelAN.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString
             txtSelDesc.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType")
-            '        txtSelIItemID.Text = row("GearID")
+            txtSelID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
             lblHide.Visible = False
             If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
                 txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
@@ -221,18 +230,21 @@ Public Class Catalog
                 cmbMonth.Enabled = False
                 cmbDay.Enabled = False
             End If
-            txtSelID.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID").ToString
+
         End If
     End Sub
 
     Private Sub Catalog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'initialisation
         tablelist.Columns(0).Text += ChrW(&H25BC)
         SetCueText(txtSearchCriteria, "Filter")
         lblHide.Top = 27
         lblHide.Left = 10
+        opened = True
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCreate.Click
+    Private Sub btnCreate_Click(sender As Object, e As EventArgs) Handles btnCreate.Click
+        'Data validation
         Dim valid As Boolean = True
         If txtNewID.Text = "" Then
             txtNewID.BackColor = Color.Red
@@ -248,6 +260,8 @@ Public Class Catalog
         Else
             txtNewDesc.BackColor = Color.White
         End If
+
+        'check if item id is taken
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
             If row("GearID").ToString = txtNewID.Text Then
@@ -256,6 +270,8 @@ Public Class Catalog
                 lblNewError.Text = "ID number already exists"
             End If
         Next
+
+        'save the new record
         If valid Then
             lblNewError.Visible = False
             Dim x As DataRow = RootForm.GearDataS.Tables("Gear").NewRow()
@@ -280,20 +296,22 @@ Public Class Catalog
     End Sub
 
     Private Sub txtitemid_TextChanged(sender As Object, e As EventArgs) Handles txtNewID.TextChanged
+        'data validation
         txtNewID.Text = System.Text.RegularExpressions.Regex.Replace(txtNewID.Text, "[^0-9]", "")
         txtNewID.Select(txtNewID.Text.Length, 0)
     End Sub
 
     Private Sub txtseliitemid_TextChanged(sender As Object, e As EventArgs) Handles txtSelID.TextChanged
+        'data validation
         txtSelID.Text = System.Text.RegularExpressions.Regex.Replace(txtSelID.Text, "[^0-9]", "")
         txtSelID.Select(txtSelID.Text.Length, 0)
     End Sub
 
-    Private Sub Button4_Click() Handles btnReload.Click
+    Private Sub btnReload_Click() Handles btnReload.Click
+        'refreshes the selected section
         If selected <> -1 Then
             txtSelAN.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes").ToString
             txtSelDesc.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearType").ToString
-            '        txtSelIItemID.Text = row("GearID")
             lblHide.Visible = False
             If RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString <> 0 Then
                 txtSL.Text = RootForm.GearDataS.Tables("Gear").Rows(selected).Item("StudentLoaned").ToString
@@ -316,24 +334,12 @@ Public Class Catalog
         End If
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-
+    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+        'removes the selected record
         RootForm.GearDataS.Tables("Gear").Rows(selected).Delete()
         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
 
-
-        'For count = selected + 1 To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
-        '    'RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("ID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID")
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearID") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearID")
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("Notes") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("Notes").ToString
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("GearType") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("GearType")
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("StudentLoaned") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("StudentLoaned")
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueDay") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueDay")
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueMonth") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueMonth")
-        '    RootForm.GearDataS.Tables("Gear").Rows(count - 1).Item("DueYear") = RootForm.GearDataS.Tables("Gear").Rows(count).Item("DueYear")
-        'Next
-
-
+        'update the other record's ID numbers
         For count = selected To RootForm.GearDataS.Tables("Gear").Rows.Count - 1
             RootForm.GearDataS.Tables("Gear").Rows(count).Item("ID") -= 1
 
@@ -347,6 +353,7 @@ Public Class Catalog
     End Sub
 
     Private Function datevalid()
+        'checks if the input date exists
         If txtSL.Text = "" Then
             Return True
         End If
@@ -374,8 +381,8 @@ Public Class Catalog
         Return True
     End Function
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'tbc do save stuff
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        'validate the input
         Dim valid As Boolean = True
         If txtSelID.Text = "" Then
             txtSelID.BackColor = Color.Red
@@ -405,6 +412,7 @@ Public Class Catalog
             txtYear.BackColor = Color.White
             Label15.Visible = False
         End If
+        'check if the id number is taken
         Dim row As DataRow
         For Each row In RootForm.GearDataS.Tables("Gear").Rows
             If row("GearID").ToString = txtSelID.Text And Not row("ID") = selected + 1 Then
@@ -418,7 +426,7 @@ Public Class Catalog
         Else
             lblSelError.Visible = True
         End If
-
+        'save changes
         If valid And Label15.Visible = False Then
 
             RootForm.GearDataS.Tables("Gear").Rows(selected).Item("Notes") = txtSelAN.Text
@@ -437,62 +445,123 @@ Public Class Catalog
         End If
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         check = True
-        Timer1.Enabled = True
+        animationTimer.Enabled = True
     End Sub
 
-    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles btnDelete.MouseEnter
+    Private Sub btnDelete_MouseEnter(sender As Object, e As EventArgs) Handles btnDelete.MouseEnter
         check = True
         'Button3.Text = "Are you sure?"
     End Sub
 
-    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles btnDelete.MouseLeave
+    Private Sub btnDelete_LostFocus(sender As Object, e As EventArgs) Handles btnDelete.MouseLeave
         check = False
 
-        Timer1.Enabled = True
+        animationTimer.Enabled = True
 
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub animationTimer_Tick(sender As Object, e As EventArgs) Handles animationTimer.Tick
+        'move left
         If check = True Then
             btnConfirm.Left = Math.Max(btnConfirm.Left - 10, 191)
             btnDelete.Left = Math.Max(btnDelete.Left - 5, 235)
             btnDelete.Width = Math.Min(btnDelete.Width + 5, 110)
             If btnDelete.Left = 235 Then
                 btnDelete.Text = "Are you sure?"
-                Timer1.Enabled = False
+                animationTimer.Enabled = False
             End If
         Else
+            'move right
             btnConfirm.Left = Math.Min(btnConfirm.Left + 10, 271)
             btnDelete.Left = Math.Min(btnDelete.Left + 5, 271)
             btnDelete.Width = Math.Max(btnDelete.Width - 5, 74)
             If btnDelete.Left = 271 Then
-                Timer1.Enabled = False
+                animationTimer.Enabled = False
                 btnDelete.Text = "Delete"
             End If
         End If
     End Sub
 
-    Private Sub Button5_MouseEnter(sender As Object, e As EventArgs) Handles btnConfirm.MouseEnter
+    Private Sub btnConfirm_MouseEnter(sender As Object, e As EventArgs) Handles btnConfirm.MouseEnter
         check = True
     End Sub
 
-    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles btnConfirm.MouseLeave
+    Private Sub btnConfirm_MouseLeave(sender As Object, e As EventArgs) Handles btnConfirm.MouseLeave
         check = False
 
-        Timer1.Enabled = True
+        animationTimer.Enabled = True
     End Sub
 
-    Private Sub txtDD_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
+    Private Sub txtYear_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
+        'data validation
         txtYear.Text = System.Text.RegularExpressions.Regex.Replace(txtYear.Text, "[^0-9]", "")
         txtYear.Select(txtYear.Text.Length, 0)
+    End Sub
+
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        Dim tmp As New WebBrowser
+        tmp.Navigate("about:blank")
+        If (tmp.Document <> Nothing) Then
+
+            Dim item As ListViewItem
+            'write head
+            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p align=""center"">"
+            'write title
+            out += "<font face=""" + HEAD_FONT + """ size = 6>C</font><font face=""" + HEAD_FONT + """ size = 5>ATALOG" + "</font></p>"
+            'write table
+            out += "<font face=""" + BODY_FONT + """ size = 4><p><table width=""500"" align=""center""><tr><th>Gear ID</th><th>Gear Type</th><th>Student Loaned</th><th>Due Date</th></tr>"
+            For Each item In tablelist.Items
+                out += "<tr align=""center""><td>" + item.SubItems(0).Text.ToString + "</td><td>" + item.SubItems(1).Text.ToString + "</td><td>" + item.SubItems(2).Text.ToString + "</td><td>" + item.SubItems(3).Text.ToString + "</td></tr>"
+            Next
+            out += "</table></p></font></body></html>"
+            tmp.Document.Write(out)
+
+            tmp.Print()
+        End If
+    End Sub
+
+    Private Sub btnPreview_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
+        Dim tmp As New WebBrowser
+        tmp.Navigate("about:blank")
+        If (tmp.Document <> Nothing) Then
+
+            Dim item As ListViewItem
+            'write head
+            Dim out = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body><p align=""center"">"
+            'write title
+            out += "<font face=""" + HEAD_FONT + """ size = 6>C</font><font face=""" + HEAD_FONT + """ size = 5>ATALOG" + "</font></p>"
+            'write table
+            out += "<font face=""" + BODY_FONT + """ size = 4><p><table width=""500"" align=""center""><tr><th>Gear ID</th><th>Gear Type</th><th>Student Loaned</th><th>Due Date</th></tr>"
+            For Each item In tablelist.Items
+                out += "<tr align=""center""><td>" + item.SubItems(0).Text.ToString + "</td><td>" + item.SubItems(1).Text.ToString + "</td><td>" + item.SubItems(2).Text.ToString + "</td><td>" + item.SubItems(3).Text.ToString + "</td></tr>"
+            Next
+            out += "</table></p></font></body></html>"
+            tmp.Document.Write(out)
+            tmp.ShowPrintPreviewDialog()
+        End If
+    End Sub
+
+    Private Sub rdbType_CheckedChanged(sender As Object, e As EventArgs) Handles rdbType.CheckedChanged
+        If opened Then
+            reload()
+        End If
+    End Sub
+
+    Private Sub rdbStudent_CheckedChanged(sender As Object, e As EventArgs) Handles rdbStudent.CheckedChanged
+        If opened Then
+            reload()
+        End If
     End Sub
 
 
 End Class
 
 Public Module CueBannerText
+    'Credit Mark Hall from stackoverflow
+    'http://stackoverflow.com/questions/18563522/implementing-a-cue-banner-to-a-textbox-in-vb-net
     <DllImport("user32.dll", CharSet:=CharSet.Auto)> _
     Private Function SendMessage(ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
     End Function

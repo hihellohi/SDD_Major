@@ -5,7 +5,7 @@
     Const HELP = 3
     Dim frmReturn As New Returns()
     Dim frmloans As New Loans()
-    Public frmCatalog As New Catalog()
+    Dim frmCatalog As New Catalog()
     Dim frmlhelp As New loanshelp()
     Dim frmrhelp As New returnhelp()
     Dim frmchelp As New cataloghelp()
@@ -61,7 +61,7 @@
         btnHelp.BackColor = Color.Green
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLoan.Click
+    Private Sub btnloan_Click(sender As Object, e As EventArgs) Handles btnLoan.Click
         topForm.hide()
         topForm = frmloans
         intform = LOANS
@@ -73,7 +73,7 @@
         btnHelp.BackColor = Color.Green
     End Sub
 
-    Public Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
+    Private Sub btnCatalog_Click(sender As Object, e As EventArgs) Handles btnCatalog.Click
         topForm.hide()
         topForm = frmCatalog
         intform = CATALOG
@@ -101,4 +101,5 @@
         btnCatalog.BackColor = Color.Green
         btnHelp.BackColor = Color.White
     End Sub
+
 End Class
