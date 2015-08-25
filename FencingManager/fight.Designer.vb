@@ -22,6 +22,7 @@ Partial Class fight
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnMain = New System.Windows.Forms.Button()
@@ -55,6 +56,7 @@ Partial Class fight
         Me.txtLength = New System.Windows.Forms.TextBox()
         Me.lblScore = New System.Windows.Forms.Label()
         Me.lblTime = New System.Windows.Forms.Label()
+        Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -456,6 +458,10 @@ Partial Class fight
         Me.lblTime.Text = "0:00"
         Me.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'tmrClock
+        '
+        Me.tmrClock.Interval = 1000
+        '
         'fight
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -515,4 +521,5 @@ Partial Class fight
     Friend WithEvents txtLength As System.Windows.Forms.TextBox
     Friend WithEvents lblScore As System.Windows.Forms.Label
     Friend WithEvents lblTime As System.Windows.Forms.Label
+    Friend WithEvents tmrClock As System.Windows.Forms.Timer
 End Class

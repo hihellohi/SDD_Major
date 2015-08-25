@@ -14,6 +14,7 @@
     Dim guestd2 As Integer = 0
     Dim guestl1 As Integer = 0
     Dim guestl2 As Integer = 0
+    Dim clock As Integer = 0
 
     Public Sub reload()
         'Reload the student dataset
@@ -65,7 +66,9 @@
 
     Private Sub btnBegin_KeyDown(sender As Object, e As KeyEventArgs) Handles btnBegin.KeyDown
         If e.KeyCode = Keys.Escape Then
+            tmrClock.Enabled = False
             lock = False
+            Windows.Forms.Cursor.Show()
             btnBegin.Text = "En Garde"
             txtLength.ReadOnly = False
             txtPlayer1.ReadOnly = False
@@ -92,6 +95,8 @@
                     txtLength.ReadOnly = False
                     txtPlayer1.ReadOnly = False
                     txtPlayer2.ReadOnly = False
+                    tmrClock.Enabled = False
+                    Windows.Forms.Cursor.Show()
                 End If
             ElseIf e.Button = Windows.Forms.MouseButtons.Right Then
                 score2 += 1
@@ -102,17 +107,21 @@
                     txtLength.ReadOnly = False
                     txtPlayer1.ReadOnly = False
                     txtPlayer2.ReadOnly = False
+                    tmrClock.Enabled = False
+                    Windows.Forms.Cursor.Show()
                 End If
             Else
                 'undo last move
-                If history.Pop() Then
-                    score2 -= 1
-                Else
-                    score1 -= 1
+                If history.Count Then
+                    If history.Pop() Then
+                        score2 -= 1
+                    Else
+                        score1 -= 1
+                    End If
                 End If
             End If
             lblScore.Text = score1.ToString + " - " + score2.ToString
-            Me.Refresh()
+            'Me.Refresh()
         Else
             If txtLength.Text = "" Then
                 txtLength.BackColor = Color.Red
@@ -126,23 +135,23 @@
                 score1 = 0
                 score2 = 0
                 lblScore.Text = "0 - 0"
+                lblTime.Text = "0:00"
                 lock = True
+                tmrClock.Enabled = True
+                clock = 0
                 btnBegin.Text = "Press Esc to stop"
+                Windows.Forms.Cursor.Hide()
             End If
         End If
     End Sub
 
-    Private Sub btnBegin_MouseLeave(sender As Object, e As EventArgs) Handles btnBegin.MouseLeave
-        If lock Then
-            Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
-        End If
-    End Sub
 
-    Private Sub btnBegin_MouseMove(sender As Object, e As MouseEventArgs) Handles btnBegin.MouseMove
-        If lock Then
-            Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
-        End If
-    End Sub
+
+    'Private Sub btnBegin_MouseMove(sender As Object, e As MouseEventArgs) Handles btnBegin.MouseMove
+    '    If lock Then
+    '        Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
+    '    End If
+    'End Sub
 
 
     Private Sub txtPlayer1_TextChanged(sender As Object, e As EventArgs) Handles txtPlayer1.TextChanged
@@ -206,4 +215,38 @@
             Next
         End If
     End Sub
+
+    Private Sub tmrClock_Tick(sender As Object, e As EventArgs) Handles tmrClock.Tick
+        clock += 1
+        lblTime.Text = Math.Floor(clock / 60).ToString + ":" + (clock Mod 60).ToString("D2")
+    End Sub
+
+    Private Sub fight_MouseMove(sender As Object, e As EventArgs) Handles Me.MouseEnter
+        If lock Then
+            Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
+        End If
+    End Sub
+    Private Sub btnBegin_MouseLeave(sender As Object, e As EventArgs) Handles btnBegin.MouseLeave
+        If lock Then
+            Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
+        End If
+    End Sub
+
+    'Private Sub panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+    '    If lock Then
+    '        Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
+    '    End If
+    'End Sub
+
+    'Private Sub panel2_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel2.MouseMove
+    '    If lock Then
+    '        Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
+    '    End If
+    'End Sub
+
+    'Private Sub panel3_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel3.MouseMove
+    '    If lock Then
+    '        Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
+    '    End If
+    'End Sub
 End Class
