@@ -338,6 +338,12 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\volume icon off.png" />
+    <None Include="Resources\search icon.png" />
+    <None Include="Resources\sabre symbol.png" />
+    <None Include="Resources\epee symbol.png" />
+    <None Include="Resources\Foil symbol2.png" />
+    <None Include="Resources\Foil symbol1.png" />
     <None Include="Resources\volume icon on.jpg" />
     <None Include="Resources\gear icon1.jpg" />
     <None Include="Resources\gear icon.jpg" />

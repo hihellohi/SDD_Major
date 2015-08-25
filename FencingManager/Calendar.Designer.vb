@@ -23,50 +23,10 @@ Partial Class Calendar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Calendar))
         Me.Panel = New System.Windows.Forms.Panel()
-        Me.ControlPanelSearch = New System.Windows.Forms.Panel()
-        Me.LabNoResultsFound = New System.Windows.Forms.Label()
-        Me.ButSearch = New System.Windows.Forms.Button()
-        Me.LabInTheSelectedFields = New System.Windows.Forms.Label()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.ColumnEventName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnEventDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnTime = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnVenue = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnWeapon = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnGroup = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TexSearch = New System.Windows.Forms.RichTextBox()
-        Me.PanelSelectedFields = New System.Windows.Forms.Panel()
-        Me.CheckBoxAll = New System.Windows.Forms.CheckBox()
-        Me.RadAdvSearchGroup = New System.Windows.Forms.RadioButton()
-        Me.RadAdvSearchEventName = New System.Windows.Forms.RadioButton()
-        Me.RadAdvSearchWeapon = New System.Windows.Forms.RadioButton()
-        Me.RadAdvSearchVenue = New System.Windows.Forms.RadioButton()
-        Me.PanelWeaponChoices = New System.Windows.Forms.Panel()
-        Me.RadChoiceEpee = New System.Windows.Forms.RadioButton()
-        Me.RadChoiceNoWeapon = New System.Windows.Forms.RadioButton()
-        Me.RadChoiceSabre = New System.Windows.Forms.RadioButton()
-        Me.RadChoiceFoil = New System.Windows.Forms.RadioButton()
-        Me.ControlPanelSettings = New System.Windows.Forms.Panel()
-        Me.GroupBoxSettings = New System.Windows.Forms.GroupBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.RadResetPositionSearch = New System.Windows.Forms.RadioButton()
-        Me.RadResetPositionCalendar = New System.Windows.Forms.RadioButton()
-        Me.CheckBoxResetPositionBoth = New System.Windows.Forms.CheckBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ButSaveVolume = New System.Windows.Forms.Button()
-        Me.RadVolumeOff = New System.Windows.Forms.RadioButton()
-        Me.RadVolumeOn = New System.Windows.Forms.RadioButton()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.ButResetPosition = New System.Windows.Forms.Button()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.PicVolumeOn = New System.Windows.Forms.PictureBox()
         Me.ControlPanelCalendar = New System.Windows.Forms.Panel()
         Me.PanelImportedCalendar = New System.Windows.Forms.Panel()
         Me.ButMinimisedView = New System.Windows.Forms.Button()
-        Me.PicSearchSlider = New System.Windows.Forms.PictureBox()
         Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
         Me.ButExpandedView = New System.Windows.Forms.Button()
         Me.LabelDetails = New System.Windows.Forms.Label()
@@ -234,6 +194,42 @@ Partial Class Calendar
         Me.pansu1 = New System.Windows.Forms.Panel()
         Me.su1 = New System.Windows.Forms.Label()
         Me.Textsu1 = New System.Windows.Forms.RichTextBox()
+        Me.ControlPanelSearch = New System.Windows.Forms.Panel()
+        Me.LabNoResultsFound = New System.Windows.Forms.Label()
+        Me.LabInTheSelectedFields = New System.Windows.Forms.Label()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.ColumnEventName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnEventDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnTime = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnVenue = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnWeapon = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnGroup = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TexSearch = New System.Windows.Forms.RichTextBox()
+        Me.PanelSelectedFields = New System.Windows.Forms.Panel()
+        Me.CheckBoxAll = New System.Windows.Forms.CheckBox()
+        Me.RadAdvSearchGroup = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchEventName = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchWeapon = New System.Windows.Forms.RadioButton()
+        Me.RadAdvSearchVenue = New System.Windows.Forms.RadioButton()
+        Me.PanelWeaponChoices = New System.Windows.Forms.Panel()
+        Me.RadChoiceEpee = New System.Windows.Forms.RadioButton()
+        Me.RadChoiceNoWeapon = New System.Windows.Forms.RadioButton()
+        Me.RadChoiceSabre = New System.Windows.Forms.RadioButton()
+        Me.RadChoiceFoil = New System.Windows.Forms.RadioButton()
+        Me.ControlPanelSettings = New System.Windows.Forms.Panel()
+        Me.GroupBoxSettings = New System.Windows.Forms.GroupBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.RadResetPositionSearch = New System.Windows.Forms.RadioButton()
+        Me.RadResetPositionCalendar = New System.Windows.Forms.RadioButton()
+        Me.CheckBoxResetPositionBoth = New System.Windows.Forms.CheckBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ButSaveVolume = New System.Windows.Forms.Button()
+        Me.RadVolumeOff = New System.Windows.Forms.RadioButton()
+        Me.RadVolumeOn = New System.Windows.Forms.RadioButton()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.ButResetPosition = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.ControlPanelDatabaseView = New System.Windows.Forms.Panel()
         Me.CalendarDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -249,30 +245,24 @@ Partial Class Calendar
         Me.ButControlDatabaseView = New System.Windows.Forms.Button()
         Me.ButControlSearch = New System.Windows.Forms.Button()
         Me.ButControlCalendar = New System.Windows.Forms.Button()
-        Me.ControlPanelHelp = New System.Windows.Forms.Panel()
-        Me.PanelHelp = New System.Windows.Forms.GroupBox()
-        Me.ButCloseHelp = New System.Windows.Forms.Button()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.ButSettings = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.ButHelp = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.SlideTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.CalendarTableAdapter = New FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter()
         Me.TableAdapterManager = New FencingManager.FencingDataSetTableAdapters.TableAdapterManager()
+        Me.ButSearch = New System.Windows.Forms.Button()
+        Me.PicSabre = New System.Windows.Forms.PictureBox()
+        Me.PicEpee = New System.Windows.Forms.PictureBox()
+        Me.PicFoil = New System.Windows.Forms.PictureBox()
+        Me.PicSearchSlider = New System.Windows.Forms.PictureBox()
+        Me.PicVolumeOff = New System.Windows.Forms.PictureBox()
+        Me.PicVolumeOn = New System.Windows.Forms.PictureBox()
+        Me.ButSettings = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel.SuspendLayout()
-        Me.ControlPanelSearch.SuspendLayout()
-        Me.PanelSelectedFields.SuspendLayout()
-        Me.PanelWeaponChoices.SuspendLayout()
-        Me.ControlPanelSettings.SuspendLayout()
-        Me.GroupBoxSettings.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ControlPanelCalendar.SuspendLayout()
         Me.PanelImportedCalendar.SuspendLayout()
-        CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanInput.SuspendLayout()
         Me.PanelControls.SuspendLayout()
         Me.pansa6.SuspendLayout()
@@ -317,26 +307,36 @@ Partial Class Calendar
         Me.pantu1.SuspendLayout()
         Me.pansu2.SuspendLayout()
         Me.pansu1.SuspendLayout()
+        Me.ControlPanelSearch.SuspendLayout()
+        Me.PanelSelectedFields.SuspendLayout()
+        Me.PanelWeaponChoices.SuspendLayout()
+        Me.ControlPanelSettings.SuspendLayout()
+        Me.GroupBoxSettings.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.ControlPanelDatabaseView.SuspendLayout()
         CType(Me.CalendarDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CalendarBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FencingDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ControlPanelHelp.SuspendLayout()
-        Me.PanelHelp.SuspendLayout()
+        CType(Me.PicSabre, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicEpee, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicFoil, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicVolumeOff, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel
         '
         Me.Panel.BackColor = System.Drawing.Color.White
-        Me.Panel.Controls.Add(Me.ControlPanelSearch)
-        Me.Panel.Controls.Add(Me.ControlPanelSettings)
-        Me.Panel.Controls.Add(Me.ControlPanelCalendar)
         Me.Panel.Controls.Add(Me.ControlPanelDatabaseView)
+        Me.Panel.Controls.Add(Me.ControlPanelSearch)
+        Me.Panel.Controls.Add(Me.ControlPanelCalendar)
+        Me.Panel.Controls.Add(Me.ControlPanelSettings)
         Me.Panel.Controls.Add(Me.ButControlDatabaseView)
         Me.Panel.Controls.Add(Me.ButControlSearch)
         Me.Panel.Controls.Add(Me.ButControlCalendar)
-        Me.Panel.Controls.Add(Me.ControlPanelHelp)
         Me.Panel.Controls.Add(Me.ButSettings)
         Me.Panel.Controls.Add(Me.Label14)
         Me.Panel.Controls.Add(Me.ButHelp)
@@ -347,405 +347,12 @@ Partial Class Calendar
         Me.Panel.Size = New System.Drawing.Size(1281, 768)
         Me.Panel.TabIndex = 0
         '
-        'ControlPanelSearch
-        '
-        Me.ControlPanelSearch.BackColor = System.Drawing.Color.Teal
-        Me.ControlPanelSearch.Controls.Add(Me.LabNoResultsFound)
-        Me.ControlPanelSearch.Controls.Add(Me.ButSearch)
-        Me.ControlPanelSearch.Controls.Add(Me.LabInTheSelectedFields)
-        Me.ControlPanelSearch.Controls.Add(Me.ListView1)
-        Me.ControlPanelSearch.Controls.Add(Me.Label6)
-        Me.ControlPanelSearch.Controls.Add(Me.TexSearch)
-        Me.ControlPanelSearch.Controls.Add(Me.PanelSelectedFields)
-        Me.ControlPanelSearch.Controls.Add(Me.PanelWeaponChoices)
-        Me.ControlPanelSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControlPanelSearch.Location = New System.Drawing.Point(194, 363)
-        Me.ControlPanelSearch.Name = "ControlPanelSearch"
-        Me.ControlPanelSearch.Size = New System.Drawing.Size(305, 169)
-        Me.ControlPanelSearch.TabIndex = 89
-        '
-        'LabNoResultsFound
-        '
-        Me.LabNoResultsFound.AutoSize = True
-        Me.LabNoResultsFound.BackColor = System.Drawing.SystemColors.Window
-        Me.LabNoResultsFound.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabNoResultsFound.Location = New System.Drawing.Point(274, 334)
-        Me.LabNoResultsFound.Name = "LabNoResultsFound"
-        Me.LabNoResultsFound.Size = New System.Drawing.Size(127, 31)
-        Me.LabNoResultsFound.TabIndex = 104
-        Me.LabNoResultsFound.Text = "initial text"
-        Me.LabNoResultsFound.Visible = False
-        '
-        'ButSearch
-        '
-        Me.ButSearch.BackColor = System.Drawing.Color.White
-        Me.ButSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ButSearch.Location = New System.Drawing.Point(423, 190)
-        Me.ButSearch.Name = "ButSearch"
-        Me.ButSearch.Size = New System.Drawing.Size(86, 26)
-        Me.ButSearch.TabIndex = 8
-        Me.ButSearch.Text = "Search"
-        Me.ButSearch.UseVisualStyleBackColor = False
-        '
-        'LabInTheSelectedFields
-        '
-        Me.LabInTheSelectedFields.AutoSize = True
-        Me.LabInTheSelectedFields.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.LabInTheSelectedFields.Location = New System.Drawing.Point(631, 137)
-        Me.LabInTheSelectedFields.Name = "LabInTheSelectedFields"
-        Me.LabInTheSelectedFields.Size = New System.Drawing.Size(159, 20)
-        Me.LabInTheSelectedFields.TabIndex = 93
-        Me.LabInTheSelectedFields.Text = "In the selected fields:"
-        '
-        'ListView1
-        '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnEventName, Me.ColumnEventDate, Me.ColumnTime, Me.ColumnVenue, Me.ColumnWeapon, Me.ColumnGroup})
-        Me.ListView1.GridLines = True
-        Me.ListView1.Location = New System.Drawing.Point(152, 252)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(955, 364)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
-        '
-        'ColumnEventName
-        '
-        Me.ColumnEventName.Text = "Event Name"
-        Me.ColumnEventName.Width = 302
-        '
-        'ColumnEventDate
-        '
-        Me.ColumnEventDate.Text = "Event Date"
-        Me.ColumnEventDate.Width = 97
-        '
-        'ColumnTime
-        '
-        Me.ColumnTime.Text = "Time"
-        Me.ColumnTime.Width = 88
-        '
-        'ColumnVenue
-        '
-        Me.ColumnVenue.Text = "Venue"
-        Me.ColumnVenue.Width = 196
-        '
-        'ColumnWeapon
-        '
-        Me.ColumnWeapon.Text = "Weapon"
-        Me.ColumnWeapon.Width = 107
-        '
-        'ColumnGroup
-        '
-        Me.ColumnGroup.Text = "Group"
-        Me.ColumnGroup.Width = 161
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(247, 135)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(87, 20)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Search for:"
-        '
-        'TexSearch
-        '
-        Me.TexSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.TexSearch.Location = New System.Drawing.Point(340, 134)
-        Me.TexSearch.Multiline = False
-        Me.TexSearch.Name = "TexSearch"
-        Me.TexSearch.Size = New System.Drawing.Size(259, 26)
-        Me.TexSearch.TabIndex = 2
-        Me.TexSearch.Text = ""
-        '
-        'PanelSelectedFields
-        '
-        Me.PanelSelectedFields.Controls.Add(Me.CheckBoxAll)
-        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchGroup)
-        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchEventName)
-        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchWeapon)
-        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchVenue)
-        Me.PanelSelectedFields.Location = New System.Drawing.Point(792, 73)
-        Me.PanelSelectedFields.Name = "PanelSelectedFields"
-        Me.PanelSelectedFields.Size = New System.Drawing.Size(123, 146)
-        Me.PanelSelectedFields.TabIndex = 102
-        '
-        'CheckBoxAll
-        '
-        Me.CheckBoxAll.AutoSize = True
-        Me.CheckBoxAll.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBoxAll.Location = New System.Drawing.Point(9, 4)
-        Me.CheckBoxAll.Name = "CheckBoxAll"
-        Me.CheckBoxAll.Size = New System.Drawing.Size(45, 24)
-        Me.CheckBoxAll.TabIndex = 98
-        Me.CheckBoxAll.Text = "All"
-        Me.CheckBoxAll.UseVisualStyleBackColor = True
-        '
-        'RadAdvSearchGroup
-        '
-        Me.RadAdvSearchGroup.AutoSize = True
-        Me.RadAdvSearchGroup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadAdvSearchGroup.Location = New System.Drawing.Point(9, 118)
-        Me.RadAdvSearchGroup.Name = "RadAdvSearchGroup"
-        Me.RadAdvSearchGroup.Size = New System.Drawing.Size(72, 24)
-        Me.RadAdvSearchGroup.TabIndex = 101
-        Me.RadAdvSearchGroup.Text = "Group"
-        Me.RadAdvSearchGroup.UseVisualStyleBackColor = True
-        '
-        'RadAdvSearchEventName
-        '
-        Me.RadAdvSearchEventName.AutoSize = True
-        Me.RadAdvSearchEventName.Checked = True
-        Me.RadAdvSearchEventName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadAdvSearchEventName.Location = New System.Drawing.Point(9, 31)
-        Me.RadAdvSearchEventName.Name = "RadAdvSearchEventName"
-        Me.RadAdvSearchEventName.Size = New System.Drawing.Size(114, 24)
-        Me.RadAdvSearchEventName.TabIndex = 97
-        Me.RadAdvSearchEventName.TabStop = True
-        Me.RadAdvSearchEventName.Text = "Event Name"
-        Me.RadAdvSearchEventName.UseVisualStyleBackColor = True
-        '
-        'RadAdvSearchWeapon
-        '
-        Me.RadAdvSearchWeapon.AutoSize = True
-        Me.RadAdvSearchWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadAdvSearchWeapon.Location = New System.Drawing.Point(9, 88)
-        Me.RadAdvSearchWeapon.Name = "RadAdvSearchWeapon"
-        Me.RadAdvSearchWeapon.Size = New System.Drawing.Size(87, 24)
-        Me.RadAdvSearchWeapon.TabIndex = 100
-        Me.RadAdvSearchWeapon.Text = "Weapon"
-        Me.RadAdvSearchWeapon.UseVisualStyleBackColor = True
-        '
-        'RadAdvSearchVenue
-        '
-        Me.RadAdvSearchVenue.AutoSize = True
-        Me.RadAdvSearchVenue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadAdvSearchVenue.Location = New System.Drawing.Point(9, 59)
-        Me.RadAdvSearchVenue.Name = "RadAdvSearchVenue"
-        Me.RadAdvSearchVenue.Size = New System.Drawing.Size(74, 24)
-        Me.RadAdvSearchVenue.TabIndex = 99
-        Me.RadAdvSearchVenue.Text = "Venue"
-        Me.RadAdvSearchVenue.UseVisualStyleBackColor = True
-        '
-        'PanelWeaponChoices
-        '
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceEpee)
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceNoWeapon)
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceSabre)
-        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceFoil)
-        Me.PanelWeaponChoices.Location = New System.Drawing.Point(792, 73)
-        Me.PanelWeaponChoices.Name = "PanelWeaponChoices"
-        Me.PanelWeaponChoices.Size = New System.Drawing.Size(123, 146)
-        Me.PanelWeaponChoices.TabIndex = 103
-        '
-        'RadChoiceEpee
-        '
-        Me.RadChoiceEpee.AutoSize = True
-        Me.RadChoiceEpee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceEpee.Location = New System.Drawing.Point(9, 118)
-        Me.RadChoiceEpee.Name = "RadChoiceEpee"
-        Me.RadChoiceEpee.Size = New System.Drawing.Size(65, 24)
-        Me.RadChoiceEpee.TabIndex = 106
-        Me.RadChoiceEpee.Text = "Epee"
-        Me.RadChoiceEpee.UseVisualStyleBackColor = True
-        '
-        'RadChoiceNoWeapon
-        '
-        Me.RadChoiceNoWeapon.AutoSize = True
-        Me.RadChoiceNoWeapon.Checked = True
-        Me.RadChoiceNoWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceNoWeapon.Location = New System.Drawing.Point(9, 31)
-        Me.RadChoiceNoWeapon.Name = "RadChoiceNoWeapon"
-        Me.RadChoiceNoWeapon.Size = New System.Drawing.Size(111, 24)
-        Me.RadChoiceNoWeapon.TabIndex = 102
-        Me.RadChoiceNoWeapon.TabStop = True
-        Me.RadChoiceNoWeapon.Text = "No Weapon"
-        Me.RadChoiceNoWeapon.UseVisualStyleBackColor = True
-        '
-        'RadChoiceSabre
-        '
-        Me.RadChoiceSabre.AutoSize = True
-        Me.RadChoiceSabre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceSabre.Location = New System.Drawing.Point(9, 87)
-        Me.RadChoiceSabre.Name = "RadChoiceSabre"
-        Me.RadChoiceSabre.Size = New System.Drawing.Size(70, 24)
-        Me.RadChoiceSabre.TabIndex = 105
-        Me.RadChoiceSabre.Text = "Sabre"
-        Me.RadChoiceSabre.UseVisualStyleBackColor = True
-        '
-        'RadChoiceFoil
-        '
-        Me.RadChoiceFoil.AutoSize = True
-        Me.RadChoiceFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceFoil.Location = New System.Drawing.Point(9, 59)
-        Me.RadChoiceFoil.Name = "RadChoiceFoil"
-        Me.RadChoiceFoil.Size = New System.Drawing.Size(52, 24)
-        Me.RadChoiceFoil.TabIndex = 104
-        Me.RadChoiceFoil.Text = "Foil"
-        Me.RadChoiceFoil.UseVisualStyleBackColor = True
-        '
-        'ControlPanelSettings
-        '
-        Me.ControlPanelSettings.Controls.Add(Me.GroupBoxSettings)
-        Me.ControlPanelSettings.Location = New System.Drawing.Point(443, 160)
-        Me.ControlPanelSettings.Name = "ControlPanelSettings"
-        Me.ControlPanelSettings.Size = New System.Drawing.Size(224, 134)
-        Me.ControlPanelSettings.TabIndex = 91
-        '
-        'GroupBoxSettings
-        '
-        Me.GroupBoxSettings.BackColor = System.Drawing.SystemColors.Control
-        Me.GroupBoxSettings.Controls.Add(Me.Panel3)
-        Me.GroupBoxSettings.Controls.Add(Me.Panel2)
-        Me.GroupBoxSettings.Controls.Add(Me.Label16)
-        Me.GroupBoxSettings.Controls.Add(Me.ButResetPosition)
-        Me.GroupBoxSettings.Controls.Add(Me.Label15)
-        Me.GroupBoxSettings.Controls.Add(Me.PicVolumeOn)
-        Me.GroupBoxSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBoxSettings.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBoxSettings.Name = "GroupBoxSettings"
-        Me.GroupBoxSettings.Size = New System.Drawing.Size(1281, 658)
-        Me.GroupBoxSettings.TabIndex = 81
-        Me.GroupBoxSettings.TabStop = False
-        Me.GroupBoxSettings.Text = "Settings"
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.RadResetPositionSearch)
-        Me.Panel3.Controls.Add(Me.RadResetPositionCalendar)
-        Me.Panel3.Controls.Add(Me.CheckBoxResetPositionBoth)
-        Me.Panel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(893, 259)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(186, 143)
-        Me.Panel3.TabIndex = 12
-        Me.Panel3.Visible = False
-        '
-        'RadResetPositionSearch
-        '
-        Me.RadResetPositionSearch.AutoSize = True
-        Me.RadResetPositionSearch.Enabled = False
-        Me.RadResetPositionSearch.Location = New System.Drawing.Point(36, 74)
-        Me.RadResetPositionSearch.Name = "RadResetPositionSearch"
-        Me.RadResetPositionSearch.Size = New System.Drawing.Size(78, 24)
-        Me.RadResetPositionSearch.TabIndex = 10
-        Me.RadResetPositionSearch.TabStop = True
-        Me.RadResetPositionSearch.Text = "Search"
-        Me.RadResetPositionSearch.UseVisualStyleBackColor = True
-        '
-        'RadResetPositionCalendar
-        '
-        Me.RadResetPositionCalendar.AutoSize = True
-        Me.RadResetPositionCalendar.Enabled = False
-        Me.RadResetPositionCalendar.Location = New System.Drawing.Point(36, 46)
-        Me.RadResetPositionCalendar.Name = "RadResetPositionCalendar"
-        Me.RadResetPositionCalendar.Size = New System.Drawing.Size(129, 24)
-        Me.RadResetPositionCalendar.TabIndex = 9
-        Me.RadResetPositionCalendar.TabStop = True
-        Me.RadResetPositionCalendar.Text = "Calendar View"
-        Me.RadResetPositionCalendar.UseVisualStyleBackColor = True
-        '
-        'CheckBoxResetPositionBoth
-        '
-        Me.CheckBoxResetPositionBoth.AutoSize = True
-        Me.CheckBoxResetPositionBoth.Checked = True
-        Me.CheckBoxResetPositionBoth.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxResetPositionBoth.Location = New System.Drawing.Point(38, 18)
-        Me.CheckBoxResetPositionBoth.Name = "CheckBoxResetPositionBoth"
-        Me.CheckBoxResetPositionBoth.Size = New System.Drawing.Size(62, 24)
-        Me.CheckBoxResetPositionBoth.TabIndex = 8
-        Me.CheckBoxResetPositionBoth.Text = "Both"
-        Me.CheckBoxResetPositionBoth.UseVisualStyleBackColor = True
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.ButSaveVolume)
-        Me.Panel2.Controls.Add(Me.RadVolumeOff)
-        Me.Panel2.Controls.Add(Me.RadVolumeOn)
-        Me.Panel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel2.Location = New System.Drawing.Point(298, 146)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(361, 120)
-        Me.Panel2.TabIndex = 9
-        '
-        'ButSaveVolume
-        '
-        Me.ButSaveVolume.BackColor = System.Drawing.Color.White
-        Me.ButSaveVolume.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSaveVolume.Location = New System.Drawing.Point(187, 31)
-        Me.ButSaveVolume.Name = "ButSaveVolume"
-        Me.ButSaveVolume.Size = New System.Drawing.Size(135, 28)
-        Me.ButSaveVolume.TabIndex = 10
-        Me.ButSaveVolume.Text = "Save"
-        Me.ButSaveVolume.UseVisualStyleBackColor = False
-        '
-        'RadVolumeOff
-        '
-        Me.RadVolumeOff.AutoSize = True
-        Me.RadVolumeOff.Location = New System.Drawing.Point(18, 46)
-        Me.RadVolumeOff.Name = "RadVolumeOff"
-        Me.RadVolumeOff.Size = New System.Drawing.Size(49, 24)
-        Me.RadVolumeOff.TabIndex = 11
-        Me.RadVolumeOff.Text = "Off"
-        Me.RadVolumeOff.UseVisualStyleBackColor = True
-        '
-        'RadVolumeOn
-        '
-        Me.RadVolumeOn.AutoSize = True
-        Me.RadVolumeOn.Checked = True
-        Me.RadVolumeOn.Location = New System.Drawing.Point(18, 18)
-        Me.RadVolumeOn.Name = "RadVolumeOn"
-        Me.RadVolumeOn.Size = New System.Drawing.Size(48, 24)
-        Me.RadVolumeOn.TabIndex = 10
-        Me.RadVolumeOn.TabStop = True
-        Me.RadVolumeOn.Text = "On"
-        Me.RadVolumeOn.UseVisualStyleBackColor = True
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(156, 98)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(203, 24)
-        Me.Label16.TabIndex = 7
-        Me.Label16.Text = "Disable/Enable Sound:"
-        '
-        'ButResetPosition
-        '
-        Me.ButResetPosition.BackColor = System.Drawing.Color.White
-        Me.ButResetPosition.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButResetPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButResetPosition.Location = New System.Drawing.Point(485, 365)
-        Me.ButResetPosition.Name = "ButResetPosition"
-        Me.ButResetPosition.Size = New System.Drawing.Size(135, 28)
-        Me.ButResetPosition.TabIndex = 7
-        Me.ButResetPosition.Text = "Reset Position"
-        Me.ButResetPosition.UseVisualStyleBackColor = False
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(156, 293)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(521, 24)
-        Me.Label15.TabIndex = 3
-        Me.Label15.Text = "Reset Calendar View location for the Virtual Calendar Display:"
-        '
-        'PicVolumeOn
-        '
-        Me.PicVolumeOn.BackgroundImage = Global.FencingManager.My.Resources.Resources.volume_icon_on
-        Me.PicVolumeOn.Location = New System.Drawing.Point(178, 140)
-        Me.PicVolumeOn.Name = "PicVolumeOn"
-        Me.PicVolumeOn.Size = New System.Drawing.Size(100, 100)
-        Me.PicVolumeOn.TabIndex = 8
-        Me.PicVolumeOn.TabStop = False
-        '
         'ControlPanelCalendar
         '
         Me.ControlPanelCalendar.BackColor = System.Drawing.Color.SteelBlue
+        Me.ControlPanelCalendar.Controls.Add(Me.PicSabre)
+        Me.ControlPanelCalendar.Controls.Add(Me.PicEpee)
+        Me.ControlPanelCalendar.Controls.Add(Me.PicFoil)
         Me.ControlPanelCalendar.Controls.Add(Me.PanelImportedCalendar)
         Me.ControlPanelCalendar.Controls.Add(Me.LabelDetails)
         Me.ControlPanelCalendar.Controls.Add(Me.PanInput)
@@ -803,9 +410,9 @@ Partial Class Calendar
         Me.ControlPanelCalendar.Controls.Add(Me.pantu1)
         Me.ControlPanelCalendar.Controls.Add(Me.pansu2)
         Me.ControlPanelCalendar.Controls.Add(Me.pansu1)
-        Me.ControlPanelCalendar.Location = New System.Drawing.Point(3, 116)
+        Me.ControlPanelCalendar.Location = New System.Drawing.Point(213, 599)
         Me.ControlPanelCalendar.Name = "ControlPanelCalendar"
-        Me.ControlPanelCalendar.Size = New System.Drawing.Size(169, 166)
+        Me.ControlPanelCalendar.Size = New System.Drawing.Size(191, 147)
         Me.ControlPanelCalendar.TabIndex = 88
         '
         'PanelImportedCalendar
@@ -832,15 +439,6 @@ Partial Class Calendar
         Me.ButMinimisedView.TabIndex = 140
         Me.ButMinimisedView.Text = "Minimised View"
         Me.ButMinimisedView.UseVisualStyleBackColor = False
-        '
-        'PicSearchSlider
-        '
-        Me.PicSearchSlider.BackColor = System.Drawing.Color.Maroon
-        Me.PicSearchSlider.Location = New System.Drawing.Point(92, 0)
-        Me.PicSearchSlider.Name = "PicSearchSlider"
-        Me.PicSearchSlider.Size = New System.Drawing.Size(61, 13)
-        Me.PicSearchSlider.TabIndex = 139
-        Me.PicSearchSlider.TabStop = False
         '
         'MonthCalendar1
         '
@@ -2745,13 +2343,389 @@ Partial Class Calendar
         Me.Textsu1.TabIndex = 0
         Me.Textsu1.Text = ""
         '
+        'ControlPanelSearch
+        '
+        Me.ControlPanelSearch.BackColor = System.Drawing.Color.Teal
+        Me.ControlPanelSearch.Controls.Add(Me.LabNoResultsFound)
+        Me.ControlPanelSearch.Controls.Add(Me.ButSearch)
+        Me.ControlPanelSearch.Controls.Add(Me.LabInTheSelectedFields)
+        Me.ControlPanelSearch.Controls.Add(Me.ListView1)
+        Me.ControlPanelSearch.Controls.Add(Me.Label6)
+        Me.ControlPanelSearch.Controls.Add(Me.TexSearch)
+        Me.ControlPanelSearch.Controls.Add(Me.PanelSelectedFields)
+        Me.ControlPanelSearch.Controls.Add(Me.PanelWeaponChoices)
+        Me.ControlPanelSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControlPanelSearch.Location = New System.Drawing.Point(921, 604)
+        Me.ControlPanelSearch.Name = "ControlPanelSearch"
+        Me.ControlPanelSearch.Size = New System.Drawing.Size(150, 138)
+        Me.ControlPanelSearch.TabIndex = 89
+        '
+        'LabNoResultsFound
+        '
+        Me.LabNoResultsFound.AutoSize = True
+        Me.LabNoResultsFound.BackColor = System.Drawing.SystemColors.Window
+        Me.LabNoResultsFound.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabNoResultsFound.Location = New System.Drawing.Point(274, 334)
+        Me.LabNoResultsFound.Name = "LabNoResultsFound"
+        Me.LabNoResultsFound.Size = New System.Drawing.Size(127, 31)
+        Me.LabNoResultsFound.TabIndex = 104
+        Me.LabNoResultsFound.Text = "initial text"
+        Me.LabNoResultsFound.Visible = False
+        '
+        'LabInTheSelectedFields
+        '
+        Me.LabInTheSelectedFields.AutoSize = True
+        Me.LabInTheSelectedFields.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.LabInTheSelectedFields.Location = New System.Drawing.Point(640, 114)
+        Me.LabInTheSelectedFields.Name = "LabInTheSelectedFields"
+        Me.LabInTheSelectedFields.Size = New System.Drawing.Size(159, 20)
+        Me.LabInTheSelectedFields.TabIndex = 93
+        Me.LabInTheSelectedFields.Text = "In the selected fields:"
+        '
+        'ListView1
+        '
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnEventName, Me.ColumnEventDate, Me.ColumnTime, Me.ColumnVenue, Me.ColumnWeapon, Me.ColumnGroup})
+        Me.ListView1.GridLines = True
+        Me.ListView1.Location = New System.Drawing.Point(152, 252)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(955, 364)
+        Me.ListView1.TabIndex = 1
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
+        '
+        'ColumnEventName
+        '
+        Me.ColumnEventName.Text = "Event Name"
+        Me.ColumnEventName.Width = 302
+        '
+        'ColumnEventDate
+        '
+        Me.ColumnEventDate.Text = "Event Date"
+        Me.ColumnEventDate.Width = 97
+        '
+        'ColumnTime
+        '
+        Me.ColumnTime.Text = "Time"
+        Me.ColumnTime.Width = 88
+        '
+        'ColumnVenue
+        '
+        Me.ColumnVenue.Text = "Venue"
+        Me.ColumnVenue.Width = 196
+        '
+        'ColumnWeapon
+        '
+        Me.ColumnWeapon.Text = "Weapon"
+        Me.ColumnWeapon.Width = 107
+        '
+        'ColumnGroup
+        '
+        Me.ColumnGroup.Text = "Group"
+        Me.ColumnGroup.Width = 161
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label6.Location = New System.Drawing.Point(256, 112)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(87, 20)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Search for:"
+        '
+        'TexSearch
+        '
+        Me.TexSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.TexSearch.Location = New System.Drawing.Point(349, 111)
+        Me.TexSearch.Multiline = False
+        Me.TexSearch.Name = "TexSearch"
+        Me.TexSearch.Size = New System.Drawing.Size(259, 26)
+        Me.TexSearch.TabIndex = 2
+        Me.TexSearch.Text = ""
+        '
+        'PanelSelectedFields
+        '
+        Me.PanelSelectedFields.Controls.Add(Me.CheckBoxAll)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchGroup)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchEventName)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchWeapon)
+        Me.PanelSelectedFields.Controls.Add(Me.RadAdvSearchVenue)
+        Me.PanelSelectedFields.Location = New System.Drawing.Point(801, 50)
+        Me.PanelSelectedFields.Name = "PanelSelectedFields"
+        Me.PanelSelectedFields.Size = New System.Drawing.Size(123, 146)
+        Me.PanelSelectedFields.TabIndex = 102
+        '
+        'CheckBoxAll
+        '
+        Me.CheckBoxAll.AutoSize = True
+        Me.CheckBoxAll.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.CheckBoxAll.Location = New System.Drawing.Point(9, 4)
+        Me.CheckBoxAll.Name = "CheckBoxAll"
+        Me.CheckBoxAll.Size = New System.Drawing.Size(45, 24)
+        Me.CheckBoxAll.TabIndex = 98
+        Me.CheckBoxAll.Text = "All"
+        Me.CheckBoxAll.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchGroup
+        '
+        Me.RadAdvSearchGroup.AutoSize = True
+        Me.RadAdvSearchGroup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchGroup.Location = New System.Drawing.Point(9, 118)
+        Me.RadAdvSearchGroup.Name = "RadAdvSearchGroup"
+        Me.RadAdvSearchGroup.Size = New System.Drawing.Size(72, 24)
+        Me.RadAdvSearchGroup.TabIndex = 101
+        Me.RadAdvSearchGroup.Text = "Group"
+        Me.RadAdvSearchGroup.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchEventName
+        '
+        Me.RadAdvSearchEventName.AutoSize = True
+        Me.RadAdvSearchEventName.Checked = True
+        Me.RadAdvSearchEventName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchEventName.Location = New System.Drawing.Point(9, 31)
+        Me.RadAdvSearchEventName.Name = "RadAdvSearchEventName"
+        Me.RadAdvSearchEventName.Size = New System.Drawing.Size(114, 24)
+        Me.RadAdvSearchEventName.TabIndex = 97
+        Me.RadAdvSearchEventName.TabStop = True
+        Me.RadAdvSearchEventName.Text = "Event Name"
+        Me.RadAdvSearchEventName.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchWeapon
+        '
+        Me.RadAdvSearchWeapon.AutoSize = True
+        Me.RadAdvSearchWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchWeapon.Location = New System.Drawing.Point(9, 88)
+        Me.RadAdvSearchWeapon.Name = "RadAdvSearchWeapon"
+        Me.RadAdvSearchWeapon.Size = New System.Drawing.Size(87, 24)
+        Me.RadAdvSearchWeapon.TabIndex = 100
+        Me.RadAdvSearchWeapon.Text = "Weapon"
+        Me.RadAdvSearchWeapon.UseVisualStyleBackColor = True
+        '
+        'RadAdvSearchVenue
+        '
+        Me.RadAdvSearchVenue.AutoSize = True
+        Me.RadAdvSearchVenue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadAdvSearchVenue.Location = New System.Drawing.Point(9, 59)
+        Me.RadAdvSearchVenue.Name = "RadAdvSearchVenue"
+        Me.RadAdvSearchVenue.Size = New System.Drawing.Size(74, 24)
+        Me.RadAdvSearchVenue.TabIndex = 99
+        Me.RadAdvSearchVenue.Text = "Venue"
+        Me.RadAdvSearchVenue.UseVisualStyleBackColor = True
+        '
+        'PanelWeaponChoices
+        '
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceEpee)
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceNoWeapon)
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceSabre)
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceFoil)
+        Me.PanelWeaponChoices.Location = New System.Drawing.Point(801, 50)
+        Me.PanelWeaponChoices.Name = "PanelWeaponChoices"
+        Me.PanelWeaponChoices.Size = New System.Drawing.Size(123, 146)
+        Me.PanelWeaponChoices.TabIndex = 103
+        '
+        'RadChoiceEpee
+        '
+        Me.RadChoiceEpee.AutoSize = True
+        Me.RadChoiceEpee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceEpee.Location = New System.Drawing.Point(9, 118)
+        Me.RadChoiceEpee.Name = "RadChoiceEpee"
+        Me.RadChoiceEpee.Size = New System.Drawing.Size(65, 24)
+        Me.RadChoiceEpee.TabIndex = 106
+        Me.RadChoiceEpee.Text = "Epee"
+        Me.RadChoiceEpee.UseVisualStyleBackColor = True
+        '
+        'RadChoiceNoWeapon
+        '
+        Me.RadChoiceNoWeapon.AutoSize = True
+        Me.RadChoiceNoWeapon.Checked = True
+        Me.RadChoiceNoWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceNoWeapon.Location = New System.Drawing.Point(9, 31)
+        Me.RadChoiceNoWeapon.Name = "RadChoiceNoWeapon"
+        Me.RadChoiceNoWeapon.Size = New System.Drawing.Size(111, 24)
+        Me.RadChoiceNoWeapon.TabIndex = 102
+        Me.RadChoiceNoWeapon.TabStop = True
+        Me.RadChoiceNoWeapon.Text = "No Weapon"
+        Me.RadChoiceNoWeapon.UseVisualStyleBackColor = True
+        '
+        'RadChoiceSabre
+        '
+        Me.RadChoiceSabre.AutoSize = True
+        Me.RadChoiceSabre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceSabre.Location = New System.Drawing.Point(9, 87)
+        Me.RadChoiceSabre.Name = "RadChoiceSabre"
+        Me.RadChoiceSabre.Size = New System.Drawing.Size(70, 24)
+        Me.RadChoiceSabre.TabIndex = 105
+        Me.RadChoiceSabre.Text = "Sabre"
+        Me.RadChoiceSabre.UseVisualStyleBackColor = True
+        '
+        'RadChoiceFoil
+        '
+        Me.RadChoiceFoil.AutoSize = True
+        Me.RadChoiceFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceFoil.Location = New System.Drawing.Point(9, 59)
+        Me.RadChoiceFoil.Name = "RadChoiceFoil"
+        Me.RadChoiceFoil.Size = New System.Drawing.Size(52, 24)
+        Me.RadChoiceFoil.TabIndex = 104
+        Me.RadChoiceFoil.Text = "Foil"
+        Me.RadChoiceFoil.UseVisualStyleBackColor = True
+        '
+        'ControlPanelSettings
+        '
+        Me.ControlPanelSettings.Controls.Add(Me.GroupBoxSettings)
+        Me.ControlPanelSettings.Location = New System.Drawing.Point(6, 116)
+        Me.ControlPanelSettings.Name = "ControlPanelSettings"
+        Me.ControlPanelSettings.Size = New System.Drawing.Size(156, 152)
+        Me.ControlPanelSettings.TabIndex = 91
+        '
+        'GroupBoxSettings
+        '
+        Me.GroupBoxSettings.BackColor = System.Drawing.Color.White
+        Me.GroupBoxSettings.Controls.Add(Me.PicVolumeOff)
+        Me.GroupBoxSettings.Controls.Add(Me.Panel3)
+        Me.GroupBoxSettings.Controls.Add(Me.Panel2)
+        Me.GroupBoxSettings.Controls.Add(Me.Label16)
+        Me.GroupBoxSettings.Controls.Add(Me.ButResetPosition)
+        Me.GroupBoxSettings.Controls.Add(Me.Label15)
+        Me.GroupBoxSettings.Controls.Add(Me.PicVolumeOn)
+        Me.GroupBoxSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBoxSettings.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBoxSettings.Name = "GroupBoxSettings"
+        Me.GroupBoxSettings.Size = New System.Drawing.Size(1281, 658)
+        Me.GroupBoxSettings.TabIndex = 81
+        Me.GroupBoxSettings.TabStop = False
+        Me.GroupBoxSettings.Text = "Settings"
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.RadResetPositionSearch)
+        Me.Panel3.Controls.Add(Me.RadResetPositionCalendar)
+        Me.Panel3.Controls.Add(Me.CheckBoxResetPositionBoth)
+        Me.Panel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel3.Location = New System.Drawing.Point(893, 259)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(186, 143)
+        Me.Panel3.TabIndex = 12
+        Me.Panel3.Visible = False
+        '
+        'RadResetPositionSearch
+        '
+        Me.RadResetPositionSearch.AutoSize = True
+        Me.RadResetPositionSearch.Enabled = False
+        Me.RadResetPositionSearch.Location = New System.Drawing.Point(36, 74)
+        Me.RadResetPositionSearch.Name = "RadResetPositionSearch"
+        Me.RadResetPositionSearch.Size = New System.Drawing.Size(78, 24)
+        Me.RadResetPositionSearch.TabIndex = 10
+        Me.RadResetPositionSearch.TabStop = True
+        Me.RadResetPositionSearch.Text = "Search"
+        Me.RadResetPositionSearch.UseVisualStyleBackColor = True
+        '
+        'RadResetPositionCalendar
+        '
+        Me.RadResetPositionCalendar.AutoSize = True
+        Me.RadResetPositionCalendar.Enabled = False
+        Me.RadResetPositionCalendar.Location = New System.Drawing.Point(36, 46)
+        Me.RadResetPositionCalendar.Name = "RadResetPositionCalendar"
+        Me.RadResetPositionCalendar.Size = New System.Drawing.Size(129, 24)
+        Me.RadResetPositionCalendar.TabIndex = 9
+        Me.RadResetPositionCalendar.TabStop = True
+        Me.RadResetPositionCalendar.Text = "Calendar View"
+        Me.RadResetPositionCalendar.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetPositionBoth
+        '
+        Me.CheckBoxResetPositionBoth.AutoSize = True
+        Me.CheckBoxResetPositionBoth.Checked = True
+        Me.CheckBoxResetPositionBoth.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBoxResetPositionBoth.Location = New System.Drawing.Point(38, 18)
+        Me.CheckBoxResetPositionBoth.Name = "CheckBoxResetPositionBoth"
+        Me.CheckBoxResetPositionBoth.Size = New System.Drawing.Size(62, 24)
+        Me.CheckBoxResetPositionBoth.TabIndex = 8
+        Me.CheckBoxResetPositionBoth.Text = "Both"
+        Me.CheckBoxResetPositionBoth.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.ButSaveVolume)
+        Me.Panel2.Controls.Add(Me.RadVolumeOff)
+        Me.Panel2.Controls.Add(Me.RadVolumeOn)
+        Me.Panel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel2.Location = New System.Drawing.Point(298, 146)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(361, 120)
+        Me.Panel2.TabIndex = 9
+        '
+        'ButSaveVolume
+        '
+        Me.ButSaveVolume.BackColor = System.Drawing.Color.White
+        Me.ButSaveVolume.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButSaveVolume.Location = New System.Drawing.Point(187, 31)
+        Me.ButSaveVolume.Name = "ButSaveVolume"
+        Me.ButSaveVolume.Size = New System.Drawing.Size(135, 28)
+        Me.ButSaveVolume.TabIndex = 10
+        Me.ButSaveVolume.Text = "Save"
+        Me.ButSaveVolume.UseVisualStyleBackColor = False
+        '
+        'RadVolumeOff
+        '
+        Me.RadVolumeOff.AutoSize = True
+        Me.RadVolumeOff.Location = New System.Drawing.Point(18, 46)
+        Me.RadVolumeOff.Name = "RadVolumeOff"
+        Me.RadVolumeOff.Size = New System.Drawing.Size(49, 24)
+        Me.RadVolumeOff.TabIndex = 11
+        Me.RadVolumeOff.Text = "Off"
+        Me.RadVolumeOff.UseVisualStyleBackColor = True
+        '
+        'RadVolumeOn
+        '
+        Me.RadVolumeOn.AutoSize = True
+        Me.RadVolumeOn.Checked = True
+        Me.RadVolumeOn.Location = New System.Drawing.Point(18, 18)
+        Me.RadVolumeOn.Name = "RadVolumeOn"
+        Me.RadVolumeOn.Size = New System.Drawing.Size(48, 24)
+        Me.RadVolumeOn.TabIndex = 10
+        Me.RadVolumeOn.TabStop = True
+        Me.RadVolumeOn.Text = "On"
+        Me.RadVolumeOn.UseVisualStyleBackColor = True
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(156, 98)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(203, 24)
+        Me.Label16.TabIndex = 7
+        Me.Label16.Text = "Disable/Enable Sound:"
+        '
+        'ButResetPosition
+        '
+        Me.ButResetPosition.BackColor = System.Drawing.Color.White
+        Me.ButResetPosition.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButResetPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButResetPosition.Location = New System.Drawing.Point(485, 365)
+        Me.ButResetPosition.Name = "ButResetPosition"
+        Me.ButResetPosition.Size = New System.Drawing.Size(135, 28)
+        Me.ButResetPosition.TabIndex = 7
+        Me.ButResetPosition.Text = "Reset Position"
+        Me.ButResetPosition.UseVisualStyleBackColor = False
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(156, 293)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(521, 24)
+        Me.Label15.TabIndex = 3
+        Me.Label15.Text = "Reset Calendar View location for the Virtual Calendar Display:"
+        '
         'ControlPanelDatabaseView
         '
         Me.ControlPanelDatabaseView.BackColor = System.Drawing.Color.PowderBlue
         Me.ControlPanelDatabaseView.Controls.Add(Me.CalendarDataGridView)
-        Me.ControlPanelDatabaseView.Location = New System.Drawing.Point(604, 456)
+        Me.ControlPanelDatabaseView.Location = New System.Drawing.Point(435, 599)
         Me.ControlPanelDatabaseView.Name = "ControlPanelDatabaseView"
-        Me.ControlPanelDatabaseView.Size = New System.Drawing.Size(169, 166)
+        Me.ControlPanelDatabaseView.Size = New System.Drawing.Size(190, 152)
         Me.ControlPanelDatabaseView.TabIndex = 90
         '
         'CalendarDataGridView
@@ -2760,6 +2734,7 @@ Partial Class Calendar
         Me.CalendarDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.CalendarDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
         Me.CalendarDataGridView.DataSource = Me.CalendarBindingSource
+        Me.CalendarDataGridView.Enabled = False
         Me.CalendarDataGridView.Location = New System.Drawing.Point(2, 0)
         Me.CalendarDataGridView.Name = "CalendarDataGridView"
         Me.CalendarDataGridView.ReadOnly = True
@@ -2876,62 +2851,6 @@ Partial Class Calendar
         Me.ButControlCalendar.Text = "Calendar"
         Me.ButControlCalendar.UseVisualStyleBackColor = False
         '
-        'ControlPanelHelp
-        '
-        Me.ControlPanelHelp.Controls.Add(Me.PanelHelp)
-        Me.ControlPanelHelp.Location = New System.Drawing.Point(844, 298)
-        Me.ControlPanelHelp.Name = "ControlPanelHelp"
-        Me.ControlPanelHelp.Size = New System.Drawing.Size(200, 100)
-        Me.ControlPanelHelp.TabIndex = 92
-        '
-        'PanelHelp
-        '
-        Me.PanelHelp.BackColor = System.Drawing.Color.CadetBlue
-        Me.PanelHelp.Controls.Add(Me.ButCloseHelp)
-        Me.PanelHelp.Controls.Add(Me.RichTextBox1)
-        Me.PanelHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelHelp.Location = New System.Drawing.Point(46, 46)
-        Me.PanelHelp.Name = "PanelHelp"
-        Me.PanelHelp.Size = New System.Drawing.Size(546, 391)
-        Me.PanelHelp.TabIndex = 80
-        Me.PanelHelp.TabStop = False
-        Me.PanelHelp.Text = "Help"
-        Me.PanelHelp.Visible = False
-        '
-        'ButCloseHelp
-        '
-        Me.ButCloseHelp.BackColor = System.Drawing.Color.White
-        Me.ButCloseHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButCloseHelp.Location = New System.Drawing.Point(424, 351)
-        Me.ButCloseHelp.Name = "ButCloseHelp"
-        Me.ButCloseHelp.Size = New System.Drawing.Size(112, 28)
-        Me.ButCloseHelp.TabIndex = 1
-        Me.ButCloseHelp.Text = "Close Help"
-        Me.ButCloseHelp.UseVisualStyleBackColor = False
-        '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.SteelBlue
-        Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(14, 34)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(520, 306)
-        Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
-        '
-        'ButSettings
-        '
-        Me.ButSettings.BackColor = System.Drawing.Color.White
-        Me.ButSettings.BackgroundImage = Global.FencingManager.My.Resources.Resources.gear_icon1
-        Me.ButSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButSettings.Location = New System.Drawing.Point(314, 42)
-        Me.ButSettings.Name = "ButSettings"
-        Me.ButSettings.Size = New System.Drawing.Size(33, 32)
-        Me.ButSettings.TabIndex = 87
-        Me.ButSettings.UseVisualStyleBackColor = False
-        '
         'Label14
         '
         Me.Label14.AutoSize = True
@@ -2956,15 +2875,6 @@ Partial Class Calendar
         Me.ButHelp.Text = "?"
         Me.ButHelp.UseVisualStyleBackColor = False
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Indigo
-        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(1281, 110)
-        Me.PictureBox2.TabIndex = 85
-        Me.PictureBox2.TabStop = False
-        '
         'SlideTimer
         '
         Me.SlideTimer.Enabled = True
@@ -2988,6 +2898,97 @@ Partial Class Calendar
         Me.TableAdapterManager.StudentProfilesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = FencingManager.FencingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'ButSearch
+        '
+        Me.ButSearch.BackColor = System.Drawing.Color.Transparent
+        Me.ButSearch.BackgroundImage = Global.FencingManager.My.Resources.Resources.search_icon
+        Me.ButSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButSearch.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ButSearch.Location = New System.Drawing.Point(439, 162)
+        Me.ButSearch.Name = "ButSearch"
+        Me.ButSearch.Size = New System.Drawing.Size(64, 64)
+        Me.ButSearch.TabIndex = 8
+        Me.ButSearch.UseVisualStyleBackColor = False
+        '
+        'PicSabre
+        '
+        Me.PicSabre.BackgroundImage = Global.FencingManager.My.Resources.Resources.sabre_symbol
+        Me.PicSabre.Location = New System.Drawing.Point(1031, 57)
+        Me.PicSabre.Name = "PicSabre"
+        Me.PicSabre.Size = New System.Drawing.Size(40, 40)
+        Me.PicSabre.TabIndex = 141
+        Me.PicSabre.TabStop = False
+        Me.PicSabre.Visible = False
+        '
+        'PicEpee
+        '
+        Me.PicEpee.BackgroundImage = Global.FencingManager.My.Resources.Resources.epee_symbol
+        Me.PicEpee.Location = New System.Drawing.Point(1031, 57)
+        Me.PicEpee.Name = "PicEpee"
+        Me.PicEpee.Size = New System.Drawing.Size(40, 40)
+        Me.PicEpee.TabIndex = 140
+        Me.PicEpee.TabStop = False
+        Me.PicEpee.Visible = False
+        '
+        'PicFoil
+        '
+        Me.PicFoil.BackgroundImage = Global.FencingManager.My.Resources.Resources.Foil_symbol1
+        Me.PicFoil.Location = New System.Drawing.Point(1031, 57)
+        Me.PicFoil.Name = "PicFoil"
+        Me.PicFoil.Size = New System.Drawing.Size(40, 40)
+        Me.PicFoil.TabIndex = 139
+        Me.PicFoil.TabStop = False
+        Me.PicFoil.Visible = False
+        '
+        'PicSearchSlider
+        '
+        Me.PicSearchSlider.BackColor = System.Drawing.Color.Maroon
+        Me.PicSearchSlider.Location = New System.Drawing.Point(92, 0)
+        Me.PicSearchSlider.Name = "PicSearchSlider"
+        Me.PicSearchSlider.Size = New System.Drawing.Size(61, 13)
+        Me.PicSearchSlider.TabIndex = 139
+        Me.PicSearchSlider.TabStop = False
+        '
+        'PicVolumeOff
+        '
+        Me.PicVolumeOff.BackgroundImage = Global.FencingManager.My.Resources.Resources.volume_icon_off
+        Me.PicVolumeOff.Location = New System.Drawing.Point(178, 140)
+        Me.PicVolumeOff.Name = "PicVolumeOff"
+        Me.PicVolumeOff.Size = New System.Drawing.Size(100, 100)
+        Me.PicVolumeOff.TabIndex = 13
+        Me.PicVolumeOff.TabStop = False
+        Me.PicVolumeOff.Visible = False
+        '
+        'PicVolumeOn
+        '
+        Me.PicVolumeOn.BackgroundImage = Global.FencingManager.My.Resources.Resources.volume_icon_on
+        Me.PicVolumeOn.Location = New System.Drawing.Point(178, 140)
+        Me.PicVolumeOn.Name = "PicVolumeOn"
+        Me.PicVolumeOn.Size = New System.Drawing.Size(100, 100)
+        Me.PicVolumeOn.TabIndex = 8
+        Me.PicVolumeOn.TabStop = False
+        '
+        'ButSettings
+        '
+        Me.ButSettings.BackColor = System.Drawing.Color.White
+        Me.ButSettings.BackgroundImage = Global.FencingManager.My.Resources.Resources.gear_icon1
+        Me.ButSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButSettings.Location = New System.Drawing.Point(314, 42)
+        Me.ButSettings.Name = "ButSettings"
+        Me.ButSettings.Size = New System.Drawing.Size(33, 32)
+        Me.ButSettings.TabIndex = 87
+        Me.ButSettings.UseVisualStyleBackColor = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Indigo
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(1281, 110)
+        Me.PictureBox2.TabIndex = 85
+        Me.PictureBox2.TabStop = False
+        '
         'Calendar
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -2998,24 +2999,9 @@ Partial Class Calendar
         Me.Text = "Form1"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
-        Me.ControlPanelSearch.ResumeLayout(False)
-        Me.ControlPanelSearch.PerformLayout()
-        Me.PanelSelectedFields.ResumeLayout(False)
-        Me.PanelSelectedFields.PerformLayout()
-        Me.PanelWeaponChoices.ResumeLayout(False)
-        Me.PanelWeaponChoices.PerformLayout()
-        Me.ControlPanelSettings.ResumeLayout(False)
-        Me.GroupBoxSettings.ResumeLayout(False)
-        Me.GroupBoxSettings.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ControlPanelCalendar.ResumeLayout(False)
         Me.ControlPanelCalendar.PerformLayout()
         Me.PanelImportedCalendar.ResumeLayout(False)
-        CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanInput.ResumeLayout(False)
         Me.PanInput.PerformLayout()
         Me.PanelControls.ResumeLayout(False)
@@ -3103,12 +3089,29 @@ Partial Class Calendar
         Me.pansu2.PerformLayout()
         Me.pansu1.ResumeLayout(False)
         Me.pansu1.PerformLayout()
+        Me.ControlPanelSearch.ResumeLayout(False)
+        Me.ControlPanelSearch.PerformLayout()
+        Me.PanelSelectedFields.ResumeLayout(False)
+        Me.PanelSelectedFields.PerformLayout()
+        Me.PanelWeaponChoices.ResumeLayout(False)
+        Me.PanelWeaponChoices.PerformLayout()
+        Me.ControlPanelSettings.ResumeLayout(False)
+        Me.GroupBoxSettings.ResumeLayout(False)
+        Me.GroupBoxSettings.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ControlPanelDatabaseView.ResumeLayout(False)
         CType(Me.CalendarDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CalendarBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FencingDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ControlPanelHelp.ResumeLayout(False)
-        Me.PanelHelp.ResumeLayout(False)
+        CType(Me.PicSabre, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicEpee, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicFoil, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicSearchSlider, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicVolumeOff, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -3283,10 +3286,6 @@ Partial Class Calendar
     Friend WithEvents pansu1 As System.Windows.Forms.Panel
     Friend WithEvents su1 As System.Windows.Forms.Label
     Friend WithEvents Textsu1 As System.Windows.Forms.RichTextBox
-    Friend WithEvents ControlPanelHelp As System.Windows.Forms.Panel
-    Friend WithEvents PanelHelp As System.Windows.Forms.GroupBox
-    Friend WithEvents ButCloseHelp As System.Windows.Forms.Button
-    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents ControlPanelSettings As System.Windows.Forms.Panel
     Friend WithEvents GroupBoxSettings As System.Windows.Forms.GroupBox
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
@@ -3350,5 +3349,9 @@ Partial Class Calendar
     Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents LabNoResultsFound As System.Windows.Forms.Label
+    Friend WithEvents PicFoil As System.Windows.Forms.PictureBox
+    Friend WithEvents PicSabre As System.Windows.Forms.PictureBox
+    Friend WithEvents PicEpee As System.Windows.Forms.PictureBox
+    Friend WithEvents PicVolumeOff As System.Windows.Forms.PictureBox
 
 End Class

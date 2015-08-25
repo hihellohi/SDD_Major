@@ -264,9 +264,7 @@
 
     Dim Key(0) As DataColumn
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'FencingDataSet.Calendar' table. You can move, or remove it, as needed.
-        Me.CalendarTableAdapter.Fill(Me.FencingDataSet.Calendar)
-
+        
         'Initially sets right location of the calendar panel:
         ControlPanelCalendar.Left = 0
         ControlPanelCalendar.Top = 110
@@ -316,13 +314,15 @@
     Dim currentmonth As Date = Now
     Private Sub btnNextMonth_Click(sender As Object, e As EventArgs) Handles btnNextMonth.Click
 
-        currentmonth = DateAdd(DateInterval.Month, 1, currentmonth)
+        PicFoil.Visible = False
+        PicSabre.Visible = False
+        PicEpee.Visible = False
 
-        ReloadCal(currentmonth, currentmonth.Day)
+        currentmonth = DateAdd(DateInterval.Month, 1, currentmonth)
 
         Reset_All_Graphics()
 
-        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+        ReloadCal(currentmonth, currentmonth.Day)
 
         tu4.Visible = False                 'just a little bug
 
@@ -333,13 +333,16 @@
     End Sub
     Private Sub btnPrevMonth_Click(sender As Object, e As EventArgs) Handles btnPrevMonth.Click
 
+        PicFoil.Visible = False
+        PicSabre.Visible = False
+        PicEpee.Visible = False
+
         currentmonth = DateAdd(DateInterval.Month, -1, currentmonth)
 
-        ReloadCal(currentmonth, currentmonth.Day)
 
         Reset_All_Graphics()
 
-        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+        ReloadCal(currentmonth, currentmonth.Day)
 
         tu4.Visible = False
 
@@ -347,8 +350,14 @@
 
         tu4.Visible = True
 
+        PicFoil.Visible = False
+        PicSabre.Visible = False
+        PicEpee.Visible = False
+
     End Sub
     Public Sub Reset_All_Graphics()
+
+        LabelDetails.Text = "Viewing " & CStr(MonthName(currentmonth.Month)) & " of " & CStr(currentmonth.Year)
 
         LabClickToBegin.Visible = True
 
@@ -359,8 +368,6 @@
         WarningGroup.Visible = False
 
         ButUpdate.Visible = False
-
-        LabelDetails.Text = "Viewing " & CStr(MonthName(currentmonth.Month)) & " of " & CStr(currentmonth.Year)
 
         PanInput.Visible = False
 
@@ -831,12 +838,24 @@
 
         If Row.Item(6) = "No Weapon" Then
             ComboWeapon.SelectedIndex = 0
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = False
         ElseIf Row.Item(6) = "Foil" Then
             ComboWeapon.SelectedIndex = 1
+            PicFoil.Visible = True
+            PicSabre.Visible = False
+            PicEpee.Visible = False
         ElseIf Row.Item(6) = "Sabre" Then
             ComboWeapon.SelectedIndex = 2
+            PicFoil.Visible = False
+            PicSabre.Visible = True
+            PicEpee.Visible = False
         ElseIf Row.Item(6) = "Epee" Then
             ComboWeapon.SelectedIndex = 3
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = True
         End If
 
         TexGroup.Text = Row.Item(7)
@@ -863,6 +882,10 @@
 
             BlankDate = False
 
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = False
+
         Else : BlankDate = False        'Box with a date, but not necessarily an entry in the database
 
             Try                         'Box with a date, and has an entry in the database
@@ -885,6 +908,10 @@
                 Hide_Buttons(True, False, False, False, False, False, False, False)
 
                 LabNoEventScheduled.Visible = True
+
+                PicFoil.Visible = False
+                PicSabre.Visible = False
+                PicEpee.Visible = False
 
             End Try
 
@@ -1627,9 +1654,13 @@
     Dim Volume As Boolean = True
     Private Sub ButSaveVolume_Click(sender As Object, e As EventArgs) Handles ButSaveVolume.Click
         If RadVolumeOn.Checked = True Then
+            PicVolumeOn.Visible = True
+            PicVolumeOff.Visible = False
             Volume = True
             MsgBox("Volume is turned on")
         Else
+            PicVolumeOn.Visible = False
+            PicVolumeOff.Visible = True
             Volume = False
             MsgBox("Volume is turned off")
         End If
@@ -1685,18 +1716,28 @@
 
 
     'buttons that open up the default panels
+    Dim searching As Boolean = False
     Private Sub ButControlDatabaseView_Click(sender As Object, e As EventArgs) Handles ButControlDatabaseView.Click
-        ControlPanelDatabaseView.Left = 0
-        ControlPanelDatabaseView.Top = 110
-        ControlPanelDatabaseView.Width = 1281
-        ControlPanelDatabaseView.Height = 658
+        If searching = False Then
+            ControlPanelDatabaseView.Left = 0
+            ControlPanelDatabaseView.Top = 110
+            ControlPanelDatabaseView.Width = 1281
+            ControlPanelDatabaseView.Height = 658
 
-        ControlPanelDatabaseView.Show()
+            ControlPanelDatabaseView.Show()
 
-        ControlPanelDatabaseView.BringToFront()
+            ControlPanelDatabaseView.BringToFront()
+
+            Me.CalendarTableAdapter.Fill(Me.FencingDataSet.Calendar)
+
+            searching = True
+        Else : searching = True
+            'Do nothing
+            'No need to reset the location of the panel, and more importantly, no need to reload the database
+        End If
     End Sub
     Private Sub ButControlSearch_Click(sender As Object, e As EventArgs) Handles ButControlSearch.Click
-
+        searching = False
 
         ControlPanelSearch.Left = 0
         ControlPanelSearch.Top = 110
@@ -1708,6 +1749,7 @@
         ControlPanelSearch.BringToFront()
     End Sub
     Private Sub ButControlCalendar_Click(sender As Object, e As EventArgs) Handles ButControlCalendar.Click
+        searching = False
 
         ControlPanelCalendar.Left = 0
         ControlPanelCalendar.Top = 110
@@ -1720,6 +1762,7 @@
 
     End Sub
     Private Sub ButSettings_Click(sender As Object, e As EventArgs) Handles ButSettings.Click
+        searching = False
 
         ControlPanelSettings.Left = 0
         ControlPanelSettings.Top = 110
