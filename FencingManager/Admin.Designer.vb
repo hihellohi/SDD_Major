@@ -43,6 +43,7 @@ Partial Class Admin
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btRefresh = New System.Windows.Forms.Button()
+        Me.lbAcc = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -182,9 +183,9 @@ Partial Class Admin
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(33, 133)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(293, 24)
+        Me.Label1.Size = New System.Drawing.Size(180, 24)
         Me.Label1.TabIndex = 28
-        Me.Label1.Text = "Currently Logged In: MIC Account"
+        Me.Label1.Text = "Currently Logged In:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label9
         '
@@ -198,7 +199,7 @@ Partial Class Admin
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Panel1.BackColor = System.Drawing.Color.DarkViolet
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -227,11 +228,22 @@ Partial Class Admin
         Me.btRefresh.Text = "R"
         Me.btRefresh.UseVisualStyleBackColor = True
         '
+        'lbAcc
+        '
+        Me.lbAcc.AutoSize = True
+        Me.lbAcc.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAcc.Location = New System.Drawing.Point(219, 133)
+        Me.lbAcc.Name = "lbAcc"
+        Me.lbAcc.Size = New System.Drawing.Size(58, 24)
+        Me.lbAcc.TabIndex = 39
+        Me.lbAcc.Text = "lbAcc"
+        '
         'Admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.lbAcc)
         Me.Controls.Add(Me.btRefresh)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button3)
@@ -274,4 +286,5 @@ Partial Class Admin
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btRefresh As System.Windows.Forms.Button
+    Friend WithEvents lbAcc As System.Windows.Forms.Label
 End Class
