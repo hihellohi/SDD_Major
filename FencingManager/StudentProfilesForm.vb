@@ -1,15 +1,13 @@
 ﻿Public Class StudentProfilesForm
 
-    'Dim connection As OleDb.OleDbConnection
-    Public adapter As New OleDb.OleDbDataAdapter
-    Public searchResults As New DataSet()
-
-    Private adapter1 As FencingDataSetTableAdapters.StudentProfilesTableAdapter
+    Private studentAdapter As FencingDataSetTableAdapters.StudentProfilesTableAdapter
     Private studentDataTable As New FencingDataSet.StudentProfilesDataTable()
     Dim sortColumn As Integer
     Dim sortAscending As Boolean = True
     Dim sortSql As String = "Surname, FirstName"
     Dim searchInitiated As Boolean = False
+    Dim detailsForm As StudentProfileView
+    Dim selectedID As Integer
 
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
         If ListView1.SelectedItems.Count = 1 Then
@@ -21,7 +19,7 @@
         lblName.Text = "Name: "
         lblSchoolYear.Text = "Year "
         lblWeapon.Text = "Weapon: "
-        lblWinPercent.Text = "Wins Percentage: "
+        lblWins.Text = "Wins Percentage: "
         lblKDR.Text = "Kill/Death Ratio: "
         btnMore.Enabled = False
     End Sub
@@ -40,14 +38,14 @@
     End Function
 
     Private Sub LoadSimpleProfile(studentID As Integer)
+        selectedID = studentID
         Dim row As FencingDataSet.StudentProfilesRow
         row = studentDataTable.FindByStudentID(studentID)
         lblName.Text = "Name: " + row.FirstName + " " + row.Surname.ToUpper()
         lblSchoolYear.Text = "Year " + row.SchoolYear.ToString()
         lblWeapon.Text = "Weapon: " + WeaponText(row.Weapon)
         If row.Wins + row.Losses > 0 Then
-            Dim winPercent = row.Wins / (row.Wins + row.Losses) * 100
-            lblWinPercent.Text = "Wins Percentage: " + Math.Round(winPercent, 2).ToString() + "%"
+            lblWins.Text = "Wins: " & row.Wins & "/" & row.Losses
             Dim ratio As Double
             If row.Deaths > 0 Then
                 ratio = row.Kills / row.Deaths
@@ -56,14 +54,19 @@
             End If
             lblKDR.Text = "Kill/Death Ratio: " + Math.Round(ratio, 3).ToString()
         Else
-            lblWinPercent.Text = "Wins Percentage: N/A"
+            lblWins.Text = "Wins: 0/0"
             lblKDR.Text = "Kill/Death Ratio: N/A"
-            btnMore.Enabled = True
         End If
+        btnMore.Enabled = True
     End Sub
 
     Private Sub StudentProfilesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         cbbYear.SelectedIndex = 0
+        detailsPanel.Dock = DockStyle.Fill
+        detailsForm = New StudentProfileView()
+        detailsForm.TopLevel = False
+        detailsPanel.Controls.Add(detailsForm)
+        detailsForm.Show()
     End Sub
 
     Private Sub StudentProfilesForm_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
@@ -74,9 +77,9 @@
     End Sub
 
     Private Sub RefreshTables()
-        adapter1 = New FencingDataSetTableAdapters.StudentProfilesTableAdapter()
-        adapter1.ClearBeforeFill = True
-        adapter1.Fill(studentDataTable)
+        studentAdapter = New FencingDataSetTableAdapters.StudentProfilesTableAdapter()
+        studentAdapter.ClearBeforeFill = True
+        studentAdapter.Fill(studentDataTable)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -143,7 +146,7 @@
         formNew.ShowDialog()
         If formNew.DialogResult = Windows.Forms.DialogResult.Yes Then
             studentDatatable.AddStudentProfilesRow(formNew.newRow)
-            adapter1.Update(studentDatatable)
+            studentAdapter.Update(studentDatatable)
         End If
     End Sub
 
@@ -206,6 +209,8 @@
     End Sub
 
     Private Sub btnMore_Click(sender As Object, e As EventArgs) Handles btnMore.Click
-
+        detailsForm.FillStudent(selectedID)
+        detailsPanel.Show()
+        detailsTopPanel.Show()
     End Sub
 End Class
