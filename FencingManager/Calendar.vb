@@ -270,10 +270,13 @@ Public Class Calendar
     Dim data_adapter As OleDb.OleDbDataAdapter
     Dim sql As String
 
-    Dim Admin As Boolean = True
 
     Dim Key(0) As DataColumn
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        'Initial graphics open:
+
 
         'Initially sets right location of the calendar panel:
         ControlPanelCalendar.Left = 0
@@ -285,16 +288,31 @@ Public Class Calendar
 
         ControlPanelCalendar.BringToFront()
 
+        'Sets initial location of the help panel, which is off the screen
         PanelHelp.Left = 0
         PanelHelp.Top = -548
         PanelHelp.Width = 1281
         PanelHelp.Height = 658
 
+        'Because calendar initially loads with the calendar panel shown, it should be raised to be consistent
+        ButControlCalendar.Top -= 20
+        ButControlCalendar.Height += 20
+        CalendarMovedUp = True
+
+
+
+        'Initial graphics close
+
+
 
 
         ReloadCal(Now, Now.Day)                 'loads the virtual calendar
 
+
+
         LabelDetails.Text = "Viewing " & CStr(MonthName(Now.Month)) & " of " & CStr(Now.Year)       'information label
+
+
 
         sql = "Select * FROM Calendar"           'In here goes the NAME OF THE TABLE
         data_adapter = New OleDb.OleDbDataAdapter(sql, RootForm.connection)
@@ -304,20 +322,19 @@ Public Class Calendar
         'Admin section: restriction/access levels
         'In this calendar module, one may (essentially) view and update the database
         'One solution for difference in admin levels is to simply hide the update controls
-
-        RadAdvSearchEventName.Checked = True
-
+        If RootForm.access_level = 3 Or RootForm.access_level = 2 Then       '3 is admin, 2 is captain/coach, both are allowed to edit events
+            PanelControls.Visible = True
+        Else        'Not allowed to make changes
+            PanelControls.Visible = False
+        End If
 
 
         Key(0) = dataset.Tables("Calendar").Columns("EventDate")
         dataset.Tables("Calendar").PrimaryKey = Key                     'declares a datacolumn which is used for searching the database later on
 
 
-        If Admin = True Then
-            PanelControls.Visible = True
-        Else : Admin = False
-            PanelControls.Visible = False
-        End If
+       
+
 
         Populate_Table(currentmonth)                'checks database for any events and then populates the tables accordingly
     End Sub
@@ -366,6 +383,7 @@ Public Class Calendar
         tu4.Visible = True
 
     End Sub
+    'Hardcode that resets graphics
     Public Sub Reset_All_Graphics()
 
         LabelDetails.Text = "Viewing " & CStr(MonthName(currentmonth.Month)) & " of " & CStr(currentmonth.Year)
@@ -395,7 +413,8 @@ Public Class Calendar
     End Sub
 
 
-    'Populate table populates the table
+
+    'Populate table
     'accesses the database and gets dates
     Dim DateArray() As String = {"su1", "su2", "su3", "su4", "su5", "su6", "m1", "m2", "m3", "m4", "m5", "m6", "tu1", "tu2", "tu3", "tu4", "tu5", "tu6", "w1", "w2", "w3", "w4", "w5", "w6", "th1", "th2", "th3", "th4", "th5", "th6", "f1", "f2", "f3", "f4", "f5", "f6", "sa1", "sa2", "sa3", "sa4", "sa5", "sa6"}
     Public Sub Populate_Table(ByVal currentmonth As Date)
@@ -716,6 +735,7 @@ Public Class Calendar
 
         End Select
     End Function
+
 
     'This sub gets details from the database and then displays the info onto the panel only
     'For displaying of info onto virtual calendar, refer to Populate_Table
@@ -1279,6 +1299,9 @@ Public Class Calendar
         Update_to_Database()
 
 
+        PicFoil.Visible = False
+        PicSabre.Visible = False
+        PicEpee.Visible = False
 
     End Sub
 
@@ -1836,7 +1859,7 @@ Public Class Calendar
         PanelHelp.BringToFront()
 
         'Simply graphics: keeps the top bar in front of the help panel (looks cool)
-        PanelHeader.BringToFront()
+        'PanelHeader.BringToFront()
 
         'Disables buttons whilst in help
         ButHelp.Enabled = False
@@ -1855,11 +1878,10 @@ Public Class Calendar
             Case "Settings"
                 PicHelpSettings.BringToFront()
         End Select
+        ButHideHelp.BringToFront()
 
         HelpSlidingTimer.Enabled = True
     End Sub
-
-
     Private Sub HelpSlidingTimer_Tick(sender As Object, e As EventArgs) Handles HelpSlidingTimer.Tick
         If HidingHelp = True Then
             While PanelHelp.Top > -548
@@ -1872,10 +1894,9 @@ Public Class Calendar
         End If
         HelpSlidingTimer.Enabled = False
     End Sub
-
     Private Sub ButHideHelp_Click(sender As Object, e As EventArgs) Handles ButHideHelp.Click
         HidingHelp = True
-        
+
         PanelHeader.BringToFront()
 
         'Re enables buttons
@@ -1884,7 +1905,7 @@ Public Class Calendar
         ButControlCalendar.Enabled = True
         ButControlSearch.Enabled = True
         ButControlDatabaseView.Enabled = True
-        
+
         HelpSlidingTimer.Enabled = True
 
     End Sub
@@ -1903,7 +1924,7 @@ Public Class Calendar
     Dim SearchMovedUp As Boolean = False
     Dim DatabaseMovedUp As Boolean = False
 
-    Dim CalendarChecked As Boolean = False
+    Dim CalendarChecked As Boolean = True
     Dim SearchChecked As Boolean = False
     Dim DatabaseChecked As Boolean = False
     Private Sub ButControlCalendar_MouseHover(sender As Object, e As EventArgs) Handles ButControlCalendar.MouseHover
