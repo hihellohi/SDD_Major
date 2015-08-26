@@ -4,6 +4,7 @@ Public Class Admin
     Dim eventDataTable As New FencingDataSet.CalendarDataTable
     Dim DS As New DataSet
     Dim DS1 As New DataSet
+    'DS = events dataset, DS1 = absences dataset
 
 
 
@@ -129,5 +130,12 @@ Public Class Admin
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
+    End Sub
+
+    Private Sub btSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
+        Try
+            RichTextBox1.SaveFile("edits.rtf", RichTextBoxStreamType.RichText)
+        Catch ex As Exception
+        End Try
     End Sub
 End Class
