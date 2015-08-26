@@ -114,7 +114,7 @@ Partial Class fight
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.DimGray
+        Me.Panel2.BackColor = System.Drawing.Color.Red
         Me.Panel2.Controls.Add(Me.lblKD1)
         Me.Panel2.Controls.Add(Me.label6)
         Me.Panel2.Controls.Add(Me.lblKills1)
@@ -271,7 +271,7 @@ Partial Class fight
         '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.DimGray
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel3.Controls.Add(Me.lblKD2)
         Me.Panel3.Controls.Add(Me.Label8)
         Me.Panel3.Controls.Add(Me.lblKills2)
