@@ -3,6 +3,7 @@ Public Class Admin
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim eventDataTable As New FencingDataSet.CalendarDataTable
     Dim DS As New DataSet
+    Dim DS1 As New DataSet
 
 
 
@@ -49,6 +50,33 @@ Public Class Admin
 
         End With
 
+        Dim sql1 As String = "SELECT * FROM Absences"
+        Dim cmd1 As New OleDbCommand(sql1, RootForm.connection)
+        adapter = New OleDbDataAdapter(cmd1)
+        adapter.Fill(DS1)
+        lvAbsences.Items.Clear()
+        DS1.Clear()
+        For i = 1 To (DS1.Tables(0).Rows.Count - 1)
+            Dim str10 As String = DS.Tables(0).Rows(i)("AbsenceDate").ToString
+            Dim str11 As String = DS.Tables(0).Rows(i)("StudentID").ToString
+
+            Dim lvii As New ListViewItem
+            lvii.Text = str10
+            lvii.SubItems.AddRange(New String() {str11})
+            lvAbsences.Items.Add(lvii)
+        Next
+
+        With lvAbsences
+            .View = View.Details
+            .GridLines = True
+            .FullRowSelect = True
+
+            lvAbsences.Columns.Add("AbsenceDate", 270, HorizontalAlignment.Center)
+            lvAbsences.Columns.Add("StudentID", 200, HorizontalAlignment.Center)
+        End With
+
+        RichTextBox1.LoadFile("edits.rtf", RichTextBoxStreamType.RichText)
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -56,7 +84,6 @@ Public Class Admin
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btRefresh.Click
-        'Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=Fencing.accdb")
         'Query, Parameters
         lvEvents.Items.Clear()
         DS.Clear()
@@ -66,7 +93,7 @@ Public Class Admin
         adapter = New OleDbDataAdapter(cmd)
         adapter.Fill(DS)
 
-
+        ' events
         lvEvents.Items.Clear()
         For i = 1 To (DS.Tables(0).Rows.Count - 1)
             Dim str1 As String = DS.Tables(0).Rows(i)("EventDate").ToString
@@ -79,17 +106,25 @@ Public Class Admin
             lvi.SubItems.AddRange(New String() {str2, str3, str4}) 'Put text in columns 2,3,4
             lvEvents.Items.Add(lvi) 'Add the new row to listview
         Next
-        'With lvEvents
-        '    .View = View.Details
-        '    .GridLines = True
-        '    .FullRowSelect = True
 
-        '    lvEvents.Columns.Add("EventDate", 270, HorizontalAlignment.Center)
-        '    lvEvents.Columns.Add("Time", 100, HorizontalAlignment.Center)
-        '    lvEvents.Columns.Add("Venue", 100, HorizontalAlignment.Center)
-        '    lvEvents.Columns.Add("Group", 100, HorizontalAlignment.Center)
+        ' absences
+        lvAbsences.Items.Clear()
+        DS1.Clear()
+        Dim sql1 As String = "SELECT * FROM Absences"
+        Dim cmd1 As New OleDbCommand(sql1, RootForm.connection)
+        adapter = New OleDbDataAdapter(cmd1)
+        adapter.Fill(DS1)
+        For i = 1 To (DS1.Tables(0).Rows.Count - 1)
+            Dim str10 As String = DS1.Tables(0).Rows(i)("AbsenceDate").ToString
+            Dim str11 As String = DS1.Tables(0).Rows(i)("StudentID").ToString
 
-        'End With
+            Dim lvii As New ListViewItem
+            lvii.Text = str10
+            lvii.SubItems.AddRange(New String() {str11})
+            lvAbsences.Items.Add(lvii)
+            'MsgBox(i)
+        Next
+
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click

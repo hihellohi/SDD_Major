@@ -26,11 +26,6 @@ Partial Class Admin
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ListView2 = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lvEvents = New System.Windows.Forms.ListView()
         Me.colID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -44,6 +39,10 @@ Partial Class Admin
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btRefresh = New System.Windows.Forms.Button()
         Me.lbAcc = New System.Windows.Forms.Label()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.btSave = New System.Windows.Forms.Button()
+        Me.lvAbsences = New System.Windows.Forms.ListView()
+        Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -79,6 +78,7 @@ Partial Class Admin
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.RichTextBox1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(647, 191)
         Me.GroupBox1.Name = "GroupBox1"
@@ -86,41 +86,6 @@ Partial Class Admin
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Log Edits"
-        '
-        'ListView2
-        '
-        Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
-        Me.ListView2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListView2.GridLines = True
-        Me.ListView2.Location = New System.Drawing.Point(37, 582)
-        Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(573, 152)
-        Me.ListView2.TabIndex = 32
-        Me.ListView2.UseCompatibleStateImageBehavior = False
-        Me.ListView2.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.DisplayIndex = 2
-        Me.ColumnHeader1.Text = "ID Number"
-        Me.ColumnHeader1.Width = 120
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.DisplayIndex = 0
-        Me.ColumnHeader2.Text = "Date"
-        Me.ColumnHeader2.Width = 122
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.DisplayIndex = 1
-        Me.ColumnHeader3.Text = "Name"
-        Me.ColumnHeader3.Width = 201
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Team"
-        Me.ColumnHeader4.Width = 124
         '
         'Label3
         '
@@ -238,11 +203,44 @@ Partial Class Admin
         Me.lbAcc.TabIndex = 39
         Me.lbAcc.Text = "lbAcc"
         '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(6, 25)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.Size = New System.Drawing.Size(528, 399)
+        Me.RichTextBox1.TabIndex = 1
+        Me.RichTextBox1.Text = ""
+        '
+        'btSave
+        '
+        Me.btSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSave.Location = New System.Drawing.Point(581, 531)
+        Me.btSave.Name = "btSave"
+        Me.btSave.Size = New System.Drawing.Size(29, 32)
+        Me.btSave.TabIndex = 41
+        Me.btSave.Text = "S"
+        Me.btSave.UseVisualStyleBackColor = True
+        '
+        'lvAbsences
+        '
+        Me.lvAbsences.Activation = System.Windows.Forms.ItemActivation.OneClick
+        Me.lvAbsences.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lvAbsences.GridLines = True
+        Me.lvAbsences.HoverSelection = True
+        Me.lvAbsences.Location = New System.Drawing.Point(37, 569)
+        Me.lvAbsences.Name = "lvAbsences"
+        Me.lvAbsences.Size = New System.Drawing.Size(573, 152)
+        Me.lvAbsences.TabIndex = 42
+        Me.lvAbsences.UseCompatibleStateImageBehavior = False
+        Me.lvAbsences.View = System.Windows.Forms.View.Details
+        '
         'Admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.lvAbsences)
+        Me.Controls.Add(Me.btSave)
         Me.Controls.Add(Me.lbAcc)
         Me.Controls.Add(Me.btRefresh)
         Me.Controls.Add(Me.Panel1)
@@ -250,7 +248,6 @@ Partial Class Admin
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.ListView2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lvEvents)
         Me.Controls.Add(Me.Label2)
@@ -259,6 +256,7 @@ Partial Class Admin
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Admin"
         Me.Text = "Admin"
+        Me.GroupBox1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -269,11 +267,6 @@ Partial Class Admin
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents ListView2 As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lvEvents As System.Windows.Forms.ListView
     Friend WithEvents colID As System.Windows.Forms.ColumnHeader
@@ -287,4 +280,7 @@ Partial Class Admin
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btRefresh As System.Windows.Forms.Button
     Friend WithEvents lbAcc As System.Windows.Forms.Label
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents btSave As System.Windows.Forms.Button
+    Friend WithEvents lvAbsences As System.Windows.Forms.ListView
 End Class
