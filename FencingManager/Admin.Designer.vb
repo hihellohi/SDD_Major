@@ -85,7 +85,7 @@ Partial Class Admin
         Me.GroupBox1.Size = New System.Drawing.Size(550, 430)
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Log Edits"
+        Me.GroupBox1.Text = "Log"
         '
         'Label3
         '

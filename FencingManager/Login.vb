@@ -38,7 +38,6 @@ Public Class Login
 
         ' Perform Query
         Try
-            'conn.Open()
             Dim usr As String = cmd.ExecuteScalar.ToString
             Dim pw As String = cmd.ExecuteScalar.ToString
             If Not (IsDBNull(usr)) AndAlso usr = TextBox1.Text Then
@@ -50,17 +49,20 @@ Public Class Login
                 'This doesnt work
                 MsgBox("Username or Password Wrong", MsgBoxStyle.OkOnly)
             End If
+            FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+            My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + GlobalVariables.Username + " logged in" & Environment.NewLine, True)
+
         Catch ex As NullReferenceException
             'wrong password
             MsgBox("Username or Password incorrect")
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
+            FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+            My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + TextBox1.Text + " tried to log in with incorrect password" & Environment.NewLine, True)
         Catch ex1 As Exception
             ' Catch database connection or query errors:
             MsgBox(ex1.Message)
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        Finally
-            ' Close connection
-            'conn.Close()
+
         End Try
     End Sub
 

@@ -76,8 +76,7 @@ Public Class Admin
             lvAbsences.Columns.Add("StudentID", 200, HorizontalAlignment.Center)
         End With
 
-        RichTextBox1.LoadFile("edits.rtf", RichTextBoxStreamType.RichText)
-
+        RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -85,7 +84,6 @@ Public Class Admin
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btRefresh.Click
-        'Query, Parameters
         lvEvents.Items.Clear()
         DS.Clear()
 
@@ -125,6 +123,9 @@ Public Class Admin
             lvAbsences.Items.Add(lvii)
             'MsgBox(i)
         Next
+
+        ' log
+        RichTextBox1.LoadFile("edits.rtf", RichTextBoxStreamType.PlainText)
 
     End Sub
 
