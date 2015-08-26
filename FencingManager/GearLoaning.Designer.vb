@@ -29,7 +29,6 @@ Partial Class GearLoaning
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -48,9 +47,9 @@ Partial Class GearLoaning
         Me.btnReturn.BackColor = System.Drawing.Color.White
         Me.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReturn.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReturn.Location = New System.Drawing.Point(752, 37)
+        Me.btnReturn.Location = New System.Drawing.Point(721, 71)
         Me.btnReturn.Name = "btnReturn"
-        Me.btnReturn.Size = New System.Drawing.Size(80, 39)
+        Me.btnReturn.Size = New System.Drawing.Size(111, 39)
         Me.btnReturn.TabIndex = 1
         Me.btnReturn.Text = "Returns"
         Me.btnReturn.UseVisualStyleBackColor = False
@@ -60,9 +59,9 @@ Partial Class GearLoaning
         Me.btnLoan.BackColor = System.Drawing.Color.Green
         Me.btnLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLoan.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLoan.Location = New System.Drawing.Point(862, 37)
+        Me.btnLoan.Location = New System.Drawing.Point(831, 79)
         Me.btnLoan.Name = "btnLoan"
-        Me.btnLoan.Size = New System.Drawing.Size(80, 39)
+        Me.btnLoan.Size = New System.Drawing.Size(111, 31)
         Me.btnLoan.TabIndex = 2
         Me.btnLoan.Text = "Loans"
         Me.btnLoan.UseVisualStyleBackColor = False
@@ -72,9 +71,9 @@ Partial Class GearLoaning
         Me.btnCatalog.BackColor = System.Drawing.Color.Green
         Me.btnCatalog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCatalog.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCatalog.Location = New System.Drawing.Point(975, 37)
+        Me.btnCatalog.Location = New System.Drawing.Point(941, 79)
         Me.btnCatalog.Name = "btnCatalog"
-        Me.btnCatalog.Size = New System.Drawing.Size(80, 39)
+        Me.btnCatalog.Size = New System.Drawing.Size(111, 31)
         Me.btnCatalog.TabIndex = 3
         Me.btnCatalog.Text = "Catalog"
         Me.btnCatalog.UseVisualStyleBackColor = False
@@ -95,9 +94,9 @@ Partial Class GearLoaning
         Me.btnHelp.BackColor = System.Drawing.Color.Green
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHelp.Location = New System.Drawing.Point(1182, 37)
+        Me.btnHelp.Location = New System.Drawing.Point(1051, 79)
         Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(39, 39)
+        Me.btnHelp.Size = New System.Drawing.Size(39, 31)
         Me.btnHelp.TabIndex = 5
         Me.btnHelp.Text = "?"
         Me.btnHelp.UseVisualStyleBackColor = False
@@ -105,35 +104,22 @@ Partial Class GearLoaning
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btnHelp)
+        Me.Panel1.Controls.Add(Me.btnCatalog)
         Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.btnLoan)
+        Me.Panel1.Controls.Add(Me.btnReturn)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1256, 110)
         Me.Panel1.TabIndex = 6
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.DarkOrange
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1182, 37)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(39, 39)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "?"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
         'GearLoaning
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1256, 768)
-        Me.Controls.Add(Me.btnHelp)
-        Me.Controls.Add(Me.btnCatalog)
-        Me.Controls.Add(Me.btnLoan)
-        Me.Controls.Add(Me.btnReturn)
         Me.Controls.Add(Me.formPanel)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -152,5 +138,4 @@ Partial Class GearLoaning
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

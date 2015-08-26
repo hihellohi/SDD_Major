@@ -79,9 +79,9 @@ Partial Class Email
         Me.btnHelp.BackColor = System.Drawing.Color.DarkOrange
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHelp.Location = New System.Drawing.Point(1182, 37)
+        Me.btnHelp.Location = New System.Drawing.Point(1051, 79)
         Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(39, 39)
+        Me.btnHelp.Size = New System.Drawing.Size(39, 31)
         Me.btnHelp.TabIndex = 6
         Me.btnHelp.Text = "?"
         Me.btnHelp.UseVisualStyleBackColor = False
@@ -92,7 +92,7 @@ Partial Class Email
         Me.btnMain.BackColor = System.Drawing.Color.White
         Me.btnMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMain.Location = New System.Drawing.Point(1070, 37)
+        Me.btnMain.Location = New System.Drawing.Point(972, 71)
         Me.btnMain.Name = "btnMain"
         Me.btnMain.Size = New System.Drawing.Size(80, 39)
         Me.btnMain.TabIndex = 2

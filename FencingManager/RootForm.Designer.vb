@@ -24,6 +24,7 @@ Partial Class RootForm
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnminimize = New System.Windows.Forms.Button()
+        Me.btnFight = New System.Windows.Forms.Button()
         Me.btnStudentProf = New System.Windows.Forms.Button()
         Me.btnCalendar = New System.Windows.Forms.Button()
         Me.btnAttendance = New System.Windows.Forms.Button()
@@ -31,16 +32,15 @@ Partial Class RootForm
         Me.btnAdmin = New System.Windows.Forms.Button()
         Me.btnEmail = New System.Windows.Forms.Button()
         Me.btnLogin = New System.Windows.Forms.Button()
-        Me.btnFight = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Panel1.Controls.Add(Me.btnFight)
         Me.Panel1.Controls.Add(Me.btnminimize)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Panel1.Location = New System.Drawing.Point(110, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1256, 768)
@@ -55,89 +55,105 @@ Partial Class RootForm
         Me.btnminimize.Text = "↓"
         Me.btnminimize.UseVisualStyleBackColor = True
         '
+        'btnFight
+        '
+        Me.btnFight.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.btnFight.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFight.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnFight.Location = New System.Drawing.Point(0, 576)
+        Me.btnFight.Name = "btnFight"
+        Me.btnFight.Size = New System.Drawing.Size(110, 96)
+        Me.btnFight.TabIndex = 2
+        Me.btnFight.Text = "Fight!"
+        Me.btnFight.UseVisualStyleBackColor = False
+        '
         'btnStudentProf
         '
+        Me.btnStudentProf.BackColor = System.Drawing.Color.DodgerBlue
         Me.btnStudentProf.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStudentProf.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnStudentProf.Location = New System.Drawing.Point(0, 0)
         Me.btnStudentProf.Name = "btnStudentProf"
-        Me.btnStudentProf.Size = New System.Drawing.Size(110, 110)
+        Me.btnStudentProf.Size = New System.Drawing.Size(110, 96)
         Me.btnStudentProf.TabIndex = 2
         Me.btnStudentProf.Text = "Student Profiles"
-        Me.btnStudentProf.UseVisualStyleBackColor = True
+        Me.btnStudentProf.UseVisualStyleBackColor = False
         '
         'btnCalendar
         '
+        Me.btnCalendar.BackColor = System.Drawing.Color.Indigo
         Me.btnCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCalendar.Location = New System.Drawing.Point(0, 110)
+        Me.btnCalendar.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnCalendar.Location = New System.Drawing.Point(0, 96)
         Me.btnCalendar.Name = "btnCalendar"
-        Me.btnCalendar.Size = New System.Drawing.Size(110, 110)
+        Me.btnCalendar.Size = New System.Drawing.Size(110, 96)
         Me.btnCalendar.TabIndex = 3
         Me.btnCalendar.Text = "Calendar"
-        Me.btnCalendar.UseVisualStyleBackColor = True
+        Me.btnCalendar.UseVisualStyleBackColor = False
         '
         'btnAttendance
         '
+        Me.btnAttendance.BackColor = System.Drawing.Color.Brown
         Me.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAttendance.Location = New System.Drawing.Point(0, 220)
+        Me.btnAttendance.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAttendance.Location = New System.Drawing.Point(0, 192)
         Me.btnAttendance.Name = "btnAttendance"
-        Me.btnAttendance.Size = New System.Drawing.Size(110, 110)
+        Me.btnAttendance.Size = New System.Drawing.Size(110, 96)
         Me.btnAttendance.TabIndex = 4
         Me.btnAttendance.Text = "Attendance"
-        Me.btnAttendance.UseVisualStyleBackColor = True
+        Me.btnAttendance.UseVisualStyleBackColor = False
         '
         'btnGearLoan
         '
+        Me.btnGearLoan.BackColor = System.Drawing.Color.Green
         Me.btnGearLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGearLoan.Location = New System.Drawing.Point(0, 330)
+        Me.btnGearLoan.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnGearLoan.Location = New System.Drawing.Point(0, 288)
         Me.btnGearLoan.Name = "btnGearLoan"
-        Me.btnGearLoan.Size = New System.Drawing.Size(110, 110)
+        Me.btnGearLoan.Size = New System.Drawing.Size(110, 96)
         Me.btnGearLoan.TabIndex = 5
         Me.btnGearLoan.Text = "Gear Loaning"
-        Me.btnGearLoan.UseVisualStyleBackColor = True
+        Me.btnGearLoan.UseVisualStyleBackColor = False
         '
         'btnAdmin
         '
+        Me.btnAdmin.BackColor = System.Drawing.Color.DarkViolet
         Me.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAdmin.Location = New System.Drawing.Point(0, 440)
+        Me.btnAdmin.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAdmin.Location = New System.Drawing.Point(0, 384)
         Me.btnAdmin.Name = "btnAdmin"
-        Me.btnAdmin.Size = New System.Drawing.Size(110, 110)
+        Me.btnAdmin.Size = New System.Drawing.Size(110, 96)
         Me.btnAdmin.TabIndex = 6
         Me.btnAdmin.Text = "Administration"
-        Me.btnAdmin.UseVisualStyleBackColor = True
+        Me.btnAdmin.UseVisualStyleBackColor = False
         '
         'btnEmail
         '
+        Me.btnEmail.BackColor = System.Drawing.Color.Orange
         Me.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEmail.Location = New System.Drawing.Point(0, 550)
+        Me.btnEmail.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnEmail.Location = New System.Drawing.Point(0, 480)
         Me.btnEmail.Name = "btnEmail"
-        Me.btnEmail.Size = New System.Drawing.Size(110, 110)
+        Me.btnEmail.Size = New System.Drawing.Size(110, 96)
         Me.btnEmail.TabIndex = 7
         Me.btnEmail.Text = "Email"
-        Me.btnEmail.UseVisualStyleBackColor = True
+        Me.btnEmail.UseVisualStyleBackColor = False
         '
         'btnLogin
         '
         Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogin.Location = New System.Drawing.Point(0, 660)
+        Me.btnLogin.Location = New System.Drawing.Point(0, 672)
         Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(110, 110)
+        Me.btnLogin.Size = New System.Drawing.Size(110, 96)
         Me.btnLogin.TabIndex = 8
         Me.btnLogin.Text = "Login"
         Me.btnLogin.UseVisualStyleBackColor = True
-        '
-        'btnFight
-        '
-        Me.btnFight.Location = New System.Drawing.Point(1097, 31)
-        Me.btnFight.Name = "btnFight"
-        Me.btnFight.Size = New System.Drawing.Size(75, 23)
-        Me.btnFight.TabIndex = 2
-        Me.btnFight.Text = "Fight!"
-        Me.btnFight.UseVisualStyleBackColor = True
         '
         'RootForm
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1366, 768)
+        Me.Controls.Add(Me.btnFight)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.btnEmail)
         Me.Controls.Add(Me.btnAdmin)
