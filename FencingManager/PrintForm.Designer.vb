@@ -216,6 +216,7 @@ Partial Class PrintForm
         'Button1
         '
         Me.Button1.BackgroundImage = Global.FencingManager.My.Resources.Resources.printer_64_000000
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button1.Location = New System.Drawing.Point(565, 24)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(67, 65)
@@ -233,6 +234,7 @@ Partial Class PrintForm
         '
         'ButCancel
         '
+        Me.ButCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButCancel.Location = New System.Drawing.Point(565, 95)
         Me.ButCancel.Name = "ButCancel"
         Me.ButCancel.Size = New System.Drawing.Size(67, 20)

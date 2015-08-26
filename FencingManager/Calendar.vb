@@ -1,4 +1,14 @@
-﻿Public Class Calendar
+﻿
+Public Module GlobalVariablesModule                 'Global variables declared here. They are used to communicate with the print panel
+    Public PrintEventName As String
+    Public PrintGroup As String
+    Public PrintDate As String
+    Public PrintVenue As String
+    Public PrintWeapon As String
+    Public PrintTime As String
+End Module
+
+Public Class Calendar
 
 
     'General Notes:
@@ -253,10 +263,10 @@
     'Loads database and starts intialisation of Calendar
     'For School: "Data Source = \\SR8137CF01-FS02\StudentUsers\2015\431538393\Desktop\Calendar.accdb"
     'For Laptop: "Data Source = C:\Users\Mystearica\Documents\Visual Studio 2012\Projects\WindowsApplication3\WindowsApplication3\Calendar.accdb"
-    Dim con As New OleDb.OleDbConnection
-    Dim dbProvider As String = "PROVIDER=Microsoft.Ace.OLEDB.12.0;"
-    Dim dbSource As String = "Data Source = \\SR8137CF01-FS02\StudentUsers\2015\431538393\Desktop\Calendar.accdb"
-    Dim dataset As New DataSet
+    Dim con As New OleDb.OleDbConnection            'Database connection
+    Dim dbProvider As String = "PROVIDER=Microsoft.Ace.OLEDB.12.0;"                                                     'This line and line below are redundant
+    Dim dbSource As String = "Data Source = \\SR8137CF01-FS02\StudentUsers\2015\431538393\Desktop\Calendar.accdb"       'They were used before i started using the rootform connection, such as at home
+    Dim dataset As New DataSet                      'dataset used to store and interface with the actual database
     Dim data_adapter As OleDb.OleDbDataAdapter
     Dim sql As String
 
@@ -264,7 +274,7 @@
 
     Dim Key(0) As DataColumn
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        
+
         'Initially sets right location of the calendar panel:
         ControlPanelCalendar.Left = 0
         ControlPanelCalendar.Top = 110
@@ -275,16 +285,20 @@
 
         ControlPanelCalendar.BringToFront()
 
+        PanelHelp.Left = 0
+        PanelHelp.Top = -548
+        PanelHelp.Width = 1281
+        PanelHelp.Height = 658
 
 
 
-        ReloadCal(Now, Now.Day)
+        ReloadCal(Now, Now.Day)                 'loads the virtual calendar
 
-        LabelDetails.Text = "Viewing " & CStr(MonthName(Now.Month)) & " of " & CStr(Now.Year)
+        LabelDetails.Text = "Viewing " & CStr(MonthName(Now.Month)) & " of " & CStr(Now.Year)       'information label
 
         sql = "Select * FROM Calendar"           'In here goes the NAME OF THE TABLE
         data_adapter = New OleDb.OleDbDataAdapter(sql, RootForm.connection)
-        data_adapter.Fill(dataset, "Calendar")      'In here goes the NAME OF THE DATABASE
+        data_adapter.Fill(dataset, "Calendar")      'In here goes the NAME OF THE DATABASE          'fills the dataset
 
 
         'Admin section: restriction/access levels
@@ -293,8 +307,10 @@
 
         RadAdvSearchEventName.Checked = True
 
+
+
         Key(0) = dataset.Tables("Calendar").Columns("EventDate")
-        dataset.Tables("Calendar").PrimaryKey = Key
+        dataset.Tables("Calendar").PrimaryKey = Key                     'declares a datacolumn which is used for searching the database later on
 
 
         If Admin = True Then
@@ -303,7 +319,7 @@
             PanelControls.Visible = False
         End If
 
-        Populate_Table(currentmonth)
+        Populate_Table(currentmonth)                'checks database for any events and then populates the tables accordingly
     End Sub
 
 
@@ -324,7 +340,7 @@
 
         ReloadCal(currentmonth, currentmonth.Day)
 
-        tu4.Visible = False                 'just a little bug
+        tu4.Visible = False                 'just a little visual bug
 
         Populate_Table(currentmonth)
 
@@ -339,7 +355,6 @@
 
         currentmonth = DateAdd(DateInterval.Month, -1, currentmonth)
 
-
         Reset_All_Graphics()
 
         ReloadCal(currentmonth, currentmonth.Day)
@@ -349,10 +364,6 @@
         Populate_Table(currentmonth)
 
         tu4.Visible = True
-
-        PicFoil.Visible = False
-        PicSabre.Visible = False
-        PicEpee.Visible = False
 
     End Sub
     Public Sub Reset_All_Graphics()
@@ -384,7 +395,7 @@
     End Sub
 
 
-    'Populate table populates the table no shit
+    'Populate table populates the table
     'accesses the database and gets dates
     Dim DateArray() As String = {"su1", "su2", "su3", "su4", "su5", "su6", "m1", "m2", "m3", "m4", "m5", "m6", "tu1", "tu2", "tu3", "tu4", "tu5", "tu6", "w1", "w2", "w3", "w4", "w5", "w6", "th1", "th2", "th3", "th4", "th5", "th6", "f1", "f2", "f3", "f4", "f5", "f6", "sa1", "sa2", "sa3", "sa4", "sa5", "sa6"}
     Public Sub Populate_Table(ByVal currentmonth As Date)
@@ -418,8 +429,6 @@
 
 
 
-
-    'These three subs/functions are called frequently by other functions
 
     'This sub is called by another sub which passes to it the name of the box clicked
     'It will then return the date of the chosen box
@@ -708,6 +717,108 @@
         End Select
     End Function
 
+    'This sub gets details from the database and then displays the info onto the panel only
+    'For displaying of info onto virtual calendar, refer to Populate_Table
+    Dim Row As DataRow
+    Public Function Fill_In_Information_Tables(ByVal DatabaseDate As Date)          'Fills in the details for the details panel
+
+        Key(0) = dataset.Tables("Calendar").Columns("EventDate")
+        dataset.Tables("Calendar").PrimaryKey = Key
+        Row = dataset.Tables("Calendar").Rows.Find(DatabaseDate)
+
+        TexEventName.Text = Row.Item(1)
+        Time_Database_To_Program(Row.Item(4))
+        TexVenue.Text = Row.Item(5)
+
+
+        If Row.Item(6) = "No Weapon" Then
+            ComboWeapon.SelectedIndex = 0
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = False
+        ElseIf Row.Item(6) = "Foil" Then
+            ComboWeapon.SelectedIndex = 1
+            PicFoil.Visible = True
+            PicSabre.Visible = False
+            PicEpee.Visible = False
+        ElseIf Row.Item(6) = "Sabre" Then
+            ComboWeapon.SelectedIndex = 2
+            PicFoil.Visible = False
+            PicSabre.Visible = True
+            PicEpee.Visible = False
+        ElseIf Row.Item(6) = "Epee" Then
+            ComboWeapon.SelectedIndex = 3
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = True
+        End If
+
+        TexGroup.Text = Row.Item(7)
+
+    End Function
+
+
+    'This sub gets details from the database and then displays the information using the fucntion fill_in_Information
+    Public Sub Get_Database_Details_For_Specified_Date(ByVal DatabaseDate As Date)
+
+        LabClickToBegin.Visible = False
+
+        If BlankDate = True Then        'Completely Blank Box
+
+            LabelDetails.Text = "No Date"
+
+            PanInput.Visible = False
+
+            Hide_Buttons(False, False, False, False, False, False, False, False)
+
+            LabNoEventScheduled.Visible = False
+
+            BlankDate = False
+
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = False
+
+        Else : BlankDate = False        'Box with a date, but not necessarily an entry in the database
+
+            Try                         'Box with a date, and has an entry in the database
+                Fill_In_Information_Tables(DatabaseDate)
+
+                LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
+
+                PanInput.Visible = True
+
+                Hide_Buttons(False, False, False, False, False, True, True, True)
+
+                LabNoEventScheduled.Visible = False
+
+                ComboBoxTime.Enabled = False
+                RadioButtonAM.Enabled = False
+                RadioButtonPM.Enabled = False
+
+            Catch ex As Exception       'Box with a date, but has no entry in the database
+
+                LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
+
+                PanInput.Visible = False
+
+                Hide_Buttons(True, False, False, False, False, False, False, False)
+
+                LabNoEventScheduled.Visible = True
+
+                PicFoil.Visible = False
+                PicSabre.Visible = False
+                PicEpee.Visible = False
+
+            End Try
+
+        End If
+
+    End Sub
+
+
+
+
 
     'Caters to time from database to program
     Public Function Time_Database_To_Program(ByVal DatabaseTime As String)
@@ -809,6 +920,7 @@
         End If
 
     End Function
+    'enables/disables the radio buttons for am/pm if N/A is chosen, as there is no am/pm for "no" time
     Private Sub ComboBoxTime_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxTime.SelectedIndexChanged
         If ComboBoxTime.SelectedItem = "N/A" Then
             RadioButtonAM.Enabled = False
@@ -822,115 +934,13 @@
 
 
 
-    'This sub gets details from the database and then displays the info onto the panel only
-    'For displaying of info onto virtual calendar, refer to Populate_Table
-    Dim Row As DataRow
-    Public Function Fill_In_Information_Tables(ByVal DatabaseDate As Date)          'Fills in the details for the panel
-
-        Key(0) = dataset.Tables("Calendar").Columns("EventDate")
-        dataset.Tables("Calendar").PrimaryKey = Key
-        Row = dataset.Tables("Calendar").Rows.Find(DatabaseDate)
-
-        TexEventName.Text = Row.Item(1)
-        Time_Database_To_Program(Row.Item(4))
-        TexVenue.Text = Row.Item(5)
-
-
-        If Row.Item(6) = "No Weapon" Then
-            ComboWeapon.SelectedIndex = 0
-            PicFoil.Visible = False
-            PicSabre.Visible = False
-            PicEpee.Visible = False
-        ElseIf Row.Item(6) = "Foil" Then
-            ComboWeapon.SelectedIndex = 1
-            PicFoil.Visible = True
-            PicSabre.Visible = False
-            PicEpee.Visible = False
-        ElseIf Row.Item(6) = "Sabre" Then
-            ComboWeapon.SelectedIndex = 2
-            PicFoil.Visible = False
-            PicSabre.Visible = True
-            PicEpee.Visible = False
-        ElseIf Row.Item(6) = "Epee" Then
-            ComboWeapon.SelectedIndex = 3
-            PicFoil.Visible = False
-            PicSabre.Visible = False
-            PicEpee.Visible = True
-        End If
-
-        TexGroup.Text = Row.Item(7)
-
-    End Function
-
-
-
-
-    'This sub gets details from the database and then displays the information using the sub fill_in_info
-    Public Sub Get_Database_Details_For_Specified_Date(ByVal DatabaseDate As Date)
-
-        LabClickToBegin.Visible = False
-
-        If BlankDate = True Then        'Completely Blank Box
-
-            LabelDetails.Text = "No Date"
-
-            PanInput.Visible = False
-
-            Hide_Buttons(False, False, False, False, False, False, False, False)
-
-            LabNoEventScheduled.Visible = False
-
-            BlankDate = False
-
-            PicFoil.Visible = False
-            PicSabre.Visible = False
-            PicEpee.Visible = False
-
-        Else : BlankDate = False        'Box with a date, but not necessarily an entry in the database
-
-            Try                         'Box with a date, and has an entry in the database
-                Fill_In_Information_Tables(DatabaseDate)
-
-                LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
-
-                PanInput.Visible = True
-
-                Hide_Buttons(False, False, False, False, False, True, True, True)
-
-                LabNoEventScheduled.Visible = False
-
-            Catch ex As Exception       'Box with a date, but has no entry in the database
-
-                LabelDetails.Text = "Viewing details for " & CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & " " & DatabaseDate.Year
-
-                PanInput.Visible = False
-
-                Hide_Buttons(True, False, False, False, False, False, False, False)
-
-                LabNoEventScheduled.Visible = True
-
-                PicFoil.Visible = False
-                PicSabre.Visible = False
-                PicEpee.Visible = False
-
-            End Try
-
-        End If
-
-    End Sub
-
-
-
-
-
-
-
 
     'Most of the buttons and important update function
-    Dim updating As Boolean = False
-    Dim adding As Boolean = False
-    'EXTREMELY IMPORTANT SUB FOR UPDATING TO DATABASE which has fallen into disuse
-    'For some reason, the update function is no longer needed for this program
+
+
+    Dim updating As Boolean = False     'these two boolean variables are used to indicate wether the program is updating or adding
+    Dim adding As Boolean = False       '
+    'EXTREMELY IMPORTANT SUB FOR UPDATING TO DATABASE
     Private Function Update_to_Database()
         Dim cb As New OleDb.OleDbCommandBuilder(data_adapter)
         cb.QuotePrefix = "["
@@ -947,7 +957,7 @@
 
 
 
-    'Below four subs are hardcode that perform some basic hiding/clearing/showing actions
+    'Below four subs are hardcode that perform some basic hiding/clearing/showing actions. They are called by the buttons frequently
     'Hides buttons
     Public Function Hide_Buttons(ByVal addnew As Boolean, commit As Boolean, cancel As Boolean, update As Boolean, clear As Boolean, delete As Boolean, print As Boolean, edit As Boolean)
         ButAddNew.Visible = addnew
@@ -1128,9 +1138,7 @@
         Disabling_Textboxes(False)
         Clear_Text()
 
-
-
-
+        
     End Sub
     Private Sub ButCommit_Click(sender As Object, e As EventArgs) Handles ButCommit.Click          'For adding new dates
         If ComboBoxTime.SelectedItem = Nothing Or TexEventName.Text = "" Or TexVenue.Text = "" Or ComboWeapon.SelectedItem = Nothing Or TexGroup.Text = "" Then
@@ -1274,8 +1282,7 @@
 
     End Sub
 
-
-
+    'Print function. Opens the Print form
     Private Sub ButPrint_Click(sender As Object, e As EventArgs) Handles ButPrint.Click
         PrintEventName = TexEventName.Text
         PrintDate = CStr(DatabaseDate.Day) & " " & Format(DatabaseDate, "MMMM") & "/" & CStr(DatabaseDate.Month) & " " & CStr(DatabaseDate.Year)
@@ -1299,33 +1306,50 @@
 
 
 
-    'Following code caters to graphics for viewdetails panel
+    'the month calendar selector
+    Private Sub MonthCalendar1_DateSelected(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar1.DateSelected
+        Dim DatabaseSearchDate As Date = MonthCalendar1.SelectionRange.Start.ToString()
+
+        currentmonth = DatabaseSearchDate
+        ReloadCal(currentmonth, currentmonth.Day)
+        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
+        tu4.Visible = False
+        Populate_Table(currentmonth)
+        tu4.Visible = True
+
+        Get_Database_Details_For_Specified_Date(DatabaseSearchDate)
+
+        DatabaseDate = DatabaseSearchDate
+    End Sub
+
+
+
+
+
+    'Following code caters to graphics for the sliding calendar view panel
     'allows moving of position and hide/show functions
     Dim MouseX = Cursor.Position.X
     Dim MouseY = Cursor.Position.Y
-    Dim SearchHeld As Boolean = False
-    Private Sub PicSearchSlider_MouseDown(sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PicSearchSlider.MouseDown
+    Private Sub PicCalendarSlider_MouseDown(sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PicCalendarSlider.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then
-            SearchHeld = True
+            SliderTimer.Enabled = True
         End If
     End Sub
-    Private Sub PicSearchSlider_MouseUp(sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PicSearchSlider.MouseUp
+    Private Sub PicCalendarSlider_MouseUp(sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PicCalendarSlider.MouseUp
         If e.Button = Windows.Forms.MouseButtons.Left Then
-            SearchHeld = False
+            SliderTimer.Enabled = False
         End If
     End Sub
 
     Dim ScreenPos As Point
-    Private Sub SlideTimer_Tick(sender As Object, e As EventArgs) Handles SlideTimer.Tick
+    Private Sub SlideTimer_Tick(sender As Object, e As EventArgs) Handles SliderTimer.Tick
         MouseX = Cursor.Position.X
         MouseY = Cursor.Position.Y
 
         ScreenPos = Me.PointToScreen(New Point(0, 0))           ''Gets x/y location of the panel instead of just mouse
 
-        If SearchHeld = True Then
-            PanelImportedCalendar.Left = MouseX - ScreenPos.X - Sliding_Constant - 35
-            PanelImportedCalendar.Top = MouseY - ScreenPos.Y - 120
-        End If
+        PanelImportedCalendar.Left = MouseX - ScreenPos.X - Sliding_Constant - 35
+        PanelImportedCalendar.Top = MouseY - ScreenPos.Y - 120
     End Sub
 
     'Caters to graphics for moving the calendar in the "Calendar" panel
@@ -1340,7 +1364,7 @@
         MonthCalendar1.Width = 458
         MonthCalendar1.Height = 311
 
-        PicSearchSlider.Left = 212
+        PicCalendarSlider.Left = 212
 
         Sliding_Constant = 212
     End Sub
@@ -1354,16 +1378,10 @@
         MonthCalendar1.Width = 227
         MonthCalendar1.Height = 162
 
-        PicSearchSlider.Left = 92
+        PicCalendarSlider.Left = 92
 
         Sliding_Constant = 92
     End Sub
-
-
-
-
-
-
 
 
 
@@ -1379,6 +1397,7 @@
             Advanced_Search()
         Else
             If TexSearch.Text = "" Then
+                ListView1.Items.Clear()
                 MsgBox("Please enter an event name")
             Else
                 Advanced_Search()
@@ -1430,23 +1449,20 @@
                 Return command
             End If
         End If
-
-
-
     End Function
     'Function that searches in database and then populates the table
+    Dim FoundResults As Integer = 0
     Private Sub Advanced_Search()
         Dim tempcommand = Command_Builder()
-        Dim FoundResults As Integer = 0
         Dim SearchString As String = TexSearch.Text
         'Sets data adapter
-        data_adapter = New OleDb.OleDbDataAdapter
-        data_adapter.SelectCommand = New OleDb.OleDbCommand()
+
+        Dim new_data_adapter = New OleDb.OleDbDataAdapter
+        new_data_adapter.SelectCommand = New OleDb.OleDbCommand()
 
 
         If Mode_String = "All" Then             'Searching in all fields
-
-            With data_adapter.SelectCommand
+            With new_data_adapter.SelectCommand
                 .Connection = RootForm.connection
                 .CommandText = tempcommand
                 .Parameters.AddWithValue("@Search1", SearchString)
@@ -1456,9 +1472,9 @@
                 .CommandType = CommandType.Text
                 .ExecuteNonQuery()
             End With
-            data_adapter.Fill(SearchResults, "Calendar")
+            new_data_adapter.Fill(SearchResults, "Calendar")
 
-            'Populates the table with found items
+
             ListView1.Items.Clear()
             Dim A_Row As DataRow
             For Each A_Row In SearchResults.Tables("Calendar").Rows
@@ -1475,6 +1491,7 @@
             Next
             SearchResults.Clear()
 
+
             If FoundResults = 0 Then
                 LabNoResultsFound.Visible = True
                 LabNoResultsFound.Text = "No events found in any field called " & "'" & SearchString & "'"
@@ -1484,6 +1501,7 @@
 
 
         ElseIf Mode_String = "Weapon" Then          'Searching only in weapon field, which is special as only four choices are provided
+
 
             Dim TempSearchString As String          'essentially searches the database with a string of one of the four choices
             If RadChoiceNoWeapon.Checked = True Then
@@ -1500,16 +1518,16 @@
 
 
 
-            With data_adapter.SelectCommand
+            With new_data_adapter.SelectCommand
                 .Connection = RootForm.connection
                 .CommandText = tempcommand
                 .Parameters.AddWithValue("@Search1", TempSearchString)
                 .CommandType = CommandType.Text
                 .ExecuteNonQuery()
             End With
-            data_adapter.Fill(SearchResults, "Calendar")
+            new_data_adapter.Fill(SearchResults, "Calendar")
 
-            'Populates table with found items
+
             ListView1.Items.Clear()
             Dim A_Row As DataRow
             For Each A_Row In SearchResults.Tables("Calendar").Rows
@@ -1525,6 +1543,7 @@
                 End If
             Next
             SearchResults.Clear()
+
 
             If FoundResults = 0 Then
                 LabNoResultsFound.Visible = True
@@ -1535,17 +1554,17 @@
 
 
         Else            'Searching in eventname/venue/group
-            
-            With data_adapter.SelectCommand
+
+            With new_data_adapter.SelectCommand
                 .Connection = RootForm.connection
                 .CommandText = tempcommand
                 .Parameters.AddWithValue("@Search1", SearchString)
                 .CommandType = CommandType.Text
                 .ExecuteNonQuery()
             End With
-            data_adapter.Fill(SearchResults, "Calendar")
+            new_data_adapter.Fill(SearchResults, "Calendar")
 
-            'Populates the table with found items
+
             ListView1.Items.Clear()
             Dim A_Row As DataRow
             For Each A_Row In SearchResults.Tables("Calendar").Rows
@@ -1561,6 +1580,7 @@
                 End If
             Next
             SearchResults.Clear()
+
 
             If FoundResults = 0 Then
                 LabNoResultsFound.Visible = True
@@ -1577,7 +1597,7 @@
             End If
         End If
 
-
+        FoundResults = 0        'resets variable
 
     End Sub
     'Mostly monitors graphics and disables choices when the "All" check box is selected
@@ -1622,28 +1642,6 @@
 
 
 
-    'The two additional functions
-    Private Sub MonthCalendar1_DateSelected(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar1.DateSelected
-        Dim DatabaseSearchDate As Date = MonthCalendar1.SelectionRange.Start.ToString()
-
-        currentmonth = DatabaseSearchDate
-        ReloadCal(currentmonth, currentmonth.Day)
-        'CalendarGroupbox.text = Format(currentmonth, "MMMM") & " " & currentmonth.Year
-        tu4.Visible = False
-        Populate_Table(currentmonth)
-        tu4.Visible = True
-
-        Get_Database_Details_For_Specified_Date(DatabaseSearchDate)
-
-        DatabaseDate = DatabaseSearchDate
-    End Sub
-    Private Sub ButViewDatabase_Click(sender As Object, e As EventArgs)
-        CalendarTableView.Show()
-    End Sub
-
-
-
-
 
 
 
@@ -1665,8 +1663,6 @@
             MsgBox("Volume is turned off")
         End If
     End Sub
-
-
     'Resets position of either the panel for calendar or for the quicksearch function and then goes to the calendar panel
     Private Sub ButResetPosition_Click(sender As Object, e As EventArgs) Handles ButResetPosition.Click
 
@@ -1679,7 +1675,7 @@
         MonthCalendar1.Width = 227
         MonthCalendar1.Height = 162
 
-        PicSearchSlider.Left = 92
+        PicCalendarSlider.Left = 92
 
         Sliding_Constant = 92
 
@@ -1696,6 +1692,8 @@
 
 
     End Sub
+
+
 
     'Currently completely unused code
     'May be useful in future, for additional functions
@@ -1718,7 +1716,26 @@
     'buttons that open up the default panels
     Dim searching As Boolean = False
     Private Sub ButControlDatabaseView_Click(sender As Object, e As EventArgs) Handles ButControlDatabaseView.Click
+        HelpType = "Database"
         If searching = False Then
+
+            searching = True
+
+            CalendarChecked = False
+            SearchChecked = False
+            DatabaseChecked = True
+
+            If CalendarMovedUp = True Then
+                CalendarMovedUp = False
+                ButControlCalendar.Top += 20
+                ButControlCalendar.Height -= 20
+            End If
+            If SearchMovedUp = True Then
+                SearchMovedUp = False
+                ButControlSearch.Top += 20
+                ButControlSearch.Height -= 20
+            End If
+
             ControlPanelDatabaseView.Left = 0
             ControlPanelDatabaseView.Top = 110
             ControlPanelDatabaseView.Width = 1281
@@ -1730,14 +1747,29 @@
 
             Me.CalendarTableAdapter.Fill(Me.FencingDataSet.Calendar)
 
-            searching = True
         Else : searching = True
             'Do nothing
             'No need to reset the location of the panel, and more importantly, no need to reload the database
         End If
     End Sub
     Private Sub ButControlSearch_Click(sender As Object, e As EventArgs) Handles ButControlSearch.Click
+        HelpType = "Search"
         searching = False
+
+        CalendarChecked = False
+        SearchChecked = True
+        DatabaseChecked = False
+
+        If CalendarMovedUp = True Then
+            CalendarMovedUp = False
+            ButControlCalendar.Top += 20
+            ButControlCalendar.Height -= 20
+        End If
+        If DatabaseMovedUp = True Then
+            DatabaseMovedUp = False
+            ButControlDatabaseView.Top += 20
+            ButControlDatabaseView.Height -= 20
+        End If
 
         ControlPanelSearch.Left = 0
         ControlPanelSearch.Top = 110
@@ -1747,9 +1779,26 @@
         ControlPanelSearch.Show()
 
         ControlPanelSearch.BringToFront()
+
     End Sub
     Private Sub ButControlCalendar_Click(sender As Object, e As EventArgs) Handles ButControlCalendar.Click
+        HelpType = "Calendar"
         searching = False
+
+        CalendarChecked = True
+        SearchChecked = False
+        DatabaseChecked = False
+
+        If DatabaseMovedUp = True Then
+            DatabaseMovedUp = False
+            ButControlDatabaseView.Top += 20
+            ButControlDatabaseView.Height -= 20
+        End If
+        If SearchMovedUp = True Then
+            SearchMovedUp = False
+            ButControlSearch.Top += 20
+            ButControlSearch.Height -= 20
+        End If
 
         ControlPanelCalendar.Left = 0
         ControlPanelCalendar.Top = 110
@@ -1760,8 +1809,10 @@
 
         ControlPanelCalendar.BringToFront()
 
+
     End Sub
     Private Sub ButSettings_Click(sender As Object, e As EventArgs) Handles ButSettings.Click
+        HelpType = "Settings"
         searching = False
 
         ControlPanelSettings.Left = 0
@@ -1772,56 +1823,160 @@
         ControlPanelSettings.Show()
 
         ControlPanelSettings.BringToFront()
+
+
     End Sub
+
+
+    'For pressing help:
+    Dim HidingHelp As Boolean = False
+    Dim HelpType As String = "Calendar"
+    Private Sub ButHelp_Click(sender As Object, e As EventArgs) Handles ButHelp.Click
+        HidingHelp = False
+        PanelHelp.BringToFront()
+
+        'Simply graphics: keeps the top bar in front of the help panel (looks cool)
+        PanelHeader.BringToFront()
+
+        'Disables buttons whilst in help
+        ButHelp.Enabled = False
+        ButSettings.Enabled = False
+        ButControlCalendar.Enabled = False
+        ButControlSearch.Enabled = False
+        ButControlDatabaseView.Enabled = False
+
+        Select Case HelpType
+            Case "Calendar"
+                PicHelpCalendar.BringToFront()
+            Case "Search"
+                PicHelpSearch.BringToFront()
+            Case "Database"
+                PicHelpDatabase.BringToFront()
+            Case "Settings"
+                PicHelpSettings.BringToFront()
+        End Select
+
+        HelpSlidingTimer.Enabled = True
+    End Sub
+
+
+    Private Sub HelpSlidingTimer_Tick(sender As Object, e As EventArgs) Handles HelpSlidingTimer.Tick
+        If HidingHelp = True Then
+            While PanelHelp.Top > -548
+                PanelHelp.Top -= 1
+            End While
+        Else : HidingHelp = False
+            While PanelHelp.Top < 110
+                PanelHelp.Top += 1
+            End While
+        End If
+        HelpSlidingTimer.Enabled = False
+    End Sub
+
+    Private Sub ButHideHelp_Click(sender As Object, e As EventArgs) Handles ButHideHelp.Click
+        HidingHelp = True
+        
+        PanelHeader.BringToFront()
+
+        'Re enables buttons
+        ButHelp.Enabled = True
+        ButSettings.Enabled = True
+        ButControlCalendar.Enabled = True
+        ButControlSearch.Enabled = True
+        ButControlDatabaseView.Enabled = True
+        
+        HelpSlidingTimer.Enabled = True
+
+    End Sub
+
+
+
+
+
+
 
 
 
     'Simple graphics
-    'Makes buttons seem to popup when hovered over
+    'Makes buttons popup when hovered over
     Dim CalendarMovedUp As Boolean = False
     Dim SearchMovedUp As Boolean = False
     Dim DatabaseMovedUp As Boolean = False
+
+    Dim CalendarChecked As Boolean = False
+    Dim SearchChecked As Boolean = False
+    Dim DatabaseChecked As Boolean = False
     Private Sub ButControlCalendar_MouseHover(sender As Object, e As EventArgs) Handles ButControlCalendar.MouseHover
-        If CalendarMovedUp = False Then
-            ButControlCalendar.Top -= 20
-            ButControlCalendar.Height += 20
-            CalendarMovedUp = True
+        If CalendarChecked = True Then
+
+        Else
+            If CalendarMovedUp = False Then
+                ButControlCalendar.Top -= 20
+                ButControlCalendar.Height += 20
+                CalendarMovedUp = True
+            End If
         End If
+
     End Sub
     Private Sub ButControlDatabaseView_MouseHover(sender As Object, e As EventArgs) Handles ButControlDatabaseView.MouseHover
-        If DatabaseMovedUp = False Then
-            ButControlDatabaseView.Top -= 20
-            ButControlDatabaseView.Height += 20
-            DatabaseMovedUp = True
+        If DatabaseChecked = True Then
+
+        Else
+            If DatabaseMovedUp = False Then
+                ButControlDatabaseView.Top -= 20
+                ButControlDatabaseView.Height += 20
+                DatabaseMovedUp = True
+            End If
         End If
+
     End Sub
     Private Sub ButControlSearch_MouseHover(sender As Object, e As EventArgs) Handles ButControlSearch.MouseHover
-        If SearchMovedUp = False Then
-            ButControlSearch.Top -= 20
-            ButControlSearch.Height += 20
-            SearchMovedUp = True
+        If SearchChecked = True Then
+
+        Else
+            If SearchMovedUp = False Then
+                ButControlSearch.Height += 20
+                ButControlSearch.Top -= 20
+                SearchMovedUp = True
+            End If
         End If
+
     End Sub
 
     Private Sub ButControlCalendar_MouseLeave(sender As Object, e As EventArgs) Handles ButControlCalendar.MouseLeave
-        If CalendarMovedUp = True Then
-            CalendarMovedUp = False
-            ButControlCalendar.Top += 20
-            ButControlCalendar.Height -= 20
+        If CalendarChecked = True Then
+
+        Else
+            If CalendarMovedUp = True Then
+                CalendarMovedUp = False
+                ButControlCalendar.Top += 20
+                ButControlCalendar.Height -= 20
+            End If
         End If
+
     End Sub
     Private Sub ButControlDatabaseView_MouseLeave(sender As Object, e As EventArgs) Handles ButControlDatabaseView.MouseLeave
-        If DatabaseMovedUp = True Then
-            DatabaseMovedUp = False
-            ButControlDatabaseView.Top += 20
-            ButControlDatabaseView.Height -= 20
+        If DatabaseChecked = True Then
+
+        Else
+            If DatabaseMovedUp = True Then
+                DatabaseMovedUp = False
+                ButControlDatabaseView.Top += 20
+                ButControlDatabaseView.Height -= 20
+            End If
+
         End If
     End Sub
     Private Sub ButControlSearch_MouseLeave(sender As Object, e As EventArgs) Handles ButControlSearch.MouseLeave
-        If SearchMovedUp = True Then
-            SearchMovedUp = False
-            ButControlSearch.Top += 20
-            ButControlSearch.Height -= 20
+        If SearchChecked = True Then
+
+        Else
+            If SearchMovedUp = True Then
+                SearchMovedUp = False
+                ButControlSearch.Top += 20
+                ButControlSearch.Height -= 20
+            End If
+
         End If
     End Sub
 
@@ -2282,11 +2437,4 @@
     End Sub
 
 End Class
-Public Module GlobalVariablesModule
-    Public PrintEventName As String
-    Public PrintGroup As String
-    Public PrintDate As String
-    Public PrintVenue As String
-    Public PrintWeapon As String
-    Public PrintTime As String
-End Module
+

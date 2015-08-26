@@ -338,6 +338,11 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Database View Panel.png" />
+    <None Include="Resources\Settings Panel.png" />
+    <None Include="Resources\Search Panel.png" />
+    <None Include="Resources\Calendar Panel1.png" />
+    <None Include="Resources\Calendar Panel.png" />
     <None Include="Resources\volume icon off.png" />
     <None Include="Resources\search icon.png" />
     <None Include="Resources\sabre symbol.png" />

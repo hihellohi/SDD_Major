@@ -127,11 +127,23 @@
   <data name="curly_brackets_md1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\curly-brackets-md1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="volume icon off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\volume icon off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Settings Panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Settings Panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calendar Panel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calendar Panel1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="epee symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\epee symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gear icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sydneyboyscrest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sydneyboyscrest.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search Panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search Panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Foil_symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Foil symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,11 +151,11 @@
   <data name="catalog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\catalog.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Sydneyboyscrest (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sydneyboyscrest (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="curly_brackets_md" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\curly-brackets-md.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="loans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loans.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,8 +163,11 @@
   <data name="volume icon on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\volume icon on.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sydneyboyscrest (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sydneyboyscrest (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Calendar Panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calendar Panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sydneyboyscrest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sydneyboyscrest.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="spinner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\spinner.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +175,8 @@
   <data name="sabre symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sabre symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="epee symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\epee symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gear icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear icon1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,7 +193,7 @@
   <data name="Foil symbol1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Foil symbol2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="volume icon off" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\volume icon off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Database View Panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Database View Panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
