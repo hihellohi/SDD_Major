@@ -26,6 +26,7 @@ Partial Class Admin
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lvEvents = New System.Windows.Forms.ListView()
         Me.colID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -39,9 +40,9 @@ Partial Class Admin
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btRefresh = New System.Windows.Forms.Button()
         Me.lbAcc = New System.Windows.Forms.Label()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.btSave = New System.Windows.Forms.Button()
         Me.lvAbsences = New System.Windows.Forms.ListView()
+        Me.btCLog = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -86,6 +87,14 @@ Partial Class Admin
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Log"
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(6, 25)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.Size = New System.Drawing.Size(528, 399)
+        Me.RichTextBox1.TabIndex = 1
+        Me.RichTextBox1.Text = ""
         '
         'Label3
         '
@@ -203,14 +212,6 @@ Partial Class Admin
         Me.lbAcc.TabIndex = 39
         Me.lbAcc.Text = "lbAcc"
         '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.Location = New System.Drawing.Point(6, 25)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(528, 399)
-        Me.RichTextBox1.TabIndex = 1
-        Me.RichTextBox1.Text = ""
-        '
         'btSave
         '
         Me.btSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -234,11 +235,22 @@ Partial Class Admin
         Me.lvAbsences.UseCompatibleStateImageBehavior = False
         Me.lvAbsences.View = System.Windows.Forms.View.Details
         '
+        'btCLog
+        '
+        Me.btCLog.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btCLog.Location = New System.Drawing.Point(546, 531)
+        Me.btCLog.Name = "btCLog"
+        Me.btCLog.Size = New System.Drawing.Size(29, 32)
+        Me.btCLog.TabIndex = 43
+        Me.btCLog.Text = "C"
+        Me.btCLog.UseVisualStyleBackColor = True
+        '
         'Admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.btCLog)
         Me.Controls.Add(Me.lvAbsences)
         Me.Controls.Add(Me.btSave)
         Me.Controls.Add(Me.lbAcc)
@@ -283,4 +295,5 @@ Partial Class Admin
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents btSave As System.Windows.Forms.Button
     Friend WithEvents lvAbsences As System.Windows.Forms.ListView
+    Friend WithEvents btCLog As System.Windows.Forms.Button
 End Class

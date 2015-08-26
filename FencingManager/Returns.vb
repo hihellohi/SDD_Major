@@ -19,6 +19,10 @@ Public Class Returns
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(5) = 0
                         RootForm.GearDataS.Tables("Gear").Rows(i).Item(6) = 0
                         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
+
+                        FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+                        My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] Item " + txtInput.Text + "(" + lblOutput.Text + ")" + " has been returned" & Environment.NewLine, True)
+
                     End If
                     found = False
                 End If

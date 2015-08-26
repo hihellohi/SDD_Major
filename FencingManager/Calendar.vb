@@ -1225,7 +1225,8 @@ Public Class Calendar
                 My.Computer.Audio.Play("ding.wav")
             End If
             MsgBox("New event added for the date: " & CStr(DatabaseDate))
-
+            FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+            My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + TexEventName.Text + " Event added for " + DatabaseDate & Environment.NewLine, True)
 
             adding = False
 

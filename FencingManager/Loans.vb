@@ -139,6 +139,10 @@
                                 End If
                                 RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
                                 loadTable()
+
+                                FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+                                My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] Item " + RootForm.GearDataS.Tables("Gear").Rows(i)("GearID").ToString + " has been loaned to " + grbInventory.Text & Environment.NewLine, True)
+
                             Else
                                 lblInputError.Text = "Item already loaned to " + RootForm.GearDataS.Tables("Gear").Rows(i)("studentLoaned").ToString
                                 show = True
@@ -324,4 +328,5 @@
             tmp.Print()
         End If
     End Sub
+
 End Class

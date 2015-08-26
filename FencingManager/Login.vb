@@ -9,7 +9,7 @@ Public Class Login
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        RootForm.Panel1.Controls.Add(formForgotPW)
+        formForgotPW.ShowDialog()
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -67,7 +67,7 @@ Public Class Login
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        CreateAcc.Show()
+        CreateAcc.ShowDialog()
         TextBox1.Text = ""
         TextBox2.Text = ""
     End Sub

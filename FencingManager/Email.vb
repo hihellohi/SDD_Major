@@ -91,6 +91,10 @@ Public Class Email
                         Next
                         email.Body += "</table></p><p>This was an automated message. Do not reply to this email</p></body></html>"
                         Smtp_Server.Send(email)
+
+                        FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+                        My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] Overdue Items Email sent " & Environment.NewLine, True)
+
                     Catch error_t As Exception
                         'If error occurs
                         MsgBox(error_t.ToString)
