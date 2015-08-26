@@ -22,8 +22,12 @@ Partial Class StudentProfilesForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StudentProfilesForm))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.detailsTopPanel = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.btnNew = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -45,13 +49,16 @@ Partial Class StudentProfilesForm
         Me.rdbSurname = New System.Windows.Forms.RadioButton()
         Me.rdbFirstName = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.lblName = New System.Windows.Forms.Label()
-        Me.lblSchoolYear = New System.Windows.Forms.Label()
-        Me.lblWeapon = New System.Windows.Forms.Label()
-        Me.lblWinPercent = New System.Windows.Forms.Label()
-        Me.lblKDR = New System.Windows.Forms.Label()
         Me.btnMore = New System.Windows.Forms.Button()
+        Me.lblKDR = New System.Windows.Forms.Label()
+        Me.lblWinPercent = New System.Windows.Forms.Label()
+        Me.lblWeapon = New System.Windows.Forms.Label()
+        Me.lblSchoolYear = New System.Windows.Forms.Label()
+        Me.lblName = New System.Windows.Forms.Label()
+        Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
+        Me.detailsTopPanel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -60,6 +67,7 @@ Partial Class StudentProfilesForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Panel1.Controls.Add(Me.detailsTopPanel)
         Me.Panel1.Controls.Add(Me.btnNew)
         Me.Panel1.Controls.Add(Me.btnSearch)
         Me.Panel1.Controls.Add(Me.TextBox1)
@@ -68,6 +76,39 @@ Partial Class StudentProfilesForm
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1256, 110)
         Me.Panel1.TabIndex = 0
+        '
+        'detailsTopPanel
+        '
+        Me.detailsTopPanel.Controls.Add(Me.Label1)
+        Me.detailsTopPanel.Controls.Add(Me.btnBack)
+        Me.detailsTopPanel.ForeColor = System.Drawing.Color.White
+        Me.detailsTopPanel.Location = New System.Drawing.Point(0, 12)
+        Me.detailsTopPanel.Name = "detailsTopPanel"
+        Me.detailsTopPanel.Size = New System.Drawing.Size(1003, 75)
+        Me.detailsTopPanel.TabIndex = 7
+        Me.detailsTopPanel.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(102, 22)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(308, 52)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Student Profile"
+        '
+        'btnBack
+        '
+        Me.btnBack.BackgroundImage = CType(resources.GetObject("btnBack.BackgroundImage"), System.Drawing.Image)
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.FlatAppearance.BorderSize = 0
+        Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBack.Location = New System.Drawing.Point(37, 20)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(42, 42)
+        Me.btnBack.TabIndex = 0
+        Me.btnBack.UseVisualStyleBackColor = True
         '
         'btnNew
         '
@@ -99,7 +140,7 @@ Partial Class StudentProfilesForm
         '
         Me.TextBox1.Location = New System.Drawing.Point(85, 36)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(755, 32)
+        Me.TextBox1.Size = New System.Drawing.Size(755, 38)
         Me.TextBox1.TabIndex = 2
         '
         'ListView1
@@ -160,7 +201,7 @@ Partial Class StudentProfilesForm
         Me.cbbYear.Items.AddRange(New Object() {"7", "8", "9", "10", "11", "12"})
         Me.cbbYear.Location = New System.Drawing.Point(110, 152)
         Me.cbbYear.Name = "cbbYear"
-        Me.cbbYear.Size = New System.Drawing.Size(70, 33)
+        Me.cbbYear.Size = New System.Drawing.Size(70, 39)
         Me.cbbYear.TabIndex = 4
         '
         'rdbSelectYear
@@ -168,7 +209,7 @@ Partial Class StudentProfilesForm
         Me.rdbSelectYear.AutoSize = True
         Me.rdbSelectYear.Location = New System.Drawing.Point(27, 152)
         Me.rdbSelectYear.Name = "rdbSelectYear"
-        Me.rdbSelectYear.Size = New System.Drawing.Size(77, 30)
+        Me.rdbSelectYear.Size = New System.Drawing.Size(92, 35)
         Me.rdbSelectYear.TabIndex = 3
         Me.rdbSelectYear.Text = "Year"
         Me.rdbSelectYear.UseVisualStyleBackColor = True
@@ -178,7 +219,7 @@ Partial Class StudentProfilesForm
         Me.rdbSenior.AutoSize = True
         Me.rdbSenior.Location = New System.Drawing.Point(27, 115)
         Me.rdbSenior.Name = "rdbSenior"
-        Me.rdbSenior.Size = New System.Drawing.Size(93, 30)
+        Me.rdbSenior.Size = New System.Drawing.Size(113, 35)
         Me.rdbSenior.TabIndex = 2
         Me.rdbSenior.Text = "Senior"
         Me.rdbSenior.UseVisualStyleBackColor = True
@@ -188,7 +229,7 @@ Partial Class StudentProfilesForm
         Me.rdbJunior.AutoSize = True
         Me.rdbJunior.Location = New System.Drawing.Point(27, 79)
         Me.rdbJunior.Name = "rdbJunior"
-        Me.rdbJunior.Size = New System.Drawing.Size(89, 30)
+        Me.rdbJunior.Size = New System.Drawing.Size(109, 35)
         Me.rdbJunior.TabIndex = 1
         Me.rdbJunior.Text = "Junior"
         Me.rdbJunior.UseVisualStyleBackColor = True
@@ -199,7 +240,7 @@ Partial Class StudentProfilesForm
         Me.rdbAll.Checked = True
         Me.rdbAll.Location = New System.Drawing.Point(27, 43)
         Me.rdbAll.Name = "rdbAll"
-        Me.rdbAll.Size = New System.Drawing.Size(55, 30)
+        Me.rdbAll.Size = New System.Drawing.Size(65, 35)
         Me.rdbAll.TabIndex = 0
         Me.rdbAll.TabStop = True
         Me.rdbAll.Text = "All"
@@ -210,7 +251,7 @@ Partial Class StudentProfilesForm
         Me.chkFilter.AutoSize = True
         Me.chkFilter.Location = New System.Drawing.Point(21, 31)
         Me.chkFilter.Name = "chkFilter"
-        Me.chkFilter.Size = New System.Drawing.Size(114, 30)
+        Me.chkFilter.Size = New System.Drawing.Size(141, 35)
         Me.chkFilter.TabIndex = 4
         Me.chkFilter.Text = "Filter by:"
         Me.chkFilter.UseVisualStyleBackColor = True
@@ -234,7 +275,7 @@ Partial Class StudentProfilesForm
         Me.chkUnexplainedAb.AutoSize = True
         Me.chkUnexplainedAb.Location = New System.Drawing.Point(21, 175)
         Me.chkUnexplainedAb.Name = "chkUnexplainedAb"
-        Me.chkUnexplainedAb.Size = New System.Drawing.Size(254, 30)
+        Me.chkUnexplainedAb.Size = New System.Drawing.Size(313, 35)
         Me.chkUnexplainedAb.TabIndex = 8
         Me.chkUnexplainedAb.Text = "Unexplained Absences"
         Me.chkUnexplainedAb.UseVisualStyleBackColor = True
@@ -245,7 +286,7 @@ Partial Class StudentProfilesForm
         Me.rdbID.Enabled = False
         Me.rdbID.Location = New System.Drawing.Point(21, 139)
         Me.rdbID.Name = "rdbID"
-        Me.rdbID.Size = New System.Drawing.Size(133, 30)
+        Me.rdbID.Size = New System.Drawing.Size(164, 35)
         Me.rdbID.TabIndex = 7
         Me.rdbID.TabStop = True
         Me.rdbID.Text = "Student ID"
@@ -257,7 +298,7 @@ Partial Class StudentProfilesForm
         Me.rdbSurname.Enabled = False
         Me.rdbSurname.Location = New System.Drawing.Point(21, 103)
         Me.rdbSurname.Name = "rdbSurname"
-        Me.rdbSurname.Size = New System.Drawing.Size(119, 30)
+        Me.rdbSurname.Size = New System.Drawing.Size(144, 35)
         Me.rdbSurname.TabIndex = 6
         Me.rdbSurname.TabStop = True
         Me.rdbSurname.Text = "Surname"
@@ -269,7 +310,7 @@ Partial Class StudentProfilesForm
         Me.rdbFirstName.Enabled = False
         Me.rdbFirstName.Location = New System.Drawing.Point(21, 67)
         Me.rdbFirstName.Name = "rdbFirstName"
-        Me.rdbFirstName.Size = New System.Drawing.Size(137, 30)
+        Me.rdbFirstName.Size = New System.Drawing.Size(168, 35)
         Me.rdbFirstName.TabIndex = 5
         Me.rdbFirstName.TabStop = True
         Me.rdbFirstName.Text = "First Name"
@@ -290,53 +331,9 @@ Partial Class StudentProfilesForm
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Profile"
         '
-        'lblName
-        '
-        Me.lblName.AutoSize = True
-        Me.lblName.Location = New System.Drawing.Point(16, 52)
-        Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(83, 26)
-        Me.lblName.TabIndex = 0
-        Me.lblName.Text = "Name: "
-        '
-        'lblSchoolYear
-        '
-        Me.lblSchoolYear.AutoSize = True
-        Me.lblSchoolYear.Location = New System.Drawing.Point(475, 52)
-        Me.lblSchoolYear.Name = "lblSchoolYear"
-        Me.lblSchoolYear.Size = New System.Drawing.Size(65, 26)
-        Me.lblSchoolYear.TabIndex = 1
-        Me.lblSchoolYear.Text = "Year "
-        '
-        'lblWeapon
-        '
-        Me.lblWeapon.AutoSize = True
-        Me.lblWeapon.Location = New System.Drawing.Point(16, 102)
-        Me.lblWeapon.Name = "lblWeapon"
-        Me.lblWeapon.Size = New System.Drawing.Size(105, 26)
-        Me.lblWeapon.TabIndex = 2
-        Me.lblWeapon.Text = "Weapon: "
-        '
-        'lblWinPercent
-        '
-        Me.lblWinPercent.AutoSize = True
-        Me.lblWinPercent.Location = New System.Drawing.Point(16, 154)
-        Me.lblWinPercent.Name = "lblWinPercent"
-        Me.lblWinPercent.Size = New System.Drawing.Size(190, 26)
-        Me.lblWinPercent.TabIndex = 3
-        Me.lblWinPercent.Text = "Wins Percentage: "
-        '
-        'lblKDR
-        '
-        Me.lblKDR.AutoSize = True
-        Me.lblKDR.Location = New System.Drawing.Point(16, 203)
-        Me.lblKDR.Name = "lblKDR"
-        Me.lblKDR.Size = New System.Drawing.Size(175, 26)
-        Me.lblKDR.TabIndex = 4
-        Me.lblKDR.Text = "Kill/Death Ratio: "
-        '
         'btnMore
         '
+        Me.btnMore.Enabled = False
         Me.btnMore.Location = New System.Drawing.Point(443, 244)
         Me.btnMore.Name = "btnMore"
         Me.btnMore.Size = New System.Drawing.Size(121, 42)
@@ -344,11 +341,73 @@ Partial Class StudentProfilesForm
         Me.btnMore.Text = "More..."
         Me.btnMore.UseVisualStyleBackColor = True
         '
+        'lblKDR
+        '
+        Me.lblKDR.AutoSize = True
+        Me.lblKDR.Location = New System.Drawing.Point(16, 203)
+        Me.lblKDR.Name = "lblKDR"
+        Me.lblKDR.Size = New System.Drawing.Size(217, 31)
+        Me.lblKDR.TabIndex = 4
+        Me.lblKDR.Text = "Kill/Death Ratio: "
+        '
+        'lblWinPercent
+        '
+        Me.lblWinPercent.AutoSize = True
+        Me.lblWinPercent.Location = New System.Drawing.Point(16, 154)
+        Me.lblWinPercent.Name = "lblWinPercent"
+        Me.lblWinPercent.Size = New System.Drawing.Size(235, 31)
+        Me.lblWinPercent.TabIndex = 3
+        Me.lblWinPercent.Text = "Wins Percentage: "
+        '
+        'lblWeapon
+        '
+        Me.lblWeapon.AutoSize = True
+        Me.lblWeapon.Location = New System.Drawing.Point(16, 102)
+        Me.lblWeapon.Name = "lblWeapon"
+        Me.lblWeapon.Size = New System.Drawing.Size(129, 31)
+        Me.lblWeapon.TabIndex = 2
+        Me.lblWeapon.Text = "Weapon: "
+        '
+        'lblSchoolYear
+        '
+        Me.lblSchoolYear.AutoSize = True
+        Me.lblSchoolYear.Location = New System.Drawing.Point(475, 52)
+        Me.lblSchoolYear.Name = "lblSchoolYear"
+        Me.lblSchoolYear.Size = New System.Drawing.Size(78, 31)
+        Me.lblSchoolYear.TabIndex = 1
+        Me.lblSchoolYear.Text = "Year "
+        '
+        'lblName
+        '
+        Me.lblName.AutoSize = True
+        Me.lblName.Location = New System.Drawing.Point(16, 52)
+        Me.lblName.Name = "lblName"
+        Me.lblName.Size = New System.Drawing.Size(101, 31)
+        Me.lblName.TabIndex = 0
+        Me.lblName.Text = "Name: "
+        '
+        'PrintForm1
+        '
+        Me.PrintForm1.DocumentName = "document"
+        Me.PrintForm1.Form = Me
+        Me.PrintForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter
+        Me.PrintForm1.PrinterSettings = CType(resources.GetObject("PrintForm1.PrinterSettings"), System.Drawing.Printing.PrinterSettings)
+        Me.PrintForm1.PrintFileName = Nothing
+        '
+        'Panel2
+        '
+        Me.Panel2.Location = New System.Drawing.Point(12, 116)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(200, 100)
+        Me.Panel2.TabIndex = 7
+        Me.Panel2.Visible = False
+        '
         'StudentProfilesForm
         '
         Me.AcceptButton = Me.btnSearch
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -360,6 +419,8 @@ Partial Class StudentProfilesForm
         Me.Text = "StudentProfilesForm"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.detailsTopPanel.ResumeLayout(False)
+        Me.detailsTopPanel.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -397,4 +458,9 @@ Partial Class StudentProfilesForm
     Friend WithEvents lblSchoolYear As System.Windows.Forms.Label
     Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents btnMore As System.Windows.Forms.Button
+    Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
+    Friend WithEvents detailsTopPanel As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnBack As System.Windows.Forms.Button
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
 End Class

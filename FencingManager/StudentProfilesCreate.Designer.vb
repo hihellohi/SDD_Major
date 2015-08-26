@@ -22,6 +22,8 @@ Partial Class StudentProfilesCreate
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StudentProfilesCreate))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -38,8 +40,17 @@ Partial Class StudentProfilesCreate
         Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.errFirstName = New System.Windows.Forms.PictureBox()
+        Me.errSurname = New System.Windows.Forms.PictureBox()
+        Me.errStudentID = New System.Windows.Forms.PictureBox()
+        Me.errEmail = New System.Windows.Forms.PictureBox()
+        Me.errPhone = New System.Windows.Forms.PictureBox()
+        Me.errorToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -162,6 +173,7 @@ Partial Class StudentProfilesCreate
         '
         'btnSave
         '
+        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Location = New System.Drawing.Point(358, 413)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(131, 42)
@@ -171,6 +183,7 @@ Partial Class StudentProfilesCreate
         '
         'btnCancel
         '
+        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Location = New System.Drawing.Point(505, 413)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(131, 42)
@@ -178,21 +191,80 @@ Partial Class StudentProfilesCreate
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'errFirstName
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(556, 38)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(34, 32)
-        Me.PictureBox1.TabIndex = 18
-        Me.PictureBox1.TabStop = False
+        Me.errFirstName.Image = CType(resources.GetObject("errFirstName.Image"), System.Drawing.Image)
+        Me.errFirstName.Location = New System.Drawing.Point(560, 35)
+        Me.errFirstName.Name = "errFirstName"
+        Me.errFirstName.Size = New System.Drawing.Size(32, 32)
+        Me.errFirstName.TabIndex = 18
+        Me.errFirstName.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errFirstName, "Please enter the student's name")
+        Me.errFirstName.Visible = False
+        '
+        'errSurname
+        '
+        Me.errSurname.Image = CType(resources.GetObject("errSurname.Image"), System.Drawing.Image)
+        Me.errSurname.Location = New System.Drawing.Point(560, 88)
+        Me.errSurname.Name = "errSurname"
+        Me.errSurname.Size = New System.Drawing.Size(32, 32)
+        Me.errSurname.TabIndex = 19
+        Me.errSurname.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errSurname, "Please enter the student's surname")
+        Me.errSurname.Visible = False
+        '
+        'errStudentID
+        '
+        Me.errStudentID.Image = CType(resources.GetObject("errStudentID.Image"), System.Drawing.Image)
+        Me.errStudentID.Location = New System.Drawing.Point(560, 138)
+        Me.errStudentID.Name = "errStudentID"
+        Me.errStudentID.Size = New System.Drawing.Size(32, 32)
+        Me.errStudentID.TabIndex = 20
+        Me.errStudentID.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errStudentID, "Please enter a valid student number")
+        Me.errStudentID.Visible = False
+        '
+        'errEmail
+        '
+        Me.errEmail.Image = CType(resources.GetObject("errEmail.Image"), System.Drawing.Image)
+        Me.errEmail.Location = New System.Drawing.Point(560, 288)
+        Me.errEmail.Name = "errEmail"
+        Me.errEmail.Size = New System.Drawing.Size(32, 32)
+        Me.errEmail.TabIndex = 21
+        Me.errEmail.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errEmail, "Email address is invalid")
+        Me.errEmail.Visible = False
+        '
+        'errPhone
+        '
+        Me.errPhone.Image = CType(resources.GetObject("errPhone.Image"), System.Drawing.Image)
+        Me.errPhone.Location = New System.Drawing.Point(560, 338)
+        Me.errPhone.Name = "errPhone"
+        Me.errPhone.Size = New System.Drawing.Size(32, 32)
+        Me.errPhone.TabIndex = 22
+        Me.errPhone.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errPhone, "Please enter the student's phone number")
+        Me.errPhone.Visible = False
+        '
+        'errorToolTip
+        '
+        Me.errorToolTip.AutoPopDelay = 5000
+        Me.errorToolTip.InitialDelay = 200
+        Me.errorToolTip.IsBalloon = True
+        Me.errorToolTip.ReshowDelay = 100
+        Me.errorToolTip.ShowAlways = True
         '
         'StudentProfilesCreate
         '
         Me.AcceptButton = Me.btnSave
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(645, 465)
+        Me.ClientSize = New System.Drawing.Size(641, 461)
         Me.ControlBox = False
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.errPhone)
+        Me.Controls.Add(Me.errEmail)
+        Me.Controls.Add(Me.errStudentID)
+        Me.Controls.Add(Me.errSurname)
+        Me.Controls.Add(Me.errFirstName)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.txtPhone)
@@ -218,7 +290,11 @@ Partial Class StudentProfilesCreate
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Create New Profile"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,5 +315,10 @@ Partial Class StudentProfilesCreate
     Friend WithEvents txtPhone As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents errFirstName As System.Windows.Forms.PictureBox
+    Friend WithEvents errSurname As System.Windows.Forms.PictureBox
+    Friend WithEvents errStudentID As System.Windows.Forms.PictureBox
+    Friend WithEvents errEmail As System.Windows.Forms.PictureBox
+    Friend WithEvents errPhone As System.Windows.Forms.PictureBox
+    Friend WithEvents errorToolTip As System.Windows.Forms.ToolTip
 End Class

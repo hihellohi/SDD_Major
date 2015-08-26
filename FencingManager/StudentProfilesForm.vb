@@ -23,6 +23,7 @@
         lblWeapon.Text = "Weapon: "
         lblWinPercent.Text = "Wins Percentage: "
         lblKDR.Text = "Kill/Death Ratio: "
+        btnMore.Enabled = False
     End Sub
 
     Private Function WeaponText(num As Integer) As String
@@ -57,6 +58,7 @@
         Else
             lblWinPercent.Text = "Wins Percentage: N/A"
             lblKDR.Text = "Kill/Death Ratio: N/A"
+            btnMore.Enabled = True
         End If
     End Sub
 
