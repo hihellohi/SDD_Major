@@ -110,28 +110,34 @@
     End Sub
 
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
-        topForm.hide()
-        If intform = RETURNS Then
-            topForm = frmrhelp
-        ElseIf intform = LOANS Then
-            topForm = frmlhelp
-        ElseIf intform = CATALOG Then
-            topForm = frmchelp
+        If btnHelp.BackColor = Color.Green Then
+            topForm.hide()
+            If intform = RETURNS Then
+                topForm = frmrhelp
+            ElseIf intform = LOANS Then
+                topForm = frmlhelp
+            ElseIf intform = CATALOG Then
+                topForm = frmchelp
+            End If
+            topForm.show()
+            btnHelp.BackColor = Color.White
+            btnHelp.Top = 71
+            btnHelp.Height = 39
+        Else
+            topForm.hide()
+            If intform = RETURNS Then
+                topForm = frmReturn
+            ElseIf intform = LOANS Then
+                topForm = frmloans
+            ElseIf intform = CATALOG Then
+                topForm = frmCatalog
+            End If
+            topForm.show()
+            btnHelp.BackColor = Color.Green
+            btnHelp.Top = 79
+            btnHelp.Height = 31
         End If
-        topForm.show()
-        intform = HELP
-        btnReturn.BackColor = Color.Green
-        btnLoan.BackColor = Color.Green
-        btnCatalog.BackColor = Color.Green
-        btnHelp.BackColor = Color.White
-        btnLoan.Top = 79
-        btnLoan.Height = 31
-        btnCatalog.Top = 79
-        btnCatalog.Height = 31
-        btnReturn.Top = 79
-        btnReturn.Height = 31
-        btnHelp.Top = 71
-        btnHelp.Height = 39
+
     End Sub
 
     Private Sub btnReturn_Mouseenter(sender As Object, e As EventArgs) Handles btnReturn.MouseEnter
@@ -156,7 +162,7 @@
     End Sub
 
     Private Sub btnReturn_Mouseleave(sender As Object, e As EventArgs) Handles btnReturn.MouseLeave
-        If Not intform = RETURNS Then
+        If btnReturn.BackColor = Color.Green Then
             btnReturn.Top = 79
             btnReturn.Height = 31
         End If
@@ -164,14 +170,14 @@
     End Sub
 
     Private Sub btnLoan_Mouseleave(sender As Object, e As EventArgs) Handles btnLoan.MouseLeave
-        If Not intform = LOANS Then
+        If btnLoan.BackColor = Color.Green Then
             btnLoan.Top = 79
             btnLoan.Height = 31
         End If
     End Sub
 
     Private Sub btnCatalog_Mouseleave(sender As Object, e As EventArgs) Handles btnCatalog.MouseLeave
-        If Not intform = CATALOG Then
+        If btnCatalog.BackColor = Color.Green Then
             btnCatalog.Top = 79
             btnCatalog.Height = 31
         End If
@@ -179,7 +185,7 @@
 
 
     Private Sub btnHelp_Mouseleave(sender As Object, e As EventArgs) Handles btnHelp.MouseLeave
-        If Not intform = HELP Then
+        If btnHelp.BackColor = Color.Green Then
             btnHelp.Top = 79
             btnHelp.Height = 31
         End If
