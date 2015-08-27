@@ -347,6 +347,7 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\logof.PNG" />
     <None Include="Resources\fight1.PNG" />
     <None Include="Resources\fight.PNG" />
     <None Include="Resources\No Weapon Symbol.png" />
