@@ -179,6 +179,7 @@ Partial Class PWChange
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "PWChange"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "PWChange"
         Me.ResumeLayout(False)
         Me.PerformLayout()

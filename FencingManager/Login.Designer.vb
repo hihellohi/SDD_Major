@@ -195,6 +195,7 @@ Partial Class Login
         Me.btnPWchange.TabIndex = 37
         Me.btnPWchange.Text = "Change Password"
         Me.btnPWchange.UseVisualStyleBackColor = True
+        Me.btnPWchange.Visible = False
         '
         'Login
         '

@@ -87,6 +87,7 @@ Public Class Login
             usr.Visible = True
             usr.Text = GlobalVariables.Username
             btnOff.Visible = True
+            btnPWchange.Visible = True
         Else
             Label1.Visible = True
             Label2.Visible = True
@@ -140,6 +141,7 @@ Public Class Login
         TextBox2.Text = ""
         GlobalVariables.Username = Nothing
         RootForm.access_level = 0
+        btnPWchange.Visible = False
     End Sub
 
     Private Sub btnPWchange_Click(sender As Object, e As EventArgs) Handles btnPWchange.Click

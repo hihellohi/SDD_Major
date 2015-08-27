@@ -34,6 +34,7 @@ Public Class PWChange
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        MsgBox("Are you sure you want to cancel?")
         Me.Close()
     End Sub
 
