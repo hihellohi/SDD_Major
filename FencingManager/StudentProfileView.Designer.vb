@@ -46,17 +46,17 @@ Partial Class StudentProfileView
         Me.absenceList = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.chkUnexplained = New System.Windows.Forms.CheckBox()
+        Me.btnAddReason = New System.Windows.Forms.Button()
         Me.absencesPanel = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnCancelReason = New System.Windows.Forms.Button()
         Me.btnDone = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.lblAbsences = New System.Windows.Forms.Label()
         Me.lblAttendance = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.txtReason = New System.Windows.Forms.TextBox()
+        Me.btnShowStats = New System.Windows.Forms.Button()
+        Me.btnShowAbsences = New System.Windows.Forms.Button()
         Me.infoPanel.SuspendLayout()
         Me.absencesPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -263,7 +263,9 @@ Partial Class StudentProfileView
         '
         Me.absenceList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.absenceList.FullRowSelect = True
+        Me.absenceList.HideSelection = False
         Me.absenceList.Location = New System.Drawing.Point(12, 56)
+        Me.absenceList.MultiSelect = False
         Me.absenceList.Name = "absenceList"
         Me.absenceList.Size = New System.Drawing.Size(429, 555)
         Me.absenceList.TabIndex = 6
@@ -280,68 +282,64 @@ Partial Class StudentProfileView
         Me.ColumnHeader2.Text = "Reason"
         Me.ColumnHeader2.Width = 250
         '
-        'CheckBox1
+        'chkUnexplained
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(458, 82)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(264, 30)
-        Me.CheckBox1.TabIndex = 7
-        Me.CheckBox1.Text = "Only Show Unexplained"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.chkUnexplained.AutoSize = True
+        Me.chkUnexplained.Location = New System.Drawing.Point(458, 82)
+        Me.chkUnexplained.Name = "chkUnexplained"
+        Me.chkUnexplained.Size = New System.Drawing.Size(264, 30)
+        Me.chkUnexplained.TabIndex = 7
+        Me.chkUnexplained.Text = "Only Show Unexplained"
+        Me.chkUnexplained.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnAddReason
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(458, 414)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(264, 32)
-        Me.Button1.TabIndex = 17
-        Me.Button1.Text = "Enter Reason"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnAddReason.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddReason.Location = New System.Drawing.Point(458, 376)
+        Me.btnAddReason.Name = "btnAddReason"
+        Me.btnAddReason.Size = New System.Drawing.Size(264, 32)
+        Me.btnAddReason.TabIndex = 17
+        Me.btnAddReason.Text = "Enter Reason"
+        Me.btnAddReason.UseVisualStyleBackColor = True
         '
         'absencesPanel
         '
-        Me.absencesPanel.Controls.Add(Me.TextBox1)
-        Me.absencesPanel.Controls.Add(Me.Button4)
+        Me.absencesPanel.Controls.Add(Me.btnCancelReason)
         Me.absencesPanel.Controls.Add(Me.btnDone)
         Me.absencesPanel.Controls.Add(Me.Label10)
         Me.absencesPanel.Controls.Add(Me.lblAbsences)
         Me.absencesPanel.Controls.Add(Me.lblAttendance)
         Me.absencesPanel.Controls.Add(Me.absenceList)
-        Me.absencesPanel.Controls.Add(Me.Button1)
+        Me.absencesPanel.Controls.Add(Me.btnAddReason)
         Me.absencesPanel.Controls.Add(Me.Label5)
-        Me.absencesPanel.Controls.Add(Me.CheckBox1)
+        Me.absencesPanel.Controls.Add(Me.chkUnexplained)
+        Me.absencesPanel.Controls.Add(Me.txtReason)
         Me.absencesPanel.Location = New System.Drawing.Point(506, 12)
         Me.absencesPanel.Name = "absencesPanel"
         Me.absencesPanel.Size = New System.Drawing.Size(738, 634)
         Me.absencesPanel.TabIndex = 18
         '
-        'TextBox1
+        'btnCancelReason
         '
-        Me.TextBox1.Location = New System.Drawing.Point(458, 414)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(264, 32)
-        Me.TextBox1.TabIndex = 25
-        '
-        'Button4
-        '
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Location = New System.Drawing.Point(636, 452)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(40, 40)
-        Me.Button4.TabIndex = 24
-        Me.Button4.UseVisualStyleBackColor = True
-        Me.Button4.Visible = False
+        Me.btnCancelReason.BackColor = System.Drawing.Color.White
+        Me.btnCancelReason.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancelReason.Location = New System.Drawing.Point(636, 414)
+        Me.btnCancelReason.Name = "btnCancelReason"
+        Me.btnCancelReason.Size = New System.Drawing.Size(40, 40)
+        Me.btnCancelReason.TabIndex = 24
+        Me.btnCancelReason.UseVisualStyleBackColor = False
+        Me.btnCancelReason.Visible = False
         '
         'btnDone
         '
+        Me.btnDone.BackColor = System.Drawing.Color.White
+        Me.btnDone.Enabled = False
         Me.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDone.Location = New System.Drawing.Point(682, 452)
+        Me.btnDone.Location = New System.Drawing.Point(682, 414)
         Me.btnDone.Name = "btnDone"
         Me.btnDone.Size = New System.Drawing.Size(40, 40)
         Me.btnDone.TabIndex = 23
-        Me.btnDone.UseVisualStyleBackColor = True
+        Me.btnDone.UseVisualStyleBackColor = False
         Me.btnDone.Visible = False
         '
         'Label10
@@ -371,30 +369,38 @@ Partial Class StudentProfileView
         Me.lblAttendance.TabIndex = 18
         Me.lblAttendance.Text = "Attendance: "
         '
-        'Button2
+        'txtReason
         '
-        Me.Button2.Location = New System.Drawing.Point(51, 87)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(192, 42)
-        Me.Button2.TabIndex = 19
-        Me.Button2.Text = "Statistics"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.txtReason.Enabled = False
+        Me.txtReason.Location = New System.Drawing.Point(458, 376)
+        Me.txtReason.Name = "txtReason"
+        Me.txtReason.Size = New System.Drawing.Size(264, 32)
+        Me.txtReason.TabIndex = 25
         '
-        'Button3
+        'btnShowStats
         '
-        Me.Button3.Location = New System.Drawing.Point(270, 87)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(192, 42)
-        Me.Button3.TabIndex = 20
-        Me.Button3.Text = "Absences"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnShowStats.Location = New System.Drawing.Point(51, 87)
+        Me.btnShowStats.Name = "btnShowStats"
+        Me.btnShowStats.Size = New System.Drawing.Size(192, 42)
+        Me.btnShowStats.TabIndex = 19
+        Me.btnShowStats.Text = "Statistics"
+        Me.btnShowStats.UseVisualStyleBackColor = True
+        '
+        'btnShowAbsences
+        '
+        Me.btnShowAbsences.Location = New System.Drawing.Point(270, 87)
+        Me.btnShowAbsences.Name = "btnShowAbsences"
+        Me.btnShowAbsences.Size = New System.Drawing.Size(192, 42)
+        Me.btnShowAbsences.TabIndex = 20
+        Me.btnShowAbsences.Text = "Absences"
+        Me.btnShowAbsences.UseVisualStyleBackColor = True
         '
         'StudentProfileView
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 658)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnShowAbsences)
+        Me.Controls.Add(Me.btnShowStats)
         Me.Controls.Add(Me.absencesPanel)
         Me.Controls.Add(Me.infoPanel)
         Me.Controls.Add(Me.Label4)
@@ -429,20 +435,20 @@ Partial Class StudentProfileView
     Friend WithEvents absenceList As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents chkUnexplained As System.Windows.Forms.CheckBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnAddReason As System.Windows.Forms.Button
     Friend WithEvents absencesPanel As System.Windows.Forms.Panel
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents txtReason As System.Windows.Forms.TextBox
+    Friend WithEvents btnCancelReason As System.Windows.Forms.Button
     Friend WithEvents btnDone As System.Windows.Forms.Button
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents lblAbsences As System.Windows.Forms.Label
     Friend WithEvents lblAttendance As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btnShowStats As System.Windows.Forms.Button
+    Friend WithEvents btnShowAbsences As System.Windows.Forms.Button
 End Class
