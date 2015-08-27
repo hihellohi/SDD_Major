@@ -11,6 +11,16 @@ Public Class StudentProfileView
     Dim scoresTable As FencingDataSet.ScoresDataTable
     Dim emailRegex As Regex
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        absencesAdapter = New FencingDataSetTableAdapters.AbsencesTableAdapter()
+        absencesDataTable = New FencingDataSet.AbsencesDataTable()
+    End Sub
+
     Private Sub StudentProfileView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         emailRegex = New Regex("^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$")
     End Sub
@@ -33,8 +43,6 @@ Public Class StudentProfileView
             filter = "StudentID = " & currentStudentID
         End If
 
-        absencesAdapter = New FencingDataSetTableAdapters.AbsencesTableAdapter()
-        absencesDataTable = New FencingDataSet.AbsencesDataTable()
         absencesAdapter.Fill(absencesDataTable)
         absenceList.Items.Clear()
         For Each absence As FencingDataSet.AbsencesRow In absencesDataTable.Select(filter, "AbsenceDate") 'Sort by date
@@ -129,9 +137,16 @@ Public Class StudentProfileView
     End Sub
 
     Private Sub absenceList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles absenceList.SelectedIndexChanged
+        Dim filter As String
+        If chkUnexplained.Checked Then
+            filter = "StudentID = " & currentStudentID & " AND Explained = FALSE"
+        Else
+            filter = "StudentID = " & currentStudentID
+        End If
+        Dim studentAbsences As FencingDataSet.AbsencesRow() = absencesDataTable.Select(filter, "AbsenceDate")
         If absenceList.SelectedIndices.Count = 1 Then
             Dim index = absenceList.SelectedIndices(0)
-            If absencesDataTable(index).Explained = False Then
+            If studentAbsences(index).Explained = False Then
                 btnAddReason.Enabled = True
             Else
                 btnAddReason.Enabled = False
@@ -173,11 +188,16 @@ Public Class StudentProfileView
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
         Dim index = absenceList.SelectedIndices(0)
-        Dim absence = absencesDataTable(index)
+        Dim filter As String
+        If chkUnexplained.Checked Then
+            filter = "StudentID = " & currentStudentID & " AND Explained = FALSE"
+        Else
+            filter = "StudentID = " & currentStudentID
+        End If
+        Dim absence As FencingDataSet.AbsencesRow = absencesDataTable.Select(filter, "AbsenceDate")(index)
         absence.Explained = True
         absence.Explanation = txtReason.Text
         If absence.HasErrors = False Then
-
             absencesAdapter.Update(absencesDataTable) 'Update to database
         End If
         Dim studentRow = studentDataTable.FindByStudentID(currentStudentID)
