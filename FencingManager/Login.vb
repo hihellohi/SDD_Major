@@ -141,6 +141,10 @@ Public Class Login
         GlobalVariables.Username = Nothing
         RootForm.access_level = 0
     End Sub
+
+    Private Sub btnPWchange_Click(sender As Object, e As EventArgs) Handles btnPWchange.Click
+        PWChange.ShowDialog()
+    End Sub
 End Class
 
 Public Class GlobalVariables

@@ -33,11 +33,12 @@ Partial Class Login
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.usr = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.btnOff = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnPWchange = New System.Windows.Forms.Button()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CheckBox2
@@ -156,24 +157,6 @@ Partial Class Login
         Me.usr.Text = "usr"
         Me.usr.Visible = False
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.FencingManager.My.Resources.Resources.Sydneyboyscrest
-        Me.PictureBox1.Location = New System.Drawing.Point(42, 25)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(237, 270)
-        Me.PictureBox1.TabIndex = 22
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.FencingManager.My.Resources.Resources.logof
-        Me.PictureBox2.Location = New System.Drawing.Point(894, 12)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(350, 270)
-        Me.PictureBox2.TabIndex = 25
-        Me.PictureBox2.TabStop = False
-        '
         'btnOff
         '
         Me.btnOff.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -185,10 +168,39 @@ Partial Class Login
         Me.btnOff.UseVisualStyleBackColor = True
         Me.btnOff.Visible = False
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.FencingManager.My.Resources.Resources.logof
+        Me.PictureBox2.Location = New System.Drawing.Point(894, 12)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(350, 270)
+        Me.PictureBox2.TabIndex = 25
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.FencingManager.My.Resources.Resources.Sydneyboyscrest
+        Me.PictureBox1.Location = New System.Drawing.Point(42, 25)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(237, 270)
+        Me.PictureBox1.TabIndex = 22
+        Me.PictureBox1.TabStop = False
+        '
+        'btnPWchange
+        '
+        Me.btnPWchange.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPWchange.Location = New System.Drawing.Point(618, 560)
+        Me.btnPWchange.Name = "btnPWchange"
+        Me.btnPWchange.Size = New System.Drawing.Size(155, 61)
+        Me.btnPWchange.TabIndex = 37
+        Me.btnPWchange.Text = "Change Password"
+        Me.btnPWchange.UseVisualStyleBackColor = True
+        '
         'Login
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.btnPWchange)
         Me.Controls.Add(Me.btnOff)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
@@ -206,8 +218,8 @@ Partial Class Login
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Login"
         Me.Text = "Login"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -226,4 +238,5 @@ Partial Class Login
     Friend WithEvents usr As System.Windows.Forms.Label
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents btnOff As System.Windows.Forms.Button
+    Friend WithEvents btnPWchange As System.Windows.Forms.Button
 End Class
