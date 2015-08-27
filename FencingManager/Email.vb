@@ -244,12 +244,60 @@ Public Class Email
         Return False
     End Function
 
+    Private Function sort_items(ByRef items As List(Of item))
+        'Heapsort master race (O(nlogn))
+        Dim heap(1 + (items.Count * 2)) As item
+        Dim count As Integer = 1
+        Dim tmp As item
+        For i = 0 To (1 + (items.Count * 2))
+            heap(i).eventName = ""
+            heap(i).time = ""
+            heap(i).venue = ""
+            heap(i).group = ""
+            heap(i).weapon = ""
+            heap(i).day = Nothing
+        Next
+        'construct heap
+        For Each tmp In items
+            heap(count) = tmp
 
+            'bubble up
+            Dim bubble As Integer = count
+            While (heap(bubble).day < heap(Math.Floor(bubble / 2)).day) And bubble <> 1
+                Dim temp As item = heap(Math.Floor(bubble / 2))
+                heap(Math.Floor(bubble / 2)) = heap(bubble)
+                heap(bubble) = temp
+                bubble = Math.Floor(bubble / 2)
+            End While
+            count += 1
+        Next
+        items.Clear()
+
+        'construct sorted list
+        For i = 1 To count - 1
+            items.Add(heap(1))
+
+            'bubble up
+            Dim bubble As Integer = 1
+            While heap(bubble * 2).day <> Nothing Or heap((bubble * 2) + 1).day <> Nothing
+                If ((heap(bubble * 2).day < heap((bubble * 2) + 1).day) Or heap((bubble * 2) + 1).day = Nothing) And heap(bubble * 2).day <> Nothing Then
+                    heap(bubble) = heap(bubble * 2)
+                    bubble *= 2
+                Else
+                    heap(bubble) = heap((bubble * 2) + 1)
+                    bubble = (bubble * 2) + 1
+                End If
+            End While
+            heap(bubble).day = Nothing
+        Next
+        Return items
+    End Function
     Private Function send_email(ByRef recipients As List(Of String), ByRef events As List(Of item))
         If recipients.Count = 0 Then
             'if no recipients
             Return False
         End If
+        events = sort_items(events)
         Try
             Dim Smtp_Server As New SmtpClient
             Dim email As New MailMessage()
