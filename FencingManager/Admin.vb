@@ -1,4 +1,6 @@
 ﻿Imports System.Data.OleDb
+Imports System.IO
+
 Public Class Admin
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim eventDataTable As New FencingDataSet.CalendarDataTable
@@ -77,7 +79,14 @@ Public Class Admin
                 lvAbsences.Columns.Add("StudentID", 200, HorizontalAlignment.Center)
             End With
 
-            RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+            Try
+                RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
+            Catch ex As Exception
+                Dim newfile As FileStream = File.Create("edits.txt")
+                MsgBox("Log file not found. Creating a new file.")
+                newfile.Close()
+            End Try
+
         Else : MsgBox("An access level of MIC or Captain/Coach is required to view this")
         End If
     End Sub

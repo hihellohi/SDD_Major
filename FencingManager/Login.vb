@@ -4,7 +4,7 @@ Public Class Login
     Dim formForgotPW As New ForgotPW()
     'Dim formAdministration As New Admistration
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         'Form2.Show()
     End Sub
 
@@ -24,8 +24,7 @@ Public Class Login
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        ' Connection
-        'Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=E:\SDD_Major-master\FencingManager\Fencing.accdb")
+        Dim loggedin = False
         ' Query, Parameters
         Dim sql As String = "SELECT USERNAME FROM Logins WHERE USERNAME=@p_userid AND PASSWORD=@p_passw;"
         Dim cmd As New OleDbCommand(sql, RootForm.connection)
@@ -51,20 +50,18 @@ Public Class Login
             End If
             FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
             My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + GlobalVariables.Username + " logged in" & Environment.NewLine, True)
+            loggedin = True
 
         Catch ex As NullReferenceException
             'wrong password
             MsgBox("Username or Password incorrect")
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
+
+
             FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
             My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + TextBox1.Text + " tried to log in with incorrect password" & Environment.NewLine, True)
 
-            Dim asql As String = "SELECT AccessLevel FROM Logins WHERE Username=" + GlobalVariables.Username
-            Dim acmd As New OleDbCommand(asql, RootForm.connection)
 
-            With acmd
-                RootForm.access_level = acmd.ExecuteScalar.ToString
-            End With
 
         Catch ex1 As Exception
             ' Catch database connection or query errors:
@@ -72,6 +69,39 @@ Public Class Login
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
 
         End Try
+        If loggedin = True Then
+            Dim asql As String = "SELECT * FROM Logins WHERE (Username = '" & GlobalVariables.Username & "')"
+            Dim acmd As New OleDbCommand(asql, RootForm.connection)
+            Dim reader As OleDbDataReader
+            reader = acmd.ExecuteReader
+            While reader.Read()
+                RootForm.access_level = reader("AccessLevel").ToString
+            End While
+            Label1.Visible = False
+            Label2.Visible = False
+            Label3.Visible = False
+            TextBox1.Visible = False
+            TextBox2.Visible = False
+            Button2.Visible = False
+            Button3.Visible = False
+            Button4.Visible = False
+            CheckBox2.Visible = False
+            Label4.Visible = True
+            usr.Visible = True
+        Else
+            Label1.Visible = True
+            Label2.Visible = True
+            Label3.Visible = True
+            TextBox1.Visible = True
+            TextBox2.Visible = True
+            Button2.Visible = True
+            Button3.Visible = True
+            Button4.Visible = True
+            CheckBox2.Visible = True
+            Label4.Visible = False
+            usr.Visible = False
+
+        End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click

@@ -10,19 +10,24 @@ Public Class CreateAcc
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If TextBox2.Text = TextBox3.Text And TextBox2.Text <> ("") And IsNumeric(TextBox1.Text) Then
-            Dim ConnectString As String = "Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=E:\SDD_Major-master\FencingManager\Fencing.accdb"
-            myConnection = New OleDbConnection(ConnectString)
-            If myConnection.State = ConnectionState.Closed Then
-                myConnection.Open()
+        If txtPW.Text = txtCPW.Text And txtPW.Text <> ("") Then
+            Dim accesslevel As Integer = 0
+            If ComboBox1.SelectedItem = "Weapon Captain" Then
+                accesslevel = 1
+            ElseIf ComboBox1.SelectedItem = "Captain / Coach" Then
+                accesslevel = 2
             End If
+
+
             Dim str As String
-            str = "INSERT INTO [Logins] ([Password], [Username], FirstName, LastName) VALUES (?, ?, ?, ?)"
-            Dim cmd As OleDbCommand = New OleDbCommand(str, myConnection)
-            cmd.Parameters.Add(New OleDbParameter("username", CType(TextBox2.Text, String)))  'this is reversed for some reason
-            cmd.Parameters.Add(New OleDbParameter("password", CType(TextBox1.Text, String)))
-            cmd.Parameters.Add(New OleDbParameter("FirstName", CType(TextBox4.Text, String)))
-            cmd.Parameters.Add(New OleDbParameter("LastName", CType(TextBox5.Text, String)))
+            str = "INSERT INTO [Logins] ([Password], [Username], AccessLevel, RecoveryEmail, FirstName, LastName) VALUES (?, ?, ?, ?, ?, ?)"
+            Dim cmd As OleDbCommand = New OleDbCommand(str, RootForm.connection)
+            cmd.Parameters.Add(New OleDbParameter("username", CType(txtPW.Text, String)))  'this is reversed for some reason
+            cmd.Parameters.Add(New OleDbParameter("password", CType(txtUser.Text, String)))
+            cmd.Parameters.Add(New OleDbParameter("password", CType(accesslevel, Integer)))
+            cmd.Parameters.Add(New OleDbParameter("RecoveryEmail", CType(txtEmail.Text, String)))
+            cmd.Parameters.Add(New OleDbParameter("FirstName", CType(txtFN.Text, String)))
+            cmd.Parameters.Add(New OleDbParameter("LastName", CType(txtLN.Text, String)))
             Try
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
@@ -33,13 +38,11 @@ Public Class CreateAcc
                 MsgBox(ex.Message)
             End Try
 
-        ElseIf TextBox2.Text <> TextBox3.Text Then
+        ElseIf txtPW.Text <> txtCPW.Text Then
             Label6.Visible = True
-        ElseIf TextBox2.TextLength = 9 Then
-            Label7.Visible = True
         Else
             Try
-                If TextBox1.Text <> IsNumeric(TextBox1.Text) Or TextBox2.TextLength <> 9 Then
+                If txtUser.Text <> IsNumeric(txtUser.Text) Or txtPW.TextLength <> 9 Then
                     Label5.Visible = True
                 End If
             Catch ex As Exception
@@ -50,12 +53,13 @@ Public Class CreateAcc
 
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged, TextBox3.TextChanged
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtPW.TextChanged, txtCPW.TextChanged
         Label6.Visible = False
         Label7.Visible = False
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtUser.TextChanged
         Label5.Visible = False
     End Sub
+
 End Class
