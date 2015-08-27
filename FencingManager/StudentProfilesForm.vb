@@ -72,7 +72,13 @@
     Private Sub StudentProfilesForm_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
             RefreshTables()
-            searchInitiated = False
+            If TextBox1.Text = "" Then
+                searchInitiated = False
+            End If
+        Else
+            detailsPanel.Hide()
+            detailsForm.ResetAll()
+            detailsTopPanel.Hide()
         End If
     End Sub
 
@@ -118,11 +124,13 @@
 
         For Each row As FencingDataSet.StudentProfilesRow In studentDataTable.Select(filter, sortSql)
             If row.RowState <> DataRowState.Deleted Then
-                Dim rowItem = New ListViewItem(row.StudentID.ToString())
-                rowItem.SubItems.Add(row.Surname.ToString())
-                rowItem.SubItems.Add(row.FirstName.ToString())
-                rowItem.SubItems.Add(row.SchoolYear.ToString())
-                ListView1.Items.Add(rowItem)
+                If Not (rdbID.Checked And Not row.StudentID.ToString().Contains(TextBox1.Text)) Then
+                    Dim rowItem = New ListViewItem(row.StudentID.ToString())
+                    rowItem.SubItems.Add(row.Surname.ToString())
+                    rowItem.SubItems.Add(row.FirstName.ToString())
+                    rowItem.SubItems.Add(row.SchoolYear.ToString())
+                    ListView1.Items.Add(rowItem)
+                End If
             End If
         Next
     End Sub
@@ -212,5 +220,20 @@
         detailsForm.FillStudent(selectedID)
         detailsPanel.Show()
         detailsTopPanel.Show()
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        If detailsForm.editMode Then
+            Dim msg = MessageBox.Show("Are you sure you want to cancel editing?" + vbNewLine + "Any changes will be discarded.", "Fencing Manager", MessageBoxButtons.YesNo,
+                                       MessageBoxIcon.None, MessageBoxDefaultButton.Button2)
+            If msg = Windows.Forms.DialogResult.No Then
+                Return
+            End If
+        End If
+        RefreshTables()
+        SearchQuery()
+        detailsPanel.Hide()
+        detailsForm.ResetAll()
+        detailsTopPanel.Hide()
     End Sub
 End Class

@@ -22,6 +22,8 @@ Partial Class StudentProfileView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StudentProfileView))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -29,16 +31,14 @@ Partial Class StudentProfileView
         Me.infoPanel = New System.Windows.Forms.GroupBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cbbWeapon = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtPhoneNum = New System.Windows.Forms.TextBox()
+        Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cbbYear = New System.Windows.Forms.ComboBox()
-        Me.txtWeapon = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.txtSurname = New System.Windows.Forms.TextBox()
         Me.txtFirstName = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
@@ -57,22 +57,33 @@ Partial Class StudentProfileView
         Me.txtReason = New System.Windows.Forms.TextBox()
         Me.btnShowStats = New System.Windows.Forms.Button()
         Me.btnShowAbsences = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.lblWins = New System.Windows.Forms.Label()
-        Me.lblKills = New System.Windows.Forms.Label()
-        Me.lblDeaths = New System.Windows.Forms.Label()
-        Me.lblRatio = New System.Windows.Forms.Label()
+        Me.statsPanel = New System.Windows.Forms.Panel()
+        Me.btnAddScores = New System.Windows.Forms.Button()
         Me.statisticsList = New System.Windows.Forms.ListView()
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnAddScores = New System.Windows.Forms.Button()
+        Me.lblRatio = New System.Windows.Forms.Label()
+        Me.lblDeaths = New System.Windows.Forms.Label()
+        Me.lblKills = New System.Windows.Forms.Label()
+        Me.lblWins = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.errorToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.errFirstName = New System.Windows.Forms.PictureBox()
+        Me.errSurname = New System.Windows.Forms.PictureBox()
+        Me.errStudentID = New System.Windows.Forms.PictureBox()
+        Me.errEmail = New System.Windows.Forms.PictureBox()
+        Me.errPhone = New System.Windows.Forms.PictureBox()
         Me.infoPanel.SuspendLayout()
         Me.absencesPanel.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.statsPanel.SuspendLayout()
+        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -112,18 +123,21 @@ Partial Class StudentProfileView
         '
         'infoPanel
         '
+        Me.infoPanel.Controls.Add(Me.errPhone)
+        Me.infoPanel.Controls.Add(Me.errEmail)
+        Me.infoPanel.Controls.Add(Me.errStudentID)
+        Me.infoPanel.Controls.Add(Me.errSurname)
+        Me.infoPanel.Controls.Add(Me.errFirstName)
         Me.infoPanel.Controls.Add(Me.btnCancel)
         Me.infoPanel.Controls.Add(Me.btnEdit)
-        Me.infoPanel.Controls.Add(Me.ComboBox1)
+        Me.infoPanel.Controls.Add(Me.cbbWeapon)
         Me.infoPanel.Controls.Add(Me.Label9)
         Me.infoPanel.Controls.Add(Me.Label8)
-        Me.infoPanel.Controls.Add(Me.txtPhoneNum)
+        Me.infoPanel.Controls.Add(Me.txtPhone)
         Me.infoPanel.Controls.Add(Me.txtEmail)
         Me.infoPanel.Controls.Add(Me.Label7)
         Me.infoPanel.Controls.Add(Me.Label6)
         Me.infoPanel.Controls.Add(Me.cbbYear)
-        Me.infoPanel.Controls.Add(Me.txtWeapon)
-        Me.infoPanel.Controls.Add(Me.TextBox4)
         Me.infoPanel.Controls.Add(Me.txtSurname)
         Me.infoPanel.Controls.Add(Me.txtFirstName)
         Me.infoPanel.Controls.Add(Me.txtID)
@@ -156,16 +170,15 @@ Partial Class StudentProfileView
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'cbbWeapon
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Foil", "Sabre", "Epee"})
-        Me.ComboBox1.Location = New System.Drawing.Point(180, 250)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(204, 33)
-        Me.ComboBox1.TabIndex = 15
-        Me.ComboBox1.Visible = False
+        Me.cbbWeapon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbWeapon.FormattingEnabled = True
+        Me.cbbWeapon.Items.AddRange(New Object() {"Foil", "Sabre", "Epee"})
+        Me.cbbWeapon.Location = New System.Drawing.Point(180, 250)
+        Me.cbbWeapon.Name = "cbbWeapon"
+        Me.cbbWeapon.Size = New System.Drawing.Size(204, 33)
+        Me.cbbWeapon.TabIndex = 15
         '
         'Label9
         '
@@ -185,12 +198,12 @@ Partial Class StudentProfileView
         Me.Label8.TabIndex = 13
         Me.Label8.Text = "Email"
         '
-        'txtPhoneNum
+        'txtPhone
         '
-        Me.txtPhoneNum.Location = New System.Drawing.Point(180, 350)
-        Me.txtPhoneNum.Name = "txtPhoneNum"
-        Me.txtPhoneNum.Size = New System.Drawing.Size(204, 32)
-        Me.txtPhoneNum.TabIndex = 12
+        Me.txtPhone.Location = New System.Drawing.Point(180, 350)
+        Me.txtPhone.Name = "txtPhone"
+        Me.txtPhone.Size = New System.Drawing.Size(204, 32)
+        Me.txtPhone.TabIndex = 12
         '
         'txtEmail
         '
@@ -226,21 +239,6 @@ Partial Class StudentProfileView
         Me.cbbYear.Name = "cbbYear"
         Me.cbbYear.Size = New System.Drawing.Size(73, 33)
         Me.cbbYear.TabIndex = 8
-        Me.cbbYear.Visible = False
-        '
-        'txtWeapon
-        '
-        Me.txtWeapon.Location = New System.Drawing.Point(180, 250)
-        Me.txtWeapon.Name = "txtWeapon"
-        Me.txtWeapon.Size = New System.Drawing.Size(204, 32)
-        Me.txtWeapon.TabIndex = 7
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(180, 200)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(73, 32)
-        Me.TextBox4.TabIndex = 6
         '
         'txtSurname
         '
@@ -258,7 +256,8 @@ Partial Class StudentProfileView
         '
         'txtID
         '
-        Me.txtID.Location = New System.Drawing.Point(180, 50)
+        Me.txtID.Location = New System.Drawing.Point(180, 53)
+        Me.txtID.MaxLength = 9
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(204, 32)
         Me.txtID.TabIndex = 3
@@ -330,12 +329,14 @@ Partial Class StudentProfileView
         Me.absencesPanel.Controls.Add(Me.txtReason)
         Me.absencesPanel.Location = New System.Drawing.Point(506, 12)
         Me.absencesPanel.Name = "absencesPanel"
-        Me.absencesPanel.Size = New System.Drawing.Size(102, 79)
+        Me.absencesPanel.Size = New System.Drawing.Size(738, 624)
         Me.absencesPanel.TabIndex = 18
         '
         'btnCancelReason
         '
-        Me.btnCancelReason.BackColor = System.Drawing.Color.White
+        Me.btnCancelReason.BackColor = System.Drawing.Color.Brown
+        Me.btnCancelReason.BackgroundImage = CType(resources.GetObject("btnCancelReason.BackgroundImage"), System.Drawing.Image)
+        Me.btnCancelReason.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCancelReason.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelReason.Location = New System.Drawing.Point(636, 414)
         Me.btnCancelReason.Name = "btnCancelReason"
@@ -346,7 +347,9 @@ Partial Class StudentProfileView
         '
         'btnDone
         '
-        Me.btnDone.BackColor = System.Drawing.Color.White
+        Me.btnDone.BackColor = System.Drawing.Color.Green
+        Me.btnDone.BackgroundImage = CType(resources.GetObject("btnDone.BackgroundImage"), System.Drawing.Image)
+        Me.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnDone.Enabled = False
         Me.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDone.Location = New System.Drawing.Point(682, 414)
@@ -409,75 +412,38 @@ Partial Class StudentProfileView
         Me.btnShowAbsences.Text = "Absences"
         Me.btnShowAbsences.UseVisualStyleBackColor = True
         '
-        'Panel1
+        'statsPanel
         '
-        Me.Panel1.Controls.Add(Me.btnAddScores)
-        Me.Panel1.Controls.Add(Me.statisticsList)
-        Me.Panel1.Controls.Add(Me.lblRatio)
-        Me.Panel1.Controls.Add(Me.lblDeaths)
-        Me.Panel1.Controls.Add(Me.lblKills)
-        Me.Panel1.Controls.Add(Me.lblWins)
-        Me.Panel1.Controls.Add(Me.Label11)
-        Me.Panel1.Location = New System.Drawing.Point(532, 12)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(712, 634)
-        Me.Panel1.TabIndex = 21
+        Me.statsPanel.Controls.Add(Me.btnAddScores)
+        Me.statsPanel.Controls.Add(Me.statisticsList)
+        Me.statsPanel.Controls.Add(Me.lblRatio)
+        Me.statsPanel.Controls.Add(Me.lblDeaths)
+        Me.statsPanel.Controls.Add(Me.lblKills)
+        Me.statsPanel.Controls.Add(Me.lblWins)
+        Me.statsPanel.Controls.Add(Me.Label11)
+        Me.statsPanel.Location = New System.Drawing.Point(532, 12)
+        Me.statsPanel.Name = "statsPanel"
+        Me.statsPanel.Size = New System.Drawing.Size(712, 634)
+        Me.statsPanel.TabIndex = 21
         '
-        'Label11
+        'btnAddScores
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(290, 22)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(125, 31)
-        Me.Label11.TabIndex = 21
-        Me.Label11.Text = "Statistics"
-        '
-        'lblWins
-        '
-        Me.lblWins.AutoSize = True
-        Me.lblWins.Location = New System.Drawing.Point(39, 91)
-        Me.lblWins.Name = "lblWins"
-        Me.lblWins.Size = New System.Drawing.Size(73, 26)
-        Me.lblWins.TabIndex = 22
-        Me.lblWins.Text = "Wins: "
-        '
-        'lblKills
-        '
-        Me.lblKills.AutoSize = True
-        Me.lblKills.Location = New System.Drawing.Point(328, 91)
-        Me.lblKills.Name = "lblKills"
-        Me.lblKills.Size = New System.Drawing.Size(53, 26)
-        Me.lblKills.TabIndex = 23
-        Me.lblKills.Text = "Kills"
-        '
-        'lblDeaths
-        '
-        Me.lblDeaths.AutoSize = True
-        Me.lblDeaths.Location = New System.Drawing.Point(328, 144)
-        Me.lblDeaths.Name = "lblDeaths"
-        Me.lblDeaths.Size = New System.Drawing.Size(163, 26)
-        Me.lblDeaths.TabIndex = 24
-        Me.lblDeaths.Text = "Kill/Death Ratio"
-        '
-        'lblRatio
-        '
-        Me.lblRatio.AutoSize = True
-        Me.lblRatio.Location = New System.Drawing.Point(39, 144)
-        Me.lblRatio.Name = "lblRatio"
-        Me.lblRatio.Size = New System.Drawing.Size(81, 26)
-        Me.lblRatio.TabIndex = 25
-        Me.lblRatio.Text = "Deaths"
+        Me.btnAddScores.Location = New System.Drawing.Point(543, 581)
+        Me.btnAddScores.Name = "btnAddScores"
+        Me.btnAddScores.Size = New System.Drawing.Size(134, 43)
+        Me.btnAddScores.TabIndex = 27
+        Me.btnAddScores.Text = "Add Scores"
+        Me.btnAddScores.UseVisualStyleBackColor = True
         '
         'statisticsList
         '
         Me.statisticsList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
         Me.statisticsList.FullRowSelect = True
         Me.statisticsList.HideSelection = False
-        Me.statisticsList.Location = New System.Drawing.Point(44, 197)
+        Me.statisticsList.Location = New System.Drawing.Point(44, 173)
         Me.statisticsList.MultiSelect = False
         Me.statisticsList.Name = "statisticsList"
-        Me.statisticsList.Size = New System.Drawing.Size(633, 378)
+        Me.statisticsList.Size = New System.Drawing.Size(633, 402)
         Me.statisticsList.TabIndex = 26
         Me.statisticsList.UseCompatibleStateImageBehavior = False
         Me.statisticsList.View = System.Windows.Forms.View.Details
@@ -507,14 +473,114 @@ Partial Class StudentProfileView
         Me.ColumnHeader7.Text = "Kill/Death Ratio"
         Me.ColumnHeader7.Width = 182
         '
-        'btnAddScores
+        'lblRatio
         '
-        Me.btnAddScores.Location = New System.Drawing.Point(543, 581)
-        Me.btnAddScores.Name = "btnAddScores"
-        Me.btnAddScores.Size = New System.Drawing.Size(134, 43)
-        Me.btnAddScores.TabIndex = 27
-        Me.btnAddScores.Text = "Add Scores"
-        Me.btnAddScores.UseVisualStyleBackColor = True
+        Me.lblRatio.AutoSize = True
+        Me.lblRatio.Location = New System.Drawing.Point(39, 130)
+        Me.lblRatio.Name = "lblRatio"
+        Me.lblRatio.Size = New System.Drawing.Size(81, 26)
+        Me.lblRatio.TabIndex = 25
+        Me.lblRatio.Text = "Deaths"
+        '
+        'lblDeaths
+        '
+        Me.lblDeaths.AutoSize = True
+        Me.lblDeaths.Location = New System.Drawing.Point(328, 130)
+        Me.lblDeaths.Name = "lblDeaths"
+        Me.lblDeaths.Size = New System.Drawing.Size(163, 26)
+        Me.lblDeaths.TabIndex = 24
+        Me.lblDeaths.Text = "Kill/Death Ratio"
+        '
+        'lblKills
+        '
+        Me.lblKills.AutoSize = True
+        Me.lblKills.Location = New System.Drawing.Point(328, 91)
+        Me.lblKills.Name = "lblKills"
+        Me.lblKills.Size = New System.Drawing.Size(53, 26)
+        Me.lblKills.TabIndex = 23
+        Me.lblKills.Text = "Kills"
+        '
+        'lblWins
+        '
+        Me.lblWins.AutoSize = True
+        Me.lblWins.Location = New System.Drawing.Point(39, 91)
+        Me.lblWins.Name = "lblWins"
+        Me.lblWins.Size = New System.Drawing.Size(73, 26)
+        Me.lblWins.TabIndex = 22
+        Me.lblWins.Text = "Wins: "
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(290, 22)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(125, 31)
+        Me.Label11.TabIndex = 21
+        Me.Label11.Text = "Statistics"
+        '
+        'errorToolTip
+        '
+        Me.errorToolTip.AutoPopDelay = 5000
+        Me.errorToolTip.InitialDelay = 200
+        Me.errorToolTip.IsBalloon = True
+        Me.errorToolTip.ReshowDelay = 100
+        Me.errorToolTip.ShowAlways = True
+        '
+        'errFirstName
+        '
+        Me.errFirstName.Image = CType(resources.GetObject("errFirstName.Image"), System.Drawing.Image)
+        Me.errFirstName.Location = New System.Drawing.Point(398, 100)
+        Me.errFirstName.Name = "errFirstName"
+        Me.errFirstName.Size = New System.Drawing.Size(32, 32)
+        Me.errFirstName.TabIndex = 19
+        Me.errFirstName.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errFirstName, "Please enter the student's name")
+        Me.errFirstName.Visible = False
+        '
+        'errSurname
+        '
+        Me.errSurname.Image = CType(resources.GetObject("errSurname.Image"), System.Drawing.Image)
+        Me.errSurname.Location = New System.Drawing.Point(398, 148)
+        Me.errSurname.Name = "errSurname"
+        Me.errSurname.Size = New System.Drawing.Size(32, 32)
+        Me.errSurname.TabIndex = 20
+        Me.errSurname.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errSurname, "Please enter the student's surname")
+        Me.errSurname.Visible = False
+        '
+        'errStudentID
+        '
+        Me.errStudentID.Image = CType(resources.GetObject("errStudentID.Image"), System.Drawing.Image)
+        Me.errStudentID.Location = New System.Drawing.Point(398, 53)
+        Me.errStudentID.Name = "errStudentID"
+        Me.errStudentID.Size = New System.Drawing.Size(32, 32)
+        Me.errStudentID.TabIndex = 21
+        Me.errStudentID.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errStudentID, "Please enter a valid student number")
+        Me.errStudentID.Visible = False
+        '
+        'errEmail
+        '
+        Me.errEmail.Image = CType(resources.GetObject("errEmail.Image"), System.Drawing.Image)
+        Me.errEmail.Location = New System.Drawing.Point(398, 300)
+        Me.errEmail.Name = "errEmail"
+        Me.errEmail.Size = New System.Drawing.Size(32, 32)
+        Me.errEmail.TabIndex = 22
+        Me.errEmail.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errEmail, "Email address is invalid")
+        Me.errEmail.Visible = False
+        '
+        'errPhone
+        '
+        Me.errPhone.Image = CType(resources.GetObject("errPhone.Image"), System.Drawing.Image)
+        Me.errPhone.Location = New System.Drawing.Point(398, 350)
+        Me.errPhone.Name = "errPhone"
+        Me.errPhone.Size = New System.Drawing.Size(32, 32)
+        Me.errPhone.TabIndex = 23
+        Me.errPhone.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errPhone, "Please enter the student's phone number")
+        Me.errPhone.Visible = False
         '
         'StudentProfileView
         '
@@ -525,7 +591,7 @@ Partial Class StudentProfileView
         Me.Controls.Add(Me.absencesPanel)
         Me.Controls.Add(Me.infoPanel)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.statsPanel)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "StudentProfileView"
@@ -534,8 +600,13 @@ Partial Class StudentProfileView
         Me.infoPanel.PerformLayout()
         Me.absencesPanel.ResumeLayout(False)
         Me.absencesPanel.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.statsPanel.ResumeLayout(False)
+        Me.statsPanel.PerformLayout()
+        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -548,10 +619,8 @@ Partial Class StudentProfileView
     Friend WithEvents txtSurname As System.Windows.Forms.TextBox
     Friend WithEvents txtFirstName As System.Windows.Forms.TextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
-    Friend WithEvents txtWeapon As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents txtPhoneNum As System.Windows.Forms.TextBox
+    Friend WithEvents txtPhone As System.Windows.Forms.TextBox
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -562,7 +631,7 @@ Partial Class StudentProfileView
     Friend WithEvents chkUnexplained As System.Windows.Forms.CheckBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cbbWeapon As System.Windows.Forms.ComboBox
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
     Friend WithEvents btnAddReason As System.Windows.Forms.Button
@@ -575,7 +644,7 @@ Partial Class StudentProfileView
     Friend WithEvents lblAttendance As System.Windows.Forms.Label
     Friend WithEvents btnShowStats As System.Windows.Forms.Button
     Friend WithEvents btnShowAbsences As System.Windows.Forms.Button
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents statsPanel As System.Windows.Forms.Panel
     Friend WithEvents btnAddScores As System.Windows.Forms.Button
     Friend WithEvents statisticsList As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
@@ -588,4 +657,10 @@ Partial Class StudentProfileView
     Friend WithEvents lblKills As System.Windows.Forms.Label
     Friend WithEvents lblWins As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents errorToolTip As System.Windows.Forms.ToolTip
+    Friend WithEvents errFirstName As System.Windows.Forms.PictureBox
+    Friend WithEvents errSurname As System.Windows.Forms.PictureBox
+    Friend WithEvents errStudentID As System.Windows.Forms.PictureBox
+    Friend WithEvents errEmail As System.Windows.Forms.PictureBox
+    Friend WithEvents errPhone As System.Windows.Forms.PictureBox
 End Class

@@ -174,7 +174,7 @@ Partial Class StudentProfilesCreate
         'btnSave
         '
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSave.Location = New System.Drawing.Point(358, 413)
+        Me.btnSave.Location = New System.Drawing.Point(343, 403)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(131, 42)
         Me.btnSave.TabIndex = 16
@@ -184,7 +184,7 @@ Partial Class StudentProfilesCreate
         'btnCancel
         '
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Location = New System.Drawing.Point(505, 413)
+        Me.btnCancel.Location = New System.Drawing.Point(494, 403)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(131, 42)
         Me.btnCancel.TabIndex = 17
@@ -258,7 +258,7 @@ Partial Class StudentProfilesCreate
         '
         Me.AcceptButton = Me.btnSave
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(641, 461)
+        Me.ClientSize = New System.Drawing.Size(637, 457)
         Me.ControlBox = False
         Me.Controls.Add(Me.errPhone)
         Me.Controls.Add(Me.errEmail)

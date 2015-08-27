@@ -92,7 +92,7 @@ Partial Class StudentProfilesForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(102, 22)
+        Me.Label1.Location = New System.Drawing.Point(109, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(244, 39)
         Me.Label1.TabIndex = 1
@@ -104,7 +104,7 @@ Partial Class StudentProfilesForm
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBack.FlatAppearance.BorderSize = 0
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Location = New System.Drawing.Point(37, 20)
+        Me.btnBack.Location = New System.Drawing.Point(37, 25)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(42, 42)
         Me.btnBack.TabIndex = 0
