@@ -362,35 +362,41 @@
         End If
     End Sub
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
+        If ptbHelp.Visible Then
+            ptbHelp.Visible = False
+            btnHelp.BackColor = Color.Black
+            btnHelp.ForeColor = Color.White
+            btnHelp.Text = "?"
+            btnHelp.Top = 79
+            btnHelp.Height = 31
 
-        btnHelp.BackColor = Color.White
-        btnHelp.ForeColor = Color.Black
-        btnMain.BackColor = Color.Black
-        btnMain.ForeColor = Color.White
-        ptbHelp.Visible = True
-        btnMain.Top = 79
-        btnMain.Height = 31
-        btnHelp.Top = 71
-        btnHelp.Height = 39
+        Else
+            ptbHelp.Visible = True
+            btnHelp.BackColor = Color.White
+            btnHelp.ForeColor = Color.Black
+            btnHelp.Text = "Hide Help"
+            btnHelp.Top = 71
+            btnHelp.Height = 39
+        End If
     End Sub
 
-    Private Sub btnMain_Click(sender As Object, e As EventArgs) Handles btnMain.Click
+    'Private Sub btnMain_Click(sender As Object, e As EventArgs) Handles btnMain.Click
 
-        btnMain.BackColor = Color.White
-        btnMain.ForeColor = Color.Black
-        btnHelp.BackColor = Color.Black
-        btnHelp.ForeColor = Color.White
-        ptbHelp.Visible = False
-        btnMain.Top = 71
-        btnMain.Height = 39
-        btnHelp.Top = 79
-        btnHelp.Height = 31
-    End Sub
+    '    btnMain.BackColor = Color.White
+    '    btnMain.ForeColor = Color.Black
+    '    btnHelp.BackColor = Color.Black
+    '    btnHelp.ForeColor = Color.White
+    '    ptbHelp.Visible = False
+    '    btnMain.Top = 71
+    '    btnMain.Height = 39
+    '    btnHelp.Top = 79
+    '    btnHelp.Height = 31
+    'End Sub
 
-    Private Sub btnmain_Mouseenter(sender As Object, e As EventArgs) Handles btnMain.MouseEnter
-        btnMain.Top = 71
-        btnMain.Height = 39
-    End Sub
+    'Private Sub btnmain_Mouseenter(sender As Object, e As EventArgs) Handles btnMain.MouseEnter
+    '    btnMain.Top = 71
+    '    btnMain.Height = 39
+    'End Sub
 
 
     Private Sub btnHelp_Mouseenter(sender As Object, e As EventArgs) Handles btnHelp.MouseEnter
@@ -398,16 +404,16 @@
         btnHelp.Height = 39
     End Sub
 
-    Private Sub btnmain_Mouseleave(sender As Object, e As EventArgs) Handles btnMain.MouseLeave
-        If btnHelp.BackColor = Color.White Then
-            btnMain.Top = 79
-            btnMain.Height = 31
-        End If
-    End Sub
+    'Private Sub btnmain_Mouseleave(sender As Object, e As EventArgs) Handles btnMain.MouseLeave
+    '    If btnHelp.BackColor = Color.White Then
+    '        btnMain.Top = 79
+    '        btnMain.Height = 31
+    '    End If
+    'End Sub
 
 
     Private Sub btnHelp_Mouseleave(sender As Object, e As EventArgs) Handles btnHelp.MouseLeave
-        If btnMain.BackColor = Color.White Then
+        If btnHelp.BackColor <> Color.White Then
             btnHelp.Top = 79
             btnHelp.Height = 31
         End If

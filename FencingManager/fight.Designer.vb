@@ -25,7 +25,6 @@ Partial Class fight
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnHelp = New System.Windows.Forms.Button()
-        Me.btnMain = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblKD1 = New System.Windows.Forms.Label()
@@ -79,7 +78,6 @@ Partial Class fight
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Panel1.Controls.Add(Me.btnHelp)
-        Me.Panel1.Controls.Add(Me.btnMain)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -93,25 +91,12 @@ Partial Class fight
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHelp.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnHelp.Location = New System.Drawing.Point(1051, 79)
+        Me.btnHelp.Location = New System.Drawing.Point(972, 79)
         Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(39, 31)
+        Me.btnHelp.Size = New System.Drawing.Size(108, 31)
         Me.btnHelp.TabIndex = 6
         Me.btnHelp.Text = "?"
         Me.btnHelp.UseVisualStyleBackColor = False
-        '
-        'btnMain
-        '
-        Me.btnMain.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
-        Me.btnMain.BackColor = System.Drawing.Color.White
-        Me.btnMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMain.Location = New System.Drawing.Point(972, 71)
-        Me.btnMain.Name = "btnMain"
-        Me.btnMain.Size = New System.Drawing.Size(80, 39)
-        Me.btnMain.TabIndex = 2
-        Me.btnMain.Text = "Main"
-        Me.btnMain.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -606,7 +591,6 @@ Partial Class fight
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents btnHelp As System.Windows.Forms.Button
-    Friend WithEvents btnMain As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents btnBegin As System.Windows.Forms.Button

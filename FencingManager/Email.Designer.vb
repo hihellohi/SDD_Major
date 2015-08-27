@@ -25,8 +25,7 @@ Partial Class Email
         Me.components = New System.ComponentModel.Container()
         Me.txtMessage = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnHelp = New System.Windows.Forms.Button()
-        Me.btnMain = New System.Windows.Forms.Button()
+        Me.btnhelp = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnODYes = New System.Windows.Forms.Button()
         Me.btnGeneral = New System.Windows.Forms.Button()
@@ -65,8 +64,7 @@ Partial Class Email
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Orange
-        Me.Panel1.Controls.Add(Me.btnHelp)
-        Me.Panel1.Controls.Add(Me.btnMain)
+        Me.Panel1.Controls.Add(Me.btnhelp)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -74,30 +72,18 @@ Partial Class Email
         Me.Panel1.Size = New System.Drawing.Size(1256, 110)
         Me.Panel1.TabIndex = 4
         '
-        'btnHelp
+        'btnhelp
         '
-        Me.btnHelp.BackColor = System.Drawing.Color.DarkOrange
-        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHelp.Location = New System.Drawing.Point(1051, 79)
-        Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(39, 31)
-        Me.btnHelp.TabIndex = 6
-        Me.btnHelp.Text = "?"
-        Me.btnHelp.UseVisualStyleBackColor = False
-        '
-        'btnMain
-        '
-        Me.btnMain.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
-        Me.btnMain.BackColor = System.Drawing.Color.White
-        Me.btnMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMain.Location = New System.Drawing.Point(972, 71)
-        Me.btnMain.Name = "btnMain"
-        Me.btnMain.Size = New System.Drawing.Size(80, 39)
-        Me.btnMain.TabIndex = 2
-        Me.btnMain.Text = "Main"
-        Me.btnMain.UseVisualStyleBackColor = False
+        Me.btnhelp.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnhelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnhelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnhelp.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnhelp.Location = New System.Drawing.Point(972, 79)
+        Me.btnhelp.Name = "btnhelp"
+        Me.btnhelp.Size = New System.Drawing.Size(108, 31)
+        Me.btnhelp.TabIndex = 77
+        Me.btnhelp.Text = "?"
+        Me.btnhelp.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -384,7 +370,6 @@ Partial Class Email
     Friend WithEvents btnGEYes As System.Windows.Forms.Button
     Friend WithEvents btnBothYes As System.Windows.Forms.Button
     Friend WithEvents timerWait As System.Windows.Forms.Timer
-    Friend WithEvents btnMain As System.Windows.Forms.Button
-    Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents ptbHelp As System.Windows.Forms.PictureBox
+    Friend WithEvents btnhelp As System.Windows.Forms.Button
 End Class
