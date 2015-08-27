@@ -338,6 +338,9 @@
     <Content Include="Fencing.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\mouseright.png" />
+    <None Include="Resources\mousemiddle.png" />
+    <None Include="Resources\mouseleft.png" />
     <None Include="Resources\Calendar Panel3.png" />
     <None Include="Resources\Calendar Panel2.png" />
     <None Include="Resources\Search Panel1.png" />

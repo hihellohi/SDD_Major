@@ -1,6 +1,6 @@
 ﻿Public Class fight
 
-    Dim lock = False
+    Dim lock = 0
     Dim adapter As New OleDb.OleDbDataAdapter
     Dim dataS As New DataSet()
     Dim target As Integer
@@ -73,21 +73,32 @@
     End Sub
 
     Private Sub btnBegin_KeyDown(sender As Object, e As KeyEventArgs) Handles btnBegin.KeyDown
-        If e.KeyCode = Keys.Escape Then
+        If e.KeyCode = Keys.Escape And lock = 1 Then
             tmrClock.Enabled = False
-            lock = False
+            lock = 2
+            lblHide.Visible = True
             Windows.Forms.Cursor.Show()
-            btnBegin.Text = "En Garde"
-            txtLength.ReadOnly = False
+            btnBegin.Text = "Resume"
             txtPlayer1.ReadOnly = False
             txtPlayer2.ReadOnly = False
+            btnReset.Visible = True
         End If
     End Sub
 
     Private Sub btnBegin_LostFocus(sender As Object, e As EventArgs) Handles btnBegin.LostFocus
-        If lock Then
+        If lock = 1 Then
             btnBegin.Focus()
         End If
+    End Sub
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        score1 = 0
+        score2 = 0
+        lock = 0
+        txtLength.ReadOnly = False
+        lblScore.Text = "0 - 0"
+        lblTime.Text = "0:00"
+        btnBegin.Text = "En Garde"
+        btnReset.Visible = False
     End Sub
 
     Private Sub btnbegin_MouseDown(sender As Object, e As MouseEventArgs) Handles btnBegin.MouseDown
@@ -102,7 +113,7 @@
         Dim changed1 = 0
         Dim changed2 = 0
 
-        If lock Then
+        If lock = 1 Then
             If e.Button = Windows.Forms.MouseButtons.Left Then
 
                 'add score and check for win
@@ -113,7 +124,8 @@
                 changed2 = 1
 
                 If score1 = target Then
-                    lock = False
+                    lock = 0
+                    lblHide.Visible = True
                     btnBegin.Text = lblFirstName1.Text + " " + lblSurname1.Text + " Wins!"
                     changew1 = 1
                     changel2 = 1
@@ -130,7 +142,8 @@
                 changek2 = 1
                 changed1 = 1
                 If score2 = target Then
-                    lock = False
+                    lock = 0
+                    lblHide.Visible = True
                     btnBegin.Text = lblFirstName2.Text + " " + lblSurname2.Text + " Wins!"
                     changew2 = 1
                     changel1 = 1
@@ -160,6 +173,10 @@
                 dataS.Tables("StudentProfiles").Rows(p1Index).Item("Deaths") += changed1
                 dataS.Tables("StudentProfiles").Rows(p1Index).Item("Wins") += changew1
                 dataS.Tables("StudentProfiles").Rows(p1Index).Item("Losses") += changel1
+                dataS.Tables("StudentProfiles").Rows(p1Index).Item("Kills") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p1Index).Item("Kills"))
+                dataS.Tables("StudentProfiles").Rows(p1Index).Item("Deaths") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p1Index).Item("Deaths"))
+                dataS.Tables("StudentProfiles").Rows(p1Index).Item("Wins") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p1Index).Item("Wins"))
+                dataS.Tables("StudentProfiles").Rows(p1Index).Item("Losses") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p1Index).Item("Losses"))
             Else
                 guestk1 += changek1
                 guestd1 += changed1
@@ -171,19 +188,34 @@
                 dataS.Tables("StudentProfiles").Rows(p2index).Item("Deaths") += changed2
                 dataS.Tables("StudentProfiles").Rows(p2index).Item("Wins") += changew2
                 dataS.Tables("StudentProfiles").Rows(p2index).Item("Losses") += changel2
+                dataS.Tables("StudentProfiles").Rows(p2index).Item("Kills") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p2index).Item("Kills"))
+                dataS.Tables("StudentProfiles").Rows(p2index).Item("Deaths") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p2index).Item("Deaths"))
+                dataS.Tables("StudentProfiles").Rows(p2index).Item("Wins") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p2index).Item("Wins"))
+                dataS.Tables("StudentProfiles").Rows(p2index).Item("Losses") = Math.Max(0, dataS.Tables("StudentProfiles").Rows(p2index).Item("Losses"))
             Else
                 guestk2 += changek2
                 guestd2 += changed2
                 guestw2 += changew2
                 guestl2 += changel2
             End If
+            
+
             'FIX DATABASE
             Dim cb As New OleDb.OleDbCommandBuilder(adapter)
             adapter.Update(dataS, "StudentProfiles")
             reload()
             lblScore.Text = score1.ToString + " - " + score2.ToString
             'Me.Refresh()
-
+        ElseIf lock = 2 Then
+            txtPlayer1.ReadOnly = True
+            txtPlayer2.ReadOnly = True
+            lock = 1
+            tmrClock.Enabled = True
+            btnReset.Visible = False
+            lblHide.Visible = False
+            btnBegin.Text = "Press Esc to pause"
+            Windows.Forms.Cursor.Hide()
+            history.Clear()
         Else
             If txtLength.Text = "" Then
                 txtLength.BackColor = Color.Red
@@ -198,10 +230,12 @@
                 score2 = 0
                 lblScore.Text = "0 - 0"
                 lblTime.Text = "0:00"
-                lock = True
+                lock = 1
+                lblHide.Visible = False
                 tmrClock.Enabled = True
+                btnReset.Visible = False
                 clock = 0
-                btnBegin.Text = "Press Esc to stop"
+                btnBegin.Text = "Press Esc to pause"
                 Windows.Forms.Cursor.Hide()
             End If
         End If
@@ -246,7 +280,6 @@
     End Sub
 
     Private Sub fight_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         SetCueText(txtPlayer1, "Fencer 1 ID")
         SetCueText(txtPlayer2, "Fencer 2 ID")
         'MsgBox(ReceiveSerialData())
@@ -319,12 +352,12 @@
     End Sub
 
     Private Sub fight_MouseMove(sender As Object, e As EventArgs) Handles Me.MouseEnter
-        If lock Then
+        If lock = 1 Then
             Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
         End If
     End Sub
     Private Sub btnBegin_MouseLeave(sender As Object, e As EventArgs) Handles btnBegin.MouseLeave
-        If lock Then
+        If lock = 1 Then
             Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
         End If
     End Sub
@@ -394,4 +427,7 @@
     '        Windows.Forms.Cursor.Position = New Point(RootForm.Location.X + 110 + ((btnBegin.Left + btnBegin.Right) / 2), RootForm.Location.Y + 30 + ((btnBegin.Bottom + btnBegin.Top) / 2))
     '    End If
     'End Sub
+
+
+
 End Class
