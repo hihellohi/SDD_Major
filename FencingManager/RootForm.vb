@@ -128,10 +128,15 @@ Public Class RootForm
     End Sub
 
     Private Sub btnAttendance_Click(sender As Object, e As EventArgs) Handles btnAttendance.Click
-        topform.hide()
-        topform = formAttendance
-        intform = ATTENDANCE
-        topform.show()
+        If access_level < 2 Then
+            btnLogin_Click()
+            MsgBox("An access level of captain or higher is required to view this")
+        Else
+            topform.hide()
+            topform = formAttendance
+            intform = ATTENDANCE
+            topform.show()
+        End If
     End Sub
 
     Private Sub btnGearLoan_Click(sender As Object, e As EventArgs) Handles btnGearLoan.Click

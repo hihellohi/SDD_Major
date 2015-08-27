@@ -58,6 +58,13 @@ Partial Class AttendanceForm
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.roll = New System.Windows.Forms.CheckedListBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.btnHelp = New System.Windows.Forms.Button()
+        Me.panelHelp1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.panelHelp2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -66,6 +73,8 @@ Partial Class AttendanceForm
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.barcodePanel.SuspendLayout()
+        Me.panelHelp1.SuspendLayout()
+        Me.panelHelp2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -81,6 +90,7 @@ Partial Class AttendanceForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Brown
+        Me.Panel1.Controls.Add(Me.btnHelp)
         Me.Panel1.Controls.Add(Me.titleLabel)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -110,6 +120,7 @@ Partial Class AttendanceForm
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.SplitContainer1.Panel1.Controls.Add(Me.panelHelp2)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btnRoll)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btnBarcode)
         Me.SplitContainer1.Panel1.Controls.Add(Me.GroupBox2)
@@ -120,6 +131,7 @@ Partial Class AttendanceForm
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.SplitContainer1.Panel2.Controls.Add(Me.panelHelp1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.barcodePanel)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label5)
         Me.SplitContainer1.Panel2.Controls.Add(Me.lblAbsent)
@@ -435,6 +447,77 @@ Partial Class AttendanceForm
         '
         Me.Timer1.Interval = 2400
         '
+        'btnHelp
+        '
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHelp.ForeColor = System.Drawing.Color.White
+        Me.btnHelp.Location = New System.Drawing.Point(1069, 37)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(48, 48)
+        Me.btnHelp.TabIndex = 1
+        Me.btnHelp.Text = "?"
+        Me.btnHelp.UseVisualStyleBackColor = True
+        '
+        'panelHelp1
+        '
+        Me.panelHelp1.Controls.Add(Me.Label9)
+        Me.panelHelp1.Controls.Add(Me.Label8)
+        Me.panelHelp1.Controls.Add(Me.Label1)
+        Me.panelHelp1.Location = New System.Drawing.Point(3, 25)
+        Me.panelHelp1.Name = "panelHelp1"
+        Me.panelHelp1.Size = New System.Drawing.Size(542, 621)
+        Me.panelHelp1.TabIndex = 6
+        Me.panelHelp1.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(14, 67)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(289, 52)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Select or change the date of " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the students' attendance"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(14, 276)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(309, 78)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Select the students to record " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "attendance, by weapon and/or " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "by year group" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(3, 510)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(349, 104)
+        Me.Label9.TabIndex = 2
+        Me.Label9.Text = "<- Record attendance by scanning " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "student ID cards" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<- Record attendance using a" & _
+    "n" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "electronic roll"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(68, 34)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(320, 546)
+        Me.Label10.TabIndex = 0
+        Me.Label10.Text = "Tick a student's checkbox to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "mark him absent" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Untick to mark a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "student presen" & _
+    "t" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Click 'Save' when you are done."
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'panelHelp2
+        '
+        Me.panelHelp2.Controls.Add(Me.Label10)
+        Me.panelHelp2.Location = New System.Drawing.Point(3, 18)
+        Me.panelHelp2.Name = "panelHelp2"
+        Me.panelHelp2.Size = New System.Drawing.Size(402, 621)
+        Me.panelHelp2.TabIndex = 6
+        Me.panelHelp2.Visible = False
+        '
         'AttendanceForm
         '
         Me.AcceptButton = Me.btnEnterBarcode
@@ -463,6 +546,10 @@ Partial Class AttendanceForm
         Me.GroupBox1.PerformLayout()
         Me.barcodePanel.ResumeLayout(False)
         Me.barcodePanel.PerformLayout()
+        Me.panelHelp1.ResumeLayout(False)
+        Me.panelHelp1.PerformLayout()
+        Me.panelHelp2.ResumeLayout(False)
+        Me.panelHelp2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -501,4 +588,11 @@ Partial Class AttendanceForm
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents lblScanMsg As System.Windows.Forms.Label
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents btnHelp As System.Windows.Forms.Button
+    Friend WithEvents panelHelp1 As System.Windows.Forms.Panel
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents panelHelp2 As System.Windows.Forms.Panel
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class

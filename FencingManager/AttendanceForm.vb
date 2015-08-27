@@ -57,6 +57,7 @@
     End Sub
 
     Private Sub btnBarcode_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
+        btnHelp.Hide()
         SplitContainer1.Panel1.Enabled = False
         FillRoll()
         SplitContainer1.Panel2.Enabled = True
@@ -78,6 +79,7 @@
         SplitContainer1.Panel1.Enabled = True
         barcodePanel.Hide()
         titleLabel.Text = "Attendance Check"
+        panelHelp2.Hide()
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -131,6 +133,7 @@
     End Sub
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        btnHelp.Show()
         barcodePanel.Hide()
         titleLabel.Text = "Attendance Check - Confirm"
     End Sub
@@ -156,5 +159,13 @@
         Timer1.Stop()
         titleLabel.Text = "Attendance Check"
         btnSave.Text = "Save"
+    End Sub
+
+    Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
+        If SplitContainer1.Panel1.Enabled Then
+            panelHelp1.Visible = Not panelHelp1.Visible
+        Else
+            panelHelp2.Visible = Not panelHelp2.Visible
+        End If
     End Sub
 End Class
