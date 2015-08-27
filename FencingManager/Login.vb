@@ -3,10 +3,8 @@
 Public Class Login
     Dim formForgotPW As New ForgotPW()
     'Dim formAdministration As New Admistration
+    Dim loggedin = False
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        'Form2.Show()
-    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         formForgotPW.ShowDialog()
@@ -24,7 +22,7 @@ Public Class Login
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim loggedin = False
+
         ' Query, Parameters
         Dim sql As String = "SELECT USERNAME FROM Logins WHERE USERNAME=@p_userid AND PASSWORD=@p_passw;"
         Dim cmd As New OleDbCommand(sql, RootForm.connection)
@@ -48,8 +46,7 @@ Public Class Login
                 'This doesnt work
                 MsgBox("Username or Password Wrong", MsgBoxStyle.OkOnly)
             End If
-            FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
-            My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + GlobalVariables.Username + " logged in" & Environment.NewLine, True)
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] " + GlobalVariables.Username + " has logged in")
             loggedin = True
 
         Catch ex As NullReferenceException
@@ -59,7 +56,7 @@ Public Class Login
 
 
             FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
-            My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + TextBox1.Text + " tried to log in with incorrect password" & Environment.NewLine, True)
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] " + TextBox1.Text + " tried to log in with incorrect password")
 
 
 
@@ -88,6 +85,8 @@ Public Class Login
             CheckBox2.Visible = False
             Label4.Visible = True
             usr.Visible = True
+            usr.Text = GlobalVariables.Username
+            btnOff.Visible = True
         Else
             Label1.Visible = True
             Label2.Visible = True
@@ -100,6 +99,7 @@ Public Class Login
             CheckBox2.Visible = True
             Label4.Visible = False
             usr.Visible = False
+            btnOff.Visible = False
 
         End If
     End Sub
@@ -122,14 +122,25 @@ Public Class Login
 
     End Sub
 
-    'Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-    ' Form99.ShowDialog()
-    'End Sub
-
-    ' Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-    '     Me.WindowState = FormWindowState.Minimized
-    ' End Sub
-
+    Private Sub btnOff_Click(sender As Object, e As EventArgs) Handles btnOff.Click
+        loggedin = False
+        Label1.Visible = True
+        Label2.Visible = True
+        Label3.Visible = True
+        TextBox1.Visible = True
+        TextBox2.Visible = True
+        Button2.Visible = True
+        Button3.Visible = True
+        Button4.Visible = True
+        CheckBox2.Visible = True
+        Label4.Visible = False
+        usr.Visible = False
+        btnOff.Visible = False
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        GlobalVariables.Username = Nothing
+        RootForm.access_level = 0
+    End Sub
 End Class
 
 Public Class GlobalVariables

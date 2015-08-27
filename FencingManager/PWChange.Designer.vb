@@ -41,7 +41,7 @@ Partial Class PWChange
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Red
-        Me.Label7.Location = New System.Drawing.Point(840, 224)
+        Me.Label7.Location = New System.Drawing.Point(540, 198)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(177, 21)
         Me.Label7.TabIndex = 24
@@ -53,7 +53,7 @@ Partial Class PWChange
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Red
-        Me.Label6.Location = New System.Drawing.Point(840, 304)
+        Me.Label6.Location = New System.Drawing.Point(540, 278)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(185, 21)
         Me.Label6.TabIndex = 23
@@ -65,7 +65,7 @@ Partial Class PWChange
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(840, 156)
+        Me.Label5.Location = New System.Drawing.Point(540, 130)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(153, 21)
         Me.Label5.TabIndex = 22
@@ -76,7 +76,7 @@ Partial Class PWChange
         '
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(1175, 56)
+        Me.Button2.Location = New System.Drawing.Point(737, 12)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(45, 47)
         Me.Button2.TabIndex = 21
@@ -86,7 +86,7 @@ Partial Class PWChange
         'TextBox3
         '
         Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(573, 297)
+        Me.TextBox3.Location = New System.Drawing.Point(255, 268)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(261, 35)
         Me.TextBox3.TabIndex = 18
@@ -95,7 +95,7 @@ Partial Class PWChange
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(573, 219)
+        Me.TextBox2.Location = New System.Drawing.Point(255, 193)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(261, 35)
         Me.TextBox2.TabIndex = 16
@@ -104,37 +104,37 @@ Partial Class PWChange
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(312, 297)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(12, 271)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(227, 30)
+        Me.Label4.Size = New System.Drawing.Size(234, 25)
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Confirm New Password"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(312, 224)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(12, 198)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(147, 30)
+        Me.Label3.Size = New System.Drawing.Size(154, 25)
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "New Password"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(312, 149)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 130)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(138, 30)
+        Me.Label2.Size = New System.Drawing.Size(145, 25)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Old Password"
         '
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(573, 149)
+        Me.TextBox1.Location = New System.Drawing.Point(255, 123)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(261, 35)
         Me.TextBox1.TabIndex = 15
@@ -143,10 +143,10 @@ Partial Class PWChange
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(563, 58)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(263, 32)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(270, 45)
+        Me.Label1.Size = New System.Drawing.Size(279, 37)
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Change Password"
         '
@@ -154,7 +154,7 @@ Partial Class PWChange
         '
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(594, 479)
+        Me.Button1.Location = New System.Drawing.Point(332, 334)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(90, 47)
         Me.Button1.TabIndex = 25
@@ -164,7 +164,7 @@ Partial Class PWChange
         'PWChange
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.ClientSize = New System.Drawing.Size(793, 431)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)

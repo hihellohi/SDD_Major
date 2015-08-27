@@ -17,16 +17,14 @@ Public Class PWChange
             If TextBox2.Text = TextBox3.Text Then
                 If TextBox2.TextLength >= 6 Then
                     Dim cmd As String = "UPDATE [Logins] SET [Password]=@pw WHERE Username=@user"
-                    Using con = New OleDbConnection("PROVIDER=Microsoft.ACE.OLEDB.12.0;Data Source = E:\SDD_Major-master\FencingManager\Fencing.accdb")
-                        Using cmd1 = New OleDbCommand(cmd, con)
-                            con.Open()
-                            cmd1.Parameters.Add(New OleDbParameter("@pw", CType(TextBox2.Text, String)))
-                            cmd1.Parameters.Add(New OleDbParameter("@user", Username))
-                            cmd1.ExecuteNonQuery()
-                            MsgBox("SUCCESS - PW CHANGED")
-                            Me.Close()
-                        End Using
+                    Using cmd1 = New OleDbCommand(cmd, RootForm.connection)
+                        cmd1.Parameters.Add(New OleDbParameter("@pw", CType(TextBox2.Text, String)))
+                        cmd1.Parameters.Add(New OleDbParameter("@user", Username))
+                        cmd1.ExecuteNonQuery()
+                        MsgBox("SUCCESS - PW CHANGED")
+                        Me.Close()
                     End Using
+
                 Else : Label7.Visible = True
                 End If
             Else : Label6.Visible = True

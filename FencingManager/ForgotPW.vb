@@ -25,40 +25,57 @@ Public Class ForgotPW
                 recoveryemail = reader("RecoveryEmail").ToString
             End While
 
-            Try
-                Dim Smtp_Server As New SmtpClient
-                Dim email As New MailMessage()
-                Smtp_Server.UseDefaultCredentials = False
-                Smtp_Server.Credentials = New Net.NetworkCredential("engardefencingmanager@gmail.com", "password?")
-                Smtp_Server.Port = 587
-                Smtp_Server.EnableSsl = True
-                Smtp_Server.Host = "smtp.gmail.com"
-
-                email = New MailMessage()
-                email.From = New MailAddress("engardefencingmanager@gmail.com")
-                email.To.Add(recoveryemail)
-                email.Subject = "Your Password"
-                email.IsBodyHtml = True
-                email.Body = ("Your Password is: " + password)
-
-                Smtp_Server.Send(email)
-                TextBox1.Visible = False
-                Button1.Text = ("OK")
+            If recoveryemail = "" Then
+                MsgBox("Sorry, no recovery email set.")
+                Me.Close()
+                Button1.Text = "Next"
                 Button1.Enabled = True
                 Button2.Enabled = True
-                Label2.Text = ("An email has been sent with your password.")
-            Catch error_t As Exception
-                MsgBox(error_t.ToString)
-                'Me.Close()
-                MsgBox("Email failed.")
-            End Try
+                TextBox1.Text = ""
+            Else
+                Try
+                    Dim Smtp_Server As New SmtpClient
+                    Dim email As New MailMessage()
+                    Smtp_Server.UseDefaultCredentials = False
+                    Smtp_Server.Credentials = New Net.NetworkCredential("engardefencingmanager@gmail.com", "password?")
+                    Smtp_Server.Port = 587
+                    Smtp_Server.EnableSsl = True
+                    Smtp_Server.Host = "smtp.gmail.com"
+
+                    email = New MailMessage()
+                    email.From = New MailAddress("engardefencingmanager@gmail.com")
+                    email.To.Add(recoveryemail)
+                    email.Subject = "Your Password"
+                    email.IsBodyHtml = True
+                    email.Body = ("Your Password is: " + password)
+
+                    Smtp_Server.Send(email)
+                    TextBox1.Visible = False
+                    Button1.Text = ("OK")
+                    Button1.Enabled = True
+                    Button2.Enabled = True
+                    Label2.Text = ("An email has been sent with your password.")
+                Catch error_t As Exception
+                    MsgBox(error_t.ToString)
+                    'Me.Close()
+                    MsgBox("Email failed.")
+                End Try
+            End If
         ElseIf Button1.Text = "OK" Then
             Me.Close()
         End If
+
 
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()
+    End Sub
+
+    Private Sub ForgotPW_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Button1.Text = ("Next")
+        Button1.Enabled = True
+        Button2.Enabled = True
+        Label2.Text = "Enter Your Username"
     End Sub
 End Class

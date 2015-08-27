@@ -17,7 +17,9 @@ Public Class Admin
         Else : lbAcc.Text = GlobalVariables.Username
         End If
 
-        If RootForm.access_level = 2 Or 3 Then
+        If RootForm.access_level < 2 Then
+            MsgBox("An access level of MIC or Captain/Coach is required to view this")
+        Else
             ' Connection
             Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=Fencing.accdb")
             'Query, Parameters
@@ -87,12 +89,11 @@ Public Class Admin
                 newfile.Close()
             End Try
 
-        Else : MsgBox("An access level of MIC or Captain/Coach is required to view this")
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPWchange.Click
+        PWChange.ShowDialog()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btRefresh.Click
@@ -140,18 +141,6 @@ Public Class Admin
         RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
 
     End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub btSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
-        Try
-            RichTextBox1.SaveFile("edits.txt", RichTextBoxStreamType.PlainText)
-        Catch ex As Exception
-        End Try
-    End Sub
-
 
     Private Sub btCLog_Click(sender As Object, e As EventArgs) Handles btCLog.Click
         RichTextBox1.Text = ("")

@@ -35,6 +35,7 @@ Partial Class Login
         Me.usr = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.btnOff = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -173,10 +174,22 @@ Partial Class Login
         Me.PictureBox2.TabIndex = 25
         Me.PictureBox2.TabStop = False
         '
+        'btnOff
+        '
+        Me.btnOff.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOff.Location = New System.Drawing.Point(618, 469)
+        Me.btnOff.Name = "btnOff"
+        Me.btnOff.Size = New System.Drawing.Size(155, 61)
+        Me.btnOff.TabIndex = 36
+        Me.btnOff.Text = "Log Off"
+        Me.btnOff.UseVisualStyleBackColor = True
+        Me.btnOff.Visible = False
+        '
         'Login
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.btnOff)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.CheckBox2)
@@ -212,4 +225,5 @@ Partial Class Login
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents usr As System.Windows.Forms.Label
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents btnOff As System.Windows.Forms.Button
 End Class

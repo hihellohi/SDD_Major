@@ -22,9 +22,7 @@ Partial Class Admin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnPWchange = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -40,42 +38,21 @@ Partial Class Admin
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btRefresh = New System.Windows.Forms.Button()
         Me.lbAcc = New System.Windows.Forms.Label()
-        Me.btSave = New System.Windows.Forms.Button()
         Me.lvAbsences = New System.Windows.Forms.ListView()
         Me.btCLog = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Button3
+        'btnPWchange
         '
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(857, 654)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(155, 61)
-        Me.Button3.TabIndex = 36
-        Me.Button3.Text = "Lock"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(1069, 654)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(155, 61)
-        Me.Button2.TabIndex = 35
-        Me.Button2.Text = "Log Off"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(647, 654)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(155, 61)
-        Me.Button1.TabIndex = 34
-        Me.Button1.Text = "Change Password"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnPWchange.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPWchange.Location = New System.Drawing.Point(647, 654)
+        Me.btnPWchange.Name = "btnPWchange"
+        Me.btnPWchange.Size = New System.Drawing.Size(155, 61)
+        Me.btnPWchange.TabIndex = 34
+        Me.btnPWchange.Text = "Change Password"
+        Me.btnPWchange.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -195,11 +172,11 @@ Partial Class Admin
         'btRefresh
         '
         Me.btRefresh.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btRefresh.Location = New System.Drawing.Point(581, 493)
+        Me.btRefresh.Location = New System.Drawing.Point(829, 654)
         Me.btRefresh.Name = "btRefresh"
-        Me.btRefresh.Size = New System.Drawing.Size(29, 32)
+        Me.btRefresh.Size = New System.Drawing.Size(155, 61)
         Me.btRefresh.TabIndex = 38
-        Me.btRefresh.Text = "R"
+        Me.btRefresh.Text = "Refresh All"
         Me.btRefresh.UseVisualStyleBackColor = True
         '
         'lbAcc
@@ -211,16 +188,6 @@ Partial Class Admin
         Me.lbAcc.Size = New System.Drawing.Size(58, 24)
         Me.lbAcc.TabIndex = 39
         Me.lbAcc.Text = "lbAcc"
-        '
-        'btSave
-        '
-        Me.btSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btSave.Location = New System.Drawing.Point(581, 531)
-        Me.btSave.Name = "btSave"
-        Me.btSave.Size = New System.Drawing.Size(29, 32)
-        Me.btSave.TabIndex = 41
-        Me.btSave.Text = "S"
-        Me.btSave.UseVisualStyleBackColor = True
         '
         'lvAbsences
         '
@@ -238,11 +205,11 @@ Partial Class Admin
         'btCLog
         '
         Me.btCLog.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btCLog.Location = New System.Drawing.Point(546, 531)
+        Me.btCLog.Location = New System.Drawing.Point(1010, 654)
         Me.btCLog.Name = "btCLog"
-        Me.btCLog.Size = New System.Drawing.Size(29, 32)
+        Me.btCLog.Size = New System.Drawing.Size(155, 61)
         Me.btCLog.TabIndex = 43
-        Me.btCLog.Text = "C"
+        Me.btCLog.Text = "Clear Log"
         Me.btCLog.UseVisualStyleBackColor = True
         '
         'Admin
@@ -252,13 +219,10 @@ Partial Class Admin
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.btCLog)
         Me.Controls.Add(Me.lvAbsences)
-        Me.Controls.Add(Me.btSave)
         Me.Controls.Add(Me.lbAcc)
         Me.Controls.Add(Me.btRefresh)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnPWchange)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lvEvents)
@@ -275,9 +239,7 @@ Partial Class Admin
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnPWchange As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lvEvents As System.Windows.Forms.ListView
@@ -293,7 +255,6 @@ Partial Class Admin
     Friend WithEvents btRefresh As System.Windows.Forms.Button
     Friend WithEvents lbAcc As System.Windows.Forms.Label
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
-    Friend WithEvents btSave As System.Windows.Forms.Button
     Friend WithEvents lvAbsences As System.Windows.Forms.ListView
     Friend WithEvents btCLog As System.Windows.Forms.Button
 End Class

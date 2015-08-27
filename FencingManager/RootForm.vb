@@ -27,7 +27,7 @@ Public Class RootForm
     Public Shared connection As New OleDbConnection
     Public Shared GearAdapter As New OleDb.OleDbDataAdapter
     Public Shared GearDataS As New DataSet()
-    Public Shared access_level As Integer = 3
+    Public Shared access_level As Integer = 0
 
 
     'Private WithEvents kbHook As New KeyboardHook
@@ -175,10 +175,14 @@ Public Class RootForm
     End Sub
 
     Private Sub btnAdmin_Click(sender As Object, e As EventArgs) Handles btnAdmin.Click
-        topform.hide()
-        topform = formAdmin
-        intform = ADMIN
-        topform.show()
+        If access_level < 2 Then
+            btnLogin_Click()
+        Else
+            topform.hide()
+            topform = formAdmin
+            intform = ADMIN
+            topform.show()
+        End If
     End Sub
 
     Private Sub btnFight_Click(sender As Object, e As EventArgs) Handles btnFight.Click
