@@ -124,7 +124,7 @@ Public Class RootForm
     End Sub
 
     Private Sub btnGearLoan_Click(sender As Object, e As EventArgs) Handles btnGearLoan.Click
-        If access_level < CAP Then
+        If access_level < 2 Then
             btnLogin_Click()
             MsgBox("An access level of captain or higher is required to view this")
         Else
@@ -151,9 +151,9 @@ Public Class RootForm
     End Sub
 
     Private Sub btnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
-        If access_level < MIC Then
+        If access_level < 3 Then
             btnLogin_Click()
-            MsgBox("An access level of MIC is required to view this")
+            MsgBox("An access level of MIC or higher is required to view this")
         Else
             topform.hide()
             topform = formEmail
@@ -176,6 +176,10 @@ Public Class RootForm
         intform = FIGHT_FORM
         topform.show()
         frmfight.reload()
+    End Sub
+
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+
     End Sub
 End Class
 

@@ -58,6 +58,14 @@ Public Class Login
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
             FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
             My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] " + TextBox1.Text + " tried to log in with incorrect password" & Environment.NewLine, True)
+
+            Dim asql As String = "SELECT AccessLevel FROM Logins WHERE Username=" + GlobalVariables.Username
+            Dim acmd As New OleDbCommand(asql, RootForm.connection)
+
+            With acmd
+                RootForm.access_level = acmd.ExecuteScalar.ToString
+            End With
+
         Catch ex1 As Exception
             ' Catch database connection or query errors:
             MsgBox(ex1.Message)

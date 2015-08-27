@@ -12,10 +12,10 @@ Public Class Admin
 
         If RootForm.access_level = 3 Then
             lbAcc.Text = "MIC ACCOUNT"
-        Else : lbAcc.Text = "OTHER"
+        Else : lbAcc.Text = GlobalVariables.Username
         End If
 
-        If RootForm.access_level = 3 Then
+        If RootForm.access_level = 2 Or 3 Then
             ' Connection
             Dim conn As New OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0;" + "Data Source=Fencing.accdb")
             'Query, Parameters
@@ -78,7 +78,7 @@ Public Class Admin
             End With
 
             RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
-        Else : MsgBox("An access level of MIC is required to view this")
+        Else : MsgBox("An access level of MIC or Captain/Coach is required to view this")
         End If
     End Sub
 
