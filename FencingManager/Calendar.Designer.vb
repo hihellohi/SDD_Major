@@ -244,13 +244,13 @@ Partial Class Calendar
         Me.su1 = New System.Windows.Forms.Label()
         Me.Textsu1 = New System.Windows.Forms.RichTextBox()
         Me.PanelHeader = New System.Windows.Forms.Panel()
+        Me.ButHideHelp = New System.Windows.Forms.Button()
         Me.LabTitle = New System.Windows.Forms.Label()
         Me.ButHelp = New System.Windows.Forms.Button()
         Me.ButSettings = New System.Windows.Forms.Button()
         Me.ButControlCalendar = New System.Windows.Forms.Button()
         Me.ButControlSearch = New System.Windows.Forms.Button()
         Me.ButControlDatabaseView = New System.Windows.Forms.Button()
-        Me.ButHideHelp = New System.Windows.Forms.Button()
         Me.PanelHelp = New System.Windows.Forms.Panel()
         Me.PicHelpCalendar = New System.Windows.Forms.PictureBox()
         Me.PicHelpDatabase = New System.Windows.Forms.PictureBox()
@@ -364,9 +364,9 @@ Partial Class Calendar
         'ControlPanelSettings
         '
         Me.ControlPanelSettings.Controls.Add(Me.GroupBoxSettings)
-        Me.ControlPanelSettings.Location = New System.Drawing.Point(12, 116)
+        Me.ControlPanelSettings.Location = New System.Drawing.Point(354, 546)
         Me.ControlPanelSettings.Name = "ControlPanelSettings"
-        Me.ControlPanelSettings.Size = New System.Drawing.Size(1167, 633)
+        Me.ControlPanelSettings.Size = New System.Drawing.Size(130, 79)
         Me.ControlPanelSettings.TabIndex = 91
         '
         'GroupBoxSettings
@@ -882,9 +882,9 @@ Partial Class Calendar
         Me.ControlPanelCalendar.Controls.Add(Me.pantu1)
         Me.ControlPanelCalendar.Controls.Add(Me.pansu2)
         Me.ControlPanelCalendar.Controls.Add(Me.pansu1)
-        Me.ControlPanelCalendar.Location = New System.Drawing.Point(41, 226)
+        Me.ControlPanelCalendar.Location = New System.Drawing.Point(971, 514)
         Me.ControlPanelCalendar.Name = "ControlPanelCalendar"
-        Me.ControlPanelCalendar.Size = New System.Drawing.Size(210, 194)
+        Me.ControlPanelCalendar.Size = New System.Drawing.Size(135, 133)
         Me.ControlPanelCalendar.TabIndex = 88
         '
         'PicNoWeapon
@@ -1096,7 +1096,7 @@ Partial Class Calendar
         Me.TexEventName.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TexEventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TexEventName.Location = New System.Drawing.Point(116, 20)
-        Me.TexEventName.MaxLength = 40
+        Me.TexEventName.MaxLength = 100
         Me.TexEventName.Name = "TexEventName"
         Me.TexEventName.ReadOnly = True
         Me.TexEventName.Size = New System.Drawing.Size(236, 28)
@@ -2889,6 +2889,20 @@ Partial Class Calendar
         Me.PanelHeader.Size = New System.Drawing.Size(1281, 110)
         Me.PanelHeader.TabIndex = 141
         '
+        'ButHideHelp
+        '
+        Me.ButHideHelp.BackColor = System.Drawing.Color.White
+        Me.ButHideHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ButHideHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButHideHelp.ForeColor = System.Drawing.Color.Maroon
+        Me.ButHideHelp.Location = New System.Drawing.Point(1108, 79)
+        Me.ButHideHelp.Name = "ButHideHelp"
+        Me.ButHideHelp.Size = New System.Drawing.Size(93, 33)
+        Me.ButHideHelp.TabIndex = 4
+        Me.ButHideHelp.Text = "Hide Help"
+        Me.ButHideHelp.UseVisualStyleBackColor = False
+        Me.ButHideHelp.Visible = False
+        '
         'LabTitle
         '
         Me.LabTitle.AutoSize = True
@@ -2963,19 +2977,6 @@ Partial Class Calendar
         Me.ButControlDatabaseView.TabIndex = 139
         Me.ButControlDatabaseView.Text = "Database View"
         Me.ButControlDatabaseView.UseVisualStyleBackColor = False
-        '
-        'ButHideHelp
-        '
-        Me.ButHideHelp.BackColor = System.Drawing.Color.White
-        Me.ButHideHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ButHideHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButHideHelp.Location = New System.Drawing.Point(1108, 79)
-        Me.ButHideHelp.Name = "ButHideHelp"
-        Me.ButHideHelp.Size = New System.Drawing.Size(93, 33)
-        Me.ButHideHelp.TabIndex = 4
-        Me.ButHideHelp.Text = "Hide Help"
-        Me.ButHideHelp.UseVisualStyleBackColor = False
-        Me.ButHideHelp.Visible = False
         '
         'PanelHelp
         '
