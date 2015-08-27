@@ -177,6 +177,7 @@ Public Class RootForm
     Private Sub btnAdmin_Click(sender As Object, e As EventArgs) Handles btnAdmin.Click
         If access_level < 2 Then
             btnLogin_Click()
+            MsgBox("An access level of Captain or higher is required to view this")
         Else
             topform.hide()
             topform = formAdmin
