@@ -24,7 +24,6 @@ Partial Class RootForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RootForm))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnminimize = New System.Windows.Forms.Button()
         Me.btnGearLoan = New System.Windows.Forms.Button()
         Me.btnFight = New System.Windows.Forms.Button()
         Me.btnLogin = New System.Windows.Forms.Button()
@@ -33,28 +32,17 @@ Partial Class RootForm
         Me.btnAttendance = New System.Windows.Forms.Button()
         Me.btnCalendar = New System.Windows.Forms.Button()
         Me.btnStudentProf = New System.Windows.Forms.Button()
-        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Panel1.Controls.Add(Me.btnminimize)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Panel1.Location = New System.Drawing.Point(110, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1256, 768)
         Me.Panel1.TabIndex = 0
-        '
-        'btnminimize
-        '
-        Me.btnminimize.Location = New System.Drawing.Point(1191, 31)
-        Me.btnminimize.Name = "btnminimize"
-        Me.btnminimize.Size = New System.Drawing.Size(53, 49)
-        Me.btnminimize.TabIndex = 1
-        Me.btnminimize.Text = "↓"
-        Me.btnminimize.UseVisualStyleBackColor = True
         '
         'btnGearLoan
         '
@@ -193,12 +181,10 @@ Partial Class RootForm
         Me.Name = "RootForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Fencing Manager"
-        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents btnminimize As System.Windows.Forms.Button
     Friend WithEvents btnStudentProf As System.Windows.Forms.Button
     Friend WithEvents btnCalendar As System.Windows.Forms.Button
     Friend WithEvents btnAttendance As System.Windows.Forms.Button
