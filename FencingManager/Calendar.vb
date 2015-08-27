@@ -44,6 +44,7 @@ Public Class Calendar
 
     'This block here is for intialising Calendar
     Public Sub ReloadCal(ByVal InputDate As Date, ByVal Selected As Integer)
+        On Error Resume Next
         Me.clearall()       'Clears the calendar
         Dim FirstDate As DayOfWeek = GetFirstOfMonthDay(InputDate)
         Dim DateCounter As Integer = 1
@@ -231,12 +232,34 @@ Public Class Calendar
         End If
         Do                      'counts backwards until it reaches 1/the first day of the month
             InputDateDay -= 1
-            NameOfInputDay = IncrementTheDay(NameOfInputDay)
+            NameOfInputDay = DecrementTheDay(NameOfInputDay)
             If InputDateDay = 1 Then Exit Do
         Loop
         Return NameOfInputDay
     End Function
+    'Continually decrements the day
+    Private Function DecrementTheDay(ByVal NameOfInputDay As DayOfWeek) As DayOfWeek
+        Dim DayOfWeekToBeReturned As DayOfWeek
+        Select Case NameOfInputDay
+            Case DayOfWeek.Sunday
+                DayOfWeekToBeReturned = DayOfWeek.Saturday
+            Case DayOfWeek.Monday
+                DayOfWeekToBeReturned = DayOfWeek.Sunday
+            Case DayOfWeek.Tuesday
+                DayOfWeekToBeReturned = DayOfWeek.Monday
+            Case DayOfWeek.Wednesday
+                DayOfWeekToBeReturned = DayOfWeek.Tuesday
+            Case DayOfWeek.Thursday
+                DayOfWeekToBeReturned = DayOfWeek.Wednesday
+            Case DayOfWeek.Friday
+                DayOfWeekToBeReturned = DayOfWeek.Thursday
+            Case DayOfWeek.Saturday
+                DayOfWeekToBeReturned = DayOfWeek.Friday
+        End Select
+        Return DayOfWeekToBeReturned
+    End Function
     'Continually increments the day
+    'the sub above counts backwards whilst this one counts forwards
     Private Function IncrementTheDay(ByVal NameOfInputDay As DayOfWeek) As DayOfWeek
         Dim DayOfWeekToBeReturned As DayOfWeek
         Select Case NameOfInputDay
@@ -275,6 +298,10 @@ Public Class Calendar
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
+
+        ReloadCal(Now, Now.Day)                 'loads the virtual calendar
+
+
         'Initial graphics open:
 
 
@@ -303,10 +330,6 @@ Public Class Calendar
 
         'Initial graphics close
 
-
-
-
-        ReloadCal(Now, Now.Day)                 'loads the virtual calendar
 
 
 
