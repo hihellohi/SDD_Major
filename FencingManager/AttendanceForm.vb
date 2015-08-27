@@ -53,7 +53,7 @@
         SplitContainer1.Panel1.Enabled = False
         FillRoll()        
         SplitContainer1.Panel2.Enabled = True
-        Label1.Text = "Attendance Check - Roll"
+        titleLabel.Text = "Attendance Check - Roll"
     End Sub
 
     Private Sub btnBarcode_Click(sender As Object, e As EventArgs) Handles btnBarcode.Click
@@ -66,7 +66,7 @@
         For i = 0 To roll.Items.Count - 1
             roll.SetItemChecked(i, True)
         Next
-        Label1.Text = "Attendance Check - Barcode Scan"
+        titleLabel.Text = "Attendance Check - Barcode Scan"
     End Sub
 
     Private Sub Reset()
@@ -77,7 +77,7 @@
         SplitContainer1.Panel2.Enabled = False
         SplitContainer1.Panel1.Enabled = True
         barcodePanel.Hide()
-        Label1.Text = "Attendance Check"
+        titleLabel.Text = "Attendance Check"
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -121,7 +121,8 @@
         studentAdapter.Update(studentDataTable)
         absencesAdapter.Update(absencesTable)
         Reset()
-        Label1.Text = "Attendance Check - Saved"
+        titleLabel.Text = "Attendance Check - Saved"
+        btnSave.Text = "Saved"
         Timer1.Start()
     End Sub
 
@@ -131,7 +132,7 @@
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         barcodePanel.Hide()
-        Label1.Text = "Attendance Check - Confirm"
+        titleLabel.Text = "Attendance Check - Confirm"
     End Sub
 
     Private Sub btnEnterBarcode_Click(sender As Object, e As EventArgs) Handles btnEnterBarcode.Click
@@ -147,11 +148,13 @@
                 i = i + 1
             End While
             lblScanMsg.Text = txtBarcode.Text + "   " + Now.Hour.ToString() + ":" + Now.Minute.ToString()
+            txtBarcode.Clear()
         End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Timer1.Stop()
-        Label1.Text = "Attendance Check"
+        titleLabel.Text = "Attendance Check"
+        btnSave.Text = "Save"
     End Sub
 End Class
