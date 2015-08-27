@@ -61,11 +61,14 @@ Partial Class RootForm
         Me.btnGearLoan.BackColor = System.Drawing.Color.Green
         Me.btnGearLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGearLoan.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnGearLoan.Image = Global.FencingManager.My.Resources.Resources.bookbag
+        Me.btnGearLoan.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnGearLoan.Location = New System.Drawing.Point(0, 288)
         Me.btnGearLoan.Name = "btnGearLoan"
         Me.btnGearLoan.Size = New System.Drawing.Size(110, 96)
         Me.btnGearLoan.TabIndex = 5
         Me.btnGearLoan.Text = "Gear Loaning"
+        Me.btnGearLoan.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnGearLoan.UseVisualStyleBackColor = False
         '
         'btnFight
