@@ -159,7 +159,12 @@
         formNew.ShowDialog()
         If formNew.DialogResult = Windows.Forms.DialogResult.Yes Then
             studentDatatable.AddStudentProfilesRow(formNew.newRow)
-            studentAdapter.Update(studentDatatable)
+            studentAdapter.Update(studentDataTable)
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Student " & formNew.newRow.StudentID & " was created by " & GlobalVariables.Username)
+            detailsForm.FillStudent(formNew.newRow.StudentID)
+            detailsPanel.Show()
+            detailsTopPanel.Show()
+            ListView1.Items.Clear()
         End If
     End Sub
 

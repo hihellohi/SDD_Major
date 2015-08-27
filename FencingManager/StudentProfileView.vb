@@ -231,6 +231,7 @@ Public Class StudentProfileView
         ResetAbsences()
         btnAddReason.Enabled = False
         PopulateAbsencesList()
+        RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Student " & txtID.Text & "'s absence marked as explained by " & GlobalVariables.Username)
     End Sub
 
     Private Sub ResetAbsences()
@@ -318,6 +319,7 @@ Public Class StudentProfileView
                 PopulateDetails()
                 ResetDetails()
                 currentStudentID = studentRow.StudentID
+                RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Student " & txtID.Text & " was edited by " & GlobalVariables.Username)
             End If
         End If
     End Sub
@@ -357,6 +359,8 @@ Public Class StudentProfileView
             studentRow.Deaths += newRow.Deaths
             studentAdapter.Update(studentDataTable)
             PopulateStatistics()
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Score for student " & txtID.Text & " added by " & GlobalVariables.Username & "(K/D:" &
+                                  newRow.Kills & "/" & newRow.Deaths & ")")
         End If
     End Sub
 
