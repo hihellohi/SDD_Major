@@ -57,8 +57,22 @@ Partial Class StudentProfileView
         Me.txtReason = New System.Windows.Forms.TextBox()
         Me.btnShowStats = New System.Windows.Forms.Button()
         Me.btnShowAbsences = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblWins = New System.Windows.Forms.Label()
+        Me.lblKills = New System.Windows.Forms.Label()
+        Me.lblDeaths = New System.Windows.Forms.Label()
+        Me.lblRatio = New System.Windows.Forms.Label()
+        Me.statisticsList = New System.Windows.Forms.ListView()
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnAddScores = New System.Windows.Forms.Button()
         Me.infoPanel.SuspendLayout()
         Me.absencesPanel.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -316,7 +330,7 @@ Partial Class StudentProfileView
         Me.absencesPanel.Controls.Add(Me.txtReason)
         Me.absencesPanel.Location = New System.Drawing.Point(506, 12)
         Me.absencesPanel.Name = "absencesPanel"
-        Me.absencesPanel.Size = New System.Drawing.Size(738, 634)
+        Me.absencesPanel.Size = New System.Drawing.Size(102, 79)
         Me.absencesPanel.TabIndex = 18
         '
         'btnCancelReason
@@ -395,6 +409,113 @@ Partial Class StudentProfileView
         Me.btnShowAbsences.Text = "Absences"
         Me.btnShowAbsences.UseVisualStyleBackColor = True
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.btnAddScores)
+        Me.Panel1.Controls.Add(Me.statisticsList)
+        Me.Panel1.Controls.Add(Me.lblRatio)
+        Me.Panel1.Controls.Add(Me.lblDeaths)
+        Me.Panel1.Controls.Add(Me.lblKills)
+        Me.Panel1.Controls.Add(Me.lblWins)
+        Me.Panel1.Controls.Add(Me.Label11)
+        Me.Panel1.Location = New System.Drawing.Point(532, 12)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(712, 634)
+        Me.Panel1.TabIndex = 21
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(290, 22)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(125, 31)
+        Me.Label11.TabIndex = 21
+        Me.Label11.Text = "Statistics"
+        '
+        'lblWins
+        '
+        Me.lblWins.AutoSize = True
+        Me.lblWins.Location = New System.Drawing.Point(39, 91)
+        Me.lblWins.Name = "lblWins"
+        Me.lblWins.Size = New System.Drawing.Size(73, 26)
+        Me.lblWins.TabIndex = 22
+        Me.lblWins.Text = "Wins: "
+        '
+        'lblKills
+        '
+        Me.lblKills.AutoSize = True
+        Me.lblKills.Location = New System.Drawing.Point(328, 91)
+        Me.lblKills.Name = "lblKills"
+        Me.lblKills.Size = New System.Drawing.Size(53, 26)
+        Me.lblKills.TabIndex = 23
+        Me.lblKills.Text = "Kills"
+        '
+        'lblDeaths
+        '
+        Me.lblDeaths.AutoSize = True
+        Me.lblDeaths.Location = New System.Drawing.Point(328, 144)
+        Me.lblDeaths.Name = "lblDeaths"
+        Me.lblDeaths.Size = New System.Drawing.Size(163, 26)
+        Me.lblDeaths.TabIndex = 24
+        Me.lblDeaths.Text = "Kill/Death Ratio"
+        '
+        'lblRatio
+        '
+        Me.lblRatio.AutoSize = True
+        Me.lblRatio.Location = New System.Drawing.Point(39, 144)
+        Me.lblRatio.Name = "lblRatio"
+        Me.lblRatio.Size = New System.Drawing.Size(81, 26)
+        Me.lblRatio.TabIndex = 25
+        Me.lblRatio.Text = "Deaths"
+        '
+        'statisticsList
+        '
+        Me.statisticsList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
+        Me.statisticsList.FullRowSelect = True
+        Me.statisticsList.HideSelection = False
+        Me.statisticsList.Location = New System.Drawing.Point(44, 197)
+        Me.statisticsList.MultiSelect = False
+        Me.statisticsList.Name = "statisticsList"
+        Me.statisticsList.Size = New System.Drawing.Size(633, 378)
+        Me.statisticsList.TabIndex = 26
+        Me.statisticsList.UseCompatibleStateImageBehavior = False
+        Me.statisticsList.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Opponent"
+        Me.ColumnHeader3.Width = 157
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Outcome"
+        Me.ColumnHeader4.Width = 111
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Kills"
+        Me.ColumnHeader5.Width = 72
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "Deaths"
+        Me.ColumnHeader6.Width = 94
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "Kill/Death Ratio"
+        Me.ColumnHeader7.Width = 182
+        '
+        'btnAddScores
+        '
+        Me.btnAddScores.Location = New System.Drawing.Point(543, 581)
+        Me.btnAddScores.Name = "btnAddScores"
+        Me.btnAddScores.Size = New System.Drawing.Size(134, 43)
+        Me.btnAddScores.TabIndex = 27
+        Me.btnAddScores.Text = "Add Scores"
+        Me.btnAddScores.UseVisualStyleBackColor = True
+        '
         'StudentProfileView
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -404,6 +525,7 @@ Partial Class StudentProfileView
         Me.Controls.Add(Me.absencesPanel)
         Me.Controls.Add(Me.infoPanel)
         Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "StudentProfileView"
@@ -412,6 +534,8 @@ Partial Class StudentProfileView
         Me.infoPanel.PerformLayout()
         Me.absencesPanel.ResumeLayout(False)
         Me.absencesPanel.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -451,4 +575,17 @@ Partial Class StudentProfileView
     Friend WithEvents lblAttendance As System.Windows.Forms.Label
     Friend WithEvents btnShowStats As System.Windows.Forms.Button
     Friend WithEvents btnShowAbsences As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents btnAddScores As System.Windows.Forms.Button
+    Friend WithEvents statisticsList As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents lblRatio As System.Windows.Forms.Label
+    Friend WithEvents lblDeaths As System.Windows.Forms.Label
+    Friend WithEvents lblKills As System.Windows.Forms.Label
+    Friend WithEvents lblWins As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 End Class

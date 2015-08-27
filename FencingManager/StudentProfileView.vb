@@ -2,12 +2,14 @@
     Public editMode As Boolean
     Dim absencesAdapter As OleDb.OleDbDataAdapter
     Dim absencesDataTable As FencingDataSet.AbsencesDataTable
+    Dim currentStudentID As String
 
 
     Private Sub StudentProfileView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     End Sub
 
     Sub FillStudent(selectedID As Integer)
+        currentStudentID = selectedID
         Dim command = "SELECT * FROM Absences WHERE StudentID = @StuID ORDER BY AbsenceDate"
         absencesAdapter = New OleDb.OleDbDataAdapter()
         absencesDataTable = New FencingDataSet.AbsencesDataTable()
@@ -28,6 +30,7 @@
             End If
             absenceList.Items.Add(row)
         Next
+        btnAddReason.Enabled = False
     End Sub
 
 
@@ -89,7 +92,9 @@
         absence.Explained = True
         absence.Explanation = txtReason.Text
         If absence.HasErrors = False Then
-            absencesAdapter.UpdateCommand = New OleDb.OleDbCommand()
+            absencesAdapter.UpdateCommand = New OleDb.OleDbCommand("UPDATE Absences SET Explained = TRUE, Explanation = '@expl' WHERE ID = @id", RootForm.connection)
+            absencesAdapter.UpdateCommand.Parameters.AddWithValue("@expl", absence.Explanation)
+            absencesAdapter.UpdateCommand.Parameters.AddWithValue("@id", absence.ID)
             absencesAdapter.Update(absencesDataTable) 'Update to database
             'Reflect changes in listview
             absenceList.Items(index).ForeColor = Color.Black

@@ -141,6 +141,12 @@
     <Compile Include="returnhelp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="StudentProfilesAddScores.Designer.vb">
+      <DependentUpon>StudentProfilesAddScores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentProfilesAddScores.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StudentProfilesCreate.Designer.vb">
       <DependentUpon>StudentProfilesCreate.vb</DependentUpon>
     </Compile>
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="returnhelp.resx">
       <DependentUpon>returnhelp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentProfilesAddScores.resx">
+      <DependentUpon>StudentProfilesAddScores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentProfilesCreate.resx">
       <DependentUpon>StudentProfilesCreate.vb</DependentUpon>
