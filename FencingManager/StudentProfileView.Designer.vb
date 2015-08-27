@@ -51,7 +51,7 @@ Partial Class StudentProfileView
         Me.absencesPanel = New System.Windows.Forms.Panel()
         Me.btnCancelReason = New System.Windows.Forms.Button()
         Me.btnDone = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblUnexplained = New System.Windows.Forms.Label()
         Me.lblAbsences = New System.Windows.Forms.Label()
         Me.lblAttendance = New System.Windows.Forms.Label()
         Me.txtReason = New System.Windows.Forms.TextBox()
@@ -76,6 +76,7 @@ Partial Class StudentProfileView
         Me.errStudentID = New System.Windows.Forms.PictureBox()
         Me.errEmail = New System.Windows.Forms.PictureBox()
         Me.errPhone = New System.Windows.Forms.PictureBox()
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.infoPanel.SuspendLayout()
         Me.absencesPanel.SuspendLayout()
         Me.statsPanel.SuspendLayout()
@@ -319,7 +320,7 @@ Partial Class StudentProfileView
         '
         Me.absencesPanel.Controls.Add(Me.btnCancelReason)
         Me.absencesPanel.Controls.Add(Me.btnDone)
-        Me.absencesPanel.Controls.Add(Me.Label10)
+        Me.absencesPanel.Controls.Add(Me.lblUnexplained)
         Me.absencesPanel.Controls.Add(Me.lblAbsences)
         Me.absencesPanel.Controls.Add(Me.lblAttendance)
         Me.absencesPanel.Controls.Add(Me.absenceList)
@@ -329,7 +330,7 @@ Partial Class StudentProfileView
         Me.absencesPanel.Controls.Add(Me.txtReason)
         Me.absencesPanel.Location = New System.Drawing.Point(506, 12)
         Me.absencesPanel.Name = "absencesPanel"
-        Me.absencesPanel.Size = New System.Drawing.Size(738, 624)
+        Me.absencesPanel.Size = New System.Drawing.Size(745, 648)
         Me.absencesPanel.TabIndex = 18
         '
         'btnCancelReason
@@ -359,14 +360,14 @@ Partial Class StudentProfileView
         Me.btnDone.UseVisualStyleBackColor = False
         Me.btnDone.Visible = False
         '
-        'Label10
+        'lblUnexplained
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(453, 250)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(145, 26)
-        Me.Label10.TabIndex = 20
-        Me.Label10.Text = "Unexplained: "
+        Me.lblUnexplained.AutoSize = True
+        Me.lblUnexplained.Location = New System.Drawing.Point(453, 250)
+        Me.lblUnexplained.Name = "lblUnexplained"
+        Me.lblUnexplained.Size = New System.Drawing.Size(145, 26)
+        Me.lblUnexplained.TabIndex = 20
+        Me.lblUnexplained.Text = "Unexplained: "
         '
         'lblAbsences
         '
@@ -437,13 +438,13 @@ Partial Class StudentProfileView
         '
         'statisticsList
         '
-        Me.statisticsList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
+        Me.statisticsList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader8, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
         Me.statisticsList.FullRowSelect = True
         Me.statisticsList.HideSelection = False
-        Me.statisticsList.Location = New System.Drawing.Point(44, 173)
+        Me.statisticsList.Location = New System.Drawing.Point(3, 173)
         Me.statisticsList.MultiSelect = False
         Me.statisticsList.Name = "statisticsList"
-        Me.statisticsList.Size = New System.Drawing.Size(633, 402)
+        Me.statisticsList.Size = New System.Drawing.Size(706, 402)
         Me.statisticsList.TabIndex = 26
         Me.statisticsList.UseCompatibleStateImageBehavior = False
         Me.statisticsList.View = System.Windows.Forms.View.Details
@@ -451,7 +452,7 @@ Partial Class StudentProfileView
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "Opponent"
-        Me.ColumnHeader3.Width = 157
+        Me.ColumnHeader3.Width = 161
         '
         'ColumnHeader4
         '
@@ -461,17 +462,17 @@ Partial Class StudentProfileView
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Kills"
-        Me.ColumnHeader5.Width = 72
+        Me.ColumnHeader5.Width = 73
         '
         'ColumnHeader6
         '
         Me.ColumnHeader6.Text = "Deaths"
-        Me.ColumnHeader6.Width = 94
+        Me.ColumnHeader6.Width = 85
         '
         'ColumnHeader7
         '
-        Me.ColumnHeader7.Text = "Kill/Death Ratio"
-        Me.ColumnHeader7.Width = 182
+        Me.ColumnHeader7.Text = "K/D Ratio"
+        Me.ColumnHeader7.Width = 120
         '
         'lblRatio
         '
@@ -582,6 +583,11 @@ Partial Class StudentProfileView
         Me.errorToolTip.SetToolTip(Me.errPhone, "Please enter the student's phone number")
         Me.errPhone.Visible = False
         '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.Text = "Date"
+        Me.ColumnHeader8.Width = 137
+        '
         'StudentProfileView
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -639,7 +645,7 @@ Partial Class StudentProfileView
     Friend WithEvents txtReason As System.Windows.Forms.TextBox
     Friend WithEvents btnCancelReason As System.Windows.Forms.Button
     Friend WithEvents btnDone As System.Windows.Forms.Button
-    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents lblUnexplained As System.Windows.Forms.Label
     Friend WithEvents lblAbsences As System.Windows.Forms.Label
     Friend WithEvents lblAttendance As System.Windows.Forms.Label
     Friend WithEvents btnShowStats As System.Windows.Forms.Button
@@ -663,4 +669,5 @@ Partial Class StudentProfileView
     Friend WithEvents errStudentID As System.Windows.Forms.PictureBox
     Friend WithEvents errEmail As System.Windows.Forms.PictureBox
     Friend WithEvents errPhone As System.Windows.Forms.PictureBox
+    Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
 End Class

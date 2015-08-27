@@ -7,6 +7,8 @@ Public Class StudentProfileView
     Dim studentAdapter As FencingDataSetTableAdapters.StudentProfilesTableAdapter
     Dim studentDataTable As FencingDataSet.StudentProfilesDataTable
     Dim currentStudentID As String
+    Dim scoresAdapter As FencingDataSetTableAdapters.ScoresTableAdapter
+    Dim scoresTable As FencingDataSet.ScoresDataTable
     Dim emailRegex As Regex
 
     Private Sub StudentProfileView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -15,9 +17,12 @@ Public Class StudentProfileView
 
     Sub FillStudent(selectedID As Integer)
         currentStudentID = selectedID
-        PopulateAbsencesList()
         PopulateDetails()
+        PopulateAbsencesList()
+        PopulateStatistics()
         btnAddReason.Enabled = False
+        absencesPanel.Hide()
+        statsPanel.Show()
     End Sub
 
     Sub PopulateAbsencesList()
@@ -43,6 +48,10 @@ Public Class StudentProfileView
             End If
             absenceList.Items.Add(row)
         Next
+        Dim studentRow = studentDataTable.FindByStudentID(currentStudentID)
+        lblAttendance.Text = "Attendance: " & studentRow.totalPresences & "/" & (studentRow.totalPresences + studentRow.totalAbsences)
+        lblAbsences.Text = "Absences: " & studentRow.totalAbsences
+        lblUnexplained.Text = "Unexplained: " & studentRow.unexplainedAbsences
     End Sub
 
     Sub PopulateDetails()
@@ -66,6 +75,48 @@ Public Class StudentProfileView
         txtEmail.ReadOnly = True
         txtPhone.ReadOnly = True
 
+    End Sub
+
+    Sub PopulateStatistics()
+        Dim studentRow As FencingDataSet.StudentProfilesRow = studentDataTable.Select("StudentID = " & currentStudentID)(0)
+        lblWins.Text = "Wins: " & studentRow.Wins & "/" & (studentRow.Wins + studentRow.Losses)
+        lblKills.Text = "Total Kills: " & studentRow.Kills
+        lblDeaths.Text = "Total Deaths: " & studentRow.Deaths
+        Dim ratio As Double
+        If studentRow.Deaths > 0 Then
+            ratio = studentRow.Kills / studentRow.Deaths
+        Else
+            ratio = studentRow.Kills / 1.0
+        End If
+        lblRatio.Text = "Kill/Death Ratio: " + Math.Round(ratio, 3).ToString()
+        statisticsList.Items.Clear()
+        scoresAdapter = New FencingDataSetTableAdapters.ScoresTableAdapter()
+        scoresTable = New FencingDataSet.ScoresDataTable()
+        scoresAdapter.Fill(scoresTable)
+        For Each matchRow As FencingDataSet.ScoresRow In scoresTable.Select("StudentID = " & currentStudentID, "MatchDate")
+            If matchRow.RowState <> DataRowState.Deleted Then
+                Dim item As New ListViewItem()
+                item.Text = matchRow.MatchDate.ToString("dd/MM/yyyy")
+                item.SubItems.Add(matchRow.Opponent)
+                If matchRow.Kills > matchRow.Deaths Then
+                    item.SubItems.Add("Won")
+                ElseIf matchRow.Kills = matchRow.Deaths Then
+                    item.SubItems.Add("Tie")
+                Else
+                    item.SubItems.Add("Lost")
+                End If
+                item.SubItems.Add(matchRow.Kills.ToString())
+                item.SubItems.Add(matchRow.Deaths.ToString())
+                Dim matchRatio As Double
+                If matchRow.Deaths > 0 Then
+                    matchRatio = matchRow.Kills / matchRow.Deaths
+                Else
+                    matchRatio = matchRow.Kills / 1.0
+                End If
+                item.SubItems.Add(Math.Round(matchRatio, 3).ToString())
+                statisticsList.Items.Add(item)
+            End If
+        Next
     End Sub
 
     Private Sub chkUnexplained_CheckedChanged(sender As Object, e As EventArgs) Handles chkUnexplained.CheckedChanged
@@ -128,13 +179,13 @@ Public Class StudentProfileView
         If absence.HasErrors = False Then
 
             absencesAdapter.Update(absencesDataTable) 'Update to database
-            'Reflect changes in listview
-            PopulateAbsencesList()
-            'absenceList.Items(index).ForeColor = Color.Black
-            'absenceList.Items(index).SubItems(1).Text = absence.Explanation
         End If
+        Dim studentRow = studentDataTable.FindByStudentID(currentStudentID)
+        studentRow.unexplainedAbsences -= 1
+        studentAdapter.Update(studentDataTable)
         ResetAbsences()
         btnAddReason.Enabled = False
+        PopulateAbsencesList()
     End Sub
 
     Private Sub ResetAbsences()
@@ -157,7 +208,6 @@ Public Class StudentProfileView
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If Not editMode Then
             'Edit personal info
-            txtID.ReadOnly = False
             txtFirstName.ReadOnly = False
             txtSurname.ReadOnly = False
             cbbYear.Enabled = True
@@ -240,5 +290,38 @@ Public Class StudentProfileView
         btnShowStats.Enabled = True
         absencesPanel.Enabled = True
         statsPanel.Enabled = True
+    End Sub
+
+    Private Sub btnAddScores_Click(sender As Object, e As EventArgs) Handles btnAddScores.Click
+        Dim scoresDialog = New StudentProfilesAddScores(scoresTable.NewScoresRow())
+        scoresDialog.ShowDialog()
+        If scoresDialog.DialogResult = Windows.Forms.DialogResult.OK Then
+            Dim newRow = scoresDialog.newScore
+            newRow.StudentID = currentStudentID
+            'Update scores record
+            scoresTable.AddScoresRow(newRow)
+            scoresAdapter.Update(scoresTable)
+            'Update student record
+            Dim studentRow = studentDataTable.FindByStudentID(currentStudentID)
+            If newRow.Kills > newRow.Deaths Then
+                studentRow.Wins += 1
+            Else
+                studentRow.Losses += 1
+            End If
+            studentRow.Kills += newRow.Kills
+            studentRow.Deaths += newRow.Deaths
+            studentAdapter.Update(studentDataTable)
+            PopulateStatistics()
+        End If
+    End Sub
+
+    Private Sub btnShowAbsences_Click(sender As Object, e As EventArgs) Handles btnShowAbsences.Click
+        absencesPanel.Show()
+        statsPanel.Hide()
+    End Sub
+
+    Private Sub btnShowStats_Click(sender As Object, e As EventArgs) Handles btnShowStats.Click
+        statsPanel.Show()
+        absencesPanel.Hide()
     End Sub
 End Class

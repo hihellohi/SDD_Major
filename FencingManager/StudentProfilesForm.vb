@@ -45,7 +45,7 @@
         lblSchoolYear.Text = "Year " + row.SchoolYear.ToString()
         lblWeapon.Text = "Weapon: " + WeaponText(row.Weapon)
         If row.Wins + row.Losses > 0 Then
-            lblWins.Text = "Wins: " & row.Wins & "/" & row.Losses
+            lblWins.Text = "Wins: " & row.Wins & "/" & (row.Wins + row.Losses)
             Dim ratio As Double
             If row.Deaths > 0 Then
                 ratio = row.Kills / row.Deaths
