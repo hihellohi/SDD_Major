@@ -1975,7 +1975,6 @@ Public Class Calendar
         ButControlDatabaseView.Enabled = True
 
         HelpSlidingTimer.Enabled = True
-
     End Sub
 
 
