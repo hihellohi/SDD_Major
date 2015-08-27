@@ -362,11 +362,12 @@
         End If
     End Sub
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
+
         btnHelp.BackColor = Color.White
         btnHelp.ForeColor = Color.Black
         btnMain.BackColor = Color.Black
         btnMain.ForeColor = Color.White
-        'ptbHelp.Visible = True
+        ptbHelp.Visible = True
         btnMain.Top = 79
         btnMain.Height = 31
         btnHelp.Top = 71
@@ -374,11 +375,12 @@
     End Sub
 
     Private Sub btnMain_Click(sender As Object, e As EventArgs) Handles btnMain.Click
+
         btnMain.BackColor = Color.White
         btnMain.ForeColor = Color.Black
         btnHelp.BackColor = Color.Black
         btnHelp.ForeColor = Color.White
-        'ptbHelp.Visible = False
+        ptbHelp.Visible = False
         btnMain.Top = 71
         btnMain.Height = 39
         btnHelp.Top = 79

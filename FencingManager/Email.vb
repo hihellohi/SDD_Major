@@ -32,7 +32,7 @@ Public Class Email
         'send overdue notices
         Dim hashtable As New Hashtable()
         Dim count As Integer = 0
-        Dim things(RootForm.GearDataS.Tables("Gear").Rows.Count) As List(Of Integer)
+        Dim overdueItems(RootForm.GearDataS.Tables("Gear").Rows.Count) As List(Of Integer)
 
         Dim tmp As DataRow
         For Each tmp In RootForm.GearDataS.Tables("Gear").Rows
@@ -44,9 +44,9 @@ Public Class Email
                     If Not hashtable.Contains(tmp("StudentLoaned")) Then
                         hashtable.Add(tmp("StudentLoaned"), count)
                         count += 1
-                        things(hashtable(tmp("StudentLoaned"))) = New List(Of Integer)
+                        overdueItems(hashtable(tmp("StudentLoaned"))) = New List(Of Integer)
                     End If
-                    things(hashtable(tmp("StudentLoaned"))).Add(tmp("ID") - 1)
+                    overdueItems(hashtable(tmp("StudentLoaned"))).Add(tmp("ID") - 1)
                 End If
             End If
         Next
@@ -81,11 +81,11 @@ Public Class Email
                         email.To.Add(tmpb("Email"))
                         email.Subject = "Overdue Notice"
                         email.IsBodyHtml = True
-                        email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body>You have loaned " + things(hashtable(tmpa)).Count.ToString() + " items from your fencing organisation that are overdue. Please return immediately"
+                        email.Body = "<!DOCTYPE html><html><head><style>table, th, td {border: 1px solid black;}</style></head><body>You have loaned " + overdueItems(hashtable(tmpa)).Count.ToString() + " items from your fencing organisation that are overdue. Please return immediately"
                         'construct table
                         email.Body += "<p><table width = ""500""><tr><th>Gear ID</th><th>Gear Type</th><th>Due Date</th></tr>"
                         Dim iter As Integer
-                        For Each iter In things(hashtable(tmpa))
+                        For Each iter In overdueItems(hashtable(tmpa))
                             email.Body += "<tr align = center><td>" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("GearID").ToString() + "</td><td>" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("GearType").ToString() + "</td><td>"
                             email.Body += RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueDay").ToString() + "/" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueMonth").ToString() + "/" + RootForm.GearDataS.Tables("Gear").Rows(iter).Item("DueYear").ToString() + "</td></tr>"
                         Next
@@ -245,8 +245,8 @@ Public Class Email
     End Function
 
 
-    Private Function send_email(ByRef blah As List(Of String), ByRef events As List(Of item))
-        If blah.Count = 0 Then
+    Private Function send_email(ByRef recipients As List(Of String), ByRef events As List(Of item))
+        If recipients.Count = 0 Then
             'if no recipients
             Return False
         End If
@@ -262,7 +262,7 @@ Public Class Email
             email = New MailMessage()
             email.From = New MailAddress("engardefencingmanager@gmail.com")
             Dim tmp As String
-            For Each tmp In blah
+            For Each tmp In recipients
                 email.Bcc.Add(tmp)
             Next
             email.Subject = "Message From Fencing"

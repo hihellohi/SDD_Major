@@ -333,7 +333,7 @@ Partial Class Email
         Me.ptbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ptbHelp.Location = New System.Drawing.Point(0, 110)
         Me.ptbHelp.Name = "ptbHelp"
-        Me.ptbHelp.Size = New System.Drawing.Size(1255, 657)
+        Me.ptbHelp.Size = New System.Drawing.Size(1256, 657)
         Me.ptbHelp.TabIndex = 23
         Me.ptbHelp.TabStop = False
         Me.ptbHelp.Visible = False

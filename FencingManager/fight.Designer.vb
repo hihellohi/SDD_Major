@@ -57,20 +57,22 @@ Partial Class fight
         Me.lblScore = New System.Windows.Forms.Label()
         Me.lblTime = New System.Windows.Forms.Label()
         Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.lblHide = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ptbHelp = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ptbHelp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -473,36 +475,6 @@ Partial Class fight
         '
         Me.tmrClock.Interval = 1000
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.FencingManager.My.Resources.Resources.mouseleft
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(360, 400)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(48, 50)
-        Me.PictureBox1.TabIndex = 13
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackgroundImage = Global.FencingManager.My.Resources.Resources.mousemiddle
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox2.Location = New System.Drawing.Point(543, 400)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(48, 50)
-        Me.PictureBox2.TabIndex = 14
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.BackgroundImage = Global.FencingManager.My.Resources.Resources.mouseright
-        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox3.Location = New System.Drawing.Point(738, 400)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(48, 50)
-        Me.PictureBox3.TabIndex = 15
-        Me.PictureBox3.TabStop = False
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -552,11 +524,53 @@ Partial Class fight
         Me.btnReset.UseVisualStyleBackColor = True
         Me.btnReset.Visible = False
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackgroundImage = Global.FencingManager.My.Resources.Resources.mouseright
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox3.Location = New System.Drawing.Point(738, 400)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(48, 50)
+        Me.PictureBox3.TabIndex = 15
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.FencingManager.My.Resources.Resources.mousemiddle
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.Location = New System.Drawing.Point(543, 400)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(48, 50)
+        Me.PictureBox2.TabIndex = 14
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = Global.FencingManager.My.Resources.Resources.mouseleft
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(360, 400)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(48, 50)
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
+        '
+        'ptbHelp
+        '
+        Me.ptbHelp.BackgroundImage = Global.FencingManager.My.Resources.Resources.fight
+        Me.ptbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ptbHelp.Location = New System.Drawing.Point(0, 110)
+        Me.ptbHelp.Name = "ptbHelp"
+        Me.ptbHelp.Size = New System.Drawing.Size(1256, 658)
+        Me.ptbHelp.TabIndex = 24
+        Me.ptbHelp.TabStop = False
+        Me.ptbHelp.Visible = False
+        '
         'fight
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1256, 768)
+        Me.Controls.Add(Me.ptbHelp)
         Me.Controls.Add(Me.lblHide)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.Label11)
@@ -582,9 +596,10 @@ Partial Class fight
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ptbHelp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -631,4 +646,5 @@ Partial Class fight
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents lblHide As System.Windows.Forms.Label
     Friend WithEvents btnReset As System.Windows.Forms.Button
+    Friend WithEvents ptbHelp As System.Windows.Forms.PictureBox
 End Class

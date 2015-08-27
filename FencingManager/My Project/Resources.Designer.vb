@@ -63,16 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property All_weapons_symbol() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("All weapons symbol", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property Calendar_Panel() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Calendar Panel", resourceCulture)
@@ -193,6 +183,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property fight() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("fight", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Foil_symbol1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Foil symbol1", resourceCulture)
@@ -231,17 +231,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-
-        Friend ReadOnly Property No_Weapon_Symbol() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("No Weapon Symbol", resourceCulture)
-		Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-
-	'''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property mouseleft() As System.Drawing.Bitmap
