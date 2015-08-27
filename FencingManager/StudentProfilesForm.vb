@@ -75,6 +75,11 @@
             If TextBox1.Text = "" Then
                 searchInitiated = False
             End If
+            If RootForm.access_level = 3 Then 'M.I.C
+                btnNew.Show()
+            Else
+                btnNew.Hide()
+            End If
         Else
             detailsPanel.Hide()
             detailsForm.ResetAll()

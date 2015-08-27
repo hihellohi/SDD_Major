@@ -33,6 +33,31 @@ Public Class StudentProfileView
         btnAddReason.Enabled = False
         absencesPanel.Hide()
         statsPanel.Show()
+        If RootForm.access_level = 3 Then 'MIC
+            btnShowAbsences.Show()
+            btnShowStats.Show()
+            btnEdit.Show()
+        Else
+            btnShowAbsences.Hide()
+            btnShowStats.Hide()
+            btnEdit.Hide()
+        End If
+        If RootForm.access_level >= 2 Then 'Captain/Coach
+            btnAddScores.Show()
+        Else
+            btnAddScores.Hide()
+        End If
+        If RootForm.access_level >= 1 Then 'Weapons Captain
+            txtPhone.Show()
+            txtEmail.Show()
+            lblPhone.Show()
+            lblEmail.Show()
+        Else
+            txtPhone.Hide()
+            txtEmail.Hide()
+            lblEmail.Hide()
+            lblPhone.Hide()
+        End If
     End Sub
 
     Sub PopulateAbsencesList()

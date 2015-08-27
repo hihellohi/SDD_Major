@@ -29,11 +29,16 @@ Partial Class StudentProfileView
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.infoPanel = New System.Windows.Forms.GroupBox()
+        Me.errPhone = New System.Windows.Forms.PictureBox()
+        Me.errEmail = New System.Windows.Forms.PictureBox()
+        Me.errStudentID = New System.Windows.Forms.PictureBox()
+        Me.errSurname = New System.Windows.Forms.PictureBox()
+        Me.errFirstName = New System.Windows.Forms.PictureBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.cbbWeapon = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblPhone = New System.Windows.Forms.Label()
+        Me.lblEmail = New System.Windows.Forms.Label()
         Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -60,6 +65,7 @@ Partial Class StudentProfileView
         Me.statsPanel = New System.Windows.Forms.Panel()
         Me.btnAddScores = New System.Windows.Forms.Button()
         Me.statisticsList = New System.Windows.Forms.ListView()
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -71,20 +77,14 @@ Partial Class StudentProfileView
         Me.lblWins = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.errorToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.errFirstName = New System.Windows.Forms.PictureBox()
-        Me.errSurname = New System.Windows.Forms.PictureBox()
-        Me.errStudentID = New System.Windows.Forms.PictureBox()
-        Me.errEmail = New System.Windows.Forms.PictureBox()
-        Me.errPhone = New System.Windows.Forms.PictureBox()
-        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.infoPanel.SuspendLayout()
+        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.absencesPanel.SuspendLayout()
         Me.statsPanel.SuspendLayout()
-        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -132,8 +132,8 @@ Partial Class StudentProfileView
         Me.infoPanel.Controls.Add(Me.btnCancel)
         Me.infoPanel.Controls.Add(Me.btnEdit)
         Me.infoPanel.Controls.Add(Me.cbbWeapon)
-        Me.infoPanel.Controls.Add(Me.Label9)
-        Me.infoPanel.Controls.Add(Me.Label8)
+        Me.infoPanel.Controls.Add(Me.lblPhone)
+        Me.infoPanel.Controls.Add(Me.lblEmail)
         Me.infoPanel.Controls.Add(Me.txtPhone)
         Me.infoPanel.Controls.Add(Me.txtEmail)
         Me.infoPanel.Controls.Add(Me.Label7)
@@ -151,6 +151,61 @@ Partial Class StudentProfileView
         Me.infoPanel.TabIndex = 4
         Me.infoPanel.TabStop = False
         Me.infoPanel.Text = "Personal Information"
+        '
+        'errPhone
+        '
+        Me.errPhone.Image = CType(resources.GetObject("errPhone.Image"), System.Drawing.Image)
+        Me.errPhone.Location = New System.Drawing.Point(398, 350)
+        Me.errPhone.Name = "errPhone"
+        Me.errPhone.Size = New System.Drawing.Size(32, 32)
+        Me.errPhone.TabIndex = 23
+        Me.errPhone.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errPhone, "Please enter the student's phone number")
+        Me.errPhone.Visible = False
+        '
+        'errEmail
+        '
+        Me.errEmail.Image = CType(resources.GetObject("errEmail.Image"), System.Drawing.Image)
+        Me.errEmail.Location = New System.Drawing.Point(398, 300)
+        Me.errEmail.Name = "errEmail"
+        Me.errEmail.Size = New System.Drawing.Size(32, 32)
+        Me.errEmail.TabIndex = 22
+        Me.errEmail.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errEmail, "Email address is invalid")
+        Me.errEmail.Visible = False
+        '
+        'errStudentID
+        '
+        Me.errStudentID.Image = CType(resources.GetObject("errStudentID.Image"), System.Drawing.Image)
+        Me.errStudentID.Location = New System.Drawing.Point(398, 53)
+        Me.errStudentID.Name = "errStudentID"
+        Me.errStudentID.Size = New System.Drawing.Size(32, 32)
+        Me.errStudentID.TabIndex = 21
+        Me.errStudentID.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errStudentID, "Please enter a valid student number")
+        Me.errStudentID.Visible = False
+        '
+        'errSurname
+        '
+        Me.errSurname.Image = CType(resources.GetObject("errSurname.Image"), System.Drawing.Image)
+        Me.errSurname.Location = New System.Drawing.Point(398, 148)
+        Me.errSurname.Name = "errSurname"
+        Me.errSurname.Size = New System.Drawing.Size(32, 32)
+        Me.errSurname.TabIndex = 20
+        Me.errSurname.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errSurname, "Please enter the student's surname")
+        Me.errSurname.Visible = False
+        '
+        'errFirstName
+        '
+        Me.errFirstName.Image = CType(resources.GetObject("errFirstName.Image"), System.Drawing.Image)
+        Me.errFirstName.Location = New System.Drawing.Point(398, 100)
+        Me.errFirstName.Name = "errFirstName"
+        Me.errFirstName.Size = New System.Drawing.Size(32, 32)
+        Me.errFirstName.TabIndex = 19
+        Me.errFirstName.TabStop = False
+        Me.errorToolTip.SetToolTip(Me.errFirstName, "Please enter the student's name")
+        Me.errFirstName.Visible = False
         '
         'btnCancel
         '
@@ -181,23 +236,23 @@ Partial Class StudentProfileView
         Me.cbbWeapon.Size = New System.Drawing.Size(204, 33)
         Me.cbbWeapon.TabIndex = 15
         '
-        'Label9
+        'lblPhone
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(26, 353)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(115, 26)
-        Me.Label9.TabIndex = 14
-        Me.Label9.Text = "Phone No."
+        Me.lblPhone.AutoSize = True
+        Me.lblPhone.Location = New System.Drawing.Point(26, 353)
+        Me.lblPhone.Name = "lblPhone"
+        Me.lblPhone.Size = New System.Drawing.Size(115, 26)
+        Me.lblPhone.TabIndex = 14
+        Me.lblPhone.Text = "Phone No."
         '
-        'Label8
+        'lblEmail
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(26, 303)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(68, 26)
-        Me.Label8.TabIndex = 13
-        Me.Label8.Text = "Email"
+        Me.lblEmail.AutoSize = True
+        Me.lblEmail.Location = New System.Drawing.Point(26, 303)
+        Me.lblEmail.Name = "lblEmail"
+        Me.lblEmail.Size = New System.Drawing.Size(68, 26)
+        Me.lblEmail.TabIndex = 13
+        Me.lblEmail.Text = "Email"
         '
         'txtPhone
         '
@@ -449,6 +504,11 @@ Partial Class StudentProfileView
         Me.statisticsList.UseCompatibleStateImageBehavior = False
         Me.statisticsList.View = System.Windows.Forms.View.Details
         '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.Text = "Date"
+        Me.ColumnHeader8.Width = 137
+        '
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "Opponent"
@@ -528,66 +588,6 @@ Partial Class StudentProfileView
         Me.errorToolTip.ReshowDelay = 100
         Me.errorToolTip.ShowAlways = True
         '
-        'errFirstName
-        '
-        Me.errFirstName.Image = CType(resources.GetObject("errFirstName.Image"), System.Drawing.Image)
-        Me.errFirstName.Location = New System.Drawing.Point(398, 100)
-        Me.errFirstName.Name = "errFirstName"
-        Me.errFirstName.Size = New System.Drawing.Size(32, 32)
-        Me.errFirstName.TabIndex = 19
-        Me.errFirstName.TabStop = False
-        Me.errorToolTip.SetToolTip(Me.errFirstName, "Please enter the student's name")
-        Me.errFirstName.Visible = False
-        '
-        'errSurname
-        '
-        Me.errSurname.Image = CType(resources.GetObject("errSurname.Image"), System.Drawing.Image)
-        Me.errSurname.Location = New System.Drawing.Point(398, 148)
-        Me.errSurname.Name = "errSurname"
-        Me.errSurname.Size = New System.Drawing.Size(32, 32)
-        Me.errSurname.TabIndex = 20
-        Me.errSurname.TabStop = False
-        Me.errorToolTip.SetToolTip(Me.errSurname, "Please enter the student's surname")
-        Me.errSurname.Visible = False
-        '
-        'errStudentID
-        '
-        Me.errStudentID.Image = CType(resources.GetObject("errStudentID.Image"), System.Drawing.Image)
-        Me.errStudentID.Location = New System.Drawing.Point(398, 53)
-        Me.errStudentID.Name = "errStudentID"
-        Me.errStudentID.Size = New System.Drawing.Size(32, 32)
-        Me.errStudentID.TabIndex = 21
-        Me.errStudentID.TabStop = False
-        Me.errorToolTip.SetToolTip(Me.errStudentID, "Please enter a valid student number")
-        Me.errStudentID.Visible = False
-        '
-        'errEmail
-        '
-        Me.errEmail.Image = CType(resources.GetObject("errEmail.Image"), System.Drawing.Image)
-        Me.errEmail.Location = New System.Drawing.Point(398, 300)
-        Me.errEmail.Name = "errEmail"
-        Me.errEmail.Size = New System.Drawing.Size(32, 32)
-        Me.errEmail.TabIndex = 22
-        Me.errEmail.TabStop = False
-        Me.errorToolTip.SetToolTip(Me.errEmail, "Email address is invalid")
-        Me.errEmail.Visible = False
-        '
-        'errPhone
-        '
-        Me.errPhone.Image = CType(resources.GetObject("errPhone.Image"), System.Drawing.Image)
-        Me.errPhone.Location = New System.Drawing.Point(398, 350)
-        Me.errPhone.Name = "errPhone"
-        Me.errPhone.Size = New System.Drawing.Size(32, 32)
-        Me.errPhone.TabIndex = 23
-        Me.errPhone.TabStop = False
-        Me.errorToolTip.SetToolTip(Me.errPhone, "Please enter the student's phone number")
-        Me.errPhone.Visible = False
-        '
-        'ColumnHeader8
-        '
-        Me.ColumnHeader8.Text = "Date"
-        Me.ColumnHeader8.Width = 137
-        '
         'StudentProfileView
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -604,15 +604,15 @@ Partial Class StudentProfileView
         Me.Text = "l"
         Me.infoPanel.ResumeLayout(False)
         Me.infoPanel.PerformLayout()
+        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).EndInit()
         Me.absencesPanel.ResumeLayout(False)
         Me.absencesPanel.PerformLayout()
         Me.statsPanel.ResumeLayout(False)
         Me.statsPanel.PerformLayout()
-        CType(Me.errFirstName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.errSurname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.errStudentID, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.errEmail, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.errPhone, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -635,8 +635,8 @@ Partial Class StudentProfileView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents chkUnexplained As System.Windows.Forms.CheckBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblEmail As System.Windows.Forms.Label
+    Friend WithEvents lblPhone As System.Windows.Forms.Label
     Friend WithEvents cbbWeapon As System.Windows.Forms.ComboBox
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
