@@ -1941,14 +1941,22 @@ Public Class Calendar
         HelpSlidingTimer.Enabled = True
     End Sub
     Private Sub HelpSlidingTimer_Tick(sender As Object, e As EventArgs) Handles HelpSlidingTimer.Tick
-        If HidingHelp = True Then
-            While PanelHelp.Top > -548
-                PanelHelp.Top -= 1
-            End While
-        Else : HidingHelp = False
-            While PanelHelp.Top < 110
-                PanelHelp.Top += 1
-            End While
+        If AnimationEnabled = True Then
+            If HidingHelp = True Then
+                While PanelHelp.Top > -548
+                    PanelHelp.Top -= 1
+                End While
+            Else : HidingHelp = False
+                While PanelHelp.Top < 110
+                    PanelHelp.Top += 1
+                End While
+            End If
+        Else
+            If HidingHelp = True Then
+                PanelHelp.Top = -548
+            Else
+                PanelHelp.Top = 110
+            End If
         End If
         HelpSlidingTimer.Enabled = False
     End Sub
@@ -1973,8 +1981,19 @@ Public Class Calendar
 
 
 
-
-
+    'Disables/enables animations for the help
+    Dim AnimationEnabled As Boolean = True
+    Private Sub ButDisableEnableAnimations_Click(sender As Object, e As EventArgs) Handles ButDisableEnableAnimations.Click
+        If AnimationEnabled = True Then
+            ButDisableEnableAnimations.Text = "Enable"
+            AnimationEnabled = False
+            MsgBox("Animation disabled")
+        Else
+            ButDisableEnableAnimations.Text = "Disable"
+            AnimationEnabled = True
+            MsgBox("Animation enabled")
+        End If
+    End Sub
 
 
 
@@ -2517,5 +2536,6 @@ Public Class Calendar
         Get_Database_Details_For_Specified_Date(DatabaseDate)
     End Sub
 
+    
 End Class
 
