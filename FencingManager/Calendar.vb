@@ -350,6 +350,8 @@ Public Class Calendar
         PicFoil.Visible = False
         PicSabre.Visible = False
         PicEpee.Visible = False
+        PicNoWeapon.Visible = False
+        PicAllWeapons.Visible = False
 
         currentmonth = DateAdd(DateInterval.Month, 1, currentmonth)
 
@@ -369,6 +371,8 @@ Public Class Calendar
         PicFoil.Visible = False
         PicSabre.Visible = False
         PicEpee.Visible = False
+        PicNoWeapon.Visible = False
+        PicAllWeapons.Visible = False
 
         currentmonth = DateAdd(DateInterval.Month, -1, currentmonth)
 
@@ -756,21 +760,36 @@ Public Class Calendar
             PicFoil.Visible = False
             PicSabre.Visible = False
             PicEpee.Visible = False
+            PicNoWeapon.Visible = True
+            PicAllWeapons.Visible = False
         ElseIf Row.Item(6) = "Foil" Then
             ComboWeapon.SelectedIndex = 1
             PicFoil.Visible = True
             PicSabre.Visible = False
             PicEpee.Visible = False
+            PicNoWeapon.Visible = False
+            PicAllWeapons.Visible = False
         ElseIf Row.Item(6) = "Sabre" Then
             ComboWeapon.SelectedIndex = 2
             PicFoil.Visible = False
             PicSabre.Visible = True
             PicEpee.Visible = False
+            PicNoWeapon.Visible = False
+            PicAllWeapons.Visible = False
         ElseIf Row.Item(6) = "Epee" Then
             ComboWeapon.SelectedIndex = 3
             PicFoil.Visible = False
             PicSabre.Visible = False
             PicEpee.Visible = True
+            PicNoWeapon.Visible = False
+            PicAllWeapons.Visible = False
+        ElseIf Row.Item(6) = "All Weapons" Then
+            ComboWeapon.SelectedIndex = 4
+            PicFoil.Visible = False
+            PicSabre.Visible = False
+            PicEpee.Visible = False
+            PicNoWeapon.Visible = False
+            PicAllWeapons.Visible = True
         End If
 
         TexGroup.Text = Row.Item(7)
@@ -798,6 +817,8 @@ Public Class Calendar
             PicFoil.Visible = False
             PicSabre.Visible = False
             PicEpee.Visible = False
+            PicNoWeapon.Visible = False
+            PicAllWeapons.Visible = False
 
         Else : BlankDate = False        'Box with a date, but not necessarily an entry in the database
 
@@ -829,6 +850,8 @@ Public Class Calendar
                 PicFoil.Visible = False
                 PicSabre.Visible = False
                 PicEpee.Visible = False
+                PicNoWeapon.Visible = False
+                PicAllWeapons.Visible = False
 
             End Try
 
@@ -1110,6 +1133,8 @@ Public Class Calendar
                 Row.Item(6) = "Sabre"
             ElseIf ComboWeapon.SelectedIndex = 3 Then
                 Row.Item(6) = "Epee"
+            ElseIf ComboWeapon.SelectedIndex = 4 Then
+                Row.Item(6) = "All Weapons"
             Else
                 Row.Item(6) = "No Weapon"
             End If
@@ -1213,6 +1238,8 @@ Public Class Calendar
                 datasetNewRow.Item(6) = "Sabre"
             ElseIf ComboWeapon.SelectedIndex = 3 Then
                 datasetNewRow.Item(6) = "Epee"
+            ElseIf ComboWeapon.SelectedIndex = 4 Then
+                datasetNewRow.Item(6) = "All Weapons"
             Else
                 datasetNewRow.Item(6) = "No Weapon"
             End If
@@ -1303,6 +1330,8 @@ Public Class Calendar
         PicFoil.Visible = False
         PicSabre.Visible = False
         PicEpee.Visible = False
+        PicNoWeapon.Visible = False
+        PicAllWeapons.Visible = False
 
     End Sub
 
@@ -1320,6 +1349,8 @@ Public Class Calendar
             PrintWeapon = "Sabre"
         ElseIf ComboWeapon.SelectedIndex = 3 Then
             PrintWeapon = "Epee"
+        ElseIf ComboWeapon.SelectedIndex = 4 Then
+            PrintWeapon = "All Weapons"
         Else
             PrintWeapon = "No Weapon"
         End If
@@ -1536,6 +1567,8 @@ Public Class Calendar
                 TempSearchString = "Sabre"
             ElseIf RadChoiceEpee.Checked = True Then
                 TempSearchString = "Epee"
+            ElseIf radchoiceAllWeapons.Checked = True Then
+                TempSearchString = "All Weapons"
             Else
                 TempSearchString = "No Weapon"
             End If
@@ -1858,12 +1891,13 @@ Public Class Calendar
     Private Sub ButHelp_Click(sender As Object, e As EventArgs) Handles ButHelp.Click
         HidingHelp = False
         PanelHelp.BringToFront()
+        ButHideHelp.Visible = True
+        ButHelp.Visible = False
 
         'Simply graphics: keeps the top bar in front of the help panel (looks cool)
         'PanelHeader.BringToFront()
 
         'Disables buttons whilst in help
-        ButHelp.Enabled = False
         ButSettings.Enabled = False
         ButControlCalendar.Enabled = False
         ButControlSearch.Enabled = False
@@ -1899,9 +1933,11 @@ Public Class Calendar
         HidingHelp = True
 
         PanelHeader.BringToFront()
+        ButHelp.Visible = True
+        ButHideHelp.Visible = False
+
 
         'Re enables buttons
-        ButHelp.Enabled = True
         ButSettings.Enabled = True
         ButControlCalendar.Enabled = True
         ButControlSearch.Enabled = True

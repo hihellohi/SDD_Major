@@ -254,18 +254,21 @@ Partial Class Calendar
         Me.CalendarTableAdapter = New FencingManager.FencingDataSetTableAdapters.CalendarTableAdapter()
         Me.TableAdapterManager = New FencingManager.FencingDataSetTableAdapters.TableAdapterManager()
         Me.HelpSlidingTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.PicNoWeapon = New System.Windows.Forms.PictureBox()
+        Me.PicAllWeapons = New System.Windows.Forms.PictureBox()
+        Me.PicSabre = New System.Windows.Forms.PictureBox()
+        Me.PicEpee = New System.Windows.Forms.PictureBox()
+        Me.PicFoil = New System.Windows.Forms.PictureBox()
+        Me.PicCalendarSlider = New System.Windows.Forms.PictureBox()
         Me.ButSettings = New System.Windows.Forms.Button()
         Me.PicHelpCalendar = New System.Windows.Forms.PictureBox()
         Me.PicHelpDatabase = New System.Windows.Forms.PictureBox()
         Me.PicHelpSettings = New System.Windows.Forms.PictureBox()
         Me.PicHelpSearch = New System.Windows.Forms.PictureBox()
         Me.ButSearch = New System.Windows.Forms.Button()
-        Me.PicSabre = New System.Windows.Forms.PictureBox()
-        Me.PicEpee = New System.Windows.Forms.PictureBox()
-        Me.PicFoil = New System.Windows.Forms.PictureBox()
-        Me.PicCalendarSlider = New System.Windows.Forms.PictureBox()
         Me.PicVolumeOff = New System.Windows.Forms.PictureBox()
         Me.PicVolumeOn = New System.Windows.Forms.PictureBox()
+        Me.RadChoiceAllWeapons = New System.Windows.Forms.RadioButton()
         Me.Panel.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.PanelHelp.SuspendLayout()
@@ -326,14 +329,16 @@ Partial Class Calendar
         Me.GroupBoxSettings.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.PicHelpCalendar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PicHelpDatabase, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PicHelpSettings, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PicHelpSearch, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicNoWeapon, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicAllWeapons, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicSabre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicEpee, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicFoil, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicCalendarSlider, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicHelpCalendar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicHelpDatabase, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicHelpSettings, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PicHelpSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicVolumeOff, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -341,11 +346,11 @@ Partial Class Calendar
         'Panel
         '
         Me.Panel.BackColor = System.Drawing.Color.White
+        Me.Panel.Controls.Add(Me.ControlPanelCalendar)
+        Me.Panel.Controls.Add(Me.ControlPanelSearch)
         Me.Panel.Controls.Add(Me.PanelHeader)
         Me.Panel.Controls.Add(Me.PanelHelp)
         Me.Panel.Controls.Add(Me.ControlPanelDatabaseView)
-        Me.Panel.Controls.Add(Me.ControlPanelSearch)
-        Me.Panel.Controls.Add(Me.ControlPanelCalendar)
         Me.Panel.Controls.Add(Me.ControlPanelSettings)
         Me.Panel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Panel.Location = New System.Drawing.Point(0, 0)
@@ -362,6 +367,7 @@ Partial Class Calendar
         Me.PanelHeader.Controls.Add(Me.ButControlCalendar)
         Me.PanelHeader.Controls.Add(Me.ButControlSearch)
         Me.PanelHeader.Controls.Add(Me.ButControlDatabaseView)
+        Me.PanelHeader.Controls.Add(Me.ButHideHelp)
         Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
         Me.PanelHeader.Name = "PanelHeader"
         Me.PanelHeader.Size = New System.Drawing.Size(1281, 110)
@@ -384,7 +390,7 @@ Partial Class Calendar
         Me.ButHelp.BackColor = System.Drawing.Color.White
         Me.ButHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButHelp.Location = New System.Drawing.Point(276, 42)
+        Me.ButHelp.Location = New System.Drawing.Point(315, 43)
         Me.ButHelp.Name = "ButHelp"
         Me.ButHelp.Size = New System.Drawing.Size(33, 32)
         Me.ButHelp.TabIndex = 75
@@ -433,14 +439,13 @@ Partial Class Calendar
         'PanelHelp
         '
         Me.PanelHelp.BackColor = System.Drawing.Color.DarkGray
-        Me.PanelHelp.Controls.Add(Me.ButHideHelp)
         Me.PanelHelp.Controls.Add(Me.PicHelpCalendar)
         Me.PanelHelp.Controls.Add(Me.PicHelpDatabase)
         Me.PanelHelp.Controls.Add(Me.PicHelpSettings)
         Me.PanelHelp.Controls.Add(Me.PicHelpSearch)
-        Me.PanelHelp.Location = New System.Drawing.Point(654, 217)
+        Me.PanelHelp.Location = New System.Drawing.Point(1031, 196)
         Me.PanelHelp.Name = "PanelHelp"
-        Me.PanelHelp.Size = New System.Drawing.Size(248, 189)
+        Me.PanelHelp.Size = New System.Drawing.Size(153, 206)
         Me.PanelHelp.TabIndex = 140
         '
         'ButHideHelp
@@ -448,18 +453,19 @@ Partial Class Calendar
         Me.ButHideHelp.BackColor = System.Drawing.Color.White
         Me.ButHideHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButHideHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButHideHelp.Location = New System.Drawing.Point(1147, 597)
+        Me.ButHideHelp.Location = New System.Drawing.Point(315, 42)
         Me.ButHideHelp.Name = "ButHideHelp"
-        Me.ButHideHelp.Size = New System.Drawing.Size(93, 29)
+        Me.ButHideHelp.Size = New System.Drawing.Size(93, 33)
         Me.ButHideHelp.TabIndex = 4
         Me.ButHideHelp.Text = "Hide Help"
         Me.ButHideHelp.UseVisualStyleBackColor = False
+        Me.ButHideHelp.Visible = False
         '
         'ControlPanelDatabaseView
         '
         Me.ControlPanelDatabaseView.BackColor = System.Drawing.Color.PowderBlue
         Me.ControlPanelDatabaseView.Controls.Add(Me.CalendarDataGridView)
-        Me.ControlPanelDatabaseView.Location = New System.Drawing.Point(315, 436)
+        Me.ControlPanelDatabaseView.Location = New System.Drawing.Point(488, 226)
         Me.ControlPanelDatabaseView.Name = "ControlPanelDatabaseView"
         Me.ControlPanelDatabaseView.Size = New System.Drawing.Size(190, 152)
         Me.ControlPanelDatabaseView.TabIndex = 90
@@ -560,9 +566,9 @@ Partial Class Calendar
         Me.ControlPanelSearch.Controls.Add(Me.PanelSelectedFields)
         Me.ControlPanelSearch.Controls.Add(Me.PanelWeaponChoices)
         Me.ControlPanelSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControlPanelSearch.Location = New System.Drawing.Point(713, 465)
+        Me.ControlPanelSearch.Location = New System.Drawing.Point(152, 152)
         Me.ControlPanelSearch.Name = "ControlPanelSearch"
-        Me.ControlPanelSearch.Size = New System.Drawing.Size(150, 138)
+        Me.ControlPanelSearch.Size = New System.Drawing.Size(157, 164)
         Me.ControlPanelSearch.TabIndex = 89
         '
         'LabNoResultsFound
@@ -719,6 +725,7 @@ Partial Class Calendar
         '
         'PanelWeaponChoices
         '
+        Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceAllWeapons)
         Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceEpee)
         Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceNoWeapon)
         Me.PanelWeaponChoices.Controls.Add(Me.RadChoiceSabre)
@@ -732,7 +739,7 @@ Partial Class Calendar
         '
         Me.RadChoiceEpee.AutoSize = True
         Me.RadChoiceEpee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceEpee.Location = New System.Drawing.Point(9, 118)
+        Me.RadChoiceEpee.Location = New System.Drawing.Point(9, 92)
         Me.RadChoiceEpee.Name = "RadChoiceEpee"
         Me.RadChoiceEpee.Size = New System.Drawing.Size(65, 24)
         Me.RadChoiceEpee.TabIndex = 106
@@ -744,7 +751,7 @@ Partial Class Calendar
         Me.RadChoiceNoWeapon.AutoSize = True
         Me.RadChoiceNoWeapon.Checked = True
         Me.RadChoiceNoWeapon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceNoWeapon.Location = New System.Drawing.Point(9, 31)
+        Me.RadChoiceNoWeapon.Location = New System.Drawing.Point(9, 5)
         Me.RadChoiceNoWeapon.Name = "RadChoiceNoWeapon"
         Me.RadChoiceNoWeapon.Size = New System.Drawing.Size(111, 24)
         Me.RadChoiceNoWeapon.TabIndex = 102
@@ -756,7 +763,7 @@ Partial Class Calendar
         '
         Me.RadChoiceSabre.AutoSize = True
         Me.RadChoiceSabre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceSabre.Location = New System.Drawing.Point(9, 87)
+        Me.RadChoiceSabre.Location = New System.Drawing.Point(9, 61)
         Me.RadChoiceSabre.Name = "RadChoiceSabre"
         Me.RadChoiceSabre.Size = New System.Drawing.Size(70, 24)
         Me.RadChoiceSabre.TabIndex = 105
@@ -767,7 +774,7 @@ Partial Class Calendar
         '
         Me.RadChoiceFoil.AutoSize = True
         Me.RadChoiceFoil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.RadChoiceFoil.Location = New System.Drawing.Point(9, 59)
+        Me.RadChoiceFoil.Location = New System.Drawing.Point(9, 33)
         Me.RadChoiceFoil.Name = "RadChoiceFoil"
         Me.RadChoiceFoil.Size = New System.Drawing.Size(52, 24)
         Me.RadChoiceFoil.TabIndex = 104
@@ -777,6 +784,8 @@ Partial Class Calendar
         'ControlPanelCalendar
         '
         Me.ControlPanelCalendar.BackColor = System.Drawing.Color.SteelBlue
+        Me.ControlPanelCalendar.Controls.Add(Me.PicNoWeapon)
+        Me.ControlPanelCalendar.Controls.Add(Me.PicAllWeapons)
         Me.ControlPanelCalendar.Controls.Add(Me.PicSabre)
         Me.ControlPanelCalendar.Controls.Add(Me.PicEpee)
         Me.ControlPanelCalendar.Controls.Add(Me.PicFoil)
@@ -837,9 +846,9 @@ Partial Class Calendar
         Me.ControlPanelCalendar.Controls.Add(Me.pantu1)
         Me.ControlPanelCalendar.Controls.Add(Me.pansu2)
         Me.ControlPanelCalendar.Controls.Add(Me.pansu1)
-        Me.ControlPanelCalendar.Location = New System.Drawing.Point(168, 113)
+        Me.ControlPanelCalendar.Location = New System.Drawing.Point(41, 226)
         Me.ControlPanelCalendar.Name = "ControlPanelCalendar"
-        Me.ControlPanelCalendar.Size = New System.Drawing.Size(217, 189)
+        Me.ControlPanelCalendar.Size = New System.Drawing.Size(210, 194)
         Me.ControlPanelCalendar.TabIndex = 88
         '
         'PanelImportedCalendar
@@ -1065,7 +1074,7 @@ Partial Class Calendar
         Me.ComboWeapon.Enabled = False
         Me.ComboWeapon.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboWeapon.FormattingEnabled = True
-        Me.ComboWeapon.Items.AddRange(New Object() {"No Weapon", "Foil", "Sabre", "Epee"})
+        Me.ComboWeapon.Items.AddRange(New Object() {"No Weapon", "Foil", "Sabre", "Epee", "All Weapons"})
         Me.ComboWeapon.Location = New System.Drawing.Point(116, 152)
         Me.ComboWeapon.Name = "ComboWeapon"
         Me.ComboWeapon.Size = New System.Drawing.Size(237, 28)
@@ -2773,9 +2782,9 @@ Partial Class Calendar
         'ControlPanelSettings
         '
         Me.ControlPanelSettings.Controls.Add(Me.GroupBoxSettings)
-        Me.ControlPanelSettings.Location = New System.Drawing.Point(6, 116)
+        Me.ControlPanelSettings.Location = New System.Drawing.Point(403, 554)
         Me.ControlPanelSettings.Name = "ControlPanelSettings"
-        Me.ControlPanelSettings.Size = New System.Drawing.Size(156, 152)
+        Me.ControlPanelSettings.Size = New System.Drawing.Size(106, 171)
         Me.ControlPanelSettings.TabIndex = 91
         '
         'GroupBoxSettings
@@ -2942,13 +2951,72 @@ Partial Class Calendar
         '
         Me.HelpSlidingTimer.Interval = 10
         '
+        'PicNoWeapon
+        '
+        Me.PicNoWeapon.BackgroundImage = Global.FencingManager.My.Resources.Resources.No_Weapon_Symbol
+        Me.PicNoWeapon.Location = New System.Drawing.Point(1031, 57)
+        Me.PicNoWeapon.Name = "PicNoWeapon"
+        Me.PicNoWeapon.Size = New System.Drawing.Size(40, 40)
+        Me.PicNoWeapon.TabIndex = 143
+        Me.PicNoWeapon.TabStop = False
+        Me.PicNoWeapon.Visible = False
+        '
+        'PicAllWeapons
+        '
+        Me.PicAllWeapons.BackgroundImage = Global.FencingManager.My.Resources.Resources.All_weapons_symbol
+        Me.PicAllWeapons.Location = New System.Drawing.Point(1031, 57)
+        Me.PicAllWeapons.Name = "PicAllWeapons"
+        Me.PicAllWeapons.Size = New System.Drawing.Size(40, 40)
+        Me.PicAllWeapons.TabIndex = 142
+        Me.PicAllWeapons.TabStop = False
+        Me.PicAllWeapons.Visible = False
+        '
+        'PicSabre
+        '
+        Me.PicSabre.BackgroundImage = Global.FencingManager.My.Resources.Resources.sabre_symbol
+        Me.PicSabre.Location = New System.Drawing.Point(1031, 57)
+        Me.PicSabre.Name = "PicSabre"
+        Me.PicSabre.Size = New System.Drawing.Size(40, 40)
+        Me.PicSabre.TabIndex = 141
+        Me.PicSabre.TabStop = False
+        Me.PicSabre.Visible = False
+        '
+        'PicEpee
+        '
+        Me.PicEpee.BackgroundImage = Global.FencingManager.My.Resources.Resources.epee_symbol
+        Me.PicEpee.Location = New System.Drawing.Point(1031, 57)
+        Me.PicEpee.Name = "PicEpee"
+        Me.PicEpee.Size = New System.Drawing.Size(40, 40)
+        Me.PicEpee.TabIndex = 140
+        Me.PicEpee.TabStop = False
+        Me.PicEpee.Visible = False
+        '
+        'PicFoil
+        '
+        Me.PicFoil.BackgroundImage = Global.FencingManager.My.Resources.Resources.Foil_symbol1
+        Me.PicFoil.Location = New System.Drawing.Point(1031, 57)
+        Me.PicFoil.Name = "PicFoil"
+        Me.PicFoil.Size = New System.Drawing.Size(40, 40)
+        Me.PicFoil.TabIndex = 139
+        Me.PicFoil.TabStop = False
+        Me.PicFoil.Visible = False
+        '
+        'PicCalendarSlider
+        '
+        Me.PicCalendarSlider.BackColor = System.Drawing.Color.Maroon
+        Me.PicCalendarSlider.Location = New System.Drawing.Point(92, 0)
+        Me.PicCalendarSlider.Name = "PicCalendarSlider"
+        Me.PicCalendarSlider.Size = New System.Drawing.Size(61, 13)
+        Me.PicCalendarSlider.TabIndex = 139
+        Me.PicCalendarSlider.TabStop = False
+        '
         'ButSettings
         '
         Me.ButSettings.BackColor = System.Drawing.Color.White
         Me.ButSettings.BackgroundImage = Global.FencingManager.My.Resources.Resources.gear_icon1
         Me.ButSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ButSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButSettings.Location = New System.Drawing.Point(315, 42)
+        Me.ButSettings.Location = New System.Drawing.Point(276, 43)
         Me.ButSettings.Name = "ButSettings"
         Me.ButSettings.Size = New System.Drawing.Size(33, 32)
         Me.ButSettings.TabIndex = 87
@@ -3002,45 +3070,6 @@ Partial Class Calendar
         Me.ButSearch.TabIndex = 8
         Me.ButSearch.UseVisualStyleBackColor = False
         '
-        'PicSabre
-        '
-        Me.PicSabre.BackgroundImage = Global.FencingManager.My.Resources.Resources.sabre_symbol
-        Me.PicSabre.Location = New System.Drawing.Point(1031, 57)
-        Me.PicSabre.Name = "PicSabre"
-        Me.PicSabre.Size = New System.Drawing.Size(40, 40)
-        Me.PicSabre.TabIndex = 141
-        Me.PicSabre.TabStop = False
-        Me.PicSabre.Visible = False
-        '
-        'PicEpee
-        '
-        Me.PicEpee.BackgroundImage = Global.FencingManager.My.Resources.Resources.epee_symbol
-        Me.PicEpee.Location = New System.Drawing.Point(1031, 57)
-        Me.PicEpee.Name = "PicEpee"
-        Me.PicEpee.Size = New System.Drawing.Size(40, 40)
-        Me.PicEpee.TabIndex = 140
-        Me.PicEpee.TabStop = False
-        Me.PicEpee.Visible = False
-        '
-        'PicFoil
-        '
-        Me.PicFoil.BackgroundImage = Global.FencingManager.My.Resources.Resources.Foil_symbol1
-        Me.PicFoil.Location = New System.Drawing.Point(1031, 57)
-        Me.PicFoil.Name = "PicFoil"
-        Me.PicFoil.Size = New System.Drawing.Size(40, 40)
-        Me.PicFoil.TabIndex = 139
-        Me.PicFoil.TabStop = False
-        Me.PicFoil.Visible = False
-        '
-        'PicCalendarSlider
-        '
-        Me.PicCalendarSlider.BackColor = System.Drawing.Color.Maroon
-        Me.PicCalendarSlider.Location = New System.Drawing.Point(92, 0)
-        Me.PicCalendarSlider.Name = "PicCalendarSlider"
-        Me.PicCalendarSlider.Size = New System.Drawing.Size(61, 13)
-        Me.PicCalendarSlider.TabIndex = 139
-        Me.PicCalendarSlider.TabStop = False
-        '
         'PicVolumeOff
         '
         Me.PicVolumeOff.BackgroundImage = Global.FencingManager.My.Resources.Resources.volume_icon_off
@@ -3059,6 +3088,17 @@ Partial Class Calendar
         Me.PicVolumeOn.Size = New System.Drawing.Size(100, 100)
         Me.PicVolumeOn.TabIndex = 8
         Me.PicVolumeOn.TabStop = False
+        '
+        'RadChoiceAllWeapons
+        '
+        Me.RadChoiceAllWeapons.AutoSize = True
+        Me.RadChoiceAllWeapons.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RadChoiceAllWeapons.Location = New System.Drawing.Point(9, 120)
+        Me.RadChoiceAllWeapons.Name = "RadChoiceAllWeapons"
+        Me.RadChoiceAllWeapons.Size = New System.Drawing.Size(116, 24)
+        Me.RadChoiceAllWeapons.TabIndex = 107
+        Me.RadChoiceAllWeapons.Text = "All Weapons"
+        Me.RadChoiceAllWeapons.UseVisualStyleBackColor = True
         '
         'Calendar
         '
@@ -3179,14 +3219,16 @@ Partial Class Calendar
         Me.Panel3.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.PicHelpCalendar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PicHelpDatabase, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PicHelpSettings, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PicHelpSearch, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicNoWeapon, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicAllWeapons, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicSabre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicEpee, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicFoil, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicCalendarSlider, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicHelpCalendar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicHelpDatabase, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicHelpSettings, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PicHelpSearch, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicVolumeOff, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicVolumeOn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -3435,5 +3477,8 @@ Partial Class Calendar
     Friend WithEvents ButHideHelp As System.Windows.Forms.Button
     Friend WithEvents HelpSlidingTimer As System.Windows.Forms.Timer
     Friend WithEvents PanelHeader As System.Windows.Forms.Panel
+    Friend WithEvents PicNoWeapon As System.Windows.Forms.PictureBox
+    Friend WithEvents PicAllWeapons As System.Windows.Forms.PictureBox
+    Friend WithEvents RadChoiceAllWeapons As System.Windows.Forms.RadioButton
 
 End Class
