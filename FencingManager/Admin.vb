@@ -49,10 +49,10 @@ Public Class Admin
                 .GridLines = True
                 .FullRowSelect = True
 
-                lvEvents.Columns.Add("EventDate", 270, HorizontalAlignment.Center)
+                lvEvents.Columns.Add("EventDate", 135, HorizontalAlignment.Center)
                 lvEvents.Columns.Add("Time", 100, HorizontalAlignment.Center)
-                lvEvents.Columns.Add("Venue", 100, HorizontalAlignment.Center)
-                lvEvents.Columns.Add("Group", 100, HorizontalAlignment.Center)
+                lvEvents.Columns.Add("Venue", 185, HorizontalAlignment.Center)
+                lvEvents.Columns.Add("Group", 135, HorizontalAlignment.Center)
 
             End With
 
