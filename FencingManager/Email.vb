@@ -92,8 +92,7 @@ Public Class Email
                         email.Body += "</table></p><p>This was an automated message. Do not reply to this email</p></body></html>"
                         Smtp_Server.Send(email)
 
-                        FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
-                        My.Computer.FileSystem.WriteAllText("edits.txt", "[" + DateString + " " + TimeOfDay + "] Overdue Items Email sent " & Environment.NewLine, True)
+
 
                     Catch error_t As Exception
                         'If error occurs
@@ -114,6 +113,7 @@ Public Class Email
         mode = -1
 
         Dim fail As Boolean = sendOverdue()
+        RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Overdue Items Email sent by " + GlobalVariables.Username)
         If fail Then
             btnODYes.Text = "Failure!"
         Else
@@ -332,6 +332,7 @@ Public Class Email
             all = False
             mode = -2
             Dim fail = sendGeneral()
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] General Email sent by " + GlobalVariables.Username)
             If fail Then
                 btnGEYes.Text = "Failure!"
             Else
@@ -420,6 +421,7 @@ Public Class Email
             If Not fail Then
                 fail = sendGeneral()
             End If
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] both emails sent by " + GlobalVariables.Username)
             If fail Then
                 btnBothYes.Text = "Failure!"
             Else

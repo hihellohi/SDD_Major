@@ -55,6 +55,17 @@ Public Class RootForm
         connection.Close()
     End Sub
 
+    Public Sub writeEditLog(ByRef line As String)
+        If Not My.Computer.FileSystem.FileExists("edits.txt") Then
+            Dim x = System.IO.File.Create("edits.txt")
+            x.Close()
+        End If
+        Try
+            My.Computer.FileSystem.WriteAllText("edits.txt", line & Environment.NewLine, True)
+        Catch error_msg As Exception
+            MsgBox(error_msg.ToString)
+        End Try
+    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connection = New OleDbConnection(My.Settings.FencingConnectionString)

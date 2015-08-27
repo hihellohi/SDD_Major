@@ -284,6 +284,7 @@ Public Class Catalog
             x("DueMonth") = 0
             x("DueDay") = 0
             RootForm.GearDataS.Tables("Gear").Rows.Add(x)
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Item " + x("GearID").ToString() + " was created by " + GlobalVariables.Username)
             RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
 
             reload()
@@ -336,6 +337,7 @@ Public Class Catalog
 
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
         'removes the selected record
+        RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Item " + RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID") + " was deleted by " + GlobalVariables.Username)
         RootForm.GearDataS.Tables("Gear").Rows(selected).Delete()
         RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
 
@@ -440,7 +442,7 @@ Public Class Catalog
             End If
 
             RootForm.GearAdapter.Update(RootForm.GearDataS, "Gear")
-
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Item " + RootForm.GearDataS.Tables("Gear").Rows(selected).Item("GearID") + " was edited by " + GlobalVariables.Username)
             reload()
         End If
     End Sub
