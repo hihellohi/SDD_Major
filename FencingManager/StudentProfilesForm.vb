@@ -9,9 +9,9 @@
     Dim detailsForm As StudentProfileView
     Dim selectedID As Integer
 
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-        If ListView1.SelectedItems.Count = 1 Then
-            LoadSimpleProfile(ListView1.SelectedItems(0).Text)
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles studentListView.SelectedIndexChanged
+        If studentListView.SelectedItems.Count = 1 Then
+            LoadSimpleProfile(studentListView.SelectedItems(0).Text)
         End If
     End Sub
 
@@ -80,10 +80,11 @@
             Else
                 btnNew.Hide()
             End If
+            If detailsPanel.Visible Then
+                detailsForm.FillStudent(selectedID)
+            End If
         Else
-            detailsPanel.Hide()
             detailsForm.ResetAll()
-            detailsTopPanel.Hide()
         End If
     End Sub
 
@@ -99,7 +100,7 @@
     End Sub
 
     Private Sub SearchQuery()
-        ListView1.Items.Clear()
+        studentListView.Items.Clear()
         ResetSimpleProfile()
 
         Dim filter = ""
@@ -134,7 +135,7 @@
                     rowItem.SubItems.Add(row.Surname.ToString())
                     rowItem.SubItems.Add(row.FirstName.ToString())
                     rowItem.SubItems.Add(row.SchoolYear.ToString())
-                    ListView1.Items.Add(rowItem)
+                    studentListView.Items.Add(rowItem)
                 End If
             End If
         Next
@@ -146,9 +147,11 @@
         End If
     End Sub
 
-    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
-        If ListView1.SelectedIndices.Count = 1 Then
-
+    Private Sub studentListView_DoubleClick(sender As Object, e As EventArgs) Handles studentListView.DoubleClick
+        If studentListView.SelectedIndices.Count = 1 Then
+            detailsForm.FillStudent(studentListView.SelectedItems(0).Text)
+            detailsPanel.Show()
+            detailsTopPanel.Show()
         End If
     End Sub
 
@@ -164,11 +167,11 @@
             detailsForm.FillStudent(formNew.newRow.StudentID)
             detailsPanel.Show()
             detailsTopPanel.Show()
-            ListView1.Items.Clear()
+            studentListView.Items.Clear()
         End If
     End Sub
 
-    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
+    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles studentListView.ColumnClick
         If sortColumn = e.Column Then
             sortAscending = Not sortAscending
         Else

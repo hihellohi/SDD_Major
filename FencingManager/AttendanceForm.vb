@@ -122,7 +122,7 @@
         End While
         studentAdapter.Update(studentDataTable)
         absencesAdapter.Update(absencesTable)
-        RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] roll marked by " & GlobalVariables.Username & "with " & lblAbsent.Text & "absent")
+        RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] Roll marked by " & GlobalVariables.Username & " with " & lblAbsent.Text & " absent")
         Reset()
         titleLabel.Text = "Attendance Check - Saved"
         btnSave.Text = "Saved"

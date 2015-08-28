@@ -3,12 +3,20 @@
 Public Class StudentProfilesCreate
     Public newRow As FencingDataSet.StudentProfilesRow
     Dim emailRegex As Regex
+    Dim studentDataTable As New FencingDataSet.StudentProfilesDataTable
+    Dim studentAdapter As New FencingDataSetTableAdapters.StudentProfilesTableAdapter
+    Dim usedIDs As List(Of Integer)
 
     Public Sub New(row As FencingDataSet.StudentProfilesRow)
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
         newRow = row
+        usedIDs = New List(Of Integer)()
+        studentAdapter.Fill(studentDataTable)
+        For Each studentRow As FencingDataSet.StudentProfilesRow In studentDataTable
+            usedIDs.Add(studentRow.StudentID)
+        Next
     End Sub
 
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -46,6 +54,11 @@ Public Class StudentProfilesCreate
         If txtID.TextLength < 9 Then
             valid = False
             errStudentID.Show()
+            errorToolTip.SetToolTip(Me.errStudentID, "Please enter a valid student number")
+        ElseIf usedIDs.Contains(CInt(txtID.Text)) Then
+            valid = False
+            errStudentID.Show()
+            errorToolTip.SetToolTip(Me.errStudentID, "That student number is already taken by another student")
         End If
         If Not emailRegex.Match(txtEmail.Text).Success Then 'Check if valid email address
             valid = False

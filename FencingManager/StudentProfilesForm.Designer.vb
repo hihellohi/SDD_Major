@@ -31,7 +31,7 @@ Partial Class StudentProfilesForm
         Me.btnNew = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.studentListView = New System.Windows.Forms.ListView()
         Me.colID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colSurname = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colFName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -143,20 +143,20 @@ Partial Class StudentProfilesForm
         Me.TextBox1.Size = New System.Drawing.Size(755, 32)
         Me.TextBox1.TabIndex = 2
         '
-        'ListView1
+        'studentListView
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colID, Me.colSurname, Me.colFName, Me.colYear})
-        Me.ListView1.FullRowSelect = True
-        Me.ListView1.GridLines = True
-        Me.ListView1.HideSelection = False
-        Me.ListView1.Location = New System.Drawing.Point(28, 138)
-        Me.ListView1.MultiSelect = False
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.ShowItemToolTips = True
-        Me.ListView1.Size = New System.Drawing.Size(574, 604)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.studentListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colID, Me.colSurname, Me.colFName, Me.colYear})
+        Me.studentListView.FullRowSelect = True
+        Me.studentListView.GridLines = True
+        Me.studentListView.HideSelection = False
+        Me.studentListView.Location = New System.Drawing.Point(28, 138)
+        Me.studentListView.MultiSelect = False
+        Me.studentListView.Name = "studentListView"
+        Me.studentListView.ShowItemToolTips = True
+        Me.studentListView.Size = New System.Drawing.Size(574, 604)
+        Me.studentListView.TabIndex = 1
+        Me.studentListView.UseCompatibleStateImageBehavior = False
+        Me.studentListView.View = System.Windows.Forms.View.Details
         '
         'colID
         '
@@ -411,7 +411,7 @@ Partial Class StudentProfilesForm
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.ListView1)
+        Me.Controls.Add(Me.studentListView)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -430,7 +430,7 @@ Partial Class StudentProfilesForm
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents ListView1 As System.Windows.Forms.ListView
+    Friend WithEvents studentListView As System.Windows.Forms.ListView
     Friend WithEvents colSurname As System.Windows.Forms.ColumnHeader
     Friend WithEvents colID As System.Windows.Forms.ColumnHeader
     Friend WithEvents colYear As System.Windows.Forms.ColumnHeader

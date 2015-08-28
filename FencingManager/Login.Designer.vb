@@ -199,6 +199,7 @@ Partial Class Login
         '
         'Login
         '
+        Me.AcceptButton = Me.btnLogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1256, 768)
         Me.Controls.Add(Me.btnPWchange)
