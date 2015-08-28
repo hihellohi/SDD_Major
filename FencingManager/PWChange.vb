@@ -8,17 +8,17 @@ Public Class PWChange
 
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtOld.TextChanged
         Label5.Visible = False
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If TextBox1.Text = Password Then
-            If TextBox2.Text = TextBox3.Text Then
-                If TextBox2.TextLength >= 6 Then
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnOK.Click
+        If txtOld.Text = Password Then
+            If txtNew1.Text = txtNew2.Text Then
+                If txtNew1.TextLength >= 6 Then
                     Dim cmd As String = "UPDATE [Logins] SET [Password]=@pw WHERE Username=@user"
                     Using cmd1 = New OleDbCommand(cmd, RootForm.connection)
-                        cmd1.Parameters.Add(New OleDbParameter("@pw", CType(TextBox2.Text, String)))
+                        cmd1.Parameters.Add(New OleDbParameter("@pw", CType(txtNew1.Text, String)))
                         cmd1.Parameters.Add(New OleDbParameter("@user", Username))
                         cmd1.ExecuteNonQuery()
                         MsgBox("SUCCESS - PW CHANGED")
@@ -33,16 +33,16 @@ Public Class PWChange
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         MsgBox("Are you sure you want to cancel?")
         Me.Close()
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtNew1.TextChanged
         Label7.Visible = False
     End Sub
 
-    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged, TextBox2.TextChanged
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles txtNew2.TextChanged, txtNew1.TextChanged
         Label6.Visible = False
     End Sub
 End Class

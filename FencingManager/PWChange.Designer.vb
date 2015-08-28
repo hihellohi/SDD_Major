@@ -25,15 +25,15 @@ Partial Class PWChange
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.txtNew2 = New System.Windows.Forms.TextBox()
+        Me.txtNew1 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtOld = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnOK = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label7
@@ -72,34 +72,34 @@ Partial Class PWChange
         Me.Label5.Text = "Current PW Wrong"
         Me.Label5.Visible = False
         '
-        'Button2
+        'btnCancel
         '
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(737, 12)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(45, 47)
-        Me.Button2.TabIndex = 21
-        Me.Button2.Text = "X"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Location = New System.Drawing.Point(737, 12)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(45, 47)
+        Me.btnCancel.TabIndex = 21
+        Me.btnCancel.Text = "X"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
-        'TextBox3
+        'txtNew2
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(255, 268)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(261, 35)
-        Me.TextBox3.TabIndex = 18
-        Me.TextBox3.UseSystemPasswordChar = True
+        Me.txtNew2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNew2.Location = New System.Drawing.Point(255, 268)
+        Me.txtNew2.Name = "txtNew2"
+        Me.txtNew2.Size = New System.Drawing.Size(261, 35)
+        Me.txtNew2.TabIndex = 18
+        Me.txtNew2.UseSystemPasswordChar = True
         '
-        'TextBox2
+        'txtNew1
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(255, 193)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(261, 35)
-        Me.TextBox2.TabIndex = 16
-        Me.TextBox2.UseSystemPasswordChar = True
+        Me.txtNew1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNew1.Location = New System.Drawing.Point(255, 193)
+        Me.txtNew1.Name = "txtNew1"
+        Me.txtNew1.Size = New System.Drawing.Size(261, 35)
+        Me.txtNew1.TabIndex = 16
+        Me.txtNew1.UseSystemPasswordChar = True
         '
         'Label4
         '
@@ -131,14 +131,14 @@ Partial Class PWChange
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Old Password"
         '
-        'TextBox1
+        'txtOld
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(255, 123)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(261, 35)
-        Me.TextBox1.TabIndex = 15
-        Me.TextBox1.UseSystemPasswordChar = True
+        Me.txtOld.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOld.Location = New System.Drawing.Point(255, 123)
+        Me.txtOld.Name = "txtOld"
+        Me.txtOld.Size = New System.Drawing.Size(261, 35)
+        Me.txtOld.TabIndex = 15
+        Me.txtOld.UseSystemPasswordChar = True
         '
         'Label1
         '
@@ -150,32 +150,32 @@ Partial Class PWChange
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Change Password"
         '
-        'Button1
+        'btnOK
         '
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(332, 334)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(90, 47)
-        Me.Button1.TabIndex = 25
-        Me.Button1.Text = "OK"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnOK.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOK.Location = New System.Drawing.Point(332, 334)
+        Me.btnOK.Name = "btnOK"
+        Me.btnOK.Size = New System.Drawing.Size(90, 47)
+        Me.btnOK.TabIndex = 25
+        Me.btnOK.Text = "OK"
+        Me.btnOK.UseVisualStyleBackColor = True
         '
         'PWChange
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(793, 431)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnOK)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.btnCancel)
+        Me.Controls.Add(Me.txtNew2)
+        Me.Controls.Add(Me.txtNew1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtOld)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "PWChange"
@@ -188,13 +188,13 @@ Partial Class PWChange
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents txtNew2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNew1 As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtOld As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnOK As System.Windows.Forms.Button
 End Class

@@ -6,14 +6,14 @@ Public Class Login
     Dim loggedin = False
 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnForgot.Click
         formForgotPW.ShowDialog()
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         e.Cancel = True
         If CheckBox2.Checked Then
-            SaveSetting("Login Screen", "Login", "TextBox1", TextBox1.Text)
+            SaveSetting("Login Screen", "Login", "TextBox1", txtUser.Text)
             SaveSetting("Login Screen", "Login", "CheckBox2", CheckBox2.Checked = True)
         Else : SaveSetting("Login Screen", "Login", "TextBox1", "")
             SaveSetting("Login Screen", "Login", "CheckBox2", CheckBox2.Checked = False)
@@ -21,7 +21,7 @@ Public Class Login
     End Sub
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         ' Query, Parameters
         Dim sql As String = "SELECT USERNAME FROM Logins WHERE USERNAME=@p_userid AND PASSWORD=@p_passw;"
@@ -29,20 +29,20 @@ Public Class Login
 
         ' Add parameters
         With cmd
-            .Parameters.AddWithValue("p_userid", TextBox1.Text)
-            .Parameters.AddWithValue("p_passw", TextBox2.Text)
+            .Parameters.AddWithValue("p_userid", txtUser.Text)
+            .Parameters.AddWithValue("p_passw", txtPW.Text)
         End With
 
         ' Perform Query
         Try
             Dim usr As String = cmd.ExecuteScalar.ToString
             Dim pw As String = cmd.ExecuteScalar.ToString
-            If Not (IsDBNull(usr)) AndAlso usr = TextBox1.Text Then
-                GlobalVariables.Username = TextBox1.Text
-                GlobalVariables.Password = TextBox2.Text
+            If Not (IsDBNull(usr)) AndAlso usr = txtUser.Text Then
+                GlobalVariables.Username = txtUser.Text
+                GlobalVariables.Password = txtPW.Text
                 MsgBox("Login Success", MsgBoxStyle.OkOnly)   ' User Found, PW Match
                 ' Admistration.Show()
-            ElseIf Not (IsDBNull(usr)) AndAlso pw <> TextBox2.Text Then
+            ElseIf Not (IsDBNull(usr)) AndAlso pw <> txtPW.Text Then
                 'This doesnt work
                 MsgBox("Username or Password Wrong", MsgBoxStyle.OkOnly)
             End If
@@ -56,7 +56,7 @@ Public Class Login
 
 
             FencingManager.Admin.RichTextBox1.LoadFile("edits.txt", RichTextBoxStreamType.PlainText)
-            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] " + TextBox1.Text + " tried to log in with incorrect password")
+            RootForm.writeEditLog("[" + DateString + " " + TimeOfDay + "] " + txtUser.Text + " tried to log in with incorrect password")
 
 
 
@@ -77,10 +77,10 @@ Public Class Login
             Label1.Visible = False
             Label2.Visible = False
             Label3.Visible = False
-            TextBox1.Visible = False
-            TextBox2.Visible = False
-            Button2.Visible = False
-            Button3.Visible = False
+            txtUser.Visible = False
+            txtPW.Visible = False
+            btnForgot.Visible = False
+            btnLogin.Visible = False
             Button4.Visible = False
             CheckBox2.Visible = False
             Label4.Visible = True
@@ -92,10 +92,10 @@ Public Class Login
             Label1.Visible = True
             Label2.Visible = True
             Label3.Visible = True
-            TextBox1.Visible = True
-            TextBox2.Visible = True
-            Button2.Visible = True
-            Button3.Visible = True
+            txtUser.Visible = True
+            txtPW.Visible = True
+            btnForgot.Visible = True
+            btnLogin.Visible = True
             Button4.Visible = True
             CheckBox2.Visible = True
             Label4.Visible = False
@@ -107,14 +107,14 @@ Public Class Login
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         CreateAcc.ShowDialog()
-        TextBox1.Text = ""
-        TextBox2.Text = ""
+        txtUser.Text = ""
+        txtPW.Text = ""
     End Sub
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        TextBox1.Text = GetSetting("Login Screen", "Login", "TextBox1")
-        If TextBox1.Text <> "" Then
+        txtUser.Text = GetSetting("Login Screen", "Login", "TextBox1")
+        If txtUser.Text <> "" Then
             CheckBox2.Checked = True
         End If
     End Sub
@@ -128,17 +128,17 @@ Public Class Login
         Label1.Visible = True
         Label2.Visible = True
         Label3.Visible = True
-        TextBox1.Visible = True
-        TextBox2.Visible = True
-        Button2.Visible = True
-        Button3.Visible = True
+        txtUser.Visible = True
+        txtPW.Visible = True
+        btnForgot.Visible = True
+        btnLogin.Visible = True
         Button4.Visible = True
         CheckBox2.Visible = True
         Label4.Visible = False
         usr.Visible = False
         btnOff.Visible = False
-        TextBox1.Text = ""
-        TextBox2.Text = ""
+        txtUser.Text = ""
+        txtPW.Text = ""
         GlobalVariables.Username = Nothing
         RootForm.access_level = 0
         btnPWchange.Visible = False

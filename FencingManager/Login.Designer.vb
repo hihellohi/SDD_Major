@@ -25,11 +25,11 @@ Partial Class Login
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.btnLogin = New System.Windows.Forms.Button()
+        Me.btnForgot = New System.Windows.Forms.Button()
+        Me.txtPW = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtUser = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.usr = New System.Windows.Forms.Label()
@@ -75,37 +75,37 @@ Partial Class Login
         Me.Label3.TabIndex = 20
         Me.Label3.Text = "Need an account?"
         '
-        'Button3
+        'btnLogin
         '
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(647, 421)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(158, 41)
-        Me.Button3.TabIndex = 15
-        Me.Button3.Text = "Log In →"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogin.Location = New System.Drawing.Point(647, 421)
+        Me.btnLogin.Name = "btnLogin"
+        Me.btnLogin.Size = New System.Drawing.Size(158, 41)
+        Me.btnLogin.TabIndex = 15
+        Me.btnLogin.Text = "Log In →"
+        Me.btnLogin.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnForgot
         '
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(863, 363)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(35, 35)
-        Me.Button2.TabIndex = 21
-        Me.Button2.Text = "?"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnForgot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnForgot.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnForgot.Location = New System.Drawing.Point(863, 363)
+        Me.btnForgot.Name = "btnForgot"
+        Me.btnForgot.Size = New System.Drawing.Size(35, 35)
+        Me.btnForgot.TabIndex = 21
+        Me.btnForgot.Text = "?"
+        Me.btnForgot.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'txtPW
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(662, 363)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox2.Size = New System.Drawing.Size(202, 35)
-        Me.TextBox2.TabIndex = 14
-        Me.TextBox2.UseSystemPasswordChar = True
+        Me.txtPW.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPW.Location = New System.Drawing.Point(662, 363)
+        Me.txtPW.Name = "txtPW"
+        Me.txtPW.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPW.Size = New System.Drawing.Size(202, 35)
+        Me.txtPW.TabIndex = 14
+        Me.txtPW.UseSystemPasswordChar = True
         '
         'Label2
         '
@@ -117,13 +117,13 @@ Partial Class Login
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Password"
         '
-        'TextBox1
+        'txtUser
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(662, 298)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(202, 35)
-        Me.TextBox1.TabIndex = 13
+        Me.txtUser.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUser.Location = New System.Drawing.Point(662, 298)
+        Me.txtUser.Name = "txtUser"
+        Me.txtUser.Size = New System.Drawing.Size(202, 35)
+        Me.txtUser.TabIndex = 13
         '
         'Label1
         '
@@ -208,11 +208,11 @@ Partial Class Login
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.btnLogin)
+        Me.Controls.Add(Me.btnForgot)
+        Me.Controls.Add(Me.txtPW)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtUser)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.usr)
@@ -229,11 +229,11 @@ Partial Class Login
     Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents btnLogin As System.Windows.Forms.Button
+    Friend WithEvents btnForgot As System.Windows.Forms.Button
+    Friend WithEvents txtPW As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtUser As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents usr As System.Windows.Forms.Label

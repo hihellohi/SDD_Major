@@ -144,9 +144,9 @@ Partial Class CreateAcc
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(67, 97)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 25)
+        Me.Label1.Size = New System.Drawing.Size(110, 25)
         Me.Label1.TabIndex = 37
-        Me.Label1.Text = "ID Number"
+        Me.Label1.Text = "Username"
         '
         'Label2
         '
