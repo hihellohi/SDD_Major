@@ -143,7 +143,9 @@ Public Class Admin
     End Sub
 
     Private Sub btCLog_Click(sender As Object, e As EventArgs) Handles btCLog.Click
-        RichTextBox1.Text = ("")
-        RichTextBox1.SaveFile("edits.txt", RichTextBoxStreamType.PlainText)
+        If (MessageBox.Show("Are you sure you want to clear the log?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            RichTextBox1.Text = ("")
+            RichTextBox1.SaveFile("edits.txt", RichTextBoxStreamType.PlainText)
+        End If
     End Sub
 End Class

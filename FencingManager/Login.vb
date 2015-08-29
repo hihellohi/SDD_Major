@@ -10,17 +10,6 @@ Public Class Login
         formForgotPW.ShowDialog()
     End Sub
 
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        e.Cancel = True
-        If CheckBox2.Checked Then
-            SaveSetting("Login Screen", "Login", "TextBox1", txtUser.Text)
-            SaveSetting("Login Screen", "Login", "CheckBox2", CheckBox2.Checked = True)
-        Else : SaveSetting("Login Screen", "Login", "TextBox1", "")
-            SaveSetting("Login Screen", "Login", "CheckBox2", CheckBox2.Checked = False)
-        End If
-    End Sub
-
-
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         ' Query, Parameters
@@ -82,7 +71,7 @@ Public Class Login
             btnForgot.Visible = False
             btnLogin.Visible = False
             Button4.Visible = False
-            CheckBox2.Visible = False
+
             Label4.Visible = True
             usr.Visible = True
             usr.Text = GlobalVariables.Username
@@ -97,7 +86,7 @@ Public Class Login
             btnForgot.Visible = True
             btnLogin.Visible = True
             Button4.Visible = True
-            CheckBox2.Visible = True
+
             Label4.Visible = False
             usr.Visible = False
             btnOff.Visible = False
@@ -112,40 +101,57 @@ Public Class Login
     End Sub
 
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        txtUser.Text = GetSetting("Login Screen", "Login", "TextBox1")
-        If txtUser.Text <> "" Then
-            CheckBox2.Checked = True
-        End If
-    End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
     End Sub
 
     Private Sub btnOff_Click(sender As Object, e As EventArgs) Handles btnOff.Click
-        loggedin = False
-        Label1.Visible = True
-        Label2.Visible = True
-        Label3.Visible = True
-        txtUser.Visible = True
-        txtPW.Visible = True
-        btnForgot.Visible = True
-        btnLogin.Visible = True
-        Button4.Visible = True
-        CheckBox2.Visible = True
-        Label4.Visible = False
-        usr.Visible = False
-        btnOff.Visible = False
-        txtUser.Text = ""
-        txtPW.Text = ""
-        GlobalVariables.Username = Nothing
-        RootForm.access_level = 0
-        btnPWchange.Visible = False
+
+
+        If (MessageBox.Show("Are you sure you want to log off?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            Label3.Visible = True
+            txtUser.Visible = True
+            txtPW.Visible = True
+            btnForgot.Visible = True
+            btnLogin.Visible = True
+            Button4.Visible = True
+
+            Label4.Visible = False
+            usr.Visible = False
+            btnOff.Visible = False
+            txtUser.Text = ""
+            txtPW.Text = ""
+            GlobalVariables.Username = Nothing
+            GlobalVariables.Password = Nothing
+            RootForm.access_level = 0
+            btnPWchange.Visible = False
+            Label1.Visible = True
+            Label2.Visible = True
+        Else
+            Label1.Visible = False
+            Label2.Visible = False
+            Label3.Visible = False
+            txtUser.Visible = False
+            txtPW.Visible = False
+            btnForgot.Visible = False
+            btnLogin.Visible = False
+            Button4.Visible = False
+
+            Label4.Visible = True
+            usr.Visible = True
+            usr.Text = GlobalVariables.Username
+            btnOff.Visible = True
+            btnPWchange.Visible = True
+        End If
     End Sub
 
     Private Sub btnPWchange_Click(sender As Object, e As EventArgs) Handles btnPWchange.Click
         PWChange.ShowDialog()
+    End Sub
+
+    Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+        About.ShowDialog()
     End Sub
 End Class
 

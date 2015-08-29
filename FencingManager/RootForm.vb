@@ -53,6 +53,11 @@ Public Class RootForm
 
     Private Sub RootForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         connection.Close()
+        If (MessageBox.Show("Are you sure you want to exit?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No) Then
+            e.Cancel = True
+        Else : Environment.Exit(0)
+        End If
+
     End Sub
 
     Public Sub writeEditLog(ByRef line As String)
